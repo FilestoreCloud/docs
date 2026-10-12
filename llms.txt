@@ -1,0 +1,51 @@
+# FilestoreCloud Documentation
+
+> Enterprise multi-tenant Nextcloud SaaS platform on AWS.
+> Zero-Code-Modification architecture using ECS Fargate, RDS PostgreSQL, EFS, S3, and Amazon Bedrock.
+
+## Architecture
+
+- [Introduction](https://filestorecloud.github.io/docs/docs/introduction): Platform overview, repo map, architecture summary
+- [Architecture Overview](https://filestorecloud.github.io/docs/docs/architecture-overview): Infrastructure stack, CloudFormation modules, tenant isolation
+- [Quickstart](https://filestorecloud.github.io/docs/docs/quickstart): Deploy and provision first tenant in 5 steps
+
+## Deployment
+
+- [Prerequisites](https://filestorecloud.github.io/docs/docs/deployment/prerequisites): Tools, AWS config, GitHub secrets
+- [GitHub Actions CI/CD](https://filestorecloud.github.io/docs/docs/deployment/github-actions): OIDC-based automated deployment
+- [Local CLI](https://filestorecloud.github.io/docs/docs/deployment/local-cli): scripts/deploy.sh usage and stack names
+- [Verification](https://filestorecloud.github.io/docs/docs/deployment/verification): Health checks and test suite
+
+## Tenant Management
+
+- [Provisioning](https://filestorecloud.github.io/docs/docs/tenants/provisioning): Python script + SSM runbook
+- [Lifecycle](https://filestorecloud.github.io/docs/docs/tenants/lifecycle): ACTIVE / SUSPENDED / DEPROVISIONED states
+- [Isolation Model](https://filestorecloud.github.io/docs/docs/tenants/isolation-model): DEDICATED_INSTANCE architecture and NIST RBAC
+- [Suspension & Resumption](https://filestorecloud.github.io/docs/docs/tenants/suspension-resumption): FinOps zero-cost hibernation
+
+## Control Plane
+
+- [Super Admin Console](https://filestorecloud.github.io/docs/docs/control-plane/super-admin-console): React 18 + Refine admin UI
+- [SSM Runbook](https://filestorecloud.github.io/docs/docs/control-plane/ssm-runbook): prod-Tenant-Lifecycle-Operator document
+- [DynamoDB Registry](https://filestorecloud.github.io/docs/docs/control-plane/dynamodb-registry): Tenant metadata schema and queries
+- [CloudWatch](https://filestorecloud.github.io/docs/docs/control-plane/cloudwatch): Metrics, alarms, live telemetry
+
+## AI Integration
+
+- [Bedrock Integration](https://filestorecloud.github.io/docs/docs/ai/bedrock-integration): Claude 3.5 Sonnet via LiteLLM sidecar
+- [LiteLLM Bridge](https://filestorecloud.github.io/docs/docs/ai/litellm-bridge): OpenAI-compatible proxy configuration
+- [RAG Pipeline](https://filestorecloud.github.io/docs/docs/ai/rag-pipeline): Document Q&A with tenant-isolated context
+
+## Sprint Reports
+
+- [2026-10-05](https://filestorecloud.github.io/docs/reports/2026-10-05): Verification & Scaling — 3 tenants, auto-scaling, FinOps lifecycle
+- [2026-09-28](https://filestorecloud.github.io/docs/reports/2026-09-28): Master Architecture — NIST RBAC, UML use cases, lifecycle statechart
+- [2026-09-21](https://filestorecloud.github.io/docs/reports/2026-09-21): Phase 1 execution — Storage, previews, Bedrock RAG
+- [2026-09-14](https://filestorecloud.github.io/docs/reports/2026-09-14): Phase 1 kickoff planning
+- [2026-09-07](https://filestorecloud.github.io/docs/reports/2026-09-07): Repo cleanup and planning alignment
+
+## Repositories
+
+- [aws_nextcloud](https://github.com/FilestoreCloud/aws_nextcloud): Main platform (IaC, scripts, docker, tests)
+- [control-panel](https://github.com/FilestoreCloud/control-panel): Super admin React console
+- [docs](https://github.com/FilestoreCloud/docs): This documentation site

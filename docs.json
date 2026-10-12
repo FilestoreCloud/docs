@@ -1,113 +1,76 @@
 {
   "$schema": "https://mintlify.com/schema.json",
+  "theme": "mint",
   "name": "FilestoreCloud",
-  "logo": {
-    "dark": "/logo/dark.svg",
-    "light": "/logo/light.svg"
-  },
-  "favicon": "/favicon.svg",
   "colors": {
-    "primary": "#0057FF",
-    "light": "#60A5FA",
-    "dark": "#1E3A8A"
+    "primary": "#0057FF"
   },
-  "topbarLinks": [
-    {
-      "name": "GitHub Org",
-      "url": "https://github.com/FilestoreCloud"
-    }
-  ],
-  "topbarCtaButton": {
-    "name": "Control Panel",
-    "url": "https://github.com/FilestoreCloud/control-panel"
-  },
-  "tabs": [
-    {
-      "name": "Documentation",
-      "url": "docs"
-    },
-    {
-      "name": "Reports",
-      "url": "reports"
-    }
-  ],
-  "anchors": [
-    {
-      "name": "Platform Infra",
-      "icon": "aws",
-      "url": "https://github.com/FilestoreCloud/aws_nextcloud"
-    },
-    {
-      "name": "Issues & PRs",
-      "icon": "github",
-      "url": "https://github.com/FilestoreCloud/aws_nextcloud/issues"
-    }
-  ],
-  "navigation": [
-    {
-      "group": "Getting Started",
-      "pages": [
-        "docs/introduction",
-        "docs/architecture-overview",
-        "docs/quickstart"
-      ]
-    },
-    {
-      "group": "Deployment",
-      "pages": [
-        "docs/deployment/prerequisites",
-        "docs/deployment/github-actions",
-        "docs/deployment/local-cli",
-        "docs/deployment/verification"
-      ]
-    },
-    {
-      "group": "Tenant Management",
-      "pages": [
-        "docs/tenants/provisioning",
-        "docs/tenants/lifecycle",
-        "docs/tenants/isolation-model",
-        "docs/tenants/suspension-resumption"
-      ]
-    },
-    {
-      "group": "Control Plane",
-      "pages": [
-        "docs/control-plane/super-admin-console",
-        "docs/control-plane/ssm-runbook",
-        "docs/control-plane/dynamodb-registry",
-        "docs/control-plane/cloudwatch"
-      ]
-    },
-    {
-      "group": "AI Integration",
-      "pages": [
-        "docs/ai/bedrock-integration",
-        "docs/ai/litellm-bridge",
-        "docs/ai/rag-pipeline"
-      ]
-    },
-    {
-      "group": "Sprint Reports",
-      "pages": [
-        "reports/index",
-        "reports/2026-10-05",
-        "reports/2026-09-28",
-        "reports/2026-09-21",
-        "reports/2026-09-14",
-        "reports/2026-09-07"
-      ]
-    }
-  ],
-  "footerSocials": {
-    "github": "https://github.com/FilestoreCloud"
-  },
-  "feedback": {
-    "thumbsRating": true,
-    "suggestEdit": true,
-    "raiseIssue": true
-  },
-  "search": {
-    "prompt": "Search FilestoreCloud docs..."
+  "navigation": {
+    "tabs": [
+      {
+        "tab": "Documentation",
+        "groups": [
+          {
+            "group": "Getting Started",
+            "pages": [
+              "docs/introduction",
+              "docs/architecture-overview",
+              "docs/quickstart"
+            ]
+          },
+          {
+            "group": "Deployment",
+            "pages": [
+              "docs/deployment/prerequisites",
+              "docs/deployment/github-actions",
+              "docs/deployment/local-cli",
+              "docs/deployment/verification"
+            ]
+          },
+          {
+            "group": "Tenant Management",
+            "pages": [
+              "docs/tenants/provisioning",
+              "docs/tenants/lifecycle",
+              "docs/tenants/isolation-model",
+              "docs/tenants/suspension-resumption"
+            ]
+          },
+          {
+            "group": "Control Plane",
+            "pages": [
+              "docs/control-plane/super-admin-console",
+              "docs/control-plane/ssm-runbook",
+              "docs/control-plane/dynamodb-registry",
+              "docs/control-plane/cloudwatch"
+            ]
+          },
+          {
+            "group": "AI Integration",
+            "pages": [
+              "docs/ai/bedrock-integration",
+              "docs/ai/litellm-bridge",
+              "docs/ai/rag-pipeline"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Reports",
+        "groups": [
+          {
+            "group": "Sprint Reports",
+            "pages": [
+              "reports/index",
+              "reports/2026-10-05",
+              "reports/2026-09-28",
+              "reports/2026-09-21",
+              "reports/2026-09-14",
+              "reports/2026-09-07"
+            ]
+          }
+        ]
+      }
+    ]
   }
 }
