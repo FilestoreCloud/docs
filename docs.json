@@ -3,10 +3,10 @@
   "theme": "mint",
   "name": "Storix",
   "logo": {
-    "dark": "/logo/dark.png",
-    "light": "/logo/light.png"
+    "light": "/images/logo-light.png",
+    "dark": "/images/logo-dark.png"
   },
-  "favicon": "/favicon.png",
+  "favicon": "/images/favicon.png",
   "colors": {
     "primary": "#0D55F3",
     "light": "#259DFE",
