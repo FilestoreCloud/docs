@@ -36,16 +36,8 @@
 - [LiteLLM Bridge](https://filestorecloud.github.io/docs/docs/ai/litellm-bridge): OpenAI-compatible proxy configuration
 - [RAG Pipeline](https://filestorecloud.github.io/docs/docs/ai/rag-pipeline): Document Q&A with tenant-isolated context
 
-## Sprint Reports
-
-- [2026-10-05](https://filestorecloud.github.io/docs/reports/2026-10-05): Verification & Scaling — 3 tenants, auto-scaling, FinOps lifecycle
-- [2026-09-28](https://filestorecloud.github.io/docs/reports/2026-09-28): Master Architecture — NIST RBAC, UML use cases, lifecycle statechart
-- [2026-09-21](https://filestorecloud.github.io/docs/reports/2026-09-21): Phase 1 execution — Storage, previews, Bedrock RAG
-- [2026-09-14](https://filestorecloud.github.io/docs/reports/2026-09-14): Phase 1 kickoff planning
-- [2026-09-07](https://filestorecloud.github.io/docs/reports/2026-09-07): Repo cleanup and planning alignment
-
 ## Repositories
 
 - [aws_nextcloud](https://github.com/FilestoreCloud/aws_nextcloud): Main platform (IaC, scripts, docker, tests)
 - [control-panel](https://github.com/FilestoreCloud/control-panel): Super admin React console
-- [docs](https://github.com/FilestoreCloud/docs): This documentation site
+- [docs](https://github.com/FilestoreCloud/docs): Public documentation site

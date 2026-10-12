@@ -6,69 +6,48 @@
     "primary": "#0057FF"
   },
   "navigation": {
-    "tabs": [
+    "groups": [
       {
-        "tab": "Documentation",
-        "groups": [
-          {
-            "group": "Getting Started",
-            "pages": [
-              "docs/introduction",
-              "docs/architecture-overview",
-              "docs/quickstart"
-            ]
-          },
-          {
-            "group": "Deployment",
-            "pages": [
-              "docs/deployment/prerequisites",
-              "docs/deployment/github-actions",
-              "docs/deployment/local-cli",
-              "docs/deployment/verification"
-            ]
-          },
-          {
-            "group": "Tenant Management",
-            "pages": [
-              "docs/tenants/provisioning",
-              "docs/tenants/lifecycle",
-              "docs/tenants/isolation-model",
-              "docs/tenants/suspension-resumption"
-            ]
-          },
-          {
-            "group": "Control Plane",
-            "pages": [
-              "docs/control-plane/super-admin-console",
-              "docs/control-plane/ssm-runbook",
-              "docs/control-plane/dynamodb-registry",
-              "docs/control-plane/cloudwatch"
-            ]
-          },
-          {
-            "group": "AI Integration",
-            "pages": [
-              "docs/ai/bedrock-integration",
-              "docs/ai/litellm-bridge",
-              "docs/ai/rag-pipeline"
-            ]
-          }
+        "group": "Getting Started",
+        "pages": [
+          "docs/introduction",
+          "docs/architecture-overview",
+          "docs/quickstart"
         ]
       },
       {
-        "tab": "Reports",
-        "groups": [
-          {
-            "group": "Sprint Reports",
-            "pages": [
-              "reports/index",
-              "reports/2026-10-05",
-              "reports/2026-09-28",
-              "reports/2026-09-21",
-              "reports/2026-09-14",
-              "reports/2026-09-07"
-            ]
-          }
+        "group": "Deployment",
+        "pages": [
+          "docs/deployment/prerequisites",
+          "docs/deployment/github-actions",
+          "docs/deployment/local-cli",
+          "docs/deployment/verification"
+        ]
+      },
+      {
+        "group": "Tenant Management",
+        "pages": [
+          "docs/tenants/provisioning",
+          "docs/tenants/lifecycle",
+          "docs/tenants/isolation-model",
+          "docs/tenants/suspension-resumption"
+        ]
+      },
+      {
+        "group": "Control Plane",
+        "pages": [
+          "docs/control-plane/super-admin-console",
+          "docs/control-plane/ssm-runbook",
+          "docs/control-plane/dynamodb-registry",
+          "docs/control-plane/cloudwatch"
+        ]
+      },
+      {
+        "group": "AI Integration",
+        "pages": [
+          "docs/ai/bedrock-integration",
+          "docs/ai/litellm-bridge",
+          "docs/ai/rag-pipeline"
         ]
       }
     ]
