@@ -1,0 +1,54 @@
+---
+title: "Introduction"
+description: "Enterprise multi-tenant Nextcloud SaaS platform on AWS — architecture, deployment, and operations guide."
+---
+
+# FilestoreCloud Platform
+
+**FilestoreCloud** is an enterprise-grade, multi-tenant Nextcloud SaaS platform built on AWS using a Zero-Code-Modification, fully AWS-native modular CloudFormation architecture.
+
+## Key Capabilities
+
+<CardGroup cols={2}>
+  <Card title="Container-per-Tenant Isolation" icon="box-archive" href="/docs/tenants/isolation-model">
+    Dedicated ECS Fargate container per tenant with FinOps zero-compute suspension.
+  </Card>
+  <Card title="Dynamic Host-Header Routing" icon="route" href="/docs/deployment/verification">
+    ALB routes `<tenant>.domain.com` → `tg-<tenant>` → `service-<tenant>` automatically.
+  </Card>
+  <Card title="AI-Powered via Bedrock" icon="brain" href="/docs/ai/bedrock-integration">
+    LiteLLM sidecar proxying Claude 3.5 Sonnet on Amazon Bedrock at `127.0.0.1:4000`.
+  </Card>
+  <Card title="3-Tier Storage Isolation" icon="database" href="/docs/tenants/isolation-model">
+    EFS config + S3 vault + dedicated RDS PostgreSQL database per tenant.
+  </Card>
+</CardGroup>
+
+## Repository Map
+
+| Repo | Purpose |
+|------|---------|
+| [`aws_nextcloud`](https://github.com/FilestoreCloud/aws_nextcloud) | IaC, scripts, docker, tests — main platform |
+| [`control-panel`](https://github.com/FilestoreCloud/control-panel) | React 18 + Refine super admin console |
+| [`docs`](https://github.com/FilestoreCloud/docs) | This documentation site |
+
+## Architecture at a Glance
+
+```
+Internet → ALB (TLS) → Host-Header Rules
+               ├── acme.domain.com  → tg-acme  → service-acme  [ECS Fargate]
+               │                                    ├── nc_acme  [RDS]
+               │                                    └── /tenants/acme [EFS + S3]
+               └── marvel.domain.com → tg-marvel → service-marvel [ECS Fargate]
+                                                    ├── nc_marvel [RDS]
+                                                    └── /tenants/marvel [EFS + S3]
+
+Control Plane: DynamoDB Registry → SSM Runbook → CloudWatch Dashboard
+AI Layer:      Nextcloud → LiteLLM (127.0.0.1:4000) → Amazon Bedrock (Claude 3.5)
+```
+
+## Quick Navigation
+
+- **New deployment?** → [Prerequisites](/docs/deployment/prerequisites) → [GitHub Actions CI/CD](/docs/deployment/github-actions)
+- **Add a tenant?** → [Tenant Provisioning](/docs/tenants/provisioning)
+- **Verify deployment?** → [Verification](/docs/deployment/verification)
