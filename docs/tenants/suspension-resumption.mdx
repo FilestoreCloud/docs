@@ -1,0 +1,50 @@
+---
+title: "Suspension & Resumption"
+description: "FinOps tenant suspension and cost-zero compute model."
+---
+
+# Suspension & Resumption
+
+## FinOps Cost Model
+
+When a tenant is suspended, its ECS service scales to `desiredCount: 0`:
+
+| Resource | Suspended State | Cost |
+|----------|----------------|------|
+| ECS Fargate tasks | 0 running | **\$0.00/hr** |
+| RDS PostgreSQL | Running (shared) | Shared cost |
+| EFS storage | Data retained | Storage cost only |
+| S3 files | Data retained | Storage cost only |
+| ALB listener rule | Removed | No routing |
+
+## Suspend
+
+```bash
+# Via SSM (zero-bastion)
+aws ssm start-automation-execution \
+  --document-name "prod-Tenant-Lifecycle-Operator" \
+  --parameters '{"TenantId":["marvel"],"Action":["SUSPEND"]}'
+
+# Verify
+aws ecs describe-services \
+  --cluster prod-nextcloud-cluster \
+  --services service-marvel \
+  --query 'services[0].desiredCount'
+# → 0
+```
+
+## Resume
+
+```bash
+aws ssm start-automation-execution \
+  --document-name "prod-Tenant-Lifecycle-Operator" \
+  --parameters '{"TenantId":["marvel"],"Action":["RESUME"]}'
+
+# Verify health
+curl -I https://marvel.your-domain.com/status.php
+# → HTTP/2 200
+```
+
+<Check>
+  See live evidence of suspension/resumption in the [2026-10-05 Report](/reports/2026-10-05#finops-lifecycle).
+</Check>

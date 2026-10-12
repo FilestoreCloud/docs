@@ -1,0 +1,53 @@
+---
+title: "Super Admin Console"
+description: "Launch and use the React-based Super Admin Control Panel."
+---
+
+# Super Admin Console
+
+The Control Panel is a React 18 + Refine + Ant Design 5 web application for managing all tenants.
+
+## Launch
+
+```bash
+python3 control-panel/start.py
+# → http://localhost:8080
+```
+
+Or run the dev server directly:
+
+```bash
+cd control-panel
+npm install
+npm run dev
+# → http://localhost:5173
+```
+
+## Features
+
+<CardGroup cols={2}>
+  <Card title="Tenant Dashboard" icon="table">
+    View all tenants, their status (ACTIVE/SUSPENDED), domains, and quota usage.
+  </Card>
+  <Card title="Provision Modal" icon="plus">
+    Form-driven tenant provisioning with validation and progress tracking.
+  </Card>
+  <Card title="Lifecycle Controls" icon="toggle-on">
+    One-click suspend/resume with real-time ECS status feedback.
+  </Card>
+  <Card title="Live Telemetry" icon="chart-line">
+    CloudWatch metric widgets streamed live: ALB traffic, ECS compute, fleet health.
+  </Card>
+</CardGroup>
+
+## Build for Production
+
+```bash
+cd control-panel
+npm run build
+# Outputs to control-panel/dist/
+```
+
+<Note>
+  All builds must pass without TypeScript compiler warnings. Run `npm run build` before any PR.
+</Note>

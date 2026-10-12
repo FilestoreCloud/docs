@@ -1,0 +1,44 @@
+---
+title: "Prerequisites"
+description: "Requirements before deploying the FilestoreCloud platform."
+---
+
+# Prerequisites
+
+## Required Tools
+
+| Tool | Version | Install |
+|------|---------|---------|
+| AWS CLI | v2+ | [docs.aws.amazon.com](https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2.html) |
+| Python | 3.11+ | `brew install python` |
+| Node.js | 18+ | `brew install node` |
+| Docker | 24+ | [docker.com](https://docker.com) |
+
+## AWS Configuration
+
+```bash
+# Set default region
+export AWS_REGION="ap-southeast-1"
+
+# Verify credentials
+aws sts get-caller-identity
+```
+
+<Warning>
+  Deploy requires **AdministratorAccess** or a custom policy covering CloudFormation, ECS, RDS, EFS, S3, DynamoDB, SSM, and IAM.
+</Warning>
+
+## Python Dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+## GitHub Secrets (for CI/CD)
+
+Configure these secrets in `FilestoreCloud/aws_nextcloud` → Settings → Secrets:
+
+| Secret | Description |
+|--------|-------------|
+| `AWS_ROLE_ARN` | IAM Role ARN for GitHub OIDC |
+| `AWS_REGION` | e.g. `ap-southeast-1` |

@@ -1,0 +1,49 @@
+---
+title: "SSM Runbook"
+description: "Zero-bastion tenant lifecycle automation via AWS Systems Manager."
+---
+
+# SSM Automation Runbook
+
+The `prod-Tenant-Lifecycle-Operator` SSM document provides zero-bastion tenant lifecycle operations — no SSH, no bastion hosts.
+
+## Available Actions
+
+| Action | Description |
+|--------|-------------|
+| `PROVISION` | Create all tenant resources, Nextcloud install |
+| `SUSPEND` | Scale ECS to 0, remove ALB rule |
+| `RESUME` | Scale ECS to 1, restore ALB rule |
+| `DEPROVISION` | Remove ECS service and ALB rule (data retained) |
+
+## Execute via AWS CLI
+
+```bash
+# Provision
+aws ssm start-automation-execution \
+  --document-name "prod-Tenant-Lifecycle-Operator" \
+  --parameters '{
+    "TenantId":["acme-corp"],
+    "Action":["PROVISION"],
+    "StorageQuotaGB":["100"],
+    "CompanyDomain":["acme-corp.domain.com"]
+  }'
+
+# Suspend
+aws ssm start-automation-execution \
+  --document-name "prod-Tenant-Lifecycle-Operator" \
+  --parameters '{"TenantId":["acme-corp"],"Action":["SUSPEND"]}'
+
+# Resume
+aws ssm start-automation-execution \
+  --document-name "prod-Tenant-Lifecycle-Operator" \
+  --parameters '{"TenantId":["acme-corp"],"Action":["RESUME"]}'
+```
+
+## Monitor Execution
+
+```bash
+aws ssm describe-automation-executions \
+  --filters Key=DocumentNamePrefix,Values=prod-Tenant-Lifecycle-Operator \
+  --query 'AutomationExecutionMetadataList[0].{Status:AutomationExecutionStatus,Start:ExecutionStartTime}'
+```

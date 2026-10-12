@@ -1,0 +1,77 @@
+---
+title: "Report: 2026-09-28"
+description: "Master Architecture & Verification Report — NIST RBAC, UML Use Cases, Tenant Lifecycle Statechart — Week 39"
+---
+
+# Master Architecture & Verification Report
+
+**Date:** September 28, 2026  
+**Sprint:** Week 39  
+**Status:** ✅ COMPLETE
+
+> **GitHub Reference:** [`FilestoreCloud/aws_nextcloud`](https://github.com/FilestoreCloud/aws_nextcloud)
+
+---
+
+## 1. Actors & NIST RBAC Model
+
+The platform implements **NIST SP 800-162 Role-Based Access Control** with 4 strictly segregated actors:
+
+| Actor | Role | Scope |
+|-------|------|-------|
+| **SaaS Super Admin** | `«Cloud Provider»` | Global AWS infra, ECS, RDS, DynamoDB, SSM, Bedrock |
+| **Tenant Administrator** | `«Org Admin»` | User onboarding, dept folders, quotas, DLP, AI limits |
+| **Tenant Member** | `«Bob / Carol»` | Personal files, dept collab, share links, AI assistant |
+| **External Guest** | `«Auditor / Partner»` | Share links, drop boxes — zero-trust only |
+
+![NIST RBAC Hierarchy](https://github.com/FilestoreCloud/aws_nextcloud/raw/main/reports/2026-09-28/imgs/diagrams/actors_rbac_hierarchy.png)
+
+---
+
+## 2. AWS Production Infrastructure Architecture
+
+![AWS Architecture](https://github.com/FilestoreCloud/aws_nextcloud/raw/main/reports/2026-09-28/imgs/diagrams/nextcloud_architecture.png)
+
+---
+
+## 3. UML 2.5 Use Case Architecture
+
+### Consolidated System Use Case
+![Consolidated Use Case](https://github.com/FilestoreCloud/aws_nextcloud/raw/main/reports/2026-09-28/imgs/diagrams/tenant_usecase_architecture.png)
+
+### Actor Use Cases
+
+| Actor | Diagram |
+|-------|---------|
+| SaaS Super Admin | [usecase_actor_1_saas_super_admin.png](https://github.com/FilestoreCloud/aws_nextcloud/raw/main/reports/2026-09-28/imgs/diagrams/usecase_actor_1_saas_super_admin.png) |
+| Tenant Administrator | [usecase_actor_2_tenant_admin.png](https://github.com/FilestoreCloud/aws_nextcloud/raw/main/reports/2026-09-28/imgs/diagrams/usecase_actor_2_tenant_admin.png) |
+| Tenant Member | [usecase_actor_3_tenant_member.png](https://github.com/FilestoreCloud/aws_nextcloud/raw/main/reports/2026-09-28/imgs/diagrams/usecase_actor_3_tenant_member.png) |
+| External Guest | [usecase_actor_4_external_guest.png](https://github.com/FilestoreCloud/aws_nextcloud/raw/main/reports/2026-09-28/imgs/diagrams/usecase_actor_4_external_guest.png) |
+
+### Nextcloud AI Features
+![AI Features Use Case](https://github.com/FilestoreCloud/aws_nextcloud/raw/main/reports/2026-09-28/imgs/diagrams/nextcloud_ai_features_usecase.png)
+
+---
+
+## 4. Tenant Lifecycle State Machine
+
+![Tenant Lifecycle Statechart](https://github.com/FilestoreCloud/aws_nextcloud/raw/main/reports/2026-09-28/imgs/diagrams/tenant_lifecycle_statechart.png)
+
+### States
+
+```
+[*] → PROVISIONING → ACTIVE → SUSPENDED → ACTIVE
+                                    ↓
+                              DEPROVISIONED → [*]
+```
+
+| State | Trigger | Compute Cost |
+|-------|---------|-------------|
+| `PROVISIONING` | SSM `PROVISION` action | Startup |
+| `ACTIVE` | Provisioning complete | Full Fargate cost |
+| `SUSPENDED` | SSM `SUSPEND` action | **\$0.00/hr** (ECS=0) |
+| `DEPROVISIONED` | SSM `DEPROVISION` action | \$0.00/hr (data retained) |
+
+---
+
+*Report generated: 2026-09-28 | Full diagrams: [github.com/FilestoreCloud/aws_nextcloud/tree/main/reports/2026-09-28](https://github.com/FilestoreCloud/aws_nextcloud/tree/main/reports/2026-09-28)*

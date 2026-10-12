@@ -1,0 +1,43 @@
+---
+title: "RAG Pipeline"
+description: "Retrieval-Augmented Generation pipeline using Nextcloud files and Amazon Bedrock."
+---
+
+# RAG Pipeline
+
+## Overview
+
+The RAG (Retrieval-Augmented Generation) pipeline enables Nextcloud's AI Assistant (`@assistant`) to answer questions grounded in tenant-specific documents stored in S3.
+
+## Flow
+
+```
+User asks @assistant in Nextcloud
+  → Nextcloud AI Hub
+  → Vector search over tenant S3 files (Nextcloud Full-Text Search)
+  → Retrieved context chunks
+  → LiteLLM Bridge (127.0.0.1:4000)
+  → Claude 3.5 Sonnet on Amazon Bedrock
+  → Answer grounded in tenant documents
+```
+
+## Features Verified
+
+| Feature | Status |
+|---------|--------|
+| Document Q&A via @assistant | ✅ Verified |
+| Multi-format file preview | ✅ Verified |
+| In-browser AI chat | ✅ Verified |
+| Tenant-isolated document scope | ✅ Verified |
+
+## Supported File Types
+
+The AI assistant can analyze documents stored in Nextcloud:
+- PDF, DOCX, XLSX, PPTX
+- Markdown, plain text
+- Code files (syntax-aware)
+- Images (via Bedrock Vision)
+
+<Note>
+  See the full RAG verification evidence in the [2026-09-21 Sprint Report](/reports/2026-09-21).
+</Note>

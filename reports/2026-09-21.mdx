@@ -1,0 +1,71 @@
+---
+title: "Report: 2026-09-21"
+description: "Phase 1 Execution — Storage, File Preview, Native Sync & Bedrock RAG AI Assistant — Week 38"
+---
+
+# Phase 1 Execution Report
+
+**Date:** September 21, 2026 (Week 38)  
+**Sprint Status:** Phase 1 — Execution & Selftest  
+**GitHub Story:** [#3 — Phase 1: Storage, Previews, Native Sync & Bedrock RAG AI Assistant](https://github.com/FilestoreCloud/aws_nextcloud/issues/3)
+
+---
+
+## Sub-Issues
+
+| Sub-Issue | Title | Status |
+|-----------|-------|--------|
+| [#4](https://github.com/FilestoreCloud/aws_nextcloud/issues/4) | [T1] Core Storage & File Management Selftest (Web App) | 🔄 OPEN |
+| [#5](https://github.com/FilestoreCloud/aws_nextcloud/issues/5) | [T2] Multi-format Universal File Preview on Web UI | 🔄 OPEN |
+| [#6](https://github.com/FilestoreCloud/aws_nextcloud/issues/6) | [T3] Amazon Bedrock RAG AI Assistant Integration (Web UI) | 🔄 OPEN |
+
+---
+
+## T1: Core Storage & File Management
+
+**Issue:** [#4](https://github.com/FilestoreCloud/aws_nextcloud/issues/4)
+
+Features self-tested on live AWS environment:
+- ✅ File upload, download, rename, delete
+- ✅ Folder creation and nested structure
+- ✅ S3-backed storage with per-tenant prefix isolation
+- ✅ Web UI file manager (Nextcloud Files app)
+
+---
+
+## T2: Multi-format File Preview
+
+**Issue:** [#5](https://github.com/FilestoreCloud/aws_nextcloud/issues/5)
+
+File types verified in Nextcloud web UI:
+- ✅ PDF (native viewer)
+- ✅ DOCX / XLSX / PPTX (Collabora Online)
+- ✅ Images (JPEG, PNG, SVG)
+- ✅ Markdown (rendered)
+- ✅ Code files (syntax highlighted)
+
+---
+
+## T3: Bedrock RAG AI Assistant
+
+**Issue:** [#6](https://github.com/FilestoreCloud/aws_nextcloud/issues/6)
+
+AI RAG pipeline verified end-to-end:
+
+```
+User → Nextcloud @assistant
+     → Full-text search (tenant S3 docs)
+     → Retrieved context chunks
+     → LiteLLM 127.0.0.1:4000
+     → Amazon Bedrock (Claude 3.5 Sonnet)
+     → Grounded answer
+```
+
+- ✅ Document Q&A via `@assistant` in Nextcloud chat
+- ✅ AI-grounded responses from tenant files
+- ✅ Cross-tenant isolation: AI only sees own tenant docs
+- ✅ LiteLLM bridge health: `HTTP 200` on `127.0.0.1:4000/health`
+
+---
+
+*Report generated: 2026-09-21 | Story: [#3](https://github.com/FilestoreCloud/aws_nextcloud/issues/3)*

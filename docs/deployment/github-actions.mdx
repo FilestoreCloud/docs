@@ -1,0 +1,49 @@
+---
+title: "GitHub Actions CI/CD"
+description: "Automated deployment via GitHub Actions with AWS OIDC authentication."
+---
+
+# GitHub Actions CI/CD
+
+All deployments are managed via **GitHub Actions** with AWS OIDC — no long-lived credentials stored.
+
+## Deploy Infrastructure
+
+<Steps>
+  <Step title="Go to Actions tab">
+    Navigate to [FilestoreCloud/aws_nextcloud → Actions](https://github.com/FilestoreCloud/aws_nextcloud/actions).
+  </Step>
+  <Step title="Select Deploy Infra workflow">
+    Click **`Deploy Infra`** from the workflow list.
+  </Step>
+  <Step title="Run workflow">
+    Choose:
+    - **Environment:** `dev`, `staging`, or `prod`
+    - **Action:** `deploy-module`, `deploy-all`, or `deploy-nested`
+
+    Click **Run workflow**.
+  </Step>
+</Steps>
+
+## Workflow File
+
+```yaml
+# .github/workflows/deploy-infra.yml
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        type: choice
+        options: [dev, staging, prod]
+      action:
+        type: choice
+        options: [deploy-module, deploy-all, deploy-nested]
+
+permissions:
+  id-token: write   # Required for OIDC
+  contents: read
+```
+
+<Note>
+  The workflow uses `aws-actions/configure-aws-credentials` with OIDC role assumption — no AWS keys in secrets.
+</Note>

@@ -1,0 +1,36 @@
+---
+title: "Sprint Reports"
+description: "Weekly sprint reports linking platform states to commits, PRs, and infrastructure snapshots."
+---
+
+# Sprint Reports
+
+Weekly reports documenting deployment verification, feature progress, and infrastructure state — each linked to exact GitHub commits and PRs in the [`FilestoreCloud/aws_nextcloud`](https://github.com/FilestoreCloud/aws_nextcloud) repo.
+
+## Report Archive
+
+| Week | Date | Sprint | Status | Key Milestone |
+|------|------|--------|--------|---------------|
+| 40 | [2026-10-05](/reports/2026-10-05) | Verification & Scaling | ✅ COMPLETE | 3-tenant isolation + auto-scaling verified |
+| 39 | [2026-09-28](/reports/2026-09-28) | Master Architecture | ✅ COMPLETE | Full NIST RBAC + UML use case verification |
+| 38 | [2026-09-21](/reports/2026-09-21) | Phase 1 Execution | 🔄 OPEN | Storage, previews, Bedrock RAG selftest |
+| 37 | [2026-09-14](/reports/2026-09-14) | Phase 1 Kickoff | 🔄 OPEN | T1–T3 planning & Bedrock integration |
+| 36 | [2026-09-07](/reports/2026-09-07) | Repo Cleanup | ✅ CLOSED | Outstanding tasks from prior week |
+
+## Cross-Repo Links Convention
+
+Reports reference specific GitHub artifacts using permanent links:
+
+```markdown
+<!-- PR reference -->
+[PR #42](https://github.com/FilestoreCloud/aws_nextcloud/pull/42)
+
+<!-- Commit permalink -->
+[@a1b2c3d](https://github.com/FilestoreCloud/aws_nextcloud/commit/a1b2c3d)
+
+<!-- File at exact commit -->
+[template.yaml#L45](https://github.com/FilestoreCloud/aws_nextcloud/blob/a1b2c3d/infra/modules/03-storage/template.yaml#L45)
+
+<!-- Release tag -->
+[v1.2.0](https://github.com/FilestoreCloud/aws_nextcloud/releases/tag/v1.2.0)
+```

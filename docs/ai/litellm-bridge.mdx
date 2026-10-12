@@ -1,0 +1,45 @@
+---
+title: "LiteLLM Bridge"
+description: "LiteLLM sidecar container configuration and operations."
+---
+
+# LiteLLM Bridge
+
+LiteLLM acts as an OpenAI-compatible proxy, allowing Nextcloud (which speaks OpenAI API) to talk to Amazon Bedrock.
+
+## Why LiteLLM
+
+- Nextcloud AI Hub only supports OpenAI-compatible endpoints
+- Amazon Bedrock has its own API format (AWS Signature v4)
+- LiteLLM translates between them transparently — **Zero Code Modification** to Nextcloud
+
+## Container Spec
+
+```json
+{
+  "name": "litellm-bridge",
+  "image": "ghcr.io/berriai/litellm:main-latest",
+  "portMappings": [
+    { "containerPort": 4000, "hostPort": 4000 }
+  ],
+  "environment": [
+    { "name": "AWS_REGION", "value": "ap-southeast-1" }
+  ],
+  "essential": false
+}
+```
+
+## Health Check
+
+```bash
+curl http://127.0.0.1:4000/health
+# → {"status": "healthy"}
+```
+
+## Logs
+
+```bash
+aws logs tail /ecs/prod-nextcloud-<tenant_id>/litellm-bridge \
+  --follow \
+  --region "${AWS_REGION}"
+```

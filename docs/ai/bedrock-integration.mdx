@@ -1,0 +1,47 @@
+---
+title: "Bedrock Integration"
+description: "Amazon Bedrock Claude 3.5 Sonnet AI integration via LiteLLM sidecar."
+---
+
+# Amazon Bedrock Integration
+
+## Architecture
+
+Each tenant's ECS task runs a **LiteLLM sidecar** container that proxies AI requests from Nextcloud to Amazon Bedrock.
+
+```
+Nextcloud AI Hub
+  → POST http://127.0.0.1:4000/v1/chat/completions
+  → LiteLLM Bridge (sidecar, localhost only)
+  → Amazon Bedrock API
+  → Claude 3.5 Sonnet (anthropic.claude-3-5-sonnet-20240620-v1:0)
+```
+
+## Sidecar Configuration
+
+```yaml
+# docker/litellm-config.yaml
+model_list:
+  - model_name: claude-3-5-sonnet
+    litellm_params:
+      model: bedrock/anthropic.claude-3-5-sonnet-20240620-v1:0
+      aws_region_name: ap-southeast-1
+
+litellm_settings:
+  drop_params: true
+  max_tokens: 4096
+```
+
+## Security
+
+- The LiteLLM port (`4000`) is bound to `127.0.0.1` — **not accessible externally**
+- Bedrock API access uses the **ECS Task IAM Role** (no hardcoded keys)
+- Each tenant's sidecar uses the same role but isolated network namespace
+
+## Nextcloud AI Hub Connection
+
+In Nextcloud Admin → AI Hub:
+- **Provider:** OpenAI-compatible
+- **Endpoint:** `http://127.0.0.1:4000`
+- **Model:** `claude-3-5-sonnet`
+- **API Key:** (set to any value — LiteLLM ignores it for Bedrock)

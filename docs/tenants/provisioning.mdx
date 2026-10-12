@@ -1,0 +1,67 @@
+---
+title: "Tenant Provisioning"
+description: "Provision a new dedicated tenant with isolated ECS, RDS, EFS, and S3 resources."
+---
+
+# Tenant Provisioning
+
+## Via Python Script (Recommended)
+
+```bash
+python3 scripts/provision_dedicated_tenant.py \
+  --tenant-id "acme-corp" \
+  --tenant-name "Acme Corporation" \
+  --admin-user "admin" \
+  --admin-email "admin@acme.com" \
+  --quota "100 GB"
+```
+
+This automates:
+1. RDS database schema creation (`nc_acme-corp`)
+2. EFS Access Point creation (`/tenants/acme-corp/config`)
+3. S3 prefix initialization (`s3://<vault>/tenants/acme-corp/`)
+4. ECS Service + Target Group deployment via CloudFormation tenant-instance stack
+5. ALB listener rule addition (Host: `acme-corp.domain.com`)
+6. Nextcloud OCC installation commands
+7. DynamoDB registry entry creation
+
+## Via SSM Automation Runbook
+
+```bash
+aws ssm start-automation-execution \
+  --document-name "prod-Tenant-Lifecycle-Operator" \
+  --parameters '{
+    "TenantId":["acme-corp"],
+    "Action":["PROVISION"],
+    "StorageQuotaGB":["100"],
+    "CompanyDomain":["acme-corp.your-domain.com"]
+  }'
+```
+
+## DynamoDB Registry Entry
+
+After provisioning, the tenant appears in `prod-nextcloud-tenant-registry`:
+
+```json
+{
+  "tenant_id": "acme-corp",
+  "domain": "acme-corp.your-domain.com",
+  "status": "ACTIVE",
+  "service_name": "service-acme-corp",
+  "database_name": "nc_acme-corp",
+  "efs_access_point_id": "fsap-xxxxxxxxxxxx",
+  "isolation_model": "DEDICATED_INSTANCE",
+  "quota_gb": 100
+}
+```
+
+## What Gets Created
+
+| Resource | Name Pattern |
+|----------|-------------|
+| ECS Service | `service-<tenant_id>` |
+| ALB Target Group | `tg-<tenant_id>` |
+| EFS Access Point | dedicated AP → `/tenants/<tenant_id>/config` |
+| RDS Database | `nc_<tenant_id>` |
+| S3 Prefix | `s3://<vault>/tenants/<tenant_id>/` |
+| DynamoDB Record | `tenant_id = <tenant_id>` |

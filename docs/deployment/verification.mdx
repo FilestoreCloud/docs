@@ -1,0 +1,60 @@
+---
+title: "Verification"
+description: "Verify your deployment is healthy after infrastructure changes."
+---
+
+# Deployment Verification
+
+## Retrieve Stack Outputs
+
+```bash
+aws cloudformation describe-stacks \
+  --stack-name nextcloud-test \
+  --region "${AWS_REGION}" \
+  --query 'Stacks[0].Outputs[*].[OutputKey,OutputValue]' \
+  --output table
+```
+
+## Nextcloud Health Check
+
+```bash
+ALB_URL=$(aws cloudformation describe-stacks \
+  --stack-name nextcloud-test \
+  --region "${AWS_REGION}" \
+  --query "Stacks[0].Outputs[?OutputKey=='LoadBalancerURL'].OutputValue" \
+  --output text)
+
+curl -I "${ALB_URL}/status.php"
+# Expected: HTTP/2 200
+```
+
+## Per-Tenant Health Check
+
+```bash
+curl -I "https://acme.your-domain.com/status.php"
+curl -I "https://marvel.your-domain.com/status.php"
+```
+
+## Run Integration Tests
+
+```bash
+# Always target tests/ — do NOT run bare pytest
+pytest tests/ -v
+```
+
+## CloudFormation Stack Status
+
+All 6 stacks must be in `CREATE_COMPLETE` or `UPDATE_COMPLETE`:
+
+| Stack | Expected Status |
+|-------|----------------|
+| `prod-nextcloud-01-networking` | `CREATE_COMPLETE` |
+| `prod-nextcloud-02-security` | `CREATE_COMPLETE` |
+| `prod-nextcloud-03-storage` | `CREATE_COMPLETE` |
+| `prod-nextcloud-04-database` | `CREATE_COMPLETE` |
+| `prod-nextcloud-05-compute` | `CREATE_COMPLETE` |
+| `prod-nextcloud-06-control-plane` | `CREATE_COMPLETE` |
+
+<Check>
+  See the [2026-10-05 Verification Report](/reports/2026-10-05) for a full production evidence gallery.
+</Check>

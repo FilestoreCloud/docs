@@ -1,0 +1,48 @@
+---
+title: "Local CLI Deployment"
+description: "Deploy and manage infrastructure from your local machine."
+---
+
+# Local CLI Deployment
+
+## Deploy All Stacks
+
+```bash
+./scripts/deploy.sh --all --env "${ENVIRONMENT:-prod}"
+```
+
+## Deploy a Single Module
+
+```bash
+./scripts/deploy.sh --module 03-storage --env prod
+```
+
+## Monitor Stack Progress
+
+```bash
+aws cloudformation describe-stack-events \
+  --stack-name nextcloud-test \
+  --region "${AWS_REGION}"
+```
+
+## Stack Names
+
+| Module | Stack Name |
+|--------|-----------|
+| 01-networking | `prod-nextcloud-01-networking` |
+| 02-security | `prod-nextcloud-02-security` |
+| 03-storage | `prod-nextcloud-03-storage` |
+| 04-database | `prod-nextcloud-04-database` |
+| 05-compute | `prod-nextcloud-05-compute` |
+| 06-control-plane | `prod-nextcloud-06-control-plane` |
+
+## Teardown
+
+<Warning>
+  **Never run teardown autonomously.** The teardown script deletes live AWS stacks, EFS filesystems, and RDS databases. Always confirm explicitly before running.
+</Warning>
+
+```bash
+# Requires explicit confirmation prompt
+python3 scripts/teardown_all.py
+```

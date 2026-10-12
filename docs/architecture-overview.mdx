@@ -1,0 +1,68 @@
+---
+title: "Architecture Overview"
+description: "System design, AWS components, and multi-tenant isolation boundaries."
+---
+
+# Architecture Overview
+
+## Infrastructure Stack
+
+| Layer | Service | Detail |
+|-------|---------|--------|
+| **Ingress** | ALB (Multi-AZ) | Host-header routing, TLS termination, `/status.php` health check |
+| **Compute** | ECS Fargate | 1 dedicated `service-<tenant_id>` container per tenant |
+| **Database** | RDS PostgreSQL 16 | Dedicated `nc_<tenant_id>` database per tenant (`db.t4g.micro`) |
+| **Config Store** | Amazon EFS | `/tenants/<tenant_id>/config` via dedicated Access Points (UID/GID 33) |
+| **Object Storage** | Amazon S3 | `s3://<vault>/tenants/<tenant_id>/` isolated prefixes |
+| **Networking** | 2-AZ VPC | S3 Gateway Endpoint — Zero-NAT architecture |
+| **Control Plane** | DynamoDB + SSM | Tenant registry + `Tenant-Lifecycle-Operator` runbook |
+| **Observability** | CloudWatch | Live streaming dashboard + metric widgets |
+| **AI Bridge** | LiteLLM sidecar | `127.0.0.1:4000` → Amazon Bedrock (Claude 3.5 Sonnet) |
+
+## CloudFormation Module Map
+
+```
+infra/
+├── modules/01-networking/   → VPC, Subnets, S3 Gateway VPC Endpoint
+├── modules/02-security/     → Security Groups (ALB, ECS, RDS, EFS)
+├── modules/03-storage/      → EFS FileSystem, S3 Vault Bucket
+├── modules/04-database/     → RDS PostgreSQL 16, Secrets Manager
+├── modules/05-compute/      → ALB, HTTPS Listener, ECS Cluster
+├── modules/06-control-plane/→ DynamoDB, SSM Runbook, CloudWatch Dashboard
+└── tenant-instance/         → Per-tenant: ECS Service, Target Group, EFS AP
+```
+
+## Tenant Isolation Boundaries
+
+<Warning>
+Mixing tenant S3 paths or EFS mount points is strictly forbidden. Each tenant **must** retain:
+- S3 prefix: `s3://.../tenants/<tenant_id>/`
+- Database: `nc_<tenant_id>`
+- EFS Access Point: dedicated per tenant
+</Warning>
+
+## Dual-Container Task Definition
+
+Each tenant's ECS task runs two containers:
+
+```
+Task: nc-<tenant_id>
+├── nextcloud (Apache)          → port 80 (external)
+│   └── /var/www/html/config   ← EFS Access Point mount
+└── litellm-bridge (sidecar)   → 127.0.0.1:4000 (localhost only)
+    └── Amazon Bedrock API      ← Claude 3.5 Sonnet
+```
+
+## Data Flow
+
+```
+User Request
+  → ALB (TLS, Host Header: tenant.domain.com)
+  → Target Group: tg-<tenant_id>
+  → ECS Service: service-<tenant_id>
+  → Nextcloud 30 (Apache)
+      ├── Config reads: EFS /tenants/<tenant_id>/config
+      ├── Files read/write: S3 s3://<vault>/tenants/<tenant_id>/
+      ├── Database: RDS nc_<tenant_id>
+      └── AI queries: LiteLLM → Bedrock (Claude 3.5)
+```

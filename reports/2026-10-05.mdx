@@ -1,0 +1,140 @@
+---
+title: "Report: 2026-10-05"
+description: "Multi-Tenant Nextcloud SaaS Infrastructure Verification & Scaling Report — Week 40"
+---
+
+# Verification & Scaling Report
+
+**Date:** October 5, 2026  
+**AWS Account:** `649519997247`  
+**Region:** `ap-southeast-1` (Singapore)  
+**Environment:** `prod`  
+**Status:** ✅ **100% PROVISIONED, VERIFIED & OPERATIONAL**
+
+> **GitHub Reference:** [`FilestoreCloud/aws_nextcloud`](https://github.com/FilestoreCloud/aws_nextcloud) — see [Issues](https://github.com/FilestoreCloud/aws_nextcloud/issues) for sprint tracking.
+
+---
+
+## 1. Executive Summary
+
+End-to-end deployment, multi-tenant isolation verification, dynamic horizontal auto-scaling, FinOps lifecycle suspension/resumption, and tenant deprovisioning tests — all conducted in production.
+
+All 6 modular CloudFormation stacks are provisioned and healthy. Three dedicated tenant lifecycles (`acme`, `marvel`, and ephemeral `tesla`) were tested.
+
+```
+                      ┌────────────────────────────────────────┐
+                      │    AWS Application Load Balancer       │
+                      │       prod-nextcloud-alb (TLS)         │
+                      └──────┬──────────────────────┬──────────┘
+                             │ Host: acme.*         │ Host: marvel.*
+                ┌────────────▼──────────┐      ┌────▼──────────────────┐
+                │   Target Group: tg-acme│      │Target Group: tg-marvel│
+                └────────────┬──────────┘      └────┬──────────────────┘
+                             │                      │
+             ┌───────────────▼──────────────┐   ┌───▼──────────────────────┐
+             │  ECS: service-acme (1-4)     │   │ ECS: service-marvel (1-4) │
+             │  RDS: nc_acme               │   │ RDS: nc_marvel             │
+             │  EFS: /tenants/acme          │   │ EFS: /tenants/marvel       │
+             └──────────────────────────────┘   └────────────────────────────┘
+```
+
+---
+
+## 2. Infrastructure Provisioning Status
+
+| Stack | Status | Key Resources |
+|-------|--------|---------------|
+| `prod-nextcloud-01-networking` | `CREATE_COMPLETE` | VPC `10.0.0.0/16`, S3 Gateway Endpoint `vpce-033bceec37053c8ea` |
+| `prod-nextcloud-02-security` | `CREATE_COMPLETE` | Zero-Trust Security Groups (ALB, ECS, RDS, EFS) |
+| `prod-nextcloud-03-storage` | `CREATE_COMPLETE` | EFS `fs-0b7465bf80b2333eb`, S3 Vault `prod-nextcloud-vault-649519997247-ap-southeast-1` |
+| `prod-nextcloud-04-database` | `CREATE_COMPLETE` | RDS `prod-nextcloud-db.cpsgo6aic28m.ap-southeast-1.rds.amazonaws.com` |
+| `prod-nextcloud-05-compute` | `CREATE_COMPLETE` | ALB `prod-nextcloud-alb-2111420535.ap-southeast-1.elb.amazonaws.com`, ECS Cluster `prod-nextcloud-cluster` |
+| `prod-nextcloud-06-control-plane` | `CREATE_COMPLETE` | DynamoDB `prod-nextcloud-tenant-registry`, SSM `prod-Tenant-Lifecycle-Operator` |
+
+---
+
+## 3. Tenant Provisioning Verification
+
+### Tenant 1: Acme
+- **URL:** [https://acme.png261.dev](https://acme.png261.dev)
+- **Database:** `nc_acme` | **EFS AP:** `fsap-0578d58db032e3a8e` → `/tenants/acme/config`
+- **ALB Target:** `10.0.2.203` ✅ HEALTHY | **Auto Scaling:** Min 1 / Max 4 / CPU 70%
+
+### Tenant 2: Marvel
+- **URL:** [https://marvel.png261.dev](https://marvel.png261.dev)
+- **Database:** `nc_marvel` | **EFS AP:** `fsap-0c015661e5ae1e407` → `/tenants/marvel/config`
+- **ALB Target:** `10.0.1.92` ✅ HEALTHY | **Auto Scaling:** Min 1 / Max 4 / CPU 70%
+
+### DynamoDB Registry State
+```json
+[
+  {
+    "tenant_id": "acme", "domain": "acme.png261.dev",
+    "status": "ACTIVE", "service_name": "service-acme",
+    "database_name": "nc_acme", "efs_access_point_id": "fsap-0578d58db032e3a8e",
+    "isolation_model": "DEDICATED_INSTANCE", "quota_gb": 100
+  },
+  {
+    "tenant_id": "marvel", "domain": "marvel.png261.dev",
+    "status": "ACTIVE", "service_name": "service-marvel",
+    "database_name": "nc_marvel", "efs_access_point_id": "fsap-0c015661e5ae1e407",
+    "isolation_model": "DEDICATED_INSTANCE", "quota_gb": 100
+  }
+]
+```
+
+---
+
+## 4. Scaling Tests
+
+### 4.1 Horizontal Auto-Scaling (1 → 2 Tasks)
+- ECS launched second task concurrently on `service-acme`
+- Both tasks passed ALB health checks
+```
+Task 1: arn:...prod-nextcloud-cluster/af691655e9034e9b82fa3f1ab0465c5c (RUNNING)
+Task 2: arn:...prod-nextcloud-cluster/bf99c3e405ad43cbba0065e1af87f650 (RUNNING)
+tg-acme: 10.0.2.203:80 → HEALTHY | 10.0.1.184:80 → HEALTHY
+```
+
+### 4.2 Auto Scaling Policy
+- Policy: `prod-cpu-scaling-acme` | Metric: `ECSServiceAverageCPUUtilization` | Target: `70.0%`
+- Scale-Out Cooldown: `60s` | Scale-In Cooldown: `300s`
+
+### 4.3 FinOps Lifecycle — Suspend & Resume {#finops-lifecycle}
+1. **SUSPEND `marvel`** → ECS desired: `0` → Fargate cost: **\$0.00/hr** → DynamoDB: `SUSPENDED`
+2. **RESUME `marvel`** → ECS desired: `1` → Health check: ✅ PASS → DynamoDB: `ACTIVE`
+
+---
+
+## 5. Deprovisioning Test (Tesla)
+
+Ephemeral tenant `tesla` cleaned up completely:
+- ECS Service `service-tesla` stopped & deleted
+- ALB listener rule deleted | Target Group `tg-tesla` deleted
+- Secrets Manager entry deleted | DynamoDB record deleted
+- CloudWatch `TenantActiveStatus` for `tesla` dropped to `0.00` ✅
+
+---
+
+## 6. Screenshot Evidence Gallery
+
+### Control Panel
+| Screenshot | Description |
+|-----------|-------------|
+| Login screen | Super Admin Portal auth |
+| Tenant fleet dashboard | 2 active tenants with quotas and container bindings |
+| Live telemetry | CloudWatch metric widgets streaming real-time |
+
+### CloudWatch Metrics
+| Metric | Evidence |
+|--------|---------|
+| SaaS Fleet lifecycle status | `tesla` drop from 1.00 → 0.00 visible |
+| ECS CPU & Memory | Utilization curves during scale-out |
+| ALB traffic & latency | Sub-second response latency confirmed |
+
+### Nextcloud Tenant UX
+Steps verified per tenant: Login → Dashboard → Files → Folder creation → Document edit → Admin overview → AI Assistant
+
+---
+
+*Report generated: 2026-10-05 | Environment: prod | Region: ap-southeast-1*

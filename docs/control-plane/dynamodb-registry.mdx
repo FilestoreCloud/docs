@@ -1,0 +1,52 @@
+---
+title: "DynamoDB Tenant Registry"
+description: "The source of truth for all tenant metadata and state."
+---
+
+# DynamoDB Tenant Registry
+
+**Table:** `prod-nextcloud-tenant-registry`  
+**Primary Key:** `tenant_id` (String)
+
+## Schema
+
+```json
+{
+  "tenant_id": "acme",
+  "domain": "acme.png261.dev",
+  "aliases": ["acme.appleai.codes"],
+  "status": "ACTIVE",
+  "service_name": "service-acme",
+  "database_name": "nc_acme",
+  "efs_access_point_id": "fsap-0578d58db032e3a8e",
+  "isolation_model": "DEDICATED_INSTANCE",
+  "quota_gb": 100,
+  "created_at": "2026-10-05T00:00:00Z"
+}
+```
+
+## Query All Tenants
+
+```bash
+aws dynamodb scan \
+  --table-name prod-nextcloud-tenant-registry \
+  --region "${AWS_REGION}"
+```
+
+## Query Single Tenant
+
+```bash
+aws dynamodb get-item \
+  --table-name prod-nextcloud-tenant-registry \
+  --key '{"tenant_id": {"S": "acme"}}' \
+  --region "${AWS_REGION}"
+```
+
+## Status Values
+
+| Status | Meaning |
+|--------|---------|
+| `ACTIVE` | ECS running, ALB routing active |
+| `SUSPENDED` | ECS at 0, ALB rule removed, data retained |
+| `PROVISIONING` | Setup in progress |
+| `DEPROVISIONED` | ECS/ALB removed, data retained |

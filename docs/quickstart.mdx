@@ -1,0 +1,48 @@
+---
+title: "Quickstart"
+description: "Deploy a new tenant in 5 minutes."
+---
+
+# Quickstart
+
+<Steps>
+  <Step title="Clone & configure">
+    ```bash
+    git clone https://github.com/FilestoreCloud/aws_nextcloud.git
+    cd aws_nextcloud
+    export AWS_REGION="ap-southeast-1"
+    ```
+  </Step>
+  <Step title="Deploy infrastructure (first time)">
+    Use GitHub Actions (recommended) or local CLI:
+    ```bash
+    ./scripts/deploy.sh --all --env prod
+    ```
+    See [GitHub Actions CI/CD](/docs/deployment/github-actions) for the full guide.
+  </Step>
+  <Step title="Launch the Control Panel">
+    ```bash
+    python3 control-panel/start.py
+    # → http://localhost:8080
+    ```
+  </Step>
+  <Step title="Provision your first tenant">
+    ```bash
+    python3 scripts/provision_dedicated_tenant.py \
+      --tenant-id "acme-corp" \
+      --tenant-name "Acme Corporation" \
+      --admin-user "admin" \
+      --admin-email "admin@acme.com" \
+      --quota "100 GB"
+    ```
+    The tenant is now live at `https://acme-corp.your-domain.com`.
+  </Step>
+</Steps>
+
+<Check>
+Verify the tenant is healthy:
+```bash
+curl -I https://acme-corp.your-domain.com/status.php
+# Expected: HTTP/2 200
+```
+</Check>

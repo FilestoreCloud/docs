@@ -1,0 +1,43 @@
+---
+title: "Isolation Model"
+description: "How multi-tenant isolation is enforced across compute, storage, network, and database layers."
+---
+
+# Tenant Isolation Model
+
+## DEDICATED_INSTANCE Architecture
+
+Each tenant gets fully dedicated resources — no shared compute or data paths.
+
+| Layer | Isolation Mechanism |
+|-------|-------------------|
+| **Compute** | Dedicated ECS Fargate service (`service-<tenant_id>`) |
+| **Network** | ALB host-header routing → dedicated Target Group |
+| **Database** | Dedicated physical database `nc_<tenant_id>` on shared RDS instance |
+| **Config** | EFS Access Point scoped to `/tenants/<tenant_id>/config` (POSIX UID/GID 33) |
+| **Files** | S3 prefix `s3://<vault>/tenants/<tenant_id>/` with IAM prefix conditions |
+
+## Security Boundaries
+
+```
+ALB Security Group → ECS Security Group → RDS Security Group
+                                        → EFS Security Group
+
+Tenant A ECS Task   ≠   Tenant B ECS Task
+Tenant A EFS AP     ≠   Tenant B EFS AP
+nc_tenant_a DB      ≠   nc_tenant_b DB
+s3://.../tenant_a/  ≠   s3://.../tenant_b/
+```
+
+## RBAC Model (NIST SP 800-162)
+
+| Actor | Role | Scope |
+|-------|------|-------|
+| **SaaS Super Admin** | `«Cloud Provider»` | Global AWS infrastructure |
+| **Tenant Administrator** | `«Org Admin»` | Single tenant org |
+| **Tenant Member** | `«Bob / Carol»` | Personal files + dept folders |
+| **External Guest** | `«Auditor / Partner»` | Share links only |
+
+<Note>
+  Cross-tenant data access is architecturally impossible — EFS Access Points enforce POSIX path isolation at the kernel level.
+</Note>

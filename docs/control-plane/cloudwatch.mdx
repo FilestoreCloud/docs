@@ -1,0 +1,41 @@
+---
+title: "CloudWatch Observability"
+description: "Live metrics, dashboards, and alerting for the FilestoreCloud platform."
+---
+
+# CloudWatch Observability
+
+## Dashboard
+
+The CloudWatch Dashboard provides live-streaming metric widgets for the entire fleet.
+
+```bash
+# Open dashboard URL
+aws cloudwatch list-dashboards \
+  --dashboard-name-prefix prod-nextcloud \
+  --region "${AWS_REGION}"
+```
+
+## Key Metrics
+
+| Metric | Namespace | Description |
+|--------|-----------|-------------|
+| `RequestCount` | `AWS/ApplicationELB` | ALB total requests |
+| `HTTPCode_Target_2XX_Count` | `AWS/ApplicationELB` | Healthy responses |
+| `CPUUtilization` | `AWS/ECS` | Per-service CPU (triggers auto-scale at 70%) |
+| `MemoryUtilization` | `AWS/ECS` | Per-service memory |
+| `DatabaseConnections` | `AWS/RDS` | Active DB connections |
+| `FreeStorageSpace` | `AWS/RDS` | RDS disk remaining |
+
+## Alarms
+
+Auto-scaling is triggered when `CPUUtilization > 70%` for 2 consecutive periods (60s each) on any tenant ECS service.
+
+## Live Telemetry in Control Panel
+
+The Super Admin Console streams CloudWatch metrics in real-time via:
+
+```bash
+python3 scripts/serve_control_panel.py
+# → http://localhost:8080 (includes live CloudWatch widget)
+```

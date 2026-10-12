@@ -1,0 +1,64 @@
+---
+title: "Tenant Lifecycle"
+description: "Suspend, resume, and deprovision tenants with zero-downtime FinOps controls."
+---
+
+# Tenant Lifecycle
+
+## States
+
+```
+PROVISIONING → ACTIVE → SUSPENDED → ACTIVE
+                              ↓
+                         DEPROVISIONED
+```
+
+## Suspend a Tenant (FinOps — Zero Compute Cost)
+
+Scales `desiredCount: 0` on the ECS service — no compute cost, data preserved.
+
+```bash
+aws ssm start-automation-execution \
+  --document-name "prod-Tenant-Lifecycle-Operator" \
+  --parameters '{"TenantId":["acme-corp"],"Action":["SUSPEND"]}'
+```
+
+Or via Python:
+
+```bash
+python3 scripts/provision_dedicated_tenant.py --tenant-id acme-corp --action suspend
+```
+
+## Resume a Tenant
+
+Scales `desiredCount: 1` and restores ALB routing.
+
+```bash
+aws ssm start-automation-execution \
+  --document-name "prod-Tenant-Lifecycle-Operator" \
+  --parameters '{"TenantId":["acme-corp"],"Action":["RESUME"]}'
+```
+
+## Deprovision a Tenant
+
+<Warning>
+  Deprovision permanently removes the ECS service, Target Group, and ALB listener rule. RDS data and S3 files are **retained** unless explicitly deleted.
+</Warning>
+
+```bash
+aws ssm start-automation-execution \
+  --document-name "prod-Tenant-Lifecycle-Operator" \
+  --parameters '{"TenantId":["acme-corp"],"Action":["DEPROVISION"]}'
+```
+
+## Auto-Scaling Policy
+
+Each tenant service has CPU Target Tracking at **70%**:
+
+| Parameter | Value |
+|-----------|-------|
+| Minimum tasks | 1 |
+| Maximum tasks | 4 |
+| CPU threshold | 70% |
+| Scale-out cooldown | 60s |
+| Scale-in cooldown | 300s |
