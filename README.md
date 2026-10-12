@@ -5,7 +5,7 @@ Mintlify-powered documentation for the **FilestoreCloud** enterprise multi-tenan
 ## Structure
 
 ```
-mint.json          # Mintlify configuration (navigation, colors, tabs)
+docs.json          # Mintlify configuration (navigation, colors, tabs)
 docs/              # Platform documentation (MDX)
 │  introduction.mdx
 │  architecture-overview.mdx
@@ -27,20 +27,44 @@ public/
 
 ## Local Development
 
+### 1. Install the CLI
+
 ```bash
-npm install -g mintlify
-mintlify dev
+npm i -g mint
+```
+
+> ⚠️ The CLI package is `mint`, not `mintlify`. Do not install the legacy `mintlify` package.
+
+### 2. Verify install
+
+```bash
+mint --version
+```
+
+### 3. Preview locally
+
+```bash
+mint dev
 # → http://localhost:3000
+```
+
+### 4. Validate before pushing
+
+```bash
+mint validate
+mint broken-links
 ```
 
 ## Deploy
 
 Pushes to `main` auto-deploy via GitHub Actions → Mintlify cloud hosting.
 
+Add `MINTLIFY_API_KEY` to GitHub repo secrets (get from [app.mintlify.com](https://app.mintlify.com/settings/organization/api-keys)).
+
 ## Add a New Report
 
 1. Create `reports/YYYY-MM-DD.mdx`
-2. Add the page to `mint.json` under `"Sprint Reports"` navigation group
+2. Add the page to `docs.json` under the `"Sprint Reports"` navigation group
 3. Link to GitHub PRs/commits/releases for traceability
 
 ## Related Repos
