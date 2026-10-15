@@ -78,3 +78,10 @@ Add `MINTLIFY_API_KEY` to GitHub repo secrets (get from [app.mintlify.com](https
 
 - [aws_nextcloud](https://github.com/Storix/aws_nextcloud) — Main platform
 - [control-panel](https://github.com/Storix/control-panel) — Admin console
+
+---
+
+## License
+
+Documentation is licensed under the [MIT License](LICENSE).
+
