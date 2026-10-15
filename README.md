@@ -1,6 +1,13 @@
-# FilestoreCloud Docs
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="logo/storix-logo-white.png">
+    <img alt="Storix Logo" src="logo/storix-logo.png" width="360">
+  </picture>
+</p>
 
-Mintlify-powered documentation for the **FilestoreCloud** enterprise multi-tenant Nextcloud SaaS platform on AWS.
+# Storix Documentation
+
+Mintlify-powered documentation for the **Storix** enterprise multi-tenant Nextcloud SaaS platform on AWS.
 
 ## Structure
 
@@ -69,5 +76,5 @@ Add `MINTLIFY_API_KEY` to GitHub repo secrets (get from [app.mintlify.com](https
 
 ## Related Repos
 
-- [aws_nextcloud](https://github.com/FilestoreCloud/aws_nextcloud) — Main platform
-- [control-panel](https://github.com/FilestoreCloud/control-panel) — Admin console
+- [aws_nextcloud](https://github.com/Storix/aws_nextcloud) — Main platform
+- [control-panel](https://github.com/Storix/control-panel) — Admin console
