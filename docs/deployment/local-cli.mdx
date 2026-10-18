@@ -21,8 +21,9 @@ description: "Deploy and manage infrastructure from your local machine."
 
 ```bash
 aws cloudformation describe-stack-events \
-  --stack-name nextcloud-test \
-  --region "${AWS_REGION}"
+  --stack-name dev-nextcloud-01-networking \
+  --profile storix \
+  --region "${AWS_REGION:-ap-southeast-1}"
 ```
 
 ## Stack Names

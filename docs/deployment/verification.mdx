@@ -9,8 +9,9 @@ description: "Verify your deployment is healthy after infrastructure changes."
 
 ```bash
 aws cloudformation describe-stacks \
-  --stack-name nextcloud-test \
-  --region "${AWS_REGION}" \
+  --stack-name dev-nextcloud-05-compute \
+  --profile storix \
+  --region "${AWS_REGION:-ap-southeast-1}" \
   --query 'Stacks[0].Outputs[*].[OutputKey,OutputValue]' \
   --output table
 ```
@@ -19,8 +20,9 @@ aws cloudformation describe-stacks \
 
 ```bash
 ALB_URL=$(aws cloudformation describe-stacks \
-  --stack-name nextcloud-test \
-  --region "${AWS_REGION}" \
+  --stack-name dev-nextcloud-05-compute \
+  --profile storix \
+  --region "${AWS_REGION:-ap-southeast-1}" \
   --query "Stacks[0].Outputs[?OutputKey=='LoadBalancerURL'].OutputValue" \
   --output text)
 
