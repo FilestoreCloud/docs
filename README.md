@@ -1,87 +1,92 @@
 <p align="center">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="logo/storix-logo-white.png">
-    <img alt="Storix Logo" src="logo/storix-logo.png" width="360">
+    <source media="(prefers-color-scheme: dark)" srcset="images/storix-logo-white.png">
+    <img alt="Storix Logo" src="images/storix-logo.png" width="360">
   </picture>
 </p>
 
 # Storix Documentation
 
-Mintlify-powered documentation for the **Storix** enterprise multi-tenant Nextcloud SaaS platform on AWS.
+Mintlify-powered documentation site for the **Storix** enterprise multi-tenant Nextcloud SaaS platform on AWS.
 
-## Structure
+---
+
+## 📂 Structure
 
 ```
-docs.json          # Mintlify configuration (navigation, colors, tabs)
-docs/              # Platform documentation (MDX)
-│  introduction.mdx
-│  architecture-overview.mdx
-│  quickstart.mdx
-│  deployment/
-│  tenants/
-│  control-plane/
-│  ai/
-reports/           # Sprint reports (MDX) linked to GitHub issues/PRs
-│  index.mdx
-│  2026-10-05.mdx
-│  2026-09-28.mdx
-│  2026-09-21.mdx
-│  2026-09-14.mdx
-│  2026-09-07.mdx
-public/
-   llms.txt        # AI agent sitemap (llmstxt.org standard)
+.
+├── docs.json                   # Mintlify configuration (navigation, branding, colors)
+├── index.mdx                   # Homepage introduction & quick navigation
+├── docs/                       # Core platform documentation (MDX)
+│   ├── introduction.mdx        # Platform architecture, tenants & key capabilities
+│   ├── architecture-overview.mdx # Full-stack AWS architecture & isolation model
+│   ├── quickstart.mdx          # End-to-end setup & initial tenant provisioning
+│   ├── deployment/             # Deployment guides, prerequisites & GitHub Actions
+│   │   ├── prerequisites.mdx
+│   │   ├── github-actions.mdx
+│   │   ├── local-cli.mdx
+│   │   └── verification.mdx
+│   ├── tenants/                # Multi-tenant provisioning & lifecycle operations
+│   │   ├── provisioning.mdx
+│   │   ├── lifecycle.mdx
+│   │   ├── isolation-model.mdx
+│   │   └── suspension-resumption.mdx
+│   ├── control-plane/          # SuperAdmin Console, Step Functions, Async OCC & Observability
+│   │   ├── super-admin-console.mdx
+│   │   ├── ssm-runbook.mdx
+│   │   ├── dynamodb-registry.mdx
+│   │   └── cloudwatch.mdx
+│   └── ai/                     # Bedrock AI integration & LiteLLM bridge
+│       ├── bedrock-integration.mdx
+│       ├── litellm-bridge.mdx
+│       └── rag-pipeline.mdx
+├── images/                     # Architecture diagrams, screenshots & icons
+│   ├── nextcloud_architecture.png
+│   ├── console_architecture.png
+│   ├── 01_console_login_page.png
+│   ├── 02_console_tenants_light.png
+│   ├── 03_console_tenants_dark.png
+│   ├── 04_console_command_palette.png
+│   ├── 05_runtime_storix_theme.png
+│   └── 05_runtime_nextcloud_theme.png
+└── public/
+    └── llms.txt                # AI agent discovery sitemap (llmstxt.org standard)
 ```
 
-## Local Development
+---
 
-### 1. Install the CLI
+## 🚀 Local Development
+
+### 1. Install Mintlify CLI
 
 ```bash
-npm i -g mint
+npm i -g mintlify
 ```
 
-> ⚠️ The CLI package is `mint`, not `mintlify`. Do not install the legacy `mintlify` package.
-
-### 2. Verify install
+### 2. Preview Locally
 
 ```bash
-mint --version
+mintlify dev
+# Opens documentation server at http://localhost:3000
 ```
 
-### 3. Preview locally
+### 3. Validate Links & Schema
 
 ```bash
-mint dev
-# → http://localhost:3000
+mintlify broken-links
 ```
 
-### 4. Validate before pushing
+---
 
-```bash
-mint validate
-mint broken-links
-```
+## 🔗 Related Repositories
 
-## Deploy
-
-Pushes to `main` auto-deploy via GitHub Actions → Mintlify cloud hosting.
-
-Add `MINTLIFY_API_KEY` to GitHub repo secrets (get from [app.mintlify.com](https://app.mintlify.com/settings/organization/api-keys)).
-
-## Add a New Report
-
-1. Create `reports/YYYY-MM-DD.mdx`
-2. Add the page to `docs.json` under the `"Sprint Reports"` navigation group
-3. Link to GitHub PRs/commits/releases for traceability
-
-## Related Repos
-
-- [aws_nextcloud](https://github.com/Storix/aws_nextcloud) — Main platform
-- [control-panel](https://github.com/Storix/control-panel) — Admin console
+- [**`FilestoreCloud/infra`**](https://github.com/FilestoreCloud/infra): Modular CloudFormation IaC, Step Functions SAGAs & Lambda Control Plane.
+- [**`FilestoreCloud/runtime`**](https://github.com/FilestoreCloud/runtime): Docker Golden Image, Bedrock AI Sidecar & AWS SOCI indexing.
+- [**`FilestoreCloud/console`**](https://github.com/FilestoreCloud/console): Super Admin Web Console (React 18 + Refine + Ant Design + WebAuthn).
+- [**`FilestoreCloud/reports`**](https://github.com/FilestoreCloud/reports): Sprint reports, threat models & verification evidence.
 
 ---
 
 ## License
 
 Documentation is licensed under the [MIT License](LICENSE).
-

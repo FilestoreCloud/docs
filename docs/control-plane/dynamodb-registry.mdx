@@ -1,52 +1,108 @@
 ---
-title: "DynamoDB Tenant Registry"
-description: "The source of truth for all tenant metadata and state."
+title: "DynamoDB State & Audit Tables"
+description: "Data models for the Tenant Registry, Admin Users, Audit Logs, and Async OCC Jobs."
 ---
 
-# DynamoDB Tenant Registry
+# DynamoDB State & Audit Tables
 
-**Table:** `prod-nextcloud-tenant-registry`  
-**Primary Key:** `tenant_id` (String)
+Amazon DynamoDB acts as the high-availability state store for Storix's serverless control plane, ensuring sub-10ms metadata retrieval and optimistic concurrency control (OCC).
 
-## Schema
+---
+
+## 1. Tenant Registry (`<env>-nextcloud-tenant-registry`)
+
+The single source of truth for all tenant configurations, routing metadata, and lifecycle statuses.
+
+- **Partition Key:** `tenant_id` (String)
 
 ```json
 {
   "tenant_id": "acme",
   "domain": "acme.png261.dev",
-  "aliases": ["acme.filestorecloud.io"],
+  "aliases": ["drive.acmecorp.com"],
   "status": "ACTIVE",
   "service_name": "service-acme",
   "database_name": "nc_acme",
   "efs_access_point_id": "fsap-0578d58db032e3a8e",
   "isolation_model": "DEDICATED_INSTANCE",
   "quota_gb": 100,
-  "created_at": "2026-10-05T00:00:00Z"
+  "cpu_architecture": "ARM64",
+  "created_at": "2026-10-18T12:00:00Z",
+  "updated_at": "2026-10-18T18:00:00Z"
 }
 ```
 
-## Query All Tenants
+---
 
-```bash
-aws dynamodb scan \
-  --table-name prod-nextcloud-tenant-registry \
-  --region "${AWS_REGION}"
+## 2. Admin Users Table (`<env>-nextcloud-admin-users`)
+
+Stores SuperAdmin credentials, WebAuthn / Passkey public key credentials, and RBAC roles.
+
+- **Partition Key:** `username` (String)
+
+```json
+{
+  "username": "admin",
+  "role": "SuperAdmin",
+  "password_hash": "pbkdf2:sha256:600000$salt$...",
+  "mfa_secret": "JBSWY3DPEHPK3PXP",
+  "mfa_enabled": true,
+  "webauthn_credentials": [
+    {
+      "credential_id": "aWQiLCJuYW1l...",
+      "public_key": "p256_public_key_hex",
+      "sign_count": 42,
+      "device_name": "MacBook Pro Touch ID"
+    }
+  ]
+}
 ```
 
-## Query Single Tenant
+---
 
-```bash
-aws dynamodb get-item \
-  --table-name prod-nextcloud-tenant-registry \
-  --key '{"tenant_id": {"S": "acme"}}' \
-  --region "${AWS_REGION}"
+## 3. Audit Logs Ledger (`<env>-nextcloud-audit-logs`)
+
+An immutable audit ledger tracking all administrative actions, logins, OCC commands, and tenant lifecycle state changes.
+
+- **Partition Key:** `event_id` (String, UUIDv4)
+- **Time-to-Live (TTL):** `ttl` (1-year automatic expiration)
+
+```json
+{
+  "event_id": "37f73442-1077-4871-94f2-98483af4e2bb",
+  "timestamp": "2026-10-18T16:39:31.390193+00:00",
+  "actor": "admin",
+  "role": "SuperAdmin",
+  "action": "UPGRADE_TENANT_IMAGE",
+  "target": "tenant/acme",
+  "status": "SUCCESS",
+  "details": {
+    "image": "dev-nextcloud-enterprise:v2.0.0",
+    "release_type": "PATCH"
+  },
+  "source_ip": "127.0.0.1",
+  "user_agent": "Mozilla/5.0 ...",
+  "ttl": 1823877571
+}
 ```
 
-## Status Values
+---
 
-| Status | Meaning |
-|--------|---------|
-| `ACTIVE` | ECS running, ALB routing active |
-| `SUSPENDED` | ECS at 0, ALB rule removed, data retained |
-| `PROVISIONING` | Setup in progress |
-| `DEPROVISIONED` | ECS/ALB removed, data retained |
+## 4. Async OCC Jobs Table (`<env>-TenantOperationJobs`)
+
+Tracks asynchronous Nextcloud `occ` command dispatches, execution progress, exit codes, and stdout output.
+
+- **Partition Key:** `job_id` (String, UUIDv4)
+
+```json
+{
+  "job_id": "9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6d",
+  "tenant_id": "acme",
+  "command": "files:scan --all",
+  "status": "COMPLETED",
+  "exit_code": 0,
+  "output_preview": "Scan completed: 1,420 files indexed.",
+  "started_at": "2026-10-18T22:15:00Z",
+  "completed_at": "2026-10-18T22:15:42Z"
+}
+```

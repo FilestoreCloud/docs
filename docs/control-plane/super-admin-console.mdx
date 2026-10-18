@@ -1,53 +1,120 @@
 ---
 title: "Super Admin Console"
-description: "Launch and use the React-based Super Admin Control Panel."
+description: "Architecture, features, and operations guide for the Storix SuperAdmin Web Portal."
 ---
 
 # Super Admin Console
 
-The Control Panel is a React 18 + Refine + Ant Design 5 web application for managing all tenants.
+The Storix Super Admin Console is an enterprise-grade control plane application built with **React 18**, **Refine v4**, **Ant Design 5**, **TypeScript 5**, and **Vite**.
 
-## Launch
+It allows platform operators to provision, inspect, clone, and manage multi-tenant Nextcloud instances with real-time operational diagnostics and FinOps cost visibility.
 
-```bash
-python3 control-panel/start.py
-# → http://localhost:8080
+<p align="center">
+  <img src="/images/02_console_tenants_light.png" alt="Super Admin Console Fleet View" />
+</p>
+
+---
+
+## 🔐 Authentication & Biometric Passkeys
+
+The Super Admin Console provides multi-factor authentication with modern biometric credentials:
+
+<Tabs>
+  <Tab title="WebAuthn Passkeys (Touch ID / Face ID)">
+    Operators can register and sign in seamlessly using **FIDO2 / WebAuthn Biometric Passkeys** (Apple Touch ID, Windows Hello, Face ID, or YubiKey hardware tokens).
+    
+    The backend generates cryptographically signed challenge nonces via `WEBAUTHN_CHALLENGE` and validates signatures via `WEBAUTHN_LOGIN`.
+  </Tab>
+  <Tab title="RFC 6238 TOTP Authenticator">
+    Two-step MFA authentication using standard authenticator apps (Google Authenticator, 1Password, Authy) with SHA256 challenge tokens.
+  </Tab>
+  <Tab title="Secure HttpOnly Sessions">
+    Session tokens are delivered via `Set-Cookie: saas_admin_session=...; HttpOnly; Secure; SameSite=Strict`, shielding authentication claims from client-side script tampering or XSS leakage.
+  </Tab>
+</Tabs>
+
+<p align="center">
+  <img src="/images/01_console_login_page.png" alt="Super Admin Login Page" width="500" />
+</p>
+
+---
+
+## ⚡ High-Performance Smart Polling
+
+The console incorporates intelligent polling mechanisms to reduce unnecessary network traffic and CloudWatch API charges:
+
+```typescript
+// Custom hook utilizing browser Page Visibility API and inactivity backoff
+const { isVisible, isIdle } = useSmartInterval(fetchTenantMetrics, {
+  activeInterval: 5000,      // Polling every 5s during active tab use
+  idleInterval: 30000,       // Polling throttled to 30s after 2 mins inactivity
+  pauseWhenHidden: true,     // Completely pauses fetch requests when tab is hidden
+});
 ```
 
-Or run the dev server directly:
+- **Page Visibility API:** Automatically ceases all log streaming and telemetry requests when the operator switches to another browser tab (`document.hidden === true`).
+- **Exponential Inactivity Backoff:** Throttles interval frequency when no mouse or keyboard interaction is detected for more than 2 minutes.
 
-```bash
-cd control-panel
-npm install
-npm run dev
-# → http://localhost:5173
-```
+---
 
-## Features
+## 💻 In-Browser Async OCC Command Terminal
 
-<CardGroup cols={2}>
-  <Card title="Tenant Dashboard" icon="table">
-    View all tenants, their status (ACTIVE/SUSPENDED), domains, and quota usage.
-  </Card>
-  <Card title="Provision Modal" icon="plus">
-    Form-driven tenant provisioning with validation and progress tracking.
-  </Card>
-  <Card title="Lifecycle Controls" icon="toggle-on">
-    One-click suspend/resume with real-time ECS status feedback.
-  </Card>
-  <Card title="Live Telemetry" icon="chart-line">
-    CloudWatch metric widgets streamed live: ALB traffic, ECS compute, fleet health.
-  </Card>
-</CardGroup>
+The console features a real-time web terminal to execute Nextcloud `occ` commands without hitting HTTP timeouts:
 
-## Build for Production
+<p align="center">
+  <img src="/images/04_console_command_palette.png" alt="Command Palette and Terminal" />
+</p>
 
-```bash
-cd control-panel
-npm run build
-# Outputs to control-panel/dist/
-```
+### Supported Commands
+
+- `status`: Retrieve Nextcloud version, database health, and maintenance state.
+- `files:scan --all`: Recursively scan and resynchronize file cache across S3 and EFS.
+- `db:add-missing-indices`: Apply missing database indices to PostgreSQL catalogs.
+- `maintenance:mode --on / --off`: Toggle tenant maintenance mode.
+- `app:list`: Inspect installed and enabled apps.
 
 <Note>
-  All builds must pass without TypeScript compiler warnings. Run `npm run build` before any PR.
+  Heavy commands execute asynchronously via `EXECUTE_OCC_ASYNC`, returning an immediate `job_id` and streaming execution stdout/stderr back to the UI via `CHECK_OCC_JOB`.
 </Note>
+
+---
+
+## 📊 Fleet Views & Theming
+
+The console provides built-in dark and light themes conforming to enterprise accessibility standards (WCAG 2.1 AA):
+
+<Tabs>
+  <Tab title="Light Mode">
+    ![Tenants Light](/images/02_console_tenants_light.png)
+  </Tab>
+  <Tab title="Dark Mode">
+    ![Tenants Dark](/images/03_console_tenants_dark.png)
+  </Tab>
+</Tabs>
+
+---
+
+## 🛠️ Local Development & Build
+
+### Development Server
+
+```bash
+cd console
+npm install
+npm run dev
+# Starts local Vite development server at http://localhost:5173
+```
+
+### Production Build
+
+```bash
+npm run build
+# Compiles optimized production bundle in dist/ with strict bundle budget (< 500 KB chunk)
+```
+
+### Automated Testing
+
+```bash
+npm test
+# Runs 64/64 Vitest tests verifying providers, RBAC, Passkeys, and smart polling hooks
+```

@@ -1,62 +1,72 @@
 ---
-title: "Verification"
-description: "Verify your deployment is healthy after infrastructure changes."
+title: "Deployment Verification"
+description: "Verify your deployment health, CloudFormation stacks, and endpoint SLAs."
 ---
 
 # Deployment Verification
 
-## Retrieve Stack Outputs
+After triggering deployment or making infrastructure modifications, execute the following verification checklist to assert platform integrity.
+
+---
+
+## 1. CloudFormation Stack Status
+
+All 7 core stacks must report `CREATE_COMPLETE` or `UPDATE_COMPLETE`:
 
 ```bash
-aws cloudformation describe-stacks \
-  --stack-name dev-nextcloud-05-compute \
+aws cloudformation list-stacks \
+  --stack-status-filter CREATE_COMPLETE UPDATE_COMPLETE \
+  --region ap-southeast-1 \
   --profile storix \
-  --region "${AWS_REGION:-ap-southeast-1}" \
-  --query 'Stacks[0].Outputs[*].[OutputKey,OutputValue]' \
+  --query "StackSummaries[*].{StackName:StackName,Status:StackStatus}" \
   --output table
 ```
 
-## Nextcloud Health Check
+| Stack Name | Expected Status | Component Covered |
+|---|---|---|
+| `<env>-nextcloud-01-networking` | `CREATE_COMPLETE` | VPC, Subnets, Route Tables, S3 Gateway Endpoint |
+| `<env>-nextcloud-02-security` | `CREATE_COMPLETE` | Security Groups, KMS Keys, IAM Execution Roles |
+| `<env>-nextcloud-03-storage` | `CREATE_COMPLETE` | EFS (30d IA · 90d Archive Lifecycle), S3 Vault Bucket |
+| `<env>-nextcloud-04-database` | `CREATE_COMPLETE` | RDS PostgreSQL 16 & RDS Proxy Connection Pooler |
+| `<env>-nextcloud-05-compute` | `CREATE_COMPLETE` | ECS Fargate Cluster (Graviton ARM64), ALB, Dedicated Cron |
+| `<env>-nextcloud-06-superadmin` | `CREATE_COMPLETE` | Step Functions SAGAs, Lambda API, DynamoDB Tables |
+| `<env>-nextcloud-07-observability` | `CREATE_COMPLETE` | CloudWatch Synthetics Canary (24/7 SLA), Telemetry Dashboard |
+
+---
+
+## 2. Platform Health & Ingress Endpoints
 
 ```bash
+# Retrieve ALB DNS Ingress URL
 ALB_URL=$(aws cloudformation describe-stacks \
   --stack-name dev-nextcloud-05-compute \
   --profile storix \
-  --region "${AWS_REGION:-ap-southeast-1}" \
+  --region ap-southeast-1 \
   --query "Stacks[0].Outputs[?OutputKey=='LoadBalancerURL'].OutputValue" \
   --output text)
 
-curl -I "${ALB_URL}/status.php"
-# Expected: HTTP/2 200
+# Global status check
+curl -s -I "${ALB_URL}/status.php"
+# Expected: HTTP/2 200 OK
+
+# Tenant Host-Header status checks
+curl -s -I https://acme.png261.dev/status.php
+curl -s -I https://marvel.png261.dev/status.php
+# Expected: HTTP/2 200 OK
 ```
 
-## Per-Tenant Health Check
+---
+
+## 3. Run Automated Acceptance & Terratest Suites
 
 ```bash
-curl -I "https://acme.your-domain.com/status.php"
-curl -I "https://marvel.your-domain.com/status.php"
-```
+# Offline Fast Quality Gate (< 60s)
+make test-fast
 
-## Run Integration Tests
-
-```bash
-# Always target tests/ — do NOT run bare pytest
+# Full Acceptance Verification Suite (Live Cloud In-Place)
 pytest tests/ -v
 ```
 
-## CloudFormation Stack Status
-
-All 6 stacks must be in `CREATE_COMPLETE` or `UPDATE_COMPLETE`:
-
-| Stack | Expected Status |
-|-------|----------------|
-| `prod-nextcloud-01-networking` | `CREATE_COMPLETE` |
-| `prod-nextcloud-02-security` | `CREATE_COMPLETE` |
-| `prod-nextcloud-03-storage` | `CREATE_COMPLETE` |
-| `prod-nextcloud-04-database` | `CREATE_COMPLETE` |
-| `prod-nextcloud-05-compute` | `CREATE_COMPLETE` |
-| `prod-nextcloud-06-control-plane` | `CREATE_COMPLETE` |
-
 <Check>
-  All 6 stacks confirmed operational in production.
+  All 7 CloudFormation stacks active, zero lingering errors, Synthetics Canary probe passing, and 100% acceptance tests verified.
 </Check>

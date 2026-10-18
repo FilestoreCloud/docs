@@ -1,49 +1,72 @@
 ---
 title: "Local CLI Deployment"
-description: "Deploy and manage infrastructure from your local machine."
+description: "Deploy, validate, and manage CloudFormation stacks from your local machine."
 ---
 
-# Local CLI Deployment
+# Local CLI Deployment & Operations
 
-## Deploy All Stacks
+While GitHub Actions CI/CD is the standard deployment mechanism for production environments, operators can validate, inspect, and deploy modules directly via the AWS CLI and local tooling.
+
+---
+
+## 1. CloudFormation Template Linting
+
+Before applying template modifications, validate all templates against AWS syntax and security rules:
 
 ```bash
-./scripts/deploy.sh --all --env "${ENVIRONMENT:-prod}"
+cfn-lint --config-file infra/.devsecops/.cfnlintrc.yaml infra/infra/modules/*/template.yaml infra/infra/root.yaml
 ```
 
-## Deploy a Single Module
+---
+
+## 2. Deploy Full Platform via GitHub Actions CLI
 
 ```bash
-./scripts/deploy.sh --module 03-storage --env prod
+gh workflow run deploy-all.yml \
+  --repo FilestoreCloud/infra \
+  -f environment=dev \
+  -f skip_runtime_build=false \
+  -f run_acceptance_tests=true
 ```
 
-## Monitor Stack Progress
+---
+
+## 3. Monitor Stack Deployment Events
 
 ```bash
 aws cloudformation describe-stack-events \
-  --stack-name dev-nextcloud-01-networking \
+  --stack-name dev-nextcloud-05-compute \
   --profile storix \
-  --region "${AWS_REGION:-ap-southeast-1}"
+  --region ap-southeast-1 \
+  --query "StackEvents[0:5].[LogicalResourceId,ResourceStatus,ResourceStatusReason]" \
+  --output table
 ```
 
-## Stack Names
+---
 
-| Module | Stack Name |
-|--------|-----------|
-| 01-networking | `prod-nextcloud-01-networking` |
-| 02-security | `prod-nextcloud-02-security` |
-| 03-storage | `prod-nextcloud-03-storage` |
-| 04-database | `prod-nextcloud-04-database` |
-| 05-compute | `prod-nextcloud-05-compute` |
-| 06-control-plane | `prod-nextcloud-06-control-plane` |
+## 4. Stack Module Reference
 
-## Teardown
+| Module | Stack Name | Key Resources |
+|---|---|---|
+| `01-networking` | `<env>-nextcloud-01-networking` | Dual-AZ VPC, S3 Gateway Endpoint |
+| `02-security` | `<env>-nextcloud-02-security` | Security Groups, KMS Keys, IAM Roles |
+| `03-storage` | `<env>-nextcloud-03-storage` | EFS (30d IA · 90d Archive), S3 Vault Bucket |
+| `04-database` | `<env>-nextcloud-04-database` | RDS PostgreSQL 16 & RDS Proxy Pooler |
+| `05-compute` | `<env>-nextcloud-05-compute` | ECS Fargate Cluster (Graviton ARM64), ALB, Dedicated Cron |
+| `06-superadmin` | `<env>-nextcloud-06-superadmin` | Step Functions SAGAs, Lambda API, DynamoDB Tables |
+| `07-observability` | `<env>-nextcloud-07-observability` | CloudWatch Synthetics Canary (24/7 SLA), Telemetry Dashboard |
 
-<Warning>
-  **Never run teardown autonomously.** The teardown script deletes live AWS stacks, EFS filesystems, and RDS databases. Always confirm explicitly before running.
-</Warning>
+---
+
+## 5. Zero-Cost Teardown
 
 ```bash
-# Requires explicit confirmation prompt
-python3 scripts/teardown_all.py
+gh workflow run destroy.yml \
+  --repo FilestoreCloud/infra \
+  -f environment=dev \
+  -f confirm_destruction=DESTROY
 ```
+
+<Warning>
+  Teardown purges all database tables, EFS access points, and application S3 buckets to reduce ongoing AWS idle charges to **$0.00**.
+</Warning>

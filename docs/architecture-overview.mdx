@@ -1,68 +1,117 @@
 ---
 title: "Architecture Overview"
-description: "System design, AWS components, and multi-tenant isolation boundaries."
+description: "Comprehensive system design, AWS components, multi-tenant isolation boundaries, and operational pipelines."
 ---
 
 # Architecture Overview
 
-## Infrastructure Stack
+Storix is built upon a **Zero-Code-Modification**, fully AWS-native modular CloudFormation architecture. The platform decouples compute, storage, relational data, and background queue operations to achieve high availability, strict multi-tenant isolation, and FinOps efficiency.
 
-| Layer | Service | Detail |
-|-------|---------|--------|
-| **Ingress** | ALB (Multi-AZ) | Host-header routing, TLS termination, `/status.php` health check |
-| **Compute** | ECS Fargate | 1 dedicated `service-<tenant_id>` container per tenant |
-| **Database** | RDS PostgreSQL 16 | Dedicated `nc_<tenant_id>` database per tenant (`db.t4g.micro`) |
-| **Config Store** | Amazon EFS | `/tenants/<tenant_id>/config` via dedicated Access Points (UID/GID 33) |
-| **Object Storage** | Amazon S3 | `s3://<vault>/tenants/<tenant_id>/` isolated prefixes |
-| **Networking** | 2-AZ VPC | S3 Gateway Endpoint — Zero-NAT architecture |
-| **Control Plane** | DynamoDB + SSM | Tenant registry + `Tenant-Lifecycle-Operator` runbook |
-| **Observability** | CloudWatch | Live streaming dashboard + metric widgets |
-| **AI Bridge** | LiteLLM sidecar | `127.0.0.1:4000` → Amazon Bedrock (Claude 3.5 Sonnet) |
+---
 
-## CloudFormation Module Map
+## 1. Cloud Infrastructure Architecture
+
+![Storix Multi-Tenant AWS Cloud Architecture](/images/nextcloud_architecture.png)
+
+### Key Architectural Layers
+
+| Layer | AWS Service | Design & Responsibility |
+|---|---|---|
+| **Ingress & Security** | AWS WAFv2 + ALB (Multi-AZ) | OWASP Core rules, rate-limiting, TLS 1.3 termination, and host-header priority routing (`<tenant_id>.png261.dev`). |
+| **Compute Engine** | Amazon ECS Fargate | Container-per-tenant isolation with native **AWS Graviton ARM64** optimization. Scale-to-zero compute when suspended. |
+| **Connection Pooling** | Amazon RDS Proxy | Managed connection pooling with Secrets Manager integration; prevents database connection spikes during multi-tenant scaling. |
+| **Relational Database** | Amazon RDS PostgreSQL 16 | Dedicated catalog (`nc_<tenant_id>`) per tenant, isolated in private subnets with KMS encryption. |
+| **Configuration Store** | Amazon EFS | `/tenants/<tenant_id>/config` via dedicated EFS Access Points (POSIX UID/GID 33:33). Lifecycle: 30d IA, 90d Archive tier. |
+| **Object Storage Vault** | Amazon S3 Vault Bucket | `s3://vault/tenants/<tenant_id>/...` with S3 Intelligent-Tiering, automated 180-day Glacier Instant Retrieval, and EventBridge notifications. |
+| **Dedicated Cron Runner**| Amazon EventBridge Scheduler | Decoupled `rate(5 minutes)` event rule triggering isolated ECS Run-Task for Nextcloud background jobs (`cron.php`). |
+| **AI Assistant Engine** | Amazon Bedrock + LiteLLM | Dual-container sidecar architecture proxying Claude 3.5 Sonnet over `127.0.0.1:4000` via IAM SigV4 authentication. |
+| **Cold Start Acceleration** | AWS SOCI Indexing | Seekable OCI indices pre-generated in Docker build pipelines for sub-15s Fargate task startup. |
+| **24/7 SLA Probing** | CloudWatch Synthetics Canary | Continuous round-the-clock endpoint probes validating latency, HTTP status codes, and response body integrity. |
+
+---
+
+## 2. SuperAdmin Control Plane Architecture
+
+![SuperAdmin Console AWS Architecture](/images/console_architecture.png)
+
+### Control Plane Components
+
+- **Edge Delivery & WAF:** Amazon CloudFront distribution fronted by AWS WAF with Origin Access Control (OAC) to an S3 static web bucket.
+- **Biometric & MFA Authentication:** Native **WebAuthn / Passkeys** (Touch ID, Face ID, FIDO2 credentials) and RFC 6238 TOTP MFA with short-lived session tokens and `HttpOnly; SameSite=Strict` cookies.
+- **Smart Polling Engine:** Custom React hooks (`usePageVisibility`, `useSmartInterval`) automatically halt background polling when the browser tab is hidden and throttle polling frequency after 2 minutes of inactivity.
+- **Async OCC Command Engine:** Long-running administrative operations (`files:scan`, `db:add-missing-indices`) are executed asynchronously via `EXECUTE_OCC_ASYNC` and tracked via `CHECK_OCC_JOB`, avoiding API Gateway 29s timeouts.
+- **Step Functions SAGAs:** Orchestrates tenant provisioning, suspension, resumption, and deprovisioning with automated compensating rollbacks on partial failure.
+- **Audit Ledger:** Append-only DynamoDB audit log table with 1-year TTL and CloudWatch Log Group retention.
+
+---
+
+## 3. CloudFormation Modular Map
 
 ```
-infra/
-├── modules/01-networking/   → VPC, Subnets, S3 Gateway VPC Endpoint
-├── modules/02-security/     → Security Groups (ALB, ECS, RDS, EFS)
-├── modules/03-storage/      → EFS FileSystem, S3 Vault Bucket
-├── modules/04-database/     → RDS PostgreSQL 16, Secrets Manager
-├── modules/05-compute/      → ALB, HTTPS Listener, ECS Cluster
-├── modules/06-control-plane/→ DynamoDB, SSM Runbook, CloudWatch Dashboard
-└── tenant-instance/         → Per-tenant: ECS Service, Target Group, EFS AP
+infra/modules/
+├── 01-networking/     → VPC (10.0.0.0/16), Dual-AZ Public & Private Subnets, S3 Gateway Endpoint
+├── 02-security/       → Security Groups (ALB, ECS, RDS, EFS, RDS Proxy), KMS Keys, IAM Execution Roles
+├── 03-storage/        → Amazon EFS (30d IA · 90d Archive Lifecycle) & Amazon S3 Vault (Intelligent-Tiering · Glacier)
+├── 04-database/       → Amazon RDS PostgreSQL 16 Multi-AZ & Amazon RDS Proxy Connection Pooler
+├── 05-compute/        → Amazon ECS Fargate Cluster (Graviton ARM64 / X86_64), ALB Ingress & EventBridge Cron Rule
+├── 06-superadmin/     → Step Functions SAGAs, Control Plane Lambda, DynamoDB Registry, WebAuthn & Async OCC
+└── 07-observability/  → CloudWatch Synthetics Canary (24/7 SLA), Telemetry Dashboard & Metric Alarms
 ```
 
-## Tenant Isolation Boundaries
+---
+
+## 4. Multi-Tenant Isolation Model
 
 <Warning>
-Mixing tenant S3 paths or EFS mount points is strictly forbidden. Each tenant **must** retain:
-- S3 prefix: `s3://.../tenants/<tenant_id>/`
-- Database: `nc_<tenant_id>`
-- EFS Access Point: dedicated per tenant
+  Cross-tenant access is strictly prohibited across all infrastructure layers. Every tenant strictly maintains:
+  - **ECS Fargate Service**: `service-<tenant_id>` with dedicated target group and task definition.
+  - **Database Catalog**: `nc_<tenant_id>` in RDS PostgreSQL.
+  - **EFS Access Point**: Dedicated POSIX access point enforcing UID/GID 33 (`www-data`).
+  - **S3 Storage Prefix**: `s3://<vault>/tenants/<tenant_id>/*` protected by IAM policies.
 </Warning>
 
-## Dual-Container Task Definition
-
-Each tenant's ECS task runs two containers:
+### Container Task Layout
 
 ```
-Task: nc-<tenant_id>
-├── nextcloud (Apache)          → port 80 (external)
-│   └── /var/www/html/config   ← EFS Access Point mount
-└── litellm-bridge (sidecar)   → 127.0.0.1:4000 (localhost only)
-    └── Amazon Bedrock API      ← Claude 3.5 Sonnet
+Fargate Task: nc-<tenant_id>
+├── nextcloud (PHP-FPM / Apache)     → Port 80 (routed from ALB target group)
+│   ├── Config mount                 ← EFS Access Point: /tenants/<tenant_id>/config
+│   ├── Primary ObjectStore          ← S3 Gateway Endpoint: s3://<vault>/tenants/<tenant_id>/
+│   └── Database connection          ← Amazon RDS Proxy: proxy.<region>.rds.amazonaws.com
+└── litellm-bridge (sidecar)         → 127.0.0.1:4000 (Localhost loopback only)
+    └── Amazon Bedrock SigV4 API     ← Claude 3.5 Sonnet
 ```
 
-## Data Flow
+---
 
-```
-User Request
-  → ALB (TLS, Host Header: tenant.domain.com)
-  → Target Group: tg-<tenant_id>
-  → ECS Service: service-<tenant_id>
-  → Nextcloud 30 (Apache)
-      ├── Config reads: EFS /tenants/<tenant_id>/config
-      ├── Files read/write: S3 s3://<vault>/tenants/<tenant_id>/
-      ├── Database: RDS nc_<tenant_id>
-      └── AI queries: LiteLLM → Bedrock (Claude 3.5)
+## 5. End-to-End Request Flow
+
+```mermaid
+sequenceDiagram
+    autonumber
+    actor User as Tenant User
+    participant DNS as Route 53
+    participant WAF as AWS WAFv2
+    participant ALB as Application Load Balancer
+    participant ECS as Nextcloud Task (Fargate ARM64)
+    participant Proxy as RDS Proxy
+    participant DB as RDS PostgreSQL
+    participant EFS as Amazon EFS
+    participant S3 as Amazon S3 Vault
+    participant AI as LiteLLM -> Bedrock
+
+    User->>DNS: Request https://acme.png261.dev
+    DNS-->>User: Resolve ALB Ingress IP
+    User->>WAF: HTTPS Request
+    WAF->>ALB: Verified Ingress
+    ALB->>ECS: Forward to Target Group (tg-acme)
+    ECS->>EFS: Read config/config.php (Access Point)
+    ECS->>Proxy: SQL Query (Pooled Session)
+    Proxy->>DB: Dedicated Database (nc_acme)
+    ECS->>S3: Read / Write Files (S3 Gateway Endpoint)
+    opt Generative AI Assistant Call
+        ECS->>AI: POST http://127.0.0.1:4000/v1/chat/completions
+        AI-->>ECS: Claude 3.5 Sonnet Stream Response
+    end
+    ECS-->>User: 200 OK Response
 ```

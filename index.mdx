@@ -1,54 +1,101 @@
 ---
-title: "Introduction"
+title: "Storix Enterprise Platform"
 description: "Enterprise multi-tenant Nextcloud SaaS platform on AWS — architecture, deployment, and operations guide."
 ---
 
-# FilestoreCloud Platform
+# Storix Cloud Platform
 
-**FilestoreCloud** is an enterprise-grade, multi-tenant Nextcloud SaaS platform built on AWS using a Zero-Code-Modification, fully AWS-native modular CloudFormation architecture.
+**Storix** is an enterprise-grade, multi-tenant cloud storage and generative AI platform built on AWS using a Zero-Code-Modification, fully AWS-native modular CloudFormation architecture with container-per-tenant isolation.
 
-## Key Capabilities
+<p align="center">
+  <img src="/images/nextcloud_architecture.png" alt="Storix Architecture Diagram" />
+</p>
+
+## Key Platform Capabilities
 
 <CardGroup cols={2}>
   <Card title="Container-per-Tenant Isolation" icon="box-archive" href="/docs/tenants/isolation-model">
-    Dedicated ECS Fargate container per tenant with FinOps zero-compute suspension.
+    Dedicated AWS Fargate container per tenant with FinOps scale-to-zero compute suspension ($0.00 idle cost).
   </Card>
-  <Card title="Dynamic Host-Header Routing" icon="route" href="/docs/deployment/verification">
-    ALB routes `<tenant>.domain.com` → `tg-<tenant>` → `service-<tenant>` automatically.
+  <Card title="RDS Proxy & Connection Pooling" icon="database" href="/docs/architecture-overview">
+    Amazon RDS Proxy connection pooling prevents connection saturation during fleet scale-out events.
   </Card>
   <Card title="AI-Powered via Bedrock" icon="brain" href="/docs/ai/bedrock-integration">
-    LiteLLM sidecar proxying Claude 3.5 Sonnet on Amazon Bedrock at `127.0.0.1:4000`.
+    Pre-baked Nextcloud Assistant integrated with Amazon Bedrock Claude 3.5 Sonnet via LiteLLM sidecar.
   </Card>
-  <Card title="3-Tier Storage Isolation" icon="database" href="/docs/tenants/isolation-model">
-    EFS config + S3 vault + dedicated RDS PostgreSQL database per tenant.
+  <Card title="AWS Graviton ARM64 & SOCI" icon="bolt" href="/docs/architecture-overview">
+    Multi-arch Graviton ARM64 execution with AWS SOCI (Seekable OCI) indexing for sub-15s cold starts.
+  </Card>
+  <Card title="3-Tier Storage Lifecycle" icon="hard-drive" href="/docs/tenants/isolation-model">
+    EFS Infrequent Access/Archive lifecycle + S3 Intelligent-Tiering and 180-day Glacier Instant Retrieval.
+  </Card>
+  <Card title="WebAuthn Passkeys & Async OCC" icon="shield-check" href="/docs/control-plane/super-admin-console">
+    Biometric login (Touch ID / Face ID) and asynchronous OCC command execution with live web terminal.
   </Card>
 </CardGroup>
 
-## Repository Map
-
-| Repo | Purpose |
-|------|---------|
-| [`aws_nextcloud`](https://github.com/FilestoreCloud/aws_nextcloud) | IaC, scripts, docker, tests — main platform |
-| [`control-panel`](https://github.com/FilestoreCloud/control-panel) | React 18 + Refine super admin console |
-| [`docs`](https://github.com/FilestoreCloud/docs) | This documentation site |
+---
 
 ## Architecture at a Glance
 
 ```
-Internet → ALB (TLS) → Host-Header Rules
-               ├── acme.domain.com  → tg-acme  → service-acme  [ECS Fargate]
-               │                                    ├── nc_acme  [RDS]
-               │                                    └── /tenants/acme [EFS + S3]
-               └── marvel.domain.com → tg-marvel → service-marvel [ECS Fargate]
-                                                    ├── nc_marvel [RDS]
-                                                    └── /tenants/marvel [EFS + S3]
+Internet → AWS WAFv2 → ALB (Dual-AZ Ingress)
+           ├── acme.png261.dev  → tg-acme  → service-acme  [AWS Fargate ARM64]
+           │                                    ├── nc_acme  [RDS Proxy -> PostgreSQL 16]
+           │                                    ├── /tenants/acme/config [EFS 30d IA · 90d Archive]
+           │                                    └── s3://vault/tenants/acme/* [Intelligent-Tiering]
+           └── marvel.png261.dev → tg-marvel → service-marvel [AWS Fargate ARM64]
+                                                ├── nc_marvel [RDS Proxy -> PostgreSQL 16]
+                                                ├── /tenants/marvel/config [EFS 30d IA · 90d Archive]
+                                                └── s3://vault/tenants/marvel/* [Intelligent-Tiering]
 
-Control Plane: DynamoDB Registry → SSM Runbook → CloudWatch Dashboard
-AI Layer:      Nextcloud → LiteLLM (127.0.0.1:4000) → Amazon Bedrock (Claude 3.5)
+Control Plane: Step Functions SAGAs → DynamoDB Registry → Async OCC Engine → CloudWatch EMF
+Telemetry:     CloudWatch Synthetics Canary (24/7 Endpoint Health) + Container Insights
+AI Engine:     Nextcloud Assistant → LiteLLM (127.0.0.1:4000) → Amazon Bedrock (Claude 3.5 Sonnet)
 ```
+
+---
+
+## Live System Experience
+
+<Tabs>
+  <Tab title="SuperAdmin Console (Light)">
+    ![SuperAdmin Tenants Light](/images/02_console_tenants_light.png)
+  </Tab>
+  <Tab title="SuperAdmin Console (Dark)">
+    ![SuperAdmin Tenants Dark](/images/03_console_tenants_dark.png)
+  </Tab>
+  <Tab title="Biometric Passkey Login">
+    ![SuperAdmin Login](/images/01_console_login_page.png)
+  </Tab>
+  <Tab title="Storix Tenant Experience">
+    ![Storix Nextcloud Theme](/images/05_runtime_storix_theme.png)
+  </Tab>
+</Tabs>
+
+---
+
+## Repository Ecosystem
+
+| Repository | Scope & Function | Technology Stack |
+|---|---|---|
+| [**`infra`**](https://github.com/FilestoreCloud/infra) | Modular CloudFormation IaC (Stacks 01–07), Step Functions SAGAs & Control Plane Lambda | AWS CloudFormation, Boto3, Moto, Terratest |
+| [**`runtime`**](https://github.com/FilestoreCloud/runtime) | Hardened Golden Container Image with pre-baked AI & Bedrock Assistant | Nextcloud 30, Apache MPM, LiteLLM, AWS SOCI |
+| [**`console`**](https://github.com/FilestoreCloud/console) | SuperAdmin Fleet Management Web Portal | React 18, Vite, Refine, Ant Design 5, WebAuthn |
+| [**`docs`**](https://github.com/FilestoreCloud/docs) | Platform Architecture, Operations & User Documentation | Mintlify, MDX |
+
+---
 
 ## Quick Navigation
 
-- **New deployment?** → [Prerequisites](/docs/deployment/prerequisites) → [GitHub Actions CI/CD](/docs/deployment/github-actions)
-- **Add a tenant?** → [Tenant Provisioning](/docs/tenants/provisioning)
-- **Verify deployment?** → [Verification](/docs/deployment/verification)
+<CardGroup cols={3}>
+  <Card title="Architecture Overview" icon="sitemap" href="/docs/architecture-overview">
+    Deep-dive into VPC, subnets, RDS Proxy, and isolation boundaries.
+  </Card>
+  <Card title="Quickstart Guide" icon="play" href="/docs/quickstart">
+    Step-by-step instructions to deploy Storix and provision your first tenant.
+  </Card>
+  <Card title="SuperAdmin Console" icon="browser" href="/docs/control-plane/super-admin-console">
+    Explore the WebAuthn-secured portal, Async OCC terminal, and FinOps telemetry.
+  </Card>
+</CardGroup>

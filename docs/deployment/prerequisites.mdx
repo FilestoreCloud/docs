@@ -1,44 +1,46 @@
 ---
-title: "Prerequisites"
-description: "Requirements before deploying the FilestoreCloud platform."
+title: "Deployment Prerequisites"
+description: "Required tools, AWS credentials, and environment configuration for the Storix platform."
 ---
 
-# Prerequisites
+# Deployment Prerequisites
 
-## Required Tools
+Before deploying the Storix platform, ensure your local environment and AWS account satisfy the following prerequisites.
 
-| Tool | Version | Install |
-|------|---------|---------|
-| AWS CLI | v2+ | [docs.aws.amazon.com](https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2.html) |
-| Python | 3.11+ | `brew install python` |
-| Node.js | 18+ | `brew install node` |
-| Docker | 24+ | [docker.com](https://docker.com) |
+---
 
-## AWS Configuration
+## 🛠️ Required Tools
 
-```bash
-# Set default region
-export AWS_REGION="ap-southeast-1"
+| Tool | Minimum Version | Installation / Reference |
+|---|---|---|
+| **AWS CLI** | `v2.15+` | [AWS CLI Installation Guide](https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2.html) |
+| **Python** | `3.11+` (3.12 recommended) | `brew install python` |
+| **Node.js** | `18+` (20 recommended) | `brew install node` |
+| **Docker** | `24+` with Buildx | [Docker Desktop](https://docker.com) |
+| **GitHub CLI (`gh`)**| `2.40+` | `brew install gh` |
+| **awsdac** | Latest | [AWS Diagram as Code](https://github.com/awslabs/diagram-as-code) |
 
-# Verify credentials
-aws sts get-caller-identity
-```
+---
 
-<Warning>
-  Deploy requires **AdministratorAccess** or a custom policy covering CloudFormation, ECS, RDS, EFS, S3, DynamoDB, SSM, and IAM.
-</Warning>
-
-## Python Dependencies
+## 🔐 AWS Credentials & Profile
 
 ```bash
-pip install -r requirements.txt
+# Verify AWS CLI authentication with the 'storix' profile
+aws sts get-caller-identity --profile storix --region ap-southeast-1
 ```
 
-## GitHub Secrets (for CI/CD)
+<Note>
+  The deployment IAM role requires permissions to manage CloudFormation, VPC, ECS Fargate, RDS PostgreSQL, RDS Proxy, EFS, S3, Secrets Manager, DynamoDB, Step Functions, CloudWatch, and Synthetics Canaries.
+</Note>
 
-Configure these secrets in `FilestoreCloud/aws_nextcloud` → Settings → Secrets:
+---
 
-| Secret | Description |
-|--------|-------------|
-| `AWS_ROLE_ARN` | IAM Role ARN for GitHub OIDC |
-| `AWS_REGION` | e.g. `ap-southeast-1` |
+## 🤖 GitHub Actions CI/CD Secrets
+
+Configure the following secrets in [`FilestoreCloud/infra`](https://github.com/FilestoreCloud/infra) → Settings → Secrets & Variables:
+
+| Name | Type | Value / Purpose |
+|---|---|---|
+| `AWS_ROLE_INFRA` | Secret | IAM Role ARN assumed by GitHub Actions via OIDC federation. |
+| `AWS_REGION` | Variable | Target AWS deployment region (e.g. `ap-southeast-1`). |
+| `ENVIRONMENT` | Variable | Deployment environment tag (`dev`, `staging`, `prod`). |

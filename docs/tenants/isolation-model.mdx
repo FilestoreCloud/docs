@@ -1,43 +1,65 @@
 ---
-title: "Isolation Model"
+title: "Tenant Isolation Model"
 description: "How multi-tenant isolation is enforced across compute, storage, network, and database layers."
 ---
 
-# Tenant Isolation Model
+# Multi-Tenant Isolation Model
 
-## DEDICATED_INSTANCE Architecture
+Storix enforces a **DEDICATED_INSTANCE** architectural paradigm. Rather than multiplexing customer data within a shared application process, every tenant is allocated dedicated, isolated compute containers, database catalogs, and storage mount points.
 
-Each tenant gets fully dedicated resources — no shared compute or data paths.
+---
 
-| Layer | Isolation Mechanism |
-|-------|-------------------|
-| **Compute** | Dedicated ECS Fargate service (`service-<tenant_id>`) |
-| **Network** | ALB host-header routing → dedicated Target Group |
-| **Database** | Dedicated physical database `nc_<tenant_id>` on shared RDS instance |
-| **Config** | EFS Access Point scoped to `/tenants/<tenant_id>/config` (POSIX UID/GID 33) |
-| **Files** | S3 prefix `s3://<vault>/tenants/<tenant_id>/` with IAM prefix conditions |
+## 🛡️ Multi-Layer Isolation Matrix
 
-## Security Boundaries
+| Layer | AWS Service | Isolation Mechanism | Guarantee |
+|---|---|---|---|
+| **Compute** | Amazon ECS Fargate | Dedicated task (`service-<tenant_id>`) per tenant on AWS Graviton ARM64. | Zero CPU/RAM cross-talk; process boundary enforcement. |
+| **Connection Pooling** | Amazon RDS Proxy | Dedicated connection pool per tenant pointing to isolated physical catalogs. | Prevents connection starvation across tenants. |
+| **Relational Data** | Amazon RDS PostgreSQL 16 | Dedicated database catalog (`nc_<tenant_id>`) with isolated schema and user credentials. | Full SQL table and row data separation. |
+| **Configuration** | Amazon EFS | Dedicated Access Point scoped to `/tenants/<tenant_id>/config` with POSIX UID/GID 33:33. | POSIX kernel-level path isolation. |
+| **Object Storage** | Amazon S3 Vault | Dedicated prefix `s3://<vault>/tenants/<tenant_id>/*` with IAM prefix policies. | Cryptographic and path-based isolation. |
+| **Network Ingress** | ALB + AWS WAFv2 | Dedicated Target Group (`tg-<tenant_id>`) bound to tenant Host-Header. | Clean routing without hostname collision. |
 
+---
+
+## 🔒 Architectural Boundaries
+
+```mermaid
+flowchart TD
+    subgraph Ingress["ALB Host-Header Ingress"]
+        R1["acme.png261.dev"] --> TG1["Target Group: tg-acme"]
+        R2["marvel.png261.dev"] --> TG2["Target Group: tg-marvel"]
+    end
+
+    subgraph Compute["AWS Fargate ARM64 Fleet"]
+        TG1 --> ECS1["service-acme<br/>(Nextcloud + LiteLLM)"]
+        TG2 --> ECS2["service-marvel<br/>(Nextcloud + LiteLLM)"]
+    end
+
+    subgraph DB["Relational Database Tier"]
+        ECS1 --> Proxy["Amazon RDS Proxy"]
+        ECS2 --> Proxy
+        Proxy --> DB1["Catalog: nc_acme"]
+        Proxy --> DB2["Catalog: nc_marvel"]
+    end
+
+    subgraph Storage["Storage Tier"]
+        ECS1 --> EFS1["EFS Access Point: /tenants/acme"]
+        ECS2 --> EFS2["EFS Access Point: /tenants/marvel"]
+        ECS1 --> S3_1["s3://vault/tenants/acme/*"]
+        ECS2 --> S3_2["s3://vault/tenants/marvel/*"]
+    end
 ```
-ALB Security Group → ECS Security Group → RDS Security Group
-                                        → EFS Security Group
 
-Tenant A ECS Task   ≠   Tenant B ECS Task
-Tenant A EFS AP     ≠   Tenant B EFS AP
-nc_tenant_a DB      ≠   nc_tenant_b DB
-s3://.../tenant_a/  ≠   s3://.../tenant_b/
-```
+---
 
-## RBAC Model (NIST SP 800-162)
+## 👥 NIST SP 800-162 Role-Based Access Control (RBAC)
 
-| Actor | Role | Scope |
-|-------|------|-------|
-| **SaaS Super Admin** | `«Cloud Provider»` | Global AWS infrastructure |
-| **Tenant Administrator** | `«Org Admin»` | Single tenant org |
-| **Tenant Member** | `«Bob / Carol»` | Personal files + dept folders |
-| **External Guest** | `«Guest / Partner»` | Share links only |
+The platform defines strict access boundaries across 4 distinct personas:
 
-<Note>
-  Cross-tenant data access is architecturally impossible — EFS Access Points enforce POSIX path isolation at the kernel level.
-</Note>
+| Actor | RBAC Persona | Access Level & Scope | Credentials |
+|---|---|---|---|
+| **SaaS Super Admin** | `SuperAdmin` | Global fleet control, tenant provisioning, suspend/resume, FinOps quotas, and async OCC diagnostics. | Passkeys (WebAuthn) / TOTP MFA |
+| **Tenant Administrator** | `TenantAdmin` | Tenant-level user provisioning, department groupfolders, branding, and sharing policies. | Password + TOTP / WebAuthn |
+| **Tenant Member** | `User / Member` | Personal file workspace, collaborative text editing, AI assistant chat, and WebDAV sync. | User Credentials |
+| **External Guest** | `Guest` | Time-limited password-protected download/upload links and anonymous file-drop boxes. | Shared Token / PIN |

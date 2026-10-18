@@ -1,50 +1,69 @@
 ---
 title: "Suspension & Resumption"
-description: "FinOps tenant suspension and cost-zero compute model."
+description: "FinOps tenant suspension, scale-to-zero compute economics, and instant recovery."
 ---
 
-# Suspension & Resumption
+# Tenant Suspension & Resumption
 
-## FinOps Cost Model
+One of Storix's core architectural advantages is its **FinOps Scale-to-Zero** capability. When a tenant is suspended—either by operator intervention, customer billing hold, or automated budget cap—its compute tier immediately scales to zero running tasks while preserving 100% of its data and configuration state.
 
-When a tenant is suspended, its ECS service scales to `desiredCount: 0`:
+---
 
-| Resource | Suspended State | Cost |
-|----------|----------------|------|
-| ECS Fargate tasks | 0 running | **\$0.00/hr** |
-| RDS PostgreSQL | Running (shared) | Shared cost |
-| EFS storage | Data retained | Storage cost only |
-| S3 files | Data retained | Storage cost only |
-| ALB listener rule | Removed | No routing |
+## 💰 FinOps Resource Cost Breakdown
 
-## Suspend
+| Resource Tier | Active State | Suspended State | Economic Impact |
+|---|---|---|---|
+| **ECS Fargate Tasks** | `1-4` Tasks Running | `desiredCount: 0` (0 Tasks) | **\$0.00 / hour Compute Cost** |
+| **ALB Routing Rules** | Active Host-Header Rule | Rule detached (503 / custom hold) | Prevents ingress load on sleeping cluster |
+| **Amazon RDS PostgreSQL** | Active Pooled Connections | Zero Open Connections in Proxy | Connection capacity freed for other tenants |
+| **Amazon EFS Config** | Live Mount | Inactive (Eligible for 30d IA transition) | Storage cost reduced by up to 92% |
+| **Amazon S3 Vault** | Live Read/Write | Cold (Eligible for Glacier transition) | Storage cost reduced by up to 80% |
+
+---
+
+## 🖥️ Operation via SuperAdmin Console
+
+1. Navigate to the **Tenants** list or tenant detail page in the SuperAdmin Console.
+2. Select the tenant (e.g. `marvel`).
+3. Click the **Suspend Tenant** or **Resume Tenant** action button.
+4. The console dispatches an authenticated API request and provides real-time progress indicators.
+
+---
+
+## ⚡ Programmatic Execution via Control Plane API
 
 ```bash
-# Via SSM (zero-bastion)
-aws ssm start-automation-execution \
-  --document-name "prod-Tenant-Lifecycle-Operator" \
-  --parameters '{"TenantId":["marvel"],"Action":["SUSPEND"]}'
+# Suspend a tenant via Control Plane API
+curl -X POST https://admin.png261.dev/api \
+  -H "Authorization: Bearer <ADMIN_TOKEN>" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "action": "SUSPEND",
+    "tenant_id": "marvel"
+  }'
 
-# Verify
+# Verify task count scaled to zero
 aws ecs describe-services \
-  --cluster prod-nextcloud-cluster \
+  --cluster dev-nextcloud-cluster \
   --services service-marvel \
-  --query 'services[0].desiredCount'
-# → 0
-```
+  --query 'services[0].desiredCount' \
+  --profile storix
+# Output: 0
 
-## Resume
+# Resume the tenant
+curl -X POST https://admin.png261.dev/api \
+  -H "Authorization: Bearer <ADMIN_TOKEN>" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "action": "RESUME",
+    "tenant_id": "marvel"
+  }'
 
-```bash
-aws ssm start-automation-execution \
-  --document-name "prod-Tenant-Lifecycle-Operator" \
-  --parameters '{"TenantId":["marvel"],"Action":["RESUME"]}'
-
-# Verify health
-curl -I https://marvel.your-domain.com/status.php
-# → HTTP/2 200
+# Verify health status recovers cleanly
+curl -s -I https://marvel.png261.dev/status.php
+# Output: HTTP/2 200
 ```
 
 <Check>
-  Tenant hibernation verified: zero tasks running, DNS & data retained, immediate recovery on resume.
+  Tenant hibernation verified: zero tasks running, DNS & data retained, immediate recovery on resume with fast cold-start acceleration.
 </Check>

@@ -1,48 +1,78 @@
 ---
-title: "Quickstart"
-description: "Deploy a new tenant in 5 minutes."
+title: "Quickstart Guide"
+description: "Deploy the Storix platform and provision your first tenant in minutes."
 ---
 
-# Quickstart
+# Quickstart Guide
+
+This guide walks you through deploying the complete Storix platform on AWS and provisioning your first isolated tenant.
+
+---
+
+## 🛠️ Step-by-Step Walkthrough
 
 <Steps>
-  <Step title="Clone & configure">
+  <Step title="Clone the Repositories & Verify Local Tests">
+    Clone the platform repositories and run the offline fast quality gate:
     ```bash
-    git clone https://github.com/FilestoreCloud/aws_nextcloud.git
-    cd aws_nextcloud
-    export AWS_REGION="ap-southeast-1"
+    git clone https://github.com/FilestoreCloud/infra.git
+    git clone https://github.com/FilestoreCloud/runtime.git
+    git clone https://github.com/FilestoreCloud/console.git
+
+    # Run the comprehensive fast test suite
+    make test-fast
     ```
   </Step>
-  <Step title="Deploy infrastructure (first time)">
-    Use GitHub Actions (recommended) or local CLI:
+
+  <Step title="Deploy Infrastructure via GitHub Actions">
+    Trigger the end-to-end `deploy-all.yml` workflow via GitHub CLI or the GitHub Actions UI:
     ```bash
-    ./scripts/deploy.sh --all --env prod
+    gh workflow run deploy-all.yml \
+      --repo FilestoreCloud/infra \
+      -f environment=dev \
+      -f skip_runtime_build=false \
+      -f run_acceptance_tests=true
     ```
-    See [GitHub Actions CI/CD](/docs/deployment/github-actions) for the full guide.
+    This automatically builds the multi-arch Docker image, deploys CloudFormation Stacks 01 to 07, builds the SuperAdmin console SPA, and runs acceptance tests.
   </Step>
-  <Step title="Launch the Control Panel">
+
+  <Step title="Access the SuperAdmin Console">
+    Open the CloudFront domain for your SuperAdmin console (e.g. `https://admin.png261.dev` or run locally):
     ```bash
-    python3 control-panel/start.py
-    # → http://localhost:8080
+    cd console
+    npm run dev
+    # Opens local development console at http://localhost:5173
     ```
+    Sign in using your configured administrative credentials, WebAuthn biometric passkey, or TOTP MFA.
   </Step>
-  <Step title="Provision your first tenant">
+
+  <Step title="Provision Your First Tenant">
+    In the console, click **Create Tenant** or dispatch an authenticated API request:
     ```bash
-    python3 scripts/provision_dedicated_tenant.py \
-      --tenant-id "acme-corp" \
-      --tenant-name "Acme Corporation" \
-      --admin-user "admin" \
-      --admin-email "admin@acme.com" \
-      --quota "100 GB"
+    curl -X POST https://admin.png261.dev/api \
+      -H "Authorization: Bearer <ADMIN_TOKEN>" \
+      -H "Content-Type: application/json" \
+      -d '{
+        "action": "PROVISION",
+        "tenant_id": "acme",
+        "tenant_name": "Acme Corporation",
+        "admin_email": "admin@acme.com",
+        "domain": "acme.png261.dev",
+        "quota_gb": 100
+      }'
     ```
-    The tenant is now live at `https://acme-corp.your-domain.com`.
+    The Step Functions SAGA orchestrates the creation of the PostgreSQL catalog, EFS access point, Fargate task, and ALB routing rules.
+  </Step>
+
+  <Step title="Verify Tenant Health & AI Assistant">
+    Verify the tenant responds with `200 OK` and inspect assistant tools:
+    ```bash
+    curl -s -I https://acme.png261.dev/status.php
+    # Expected: HTTP/2 200 OK
+    ```
   </Step>
 </Steps>
 
 <Check>
-Verify the tenant is healthy:
-```bash
-curl -I https://acme-corp.your-domain.com/status.php
-# Expected: HTTP/2 200
-```
+  Congratulations! Your tenant is live, completely isolated in its own compute container, database catalog, and storage prefix, and connected to Amazon Bedrock generative AI.
 </Check>

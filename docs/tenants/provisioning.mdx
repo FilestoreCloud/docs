@@ -5,63 +5,73 @@ description: "Provision a new dedicated tenant with isolated ECS, RDS, EFS, and 
 
 # Tenant Provisioning
 
-## Via Python Script (Recommended)
+Storix provisions new tenants using automated **Step Functions SAGA Micro-Workflows** that orchestrate all cloud resource provisioning with complete isolation.
+
+---
+
+## 🖥️ Via SuperAdmin Console UI
+
+1. Open the **SuperAdmin Console** at `https://admin.png261.dev`.
+2. Click the **+ Create Tenant** button in the header or tenants table.
+3. Complete the provisioning form:
+   - **Tenant ID:** Lowercase alphanumeric identifier (e.g. `acme`).
+   - **Organization Name:** Display name (e.g. `Acme Corporation`).
+   - **Domain:** Dedicated subdomain (e.g. `acme.png261.dev`).
+   - **Admin Email:** Initial organization admin email.
+   - **Storage Quota:** Initial storage allocation (e.g. `100 GB`).
+4. Click **Submit**. The console tracks live provisioning progress through the Step Functions execution stream.
+
+---
+
+## ⚡ Via Control Plane API
 
 ```bash
-python3 scripts/provision_dedicated_tenant.py \
-  --tenant-id "acme-corp" \
-  --tenant-name "Acme Corporation" \
-  --admin-user "admin" \
-  --admin-email "admin@acme.com" \
-  --quota "100 GB"
-```
-
-This automates:
-1. RDS database schema creation (`nc_acme-corp`)
-2. EFS Access Point creation (`/tenants/acme-corp/config`)
-3. S3 prefix initialization (`s3://<vault>/tenants/acme-corp/`)
-4. ECS Service + Target Group deployment via CloudFormation tenant-instance stack
-5. ALB listener rule addition (Host: `acme-corp.domain.com`)
-6. Nextcloud OCC installation commands
-7. DynamoDB registry entry creation
-
-## Via SSM Automation Runbook
-
-```bash
-aws ssm start-automation-execution \
-  --document-name "prod-Tenant-Lifecycle-Operator" \
-  --parameters '{
-    "TenantId":["acme-corp"],
-    "Action":["PROVISION"],
-    "StorageQuotaGB":["100"],
-    "CompanyDomain":["acme-corp.your-domain.com"]
+curl -X POST https://admin.png261.dev/api \
+  -H "Authorization: Bearer <ADMIN_TOKEN>" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "action": "PROVISION",
+    "tenant_id": "acme",
+    "tenant_name": "Acme Corporation",
+    "admin_email": "admin@acme.com",
+    "domain": "acme.png261.dev",
+    "quota_gb": 100
   }'
 ```
 
-## DynamoDB Registry Entry
+---
 
-After provisioning, the tenant appears in `prod-nextcloud-tenant-registry`:
+## 🔄 Automated SAGA Steps
 
-```json
-{
-  "tenant_id": "acme-corp",
-  "domain": "acme-corp.your-domain.com",
-  "status": "ACTIVE",
-  "service_name": "service-acme-corp",
-  "database_name": "nc_acme-corp",
-  "efs_access_point_id": "fsap-xxxxxxxxxxxx",
-  "isolation_model": "DEDICATED_INSTANCE",
-  "quota_gb": 100
-}
+```mermaid
+sequenceDiagram
+    autonumber
+    participant SFN as Step Functions SAGA
+    participant RDS as Amazon RDS Proxy & DB
+    participant EFS as Amazon EFS
+    participant S3 as Amazon S3 Vault
+    participant ECS as Amazon ECS Fargate
+    participant ALB as Application Load Balancer
+    participant DDB as DynamoDB Registry
+
+    SFN->>RDS: Create Physical Database (nc_acme)
+    SFN->>EFS: Create Access Point (/tenants/acme/config)
+    SFN->>S3: Seed Tenant Vault Prefix & Initial Folders
+    SFN->>ECS: Register Task Definition & Launch Service
+    SFN->>ALB: Create Target Group & Bind Priority Rule
+    SFN->>ECS: Execute Automated Nextcloud Install (OCC)
+    SFN->>DDB: Save Tenant Record (Status: ACTIVE)
 ```
 
-## What Gets Created
+---
 
-| Resource | Name Pattern |
-|----------|-------------|
-| ECS Service | `service-<tenant_id>` |
-| ALB Target Group | `tg-<tenant_id>` |
-| EFS Access Point | dedicated AP → `/tenants/<tenant_id>/config` |
-| RDS Database | `nc_<tenant_id>` |
-| S3 Prefix | `s3://<vault>/tenants/<tenant_id>/` |
-| DynamoDB Record | `tenant_id = <tenant_id>` |
+## 📦 Provisioned Resources
+
+| Resource | Identifier / Name Pattern |
+|---|---|
+| **ECS Fargate Service** | `service-<tenant_id>` (AWS Graviton ARM64) |
+| **ALB Target Group** | `tg-<tenant_id>` (Healthcheck: `/status.php`) |
+| **EFS Access Point** | Scoped to `/tenants/<tenant_id>/config` (UID/GID 33:33) |
+| **RDS Database** | `nc_<tenant_id>` (Managed by RDS Proxy) |
+| **S3 Vault Prefix** | `s3://<vault>/tenants/<tenant_id>/*` |
+| **DynamoDB Record** | Stored in `<env>-nextcloud-tenant-registry` |

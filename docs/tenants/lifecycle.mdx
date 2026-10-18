@@ -1,64 +1,84 @@
 ---
-title: "Tenant Lifecycle"
-description: "Suspend, resume, and deprovision tenants with zero-downtime FinOps controls."
+title: "Tenant Lifecycle Management"
+description: "State transitions, suspend, resume, rolling image upgrade, and auto-scaling controls."
 ---
 
-# Tenant Lifecycle
+# Tenant Lifecycle Management
 
-## States
+Storix manages the entire tenant lifecycle deterministically, ensuring that scaling, rolling updates, and hibernation maintain high availability and zero data loss.
 
+---
+
+## 🔄 Lifecycle State Machine
+
+```mermaid
+stateDiagram-v2
+    [*] --> PROVISIONING: SAGA Initiate
+    PROVISIONING --> ACTIVE: Boot & Healthcheck Passed
+    PROVISIONING --> FAILED: Compensation Rollback
+    ACTIVE --> SUSPENDED: Admin Suspend (desiredCount: 0)
+    SUSPENDED --> ACTIVE: Admin Resume (desiredCount: 1)
+    ACTIVE --> ROLLING_UPDATE: Image Upgrade (UPGRADE_TENANT_IMAGE)
+    ROLLING_UPDATE --> ACTIVE: New Task Healthy
+    ACTIVE --> DEPROVISIONING: Deprovision Action
+    SUSPENDED --> DEPROVISIONING: Deprovision Action
+    DEPROVISIONING --> ARCHIVED: Data Retained in Glacier
 ```
-PROVISIONING → ACTIVE → SUSPENDED → ACTIVE
-                              ↓
-                         DEPROVISIONED
-```
 
-## Suspend a Tenant (FinOps — Zero Compute Cost)
+---
 
-Scales `desiredCount: 0` on the ECS service — no compute cost, data preserved.
+## 🚀 Zero-Downtime Rolling Image Upgrade
+
+When a new Nextcloud container image is pushed to ECR or a security patch is applied, operators can upgrade individual tenants or the entire fleet without downtime:
 
 ```bash
-aws ssm start-automation-execution \
-  --document-name "prod-Tenant-Lifecycle-Operator" \
-  --parameters '{"TenantId":["acme-corp"],"Action":["SUSPEND"]}'
+curl -X POST https://admin.png261.dev/api \
+  -H "Authorization: Bearer <ADMIN_TOKEN>" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "action": "UPGRADE_TENANT_IMAGE",
+    "tenant_id": "acme",
+    "image": "165795704301.dkr.ecr.ap-southeast-1.amazonaws.com/dev-nextcloud-enterprise:v2.0.0"
+  }'
 ```
 
-Or via Python:
+### ECS Rolling Update Guarantee
+
+1. ECS provisions the new task using AWS SOCI cold-start indexing (< 15s).
+2. The ALB target group executes healthchecks against `/status.php` on the new task.
+3. Once the new task reports `200 OK`, traffic shifts cleanly.
+4. The legacy task drains connections and terminates gracefully.
+
+---
+
+## 📈 Auto-Scaling Policy
+
+Each tenant Fargate service is equipped with AWS Application Auto Scaling tracking CPU and memory consumption:
+
+| Parameter | Configured Value | Behavior |
+|---|---|---|
+| **Minimum Tasks** | `1` task | Active baseline |
+| **Maximum Tasks** | `4` tasks | Maximum scale-out ceiling |
+| **CPU Target Tracking** | `70%` | Automatically launches additional tasks when exceeded |
+| **Memory Target Tracking** | `80%` | Scale-out on memory pressure |
+| **Scale-Out Cooldown** | `60 seconds` | Rapid responsiveness to traffic surges |
+| **Scale-In Cooldown** | `300 seconds` | Prevents task thrashing |
+
+---
+
+## 🗑️ Safe Deprovisioning & Crypto-Shredding
 
 ```bash
-python3 scripts/provision_dedicated_tenant.py --tenant-id acme-corp --action suspend
+# Deprovision tenant compute & routing while preserving database & storage
+curl -X POST https://admin.png261.dev/api \
+  -H "Authorization: Bearer <ADMIN_TOKEN>" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "action": "DEPROVISION",
+    "tenant_id": "acme"
+  }'
 ```
 
-## Resume a Tenant
-
-Scales `desiredCount: 1` and restores ALB routing.
-
-```bash
-aws ssm start-automation-execution \
-  --document-name "prod-Tenant-Lifecycle-Operator" \
-  --parameters '{"TenantId":["acme-corp"],"Action":["RESUME"]}'
-```
-
-## Deprovision a Tenant
-
-<Warning>
-  Deprovision permanently removes the ECS service, Target Group, and ALB listener rule. RDS data and S3 files are **retained** unless explicitly deleted.
-</Warning>
-
-```bash
-aws ssm start-automation-execution \
-  --document-name "prod-Tenant-Lifecycle-Operator" \
-  --parameters '{"TenantId":["acme-corp"],"Action":["DEPROVISION"]}'
-```
-
-## Auto-Scaling Policy
-
-Each tenant service has CPU Target Tracking at **70%**:
-
-| Parameter | Value |
-|-----------|-------|
-| Minimum tasks | 1 |
-| Maximum tasks | 4 |
-| CPU threshold | 70% |
-| Scale-out cooldown | 60s |
-| Scale-in cooldown | 300s |
+<Note>
+  Deprovisioning removes the ECS service, ALB rule, and target group immediately. RDS database catalogs and S3 files are preserved or transitioned into Glacier Vaults according to organizational GDPR data retention policies.
+</Note>
