@@ -41,6 +41,9 @@ Mintlify-powered documentation site for the **Storix** enterprise multi-tenant N
 │       ├── litellm-bridge.mdx
 │       └── rag-pipeline.mdx
 ├── images/                     # Architecture diagrams, screenshots & icons
+│   ├── storix_system_architecture_master.png
+│   ├── storix_deployment_pipeline.png
+│   ├── storix_process_destroy.png
 │   ├── nextcloud_architecture.png
 │   ├── console_architecture.png
 │   ├── 01_console_login_page.png
