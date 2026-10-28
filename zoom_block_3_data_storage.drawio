@@ -1,0 +1,79 @@
+<mxfile host="app.diagrams.net" modified="2026-10-27T22:30:00.000Z" agent="Mozilla/5.0" version="24.7.17">
+  <diagram id="zoom-3-min" name="Zoom-Block-3-Minimal">
+    <mxGraphModel dx="1280" dy="330" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1280" pageHeight="330" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- Zoom Block 3 Number Badge -->
+        <mxCell id="zoom-badge-3" parent="1" style="shape=ellipse;fillColor=#C925D1;strokeColor=#ffffff;strokeWidth=2;fontColor=#ffffff;fontStyle=1;fontSize=15;fontFamily=Helvetica;align=center;verticalAlign=middle;shadow=1;" value="3" vertex="1">
+          <mxGeometry height="32" width="32" x="25" y="20" as="geometry" />
+        </mxCell>
+
+        <!-- Primary Region Container (Singapore ap-southeast-1) -->
+        <mxCell id="primary-region-box" parent="1" style="rounded=0;strokeColor=#C925D1;strokeWidth=2;fillColor=#C925D1;fillOpacity=4;verticalAlign=top;align=left;spacingLeft=12;spacingTop=8;fontStyle=1;fontSize=11;fontColor=#C925D1;fontFamily=Helvetica;" value="Primary Active Region: ap-southeast-1 (Singapore)" vertex="1">
+          <mxGeometry height="160" width="650" x="30" y="70" as="geometry" />
+        </mxCell>
+        <mxCell id="svc-rds-primary" parent="primary-region-box" style="sketch=0;outlineConnect=0;fontColor=#232F3E;fillColor=#C925D1;strokeColor=#ffffff;verticalLabelPosition=bottom;verticalAlign=top;align=center;fontSize=10;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.aurora;fontFamily=Helvetica;shadow=1;" value="Aurora PostgreSQL&#xa;Primary Writer Cluster" vertex="1">
+          <mxGeometry height="42" width="42" x="40" y="45" as="geometry" />
+        </mxCell>
+        <mxCell id="card-rds" parent="primary-region-box" style="rounded=0;strokeColor=#C925D1;fillColor=#FFFFFF;fontSize=10;fontColor=#333333;fontFamily=Helvetica;align=left;spacingLeft=8;" value="• Database-per-tenant schema&#xa;• Multi-AZ auto-failover &lt; 30s&#xa;• Global DB RPO &lt; 1s Storage Replicate" vertex="1">
+          <mxGeometry height="54" width="220" x="100" y="45" as="geometry" />
+        </mxCell>
+        <mxCell id="svc-s3-primary" parent="primary-region-box" style="sketch=0;outlineConnect=0;fontColor=#232F3E;fillColor=#3F8624;strokeColor=#ffffff;verticalLabelPosition=bottom;verticalAlign=top;align=center;fontSize=10;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.s3;fontFamily=Helvetica;shadow=1;" value="S3 Primary Vault&#xa;(KMS CMK Encrypted)" vertex="1">
+          <mxGeometry height="42" width="42" x="350" y="45" as="geometry" />
+        </mxCell>
+        <mxCell id="card-s3" parent="primary-region-box" style="rounded=0;strokeColor=#3F8624;fillColor=#FFFFFF;fontSize=10;fontColor=#333333;fontFamily=Helvetica;align=left;spacingLeft=8;" value="• tenants/{id}/ isolation prefix&#xa;• EventBridge ObjectCreated enabled&#xa;• Cross-Region Replication (CRR)" vertex="1">
+          <mxGeometry height="54" width="220" x="410" y="45" as="geometry" />
+        </mxCell>
+
+        <!-- Secondary DR Region Container (US N. Virginia us-east-1) -->
+        <mxCell id="dr-region-box" parent="1" style="rounded=0;strokeColor=#8C4FFF;strokeWidth=2;fillColor=#8C4FFF;fillOpacity=4;verticalAlign=top;align=left;spacingLeft=12;spacingTop=8;fontStyle=1;fontSize=11;fontColor=#8C4FFF;fontFamily=Helvetica;" value="Disaster Recovery Standby Region: us-east-1 (N. Virginia)" vertex="1">
+          <mxGeometry height="160" width="530" x="720" y="70" as="geometry" />
+        </mxCell>
+        <mxCell id="svc-rds-dr" parent="dr-region-box" style="sketch=0;outlineConnect=0;fontColor=#232F3E;fillColor=#C925D1;strokeColor=#ffffff;verticalLabelPosition=bottom;verticalAlign=top;align=center;fontSize=10;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.aurora;fontFamily=Helvetica;shadow=1;" value="Aurora Global DB&#xa;Secondary Replica" vertex="1">
+          <mxGeometry height="42" width="42" x="40" y="45" as="geometry" />
+        </mxCell>
+        <mxCell id="card-rds-dr" parent="dr-region-box" style="rounded=0;strokeColor=#C925D1;fillColor=#FFFFFF;fontSize=10;fontColor=#333333;fontFamily=Helvetica;align=left;spacingLeft=8;" value="• Read-only standby cluster&#xa;• Promoted via SAGA &lt; 60s&#xa;• Dedicated DR Subnet Group" vertex="1">
+          <mxGeometry height="54" width="180" x="100" y="45" as="geometry" />
+        </mxCell>
+        <mxCell id="svc-s3-dr" parent="dr-region-box" style="sketch=0;outlineConnect=0;fontColor=#232F3E;fillColor=#3F8624;strokeColor=#ffffff;verticalLabelPosition=bottom;verticalAlign=top;align=center;fontSize=10;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.s3;fontFamily=Helvetica;shadow=1;" value="S3 DR Vault Bucket&#xa;(CRR Destination)" vertex="1">
+          <mxGeometry height="42" width="42" x="310" y="45" as="geometry" />
+        </mxCell>
+        <mxCell id="card-s3-dr" parent="dr-region-box" style="rounded=0;strokeColor=#3F8624;fillColor=#FFFFFF;fontSize=10;fontColor=#333333;fontFamily=Helvetica;align=left;spacingLeft=8;" value="• Replication Time Control (RTC)&#xa;• 15-Minute SLA guarantee&#xa;• DeleteMarker replication" vertex="1">
+          <mxGeometry height="54" width="150" x="365" y="45" as="geometry" />
+        </mxCell>
+
+        <!-- Replication Edges between Regions -->
+        <mxCell id="e-rds-rep" edge="1" parent="1" source="primary-region-box" target="dr-region-box" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#C925D1;strokeWidth=2;fontFamily=Helvetica;exitX=1;exitY=0.35;entryX=0;entryY=0.35;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="lbl-rep-rds" parent="1" style="text;strokeColor=none;fillColor=#FFFFFF;align=center;fontSize=10;fontColor=#C925D1;fontStyle=1;fontFamily=Helvetica;" value="Aurora Global Dedicated Backbone (RPO &lt; 1s)" vertex="1">
+          <mxGeometry height="20" width="270" x="550" y="115" as="geometry" />
+        </mxCell>
+
+        <mxCell id="e-s3-rep" edge="1" parent="1" source="primary-region-box" target="dr-region-box" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#3F8624;strokeWidth=2;fontFamily=Helvetica;exitX=1;exitY=0.7;entryX=0;entryY=0.7;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="lbl-rep-s3" parent="1" style="text;strokeColor=none;fillColor=#FFFFFF;align=center;fontSize=10;fontColor=#333333;fontStyle=1;fontFamily=Helvetica;" value="S3 Cross-Region Replication CRR (RPO &lt; 15m RTC)" vertex="1">
+          <mxGeometry height="20" width="290" x="540" y="172" as="geometry" />
+        </mxCell>
+
+        <!-- Bottom SLA & Disaster Recovery Strategy Strip -->
+        <mxCell id="dr-sla-1" parent="1" style="rounded=0;strokeColor=#C925D1;fillColor=#FFFFFF;fontSize=10.5;fontColor=#333333;fontFamily=Helvetica;fontStyle=1;align=center;" value="RPO Database: &lt; 1s&#xa;(Aurora Global Storage)" vertex="1">
+          <mxGeometry height="38" width="260" x="30" y="260" as="geometry" />
+        </mxCell>
+        <mxCell id="dr-sla-2" parent="1" style="rounded=0;strokeColor=#3F8624;fillColor=#FFFFFF;fontSize=10.5;fontColor=#333333;fontFamily=Helvetica;fontStyle=1;align=center;" value="RPO Object Storage: &lt; 15m&#xa;(S3 CRR + RTC SLA)" vertex="1">
+          <mxGeometry height="38" width="260" x="330" y="260" as="geometry" />
+        </mxCell>
+        <mxCell id="dr-sla-3" parent="1" style="rounded=0;strokeColor=#E7157B;fillColor=#FFFFFF;fontSize=10.5;fontColor=#333333;fontFamily=Helvetica;fontStyle=1;align=center;" value="RTO Target: &lt; 180s&#xa;(Step Functions SAGA Auto-Failover)" vertex="1">
+          <mxGeometry height="38" width="290" x="630" y="260" as="geometry" />
+        </mxCell>
+        <mxCell id="dr-sla-4" parent="1" style="rounded=0;strokeColor=#8C4FFF;fillColor=#8C4FFF;fillOpacity=8;fontSize=10.5;fontColor=#8C4FFF;fontFamily=Helvetica;fontStyle=1;align=center;" value="Route 53 DNS Failover:&#xa;Active-Standby Health Probing" vertex="1">
+          <mxGeometry height="38" width="270" x="960" y="260" as="geometry" />
+        </mxCell>
+    
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

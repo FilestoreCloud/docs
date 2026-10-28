@@ -1,0 +1,82 @@
+# Bộ Sơ Đồ Quy Trình Triển Khai Storix (Thiết Kế Tối Giản — Minimalist)
+
+Tất cả sơ đồ đã được tinh gọn triệt để theo phong cách **Minimalist (Tối Giản, Ít Chữ)**:
+1. **Loại bỏ văn bản thừa & nhiễu:** Cắt bỏ toàn bộ các đoạn giải thích dài dòng, phụ đề rườm rà và các hộp mô tả phạm vi không cần thiết.
+2. **Chỉ giữ lại những thông tin cốt lõi:**
+   - **Tên khối / giai đoạn** ngắn gọn, chuẩn xác.
+   - **Icon & Tên Service chính** (GitHub Actions, ECR, RDS Proxy, ECS Fargate, Step Functions, Canary).
+   - **Icon & Tên AWS IAM Role** chính thức (`resIcon=mxgraph.aws4.role`).
+   - **Mũi tên liên kết:** `assume role` nối Service → Role.
+   - **Trạng thái đầu ra (Output):** 2–3 từ súc tích (ví dụ: `Output: OIDC Token`, `Output: Nextcloud Pod`).
+3. **Bố cục thoáng đạt, chuẩn 16:9:** Không gian đệm rộng rãi, tỉ lệ cân đối, viền vuông sắc nét (`rounded=0`).
+4. **Chuẩn 100% Vector Native SVG & Nền Trong Suốt:** Không lỗi font khi mở hoặc Convert to Shape trong Microsoft PowerPoint / Keynote.
+5. **Bộ sản phẩm đồng bộ 8 trang:** Đầy đủ Overview, 6 Block chuyên sâu và 1 sơ đồ Process Destroy (Hủy diệt an toàn).
+
+---
+
+## 🔐 Bản Đồ AWS IAM Roles Trong Toàn Bộ Hệ Thống
+
+| Khối | AWS IAM Role | Định Nghĩa Trong IaC | Mục Đích & Quyền Hạn (Least Privilege) |
+| :--- | :--- | :--- | :--- |
+| **1. CI/CD & Auth** | `InfraDeployerRole` | `00-cicd/template.yaml` | Cấp cho GitHub Actions qua OIDC STS để deploy các CloudFormation Stacks (VPC, Storage, DB, Compute). |
+| | `RuntimeDeployerRole` | `00-cicd/template.yaml` | Quyền ECR Push (`golden-image`) và kích hoạt rolling update ECS Fargate service. |
+| | `ConsoleDeployerRole` | `00-cicd/template.yaml` | Quyền Sync mã nguồn React SPA lên S3 Admin Bucket và gọi CloudFront Invalidation API. |
+| **2. Build & IaC** | `RuntimeDeployerRole` | `00-cicd` → `01-ecr` | Docker login ECR, push multi-arch image sha256 digest và staging lambda zip lên S3. |
+| | `InfraDeployerRole` | `00-cicd` → `01-07` | Thực thi CloudFormation Change Sets dựng hạ tầng bất biến. |
+| **3. Foundation** | `RDSProxyIAMRole` | `04-database/template.yaml` | Cho phép RDS Proxy đọc DB secrets từ AWS Secrets Manager và giải mã bằng AWS KMS CMK. |
+| **4. Compute Runtime** | `ECSTaskExecutionRole` | `05-compute/template.yaml` | Cho ECS Agent pull Golden Image từ ECR, gửi log lên CloudWatch Logs, giải mã app config. |
+| | `ECSTaskRole` | `05-compute/template.yaml` | Quyền runtime của container Nextcloud: đọc/ghi S3 Vault Bucket prefix, mount EFS, invoke Bedrock AI. |
+| | `CronEventsRole` | `05-compute/template.yaml` | Cho phép EventBridge Scheduler định kỳ gọi ECS Run-Task chạy `cron.php` mỗi 5 phút. |
+| **5. Control Plane** | `StepFunctionsExecutionRole` | `06-superadmin/template.yaml` | Cho Step Functions điều phối State Machine SAGA, gọi Lambda Operators, kiểm tra DynamoDB OCC và rollback. |
+| | `TenantOperatorLambdaRole` | `06-superadmin/template.yaml` | Quyền cho Lambda xử lý OCC version check, tạo EFS Access Point, gọi ECS RunTask bootstrap. |
+| **6. Delivery & QA** | `SyntheticsCanaryRole` | `07-observability/template.yaml`| Cho CloudWatch Synthetics Canary chạy script Playwright, lưu screenshot/logs vào S3, bắn metric về Alarms. |
+
+---
+
+## 🗂️ Tải Về & Xem Trực Tiếp
+
+| Sơ Đồ | Vector SVG (Khuyên Dùng) | Ảnh PNG 2x Siêu Nét | File Draw.io Gốc |
+| :--- | :--- | :--- | :--- |
+| **0. Sơ Đồ Tổng Quan (2 Hàng)** | [storix_overview_pipeline.svg](/images/storix_overview_pipeline.svg) | [storix_overview_pipeline.png](/images/storix_overview_pipeline.png) | [storix_overview_pipeline.drawio](/images/storix_overview_pipeline.drawio) |
+| **1. CI/CD & Auth** | [storix_block1_cicd_auth.svg](/images/storix_block1_cicd_auth.svg) | [storix_block1_cicd_auth.png](/images/storix_block1_cicd_auth.png) | [storix_block1_cicd_auth.drawio](/images/storix_block1_cicd_auth.drawio) |
+| **2. Build & IaC** | [storix_block2_build_artifacts.svg](/images/storix_block2_build_artifacts.svg) | [storix_block2_build_artifacts.png](/images/storix_block2_build_artifacts.png) | [storix_block2_build_artifacts.drawio](/images/storix_block2_build_artifacts.drawio) |
+| **3. Foundation & Storage** | [storix_block3_foundation_storage.svg](/images/storix_block3_foundation_storage.svg) | [storix_block3_foundation_storage.png](/images/storix_block3_foundation_storage.png) | [storix_block3_foundation_storage.drawio](/images/storix_block3_foundation_storage.drawio) |
+| **4. Compute Runtime** | [storix_block4_compute_bootstrap.svg](/images/storix_block4_compute_bootstrap.svg) | [storix_block4_compute_bootstrap.png](/images/storix_block4_compute_bootstrap.png) | [storix_block4_compute_bootstrap.drawio](/images/storix_block4_compute_bootstrap.png) |
+| **5. Control Plane** | [storix_block5_control_plane.svg](/images/storix_block5_control_plane.svg) | [storix_block5_control_plane.png](/images/storix_block5_control_plane.png) | [storix_block5_control_plane.drawio](/images/storix_block5_control_plane.drawio) |
+| **6. Delivery & QA** | [storix_block6_delivery_qa.svg](/images/storix_block6_delivery_qa.svg) | [storix_block6_delivery_qa.png](/images/storix_block6_delivery_qa.png) | [storix_block6_delivery_qa.drawio](/images/storix_block6_delivery_qa.drawio) |
+| **7. Process Destroy (Teardown)** | [storix_process_destroy.svg](/images/storix_process_destroy.svg) | [storix_process_destroy.png](/images/storix_process_destroy.png) | [storix_process_destroy.drawio](/images/storix_process_destroy.drawio) |
+| **Toàn Cảnh Gộp (Pipeline)** | [storix_deployment_pipeline.svg](/images/storix_deployment_pipeline.svg) | [storix_deployment_pipeline.png](/images/storix_deployment_pipeline.png) | [storix_deployment_pipeline.drawio](/images/storix_deployment_pipeline.drawio) |
+
+* **🌐 Gallery HTML xem trực quan:** `docs/view_deployment_diagrams.html`
+* **📑 Multi-Page PDF (8 Trang):** `docs/storix_deployment_all_in_one.pdf`
+* **✏️ Multi-Page Draw.io (8 Tabs):** `docs/storix_deployment_all_in_one.drawio`
+
+---
+
+## 🛑 Quy Trình Hủy Diệt & Thu Hồi Hạ Tầng (Process Destroy)
+
+Dựa theo kịch bản chuẩn trong `infra/.github/workflows/destroy.yml`:
+
+1. **Khối 1: Lock & OIDC Authentication**
+   - **Safeguard Chống Xóa Nhầm:** Yêu cầu Platform Engineer nhập chuỗi bảo vệ chính xác `confirm_destruction == 'DESTROY'`.
+   - **Xác thực Không Cần Long-Lived Key:** GitHub Actions kết nối AWS STS qua OIDC, assume role `InfraDeployerRole`.
+2. **Khối 2: Edge & Ingress Teardown**
+   - `manage_dns.py` gọi Cloudflare DNS API xóa toàn bộ CNAME & A records (`*.png261.dev`), ngắt lưu lượng truy cập từ ngoài Internet.
+3. **Khối 3: Observability & Control Plane Teardown**
+   - Xóa CloudFormation Stack `07-Observability` (Synthetics Canary, CloudWatch Alarms, FinOps AutoSleep Rule).
+   - Xóa Stack `06-SuperAdmin` (API Gateway Ingress, Step Functions SAGA State Machine, TenantOperator Lambda, DynamoDB OCC Table).
+4. **Khối 4: Compute Runtime & Scheduler Teardown**
+   - Xóa Stack `05-Compute` (Dừng toàn bộ ECS Fargate tasks, xóa ECS Services, Task Definitions, ALB Ingress, Target Groups, và EventBridge Cron).
+5. **Khối 5: Database & Multi-Tier Storage Teardown**
+   - Xóa Stack `04-Database` (Thu hồi RDS Proxy, Terminate RDS PostgreSQL 16 Multi-AZ).
+   - Xóa Stack `03-Storage` (Force-drain & xóa S3 Vault Buckets, xóa Amazon EFS File System & Access Points).
+6. **Khối 6: Security Keys & Core Network Teardown**
+   - Xóa Stack `02-Security` (Xóa Secrets Manager credentials & schedule disable/delete AWS KMS CMK keys).
+   - Xóa Stack `01-Networking` (Giải phóng NAT Gateways, Internet Gateway, Subnets, Route Tables, và VPC core).
+   - **Trạng Thái Cuối:** 100% Zero-Cost state (Hạ tầng sạch hoàn toàn, không phát sinh chi phí AWS duy trì).
+
+---
+
+## 1. Sơ Đồ Tổng Quan (Overview 2 Hàng — 1920 × 1016 px)
+
+![Storix Overview Pipeline](/images/storix_overview_pipeline.png)

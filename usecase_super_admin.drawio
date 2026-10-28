@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="app.diagrams.net" agent="Storix" version="26.0.0">
+  <diagram id="sa-usecase" name="Super Admin Use Case">
+    <mxGraphModel dx="1000" dy="700" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="950" pageHeight="500" background="none" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- SYSTEM BOUNDARY -->
+        <mxCell id="sys_boundary" value="Platform Management Plane" style="swimlane;startSize=30;fillColor=none;strokeColor=#7E22CE;strokeWidth=2;fontStyle=1;fontSize=13;fontColor=#6B21A8;rounded=0;arcSize=0;align=center;" vertex="1" parent="1">
+          <mxGeometry x="210" y="30" width="680" height="400" as="geometry" />
+        </mxCell>
+
+        <!-- Use Cases -->
+        <mxCell id="sa_uc10" value="UC-SA10&#xa;Admin Authentication" style="ellipse;html=0;fillColor=#FFFFFF;strokeColor=#9333EA;strokeWidth=1.5;fontSize=11;fontColor=#581C87;align=center;fontStyle=1;" vertex="1" parent="sys_boundary">
+          <mxGeometry x="50" y="50" width="190" height="46" as="geometry" />
+        </mxCell>
+
+        <mxCell id="sa_uc01" value="UC-SA01&#xa;Provision Tenant" style="ellipse;html=0;fillColor=#FFFFFF;strokeColor=#9333EA;strokeWidth=1.5;fontSize=11;fontColor=#581C87;align=center;fontStyle=1;" vertex="1" parent="sys_boundary">
+          <mxGeometry x="50" y="130" width="190" height="46" as="geometry" />
+        </mxCell>
+
+        <mxCell id="sa_uc03" value="UC-SA03&#xa;Lifecycle Control&#xa;(Suspend / Resume)" style="ellipse;html=0;fillColor=#FFFFFF;strokeColor=#9333EA;strokeWidth=1.5;fontSize=11;fontColor=#581C87;align=center;fontStyle=1;" vertex="1" parent="sys_boundary">
+          <mxGeometry x="50" y="210" width="190" height="50" as="geometry" />
+        </mxCell>
+
+        <mxCell id="sa_uc08" value="UC-SA08&#xa;FinOps &amp; Hibernation" style="ellipse;html=0;fillColor=#FFFBEB;strokeColor=#F59E0B;strokeWidth=1.5;fontSize=10.5;fontColor=#B45309;align=center;fontStyle=1;" vertex="1" parent="sys_boundary">
+          <mxGeometry x="380" y="212" width="180" height="46" as="geometry" />
+        </mxCell>
+
+        <mxCell id="sa_uc02" value="UC-SA02&#xa;Tenant Directory" style="ellipse;html=0;fillColor=#FFFFFF;strokeColor=#9333EA;strokeWidth=1.5;fontSize=11;fontColor=#581C87;align=center;fontStyle=1;" vertex="1" parent="sys_boundary">
+          <mxGeometry x="50" y="290" width="190" height="46" as="geometry" />
+        </mxCell>
+
+        <mxCell id="sa_uc04" value="UC-SA04&#xa;System Monitoring" style="ellipse;html=0;fillColor=#FFFFFF;strokeColor=#9333EA;strokeWidth=1.5;fontSize=11;fontColor=#581C87;align=center;fontStyle=1;" vertex="1" parent="sys_boundary">
+          <mxGeometry x="380" y="70" width="180" height="46" as="geometry" />
+        </mxCell>
+
+        <mxCell id="sa_uc06" value="UC-SA06&#xa;Deprovision &amp; Archive" style="ellipse;html=0;fillColor=#FFFFFF;strokeColor=#9333EA;strokeWidth=1.5;fontSize=11;fontColor=#581C87;align=center;fontStyle=1;" vertex="1" parent="sys_boundary">
+          <mxGeometry x="380" y="140" width="180" height="46" as="geometry" />
+        </mxCell>
+
+        <mxCell id="ext_sa08" value="«extend»" style="edgeStyle=none;html=0;dashed=1;endArrow=open;endSize=8;strokeColor=#D97706;strokeWidth=1.2;fontSize=10;fontColor=#B45309;align=center;" edge="1" parent="sys_boundary" source="sa_uc08" target="sa_uc03">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- ACTOR -->
+        <mxCell id="actor_sa" value="Platform Super Admin" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=0;outlineConnect=0;fillColor=#4338CA;strokeColor=#312E81;fontColor=#1E1B4B;fontSize=12;;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="60" y="190" width="40" height="80" as="geometry" />
+        </mxCell>
+
+        <!-- Connections -->
+        <mxCell id="link_1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=0;strokeColor=#4338CA;strokeWidth=1.5;endArrow=none;" edge="1" parent="1" source="actor_sa" target="sa_uc10">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="170" y="230" />
+              <mxPoint x="170" y="103" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="link_2" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=0;strokeColor=#4338CA;strokeWidth=1.5;endArrow=none;" edge="1" parent="1" source="actor_sa" target="sa_uc01">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="180" y="230" />
+              <mxPoint x="180" y="183" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="link_3" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=0;strokeColor=#4338CA;strokeWidth=1.5;endArrow=none;" edge="1" parent="1" source="actor_sa" target="sa_uc03">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="180" y="230" />
+              <mxPoint x="180" y="265" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="link_4" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=0;strokeColor=#4338CA;strokeWidth=1.5;endArrow=none;" edge="1" parent="1" source="actor_sa" target="sa_uc02">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="170" y="230" />
+              <mxPoint x="170" y="343" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

@@ -27,6 +27,7 @@
         "pages": [
           "docs/deployment/prerequisites",
           "docs/deployment/github-actions",
+          "docs/deployment/pipeline-architecture",
           "docs/deployment/local-cli",
           "docs/deployment/verification"
         ]
@@ -50,11 +51,17 @@
         ]
       },
       {
-        "group": "AI Integration",
+        "group": "AI & Search Integration",
         "pages": [
           "docs/ai/bedrock-integration",
           "docs/ai/litellm-bridge",
           "docs/ai/rag-pipeline"
+        ]
+      },
+      {
+        "group": "Architecture & Defense",
+        "pages": [
+          "docs/project-defense-qa"
         ]
       }
     ]

@@ -11,33 +11,35 @@ All platform deployments, runtime container builds, console frontend updates, an
 
 ## 🚀 Full Platform Deployment (`deploy-all.yml`)
 
-The `deploy-all.yml` workflow orchestrates a 10-stage end-to-end deployment across all layers:
+The `deploy-all.yml` workflow orchestrates an end-to-end deployment across all 6 architectural blocks:
+
+![Storix Automated CI/CD Deployment Pipeline](/images/storix_deployment_pipeline.png)
 
 ```mermaid
 flowchart TD
-    subgraph ParallelPhase["Parallel Build Phase"]
-        R["1. Build & Push Multi-Arch Runtime to ECR<br/>(linux/arm64 + linux/amd64 + AWS SOCI)"]
-        N["2a. Deploy 01-Networking Stack<br/>(VPC, Subnets, S3 Gateway Endpoint)"]
+    subgraph ParallelPhase["Block 1 & 2: Parallel Build Phase"]
+        R["Build & Push Multi-Arch Runtime to ECR<br/>(linux/arm64 + linux/amd64 + AWS SOCI)"]
+        N["Deploy 01-Networking Stack<br/>(VPC, Subnets, S3 Gateway Endpoint)"]
     end
 
-    subgraph SecurityPhase["Security & Foundation"]
-        S["2b. Deploy 02-Security Stack<br/>(Security Groups, KMS Keys, IAM Roles)"]
+    subgraph SecurityPhase["Block 3: Security & Foundation"]
+        S["Deploy 02-Security Stack<br/>(Security Groups, KMS Keys, IAM Roles)"]
     end
 
-    subgraph StorageDataPhase["Storage & Data Tier"]
-        ST["2c. Deploy 03-Storage Stack<br/>(EFS Archive Lifecycle & S3 Multi-Tier)"]
-        DB["2d. Deploy 04-Database Stack<br/>(RDS PostgreSQL 16 & RDS Proxy)"]
+    subgraph StorageDataPhase["Block 3: Storage & Data Tier"]
+        ST["Deploy 03-Storage Stack<br/>(EFS Archive Lifecycle, S3 Vault & OpenSearch)"]
+        DB["Deploy 04-Database Stack<br/>(RDS PostgreSQL 16 & RDS Proxy)"]
     end
 
-    subgraph ComputePhase["Compute & Control Plane"]
-        C["2e. Deploy 05-Compute Stack<br/>(ECS Fargate ARM64, ALB, Dedicated Cron)"]
-        SA["2f. Deploy 06-SuperAdmin Stack<br/>(Step Functions SAGAs, Lambda, Async OCC)"]
-        OB["2g. Deploy 07-Observability Stack<br/>(Synthetics Canaries & CloudWatch EMF)"]
+    subgraph ComputePhase["Block 4: Compute & Control Plane"]
+        C["Deploy 05-Compute Stack<br/>(ECS Fargate ARM64, ALB, Dedicated Cron)"]
+        SA["Deploy 06-SuperAdmin Stack<br/>(Step Functions SAGAs, Lambda, Async OCC)"]
+        OB["Deploy 07-Observability Stack<br/>(Synthetics Canaries & CloudWatch EMF)"]
     end
 
-    subgraph FrontEndAndVerify["Frontend & Verification"]
-        CP["3. Build Console React SPA & Deploy to CloudFront"]
-        AC["4. Full-Stack Acceptance Tests<br/>(Terratest In-Place + Playwright E2E)"]
+    subgraph FrontEndAndVerify["Block 5 & 6: Frontend & Verification"]
+        CP["Build Console React SPA & Deploy to CloudFront"]
+        AC["Full-Stack Acceptance Tests<br/>(199/199 Automated Tests + Playwright Canaries)"]
     end
 
     ParallelPhase --> S
@@ -64,6 +66,8 @@ gh workflow run deploy-all.yml \
 
 To achieve true **$0.00 idle cost** when testing or decommissioning an environment, `destroy.yml` tears down all provisioned resources in reverse dependency order:
 
+![Storix Zero-Cost Teardown & Destroy Process](/images/storix_process_destroy.png)
+
 ```mermaid
 flowchart LR
     O["07-Observability"] --> SA["06-SuperAdmin"]
@@ -73,6 +77,16 @@ flowchart LR
     ST --> S["02-Security"]
     S --> N["01-Networking"]
 ```
+
+### 8-Stage Teardown Invariants
+1. **Confirmation Check:** Requires exact string parameter `confirm_destruction=DESTROY`.
+2. **Tenant Scale-to-Zero:** Sets `desiredCount: 0` on all tenant ECS services, terminating containers.
+3. **ECS Draining & Cleanup:** Deregisters task definitions and force-deletes cluster services.
+4. **S3 Vault Recursive Purge:** Custom Python teardown cleans all versioned S3 objects, delete markers, and incomplete multipart uploads.
+5. **EFS Access Point Cleanup:** Detaches all tenant configuration access points.
+6. **Database Instance Deletion:** Drops RDS Proxy target groups and deletes PostgreSQL / Aurora instances.
+7. **CloudFormation Stacks Teardown:** Executes stack deletions in reverse order with dynamic retain-resources error recovery.
+8. **Final FinOps Audit:** Confirms zero lingering AWS billable resources ($0.00 continuing cost).
 
 ### Triggering Teardown via GitHub CLI
 

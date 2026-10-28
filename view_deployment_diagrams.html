@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Storix Platform — Bộ Sơ Đồ Quy Trình Triển Khai AWS</title>
+  <style>
+    :root {
+      --bg: #0f172a;
+      --card-bg: #1e293b;
+      --border: #334155;
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+      --accent: #007cbd;
+      --accent-hover: #0284c7;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.5;
+      padding: 24px;
+    }
+    header {
+      max-width: 1400px;
+      margin: 0 auto 24px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+    }
+    h1 { font-size: 24px; font-weight: 700; color: #fff; }
+    p.sub { font-size: 14px; color: var(--text-muted); margin-top: 4px; }
+    .btn-group { display: flex; gap: 10px; }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--accent);
+      color: #fff;
+      padding: 8px 14px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 600;
+      transition: background 0.2s;
+    }
+    .btn:hover { background: var(--accent-hover); }
+    .btn-outline {
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--text);
+    }
+    .btn-outline:hover { background: rgba(255,255,255,0.05); }
+
+    .nav-tabs {
+      max-width: 1400px;
+      margin: 0 auto 20px;
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      padding-bottom: 8px;
+    }
+    .tab-btn {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.2s;
+    }
+    .tab-btn:hover { color: #fff; border-color: #64748b; }
+    .tab-btn.active { background: var(--accent); color: #fff; border-color: var(--accent); }
+
+    .diagram-card {
+      max-width: 1400px;
+      margin: 0 auto 24px;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+      display: none;
+    }
+    .diagram-card.active { display: block; }
+    .card-header {
+      padding: 16px 20px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .card-title { font-size: 16px; font-weight: 600; }
+    .card-body {
+      padding: 24px;
+      background: #111827;
+      text-align: center;
+      overflow-x: auto;
+    }
+    .diagram-img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 4px;
+      background: transparent;
+      padding: 12px;
+    }
+    .card-footer {
+      padding: 16px 20px;
+      background: var(--card-bg);
+      font-size: 13px;
+      color: var(--text-muted);
+      border-top: 1px solid var(--border);
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div>
+      <h1>Storix Platform — Bộ Sơ Đồ Triển Khai AWS</h1>
+      <p class="sub">Tối giản hóa • Chuẩn AWS4 Icons • Khối vuông góc sắc nét • 0% Mũi tên đè icon</p>
+    </div>
+    <div class="btn-group">
+      <a href="storix_deployment_all_in_one.pdf" target="_blank" class="btn">📄 Tải PDF Đầy Đủ (7 Trang)</a>
+      <a href="storix_deployment_all_in_one.drawio" download class="btn btn-outline">✏️ Tải Multi-Page Draw.io</a>
+    </div>
+  </header>
+
+  <div class="nav-tabs">
+    <button class="tab-btn active" onclick="showTab(0)">0. Tổng Quan Pipeline</button>
+    <button class="tab-btn" onclick="showTab(1)">1. CI/CD & Auth</button>
+    <button class="tab-btn" onclick="showTab(2)">2. Build & IaC</button>
+    <button class="tab-btn" onclick="showTab(3)">3. Foundation & Storage</button>
+    <button class="tab-btn" onclick="showTab(4)">4. Compute Runtime</button>
+    <button class="tab-btn" onclick="showTab(5)">5. Control Plane SAGA</button>
+    <button class="tab-btn" onclick="showTab(6)">6. Delivery & QA</button>
+    <button class="tab-btn" onclick="showTab(7)" style="border-color:#DD344C; color:#DD344C;">7. Process Destroy (Teardown)</button>
+    <button class="tab-btn" onclick="showTab(8)" style="border-color:#007cbd; color:#007cbd;">Toàn Cảnh Pipeline (2 Hàng)</button>
+  </div>
+
+  <!-- Sơ đồ Tổng Quan -->
+  <div class="diagram-card active" id="card-0">
+    <div class="card-header">
+      <div class="card-title">0. Sơ Đồ Tổng Quan — Chuỗi 6 Khối Triển Khai Liên Hoàn</div>
+      <div class="btn-group">
+        <a href="images/storix_overview_pipeline.svg" target="_blank" class="btn">Xem Vector SVG</a>
+        <a href="images/storix_overview_pipeline.png" target="_blank" class="btn btn-outline">Ảnh PNG</a>
+      </div>
+    </div>
+    <div class="card-body">
+      <img src="images/storix_overview_pipeline.png" alt="Overview Pipeline" class="diagram-img">
+    </div>
+    <div class="card-footer">
+      💡 Mô tả sự chuyển tiếp đầu ra (output) của khối trước làm đầu vào (input) cho khối tiếp theo trong workflow <font face="Courier">deploy-all.yml</font>.
+    </div>
+  </div>
+
+  <!-- 1. CI/CD & Auth -->
+  <div class="diagram-card" id="card-1">
+    <div class="card-header">
+      <div class="card-title">1. CI/CD Pipeline & Xác Thực OIDC Không Secret Tĩnh</div>
+      <div class="btn-group">
+        <a href="images/storix_block1_cicd_auth.svg" target="_blank" class="btn">Xem Vector SVG</a>
+        <a href="images/storix_block1_cicd_auth.png" target="_blank" class="btn btn-outline">Ảnh PNG</a>
+      </div>
+    </div>
+    <div class="card-body">
+      <img src="images/storix_block1_cicd_auth.png" alt="1. CI/CD & Auth" class="diagram-img">
+    </div>
+    <div class="card-footer">
+      Platform Engineer đẩy commit ➔ GitHub Actions bắt tay OIDC với AWS STS nhận temporary credentials của IAM Deployer Roles (Module 00-cicd).
+    </div>
+  </div>
+
+  <!-- 2. Build & IaC -->
+  <div class="diagram-card" id="card-2">
+    <div class="card-header">
+      <div class="card-title">2. Đóng Gói Container Bất Biến & Staging CloudFormation</div>
+      <div class="btn-group">
+        <a href="images/storix_block2_build_artifacts.svg" target="_blank" class="btn">Xem Vector SVG</a>
+        <a href="images/storix_block2_build_artifacts.png" target="_blank" class="btn btn-outline">Ảnh PNG</a>
+      </div>
+    </div>
+    <div class="card-body">
+      <img src="images/storix_block2_build_artifacts.png" alt="2. Build & IaC" class="diagram-img">
+    </div>
+    <div class="card-footer">
+      Docker Buildx biên dịch Nextcloud Graviton ARM64 đẩy lên Amazon ECR; nén gói mã nguồn Lambda lên S3 Staging; kích hoạt CloudFormation.
+    </div>
+  </div>
+
+  <!-- 3. Foundation & Storage -->
+  <div class="diagram-card" id="card-3">
+    <div class="card-header">
+      <div class="card-title">3. Hạ Tầng Mạng, Mã Hóa & Lưu Trữ Đa Tầng</div>
+      <div class="btn-group">
+        <a href="images/storix_block3_foundation_storage.svg" target="_blank" class="btn">Xem Vector SVG</a>
+        <a href="images/storix_block3_foundation_storage.png" target="_blank" class="btn btn-outline">Ảnh PNG</a>
+      </div>
+    </div>
+    <div class="card-body">
+      <img src="images/storix_block3_foundation_storage.png" alt="3. Foundation & Storage" class="diagram-img">
+    </div>
+    <div class="card-footer">
+      CloudFormation dựng VPC Multi-AZ, KMS CMK, Secrets Manager; Amazon EFS (Archive lifecycle 90d), S3 Vault, RDS PostgreSQL 16 & RDS Proxy.
+    </div>
+  </div>
+
+  <!-- 4. Compute Runtime -->
+  <div class="diagram-card" id="card-4">
+    <div class="card-header">
+      <div class="card-title">4. Compute Runtime & Tự Động Bootstrap Tenant</div>
+      <div class="btn-group">
+        <a href="images/storix_block4_compute_bootstrap.svg" target="_blank" class="btn">Xem Vector SVG</a>
+        <a href="images/storix_block4_compute_bootstrap.png" target="_blank" class="btn btn-outline">Ảnh PNG</a>
+      </div>
+    </div>
+    <div class="card-body">
+      <img src="images/storix_block4_compute_bootstrap.png" alt="4. Compute Runtime" class="diagram-img">
+    </div>
+    <div class="card-footer">
+      ALB định tuyến HTTPS; ECS Fargate kéo Golden Image từ ECR; ECS Run-Task chạy <font face="Courier">occ maintenance:install</font> thiết lập catalog db; EventBridge quản lý cron.
+    </div>
+  </div>
+
+  <!-- 5. Control Plane SAGA -->
+  <div class="diagram-card" id="card-5">
+    <div class="card-header">
+      <div class="card-title">5. SuperAdmin Control Plane & SAGA Distributed Transactions</div>
+      <div class="btn-group">
+        <a href="images/storix_block5_control_plane.svg" target="_blank" class="btn">Xem Vector SVG</a>
+        <a href="images/storix_block5_control_plane.png" target="_blank" class="btn btn-outline">Ảnh PNG</a>
+      </div>
+    </div>
+    <div class="card-body">
+      <img src="images/storix_block5_control_plane.png" alt="5. Control Plane SAGA" class="diagram-img">
+    </div>
+    <div class="card-footer">
+      Cognito xác thực JWT; API Gateway proxy tới Lambda; Lambda kiểm tra version atomic trên DynamoDB (OCC) và Step Functions chạy state machine SAGA (rollback tự động).
+    </div>
+  </div>
+
+  <!-- 6. Delivery & QA -->
+  <div class="diagram-card" id="card-6">
+    <div class="card-header">
+      <div class="card-title">6. Edge CDN Delivery, Dynamic DNS & Cổng Kiểm Thử 24/7</div>
+      <div class="btn-group">
+        <a href="images/storix_block6_delivery_qa.svg" target="_blank" class="btn">Xem Vector SVG</a>
+        <a href="images/storix_block6_delivery_qa.png" target="_blank" class="btn btn-outline">Ảnh PNG</a>
+      </div>
+    </div>
+    <div class="card-body">
+      <img src="images/storix_block6_delivery_qa.png" alt="6. Delivery & QA" class="diagram-img">
+    </div>
+    <div class="card-footer">
+      S3 Admin Web & CloudFront CDN phân phối React SPA; Cloudflare DNS đồng bộ subdomain; Terratest, Playwright và CloudWatch Synthetics kiểm thử 24/7.
+    </div>
+  </div>
+
+  <!-- 7. Process Destroy (Teardown) -->
+  <div class="diagram-card" id="card-7">
+    <div class="card-header">
+      <div class="card-title" style="color: #DD344C;">7. Process Destroy — Quy Trình Dọn Dẹp Hạ Tầng An Toàn (Teardown Workflow)</div>
+      <div class="btn-group">
+        <a href="images/storix_process_destroy.svg" target="_blank" class="btn" style="background: #DD344C;">Xem Vector SVG</a>
+        <a href="images/storix_process_destroy.png" target="_blank" class="btn btn-outline" style="border-color: #DD344C; color: #DD344C;">Ảnh PNG</a>
+      </div>
+    </div>
+    <div class="card-body">
+      <img src="images/storix_process_destroy.png" alt="Process Destroy" class="diagram-img">
+    </div>
+    <div class="card-footer">
+      🛡️ Quy trình Teardown theo thứ tự ngược lại của CloudFormation Stacks: Khóa xác nhận 'DESTROY' ➔ Dọn dẹp Cloudflare DNS ➔ Xóa Observability & Control Plane ➔ Dừng Compute ECS & ALB ➔ Xóa Database & Làm rỗng S3/EFS ➔ Thu hồi KMS & Xóa VPC (Đưa chi phí về 0 tuyệt đối).
+    </div>
+  </div>
+
+  <!-- 8. Toàn Cảnh Pipeline (2 Hàng) -->
+  <div class="diagram-card" id="card-8">
+    <div class="card-header">
+      <div class="card-title">Toàn Cảnh Kiến Trúc Triển Khai (Bố Cục 2 Hàng 16:9 — Tối Giản)</div>
+      <div class="btn-group">
+        <a href="images/storix_deployment_pipeline.svg" target="_blank" class="btn">Xem Vector SVG</a>
+        <a href="images/storix_deployment_pipeline.png" target="_blank" class="btn btn-outline">Ảnh PNG</a>
+      </div>
+    </div>
+    <div class="card-body">
+      <img src="images/storix_deployment_pipeline.png" alt="Toàn Cảnh Pipeline 2 Hàng" class="diagram-img">
+    </div>
+    <div class="card-footer">
+      🚀 Bố cục 2 hàng chuẩn 16:9 trình chiếu: Hàng 1 gồm Khối 1 (CI/CD) ➔ Khối 2 (Build) ➔ Khối 3 (Foundation) | Hành lang rẽ xuống Hàng 2 gồm Khối 4 (Compute) ➔ Khối 5 (Control Plane) ➔ Khối 6 (Delivery & QA).
+    </div>
+  </div>
+
+  <script>
+    function showTab(idx) {
+      document.querySelectorAll('.tab-btn').forEach((btn, i) => {
+        btn.classList.toggle('active', i === idx);
+      });
+      document.querySelectorAll('.diagram-card').forEach((card, i) => {
+        card.classList.toggle('active', i === idx);
+      });
+    }
+  </script>
+</body>
+</html>

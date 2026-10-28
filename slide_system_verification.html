@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Storix - Slide Bằng Chứng & Thông Số Kiểm Thử Hệ Thống (Live AWS Telemetry)</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background-color: #FFFFFF;
+      color: #0F172A;
+      width: 1920px;
+      height: 1080px;
+      overflow: hidden;
+    }
+    .font-mono {
+      font-family: 'JetBrains Mono', monospace;
+    }
+  </style>
+</head>
+<body class="flex flex-col justify-between p-12 bg-white select-none">
+
+  <!-- TOP HEADER -->
+  <div class="flex items-center justify-between border-b border-slate-200 pb-5">
+    <div>
+      <div class="flex items-center gap-2.5 mb-1.5">
+        <span class="px-3 py-0.5 text-xs font-bold tracking-wider uppercase bg-blue-50 text-blue-700 border border-blue-200 rounded-full font-mono">
+          SECTION 03 · VERIFICATION &amp; TELEMETRY
+        </span>
+        <span class="text-xs font-semibold text-slate-500 tracking-wide uppercase font-mono">
+          BÁO CÁO TỐT NGHIỆP · ĐỀ TÀI T16: BACKEND FILESTORE API
+        </span>
+      </div>
+      <h1 class="text-3xl font-extrabold text-slate-900 tracking-tight flex items-center gap-3">
+        Bằng Chứng Vận Hành: Thông Số Đo Lường &amp; Kết Quả Kiểm Thử Thực Tế
+      </h1>
+    </div>
+    <div class="text-right">
+      <div class="text-xs font-mono font-medium text-slate-400 uppercase tracking-wider">Môi Trường AWS Singapore (ap-southeast-1)</div>
+      <div class="inline-flex items-center gap-2 mt-1 px-3 py-1 bg-emerald-50 border border-emerald-200 rounded-full text-xs font-semibold text-emerald-800">
+        <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span> Account ID: 649519997247 · 100% Live Operational
+      </div>
+    </div>
+  </div>
+
+  <!-- TOP 4 STAT CARDS -->
+  <div class="grid grid-cols-4 gap-5 my-3">
+    <!-- Card 1 -->
+    <div class="bg-slate-50 border border-slate-200 rounded-xl p-4 flex flex-col justify-between">
+      <div class="flex items-center justify-between">
+        <span class="text-xs font-bold text-slate-500 tracking-wider font-mono uppercase">HẠ TẦNG IAС</span>
+        <span class="text-[11px] font-bold px-2 py-0.5 bg-blue-100 text-blue-700 rounded-full">CloudFormation</span>
+      </div>
+      <div class="my-1.5 flex items-baseline gap-2">
+        <span class="text-3xl font-extrabold text-slate-900 font-mono">6 / 6</span>
+        <span class="text-xs font-bold text-emerald-600 uppercase">CREATE_COMPLETE</span>
+      </div>
+      <div class="text-[12px] text-slate-500 leading-tight">
+        100% tài nguyên VPC, SG, EFS, RDS, ALB, Control Plane provision tự động.
+      </div>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="bg-slate-50 border border-slate-200 rounded-xl p-4 flex flex-col justify-between">
+      <div class="flex items-center justify-between">
+        <span class="text-xs font-bold text-slate-500 tracking-wider font-mono uppercase">TÍNH NĂNG FILESTORE</span>
+        <span class="text-[11px] font-bold px-2 py-0.5 bg-emerald-100 text-emerald-700 rounded-full">Deep Test Suites</span>
+      </div>
+      <div class="my-1.5 flex items-baseline gap-2">
+        <span class="text-3xl font-extrabold text-emerald-700 font-mono">9 / 9</span>
+        <span class="text-xs font-bold text-emerald-600 uppercase">SUITES PASS (100%)</span>
+      </div>
+      <div class="text-[12px] text-slate-500 leading-tight">
+        WebDAV S3 Direct, Bitmask RBAC, File Drop, Hard Quota 507, Bedrock RAG.
+      </div>
+    </div>
+
+    <!-- Card 3 -->
+    <div class="bg-slate-50 border border-slate-200 rounded-xl p-4 flex flex-col justify-between">
+      <div class="flex items-center justify-between">
+        <span class="text-xs font-bold text-slate-500 tracking-wider font-mono uppercase">HIỆU NĂNG &amp; SỨC KHỎE</span>
+        <span class="text-[11px] font-bold px-2 py-0.5 bg-indigo-100 text-indigo-700 rounded-full">Telemetry</span>
+      </div>
+      <div class="my-1.5 flex items-baseline gap-2">
+        <span class="text-3xl font-extrabold text-indigo-700 font-mono">&lt; 2ms</span>
+        <span class="text-xs font-bold text-emerald-600 uppercase">RDS PG16 Latency</span>
+      </div>
+      <div class="text-[12px] text-slate-500 leading-tight">
+        ALB Target Health 100% HEALTHY, HTTP 200 OK trên <code class="font-mono text-slate-700">/status.php</code>.
+      </div>
+    </div>
+
+    <!-- Card 4 -->
+    <div class="bg-slate-50 border border-slate-200 rounded-xl p-4 flex flex-col justify-between">
+      <div class="flex items-center justify-between">
+        <span class="text-xs font-bold text-slate-500 tracking-wider font-mono uppercase">TỐI ƯU FINOPS</span>
+        <span class="text-[11px] font-bold px-2 py-0.5 bg-amber-100 text-amber-800 rounded-full">Scale-to-Zero</span>
+      </div>
+      <div class="my-1.5 flex items-baseline gap-2">
+        <span class="text-3xl font-extrabold text-amber-600 font-mono">$0.00</span>
+        <span class="text-xs font-bold text-slate-600 uppercase">/ Giờ Compute (Idle)</span>
+      </div>
+      <div class="text-[12px] text-slate-500 leading-tight">
+        Tự động ngắt Fargate khi SUSPEND; phục hồi sau 15–20s; bảo toàn 100% dữ liệu.
+      </div>
+    </div>
+  </div>
+
+  <!-- MAIN 3-COLUMN CONTENT -->
+  <div class="grid grid-cols-12 gap-6 my-auto" style="height: 610px;">
+    
+    <!-- CỘT 1: THÔNG SỐ ĐỊNH DANH & ENDPOINT THỰC TẾ (4 CỘT) -->
+    <div class="col-span-4 bg-slate-50/70 border border-slate-200 rounded-2xl p-6 flex flex-col justify-between shadow-sm">
+      <div>
+        <div class="flex items-center justify-between pb-3 mb-4 border-b border-slate-200">
+          <div class="flex items-center gap-2 text-blue-700 font-bold text-sm tracking-wide uppercase">
+            <span class="flex h-5 w-5 items-center justify-center rounded-full bg-blue-100 text-blue-700 text-xs font-bold">1</span>
+            Định Danh &amp; Topology Thực Tế
+          </div>
+          <span class="text-[11px] font-mono font-semibold px-2 py-0.5 bg-blue-100 text-blue-800 rounded border border-blue-200">
+            AWS Singapore
+          </span>
+        </div>
+
+        <ul class="space-y-3.5 text-[13px] leading-relaxed text-slate-600">
+          <li class="flex items-start gap-2.5">
+            <span class="text-blue-600 font-bold mt-0.5">▪</span>
+            <div>
+              <strong class="text-slate-900">Virtual Private Cloud (VPC):</strong><br>
+              <code class="text-[11.5px] bg-slate-200/90 px-1.5 py-0.5 rounded text-slate-800 font-mono">CIDR 10.0.0.0/16</code> · 2 Public Subnets + 2 Private Subnets Multi-AZ.
+            </div>
+          </li>
+          <li class="flex items-start gap-2.5">
+            <span class="text-blue-600 font-bold mt-0.5">▪</span>
+            <div>
+              <strong class="text-slate-900">VPC Endpoint Tăng Tốc:</strong><br>
+              S3 Gateway Endpoint <code class="text-[11px] bg-slate-200/90 px-1 rounded text-slate-800 font-mono">vpce-033bceec37053c8ea</code> (zero NAT gateway data transfer cost).
+            </div>
+          </li>
+          <li class="flex items-start gap-2.5">
+            <span class="text-blue-600 font-bold mt-0.5">▪</span>
+            <div>
+              <strong class="text-slate-900">Elastic File System (EFS Multi-AZ):</strong><br>
+              FileSystem ID: <code class="text-[11.5px] bg-slate-200/90 px-1.5 py-0.5 rounded text-slate-800 font-mono">fs-0b7465bf80b2333eb</code><br>
+              Tách biệt đường dẫn: <code class="text-[11px] bg-slate-200/90 px-1 rounded text-slate-800 font-mono">/tenants/{tenant_id}</code> qua EFS Access Points riêng biệt.
+            </div>
+          </li>
+          <li class="flex items-start gap-2.5">
+            <span class="text-blue-600 font-bold mt-0.5">▪</span>
+            <div>
+              <strong class="text-slate-900">S3 Vault Khóa Mã Hóa:</strong><br>
+              <code class="text-[11px] bg-slate-200/90 px-1 rounded text-slate-800 font-mono">prod-nextcloud-vault-649519997247-ap-southeast-1</code><br>
+              Bật SSE AES-256, S3 Versioning, chặn 100% Public Access.
+            </div>
+          </li>
+          <li class="flex items-start gap-2.5">
+            <span class="text-blue-600 font-bold mt-0.5">▪</span>
+            <div>
+              <strong class="text-slate-900">Application Load Balancer (ALB):</strong><br>
+              <code class="text-[11px] bg-slate-200/90 px-1 rounded text-slate-800 font-mono">prod-nextcloud-alb-2111420535...</code><br>
+              TLS Certificate ACM Wildcard: <code class="text-[11px] font-mono text-blue-700 font-semibold">*.png261.dev</code>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="pt-3 border-t border-slate-200 text-xs font-semibold text-blue-700 flex items-center gap-1.5 font-mono">
+        <span>✔</span> Live Tenants: acme.png261.dev · marvel.png261.dev · admin.png261.dev
+      </div>
+    </div>
+
+    <!-- CỘT 2: THÔNG SỐ AUTO-SCALING & FINOPS (4 CỘT) -->
+    <div class="col-span-4 bg-slate-50/70 border border-slate-200 rounded-2xl p-6 flex flex-col justify-between shadow-sm">
+      <div>
+        <div class="flex items-center justify-between pb-3 mb-4 border-b border-slate-200">
+          <div class="flex items-center gap-2 text-indigo-700 font-bold text-sm tracking-wide uppercase">
+            <span class="flex h-5 w-5 items-center justify-center rounded-full bg-indigo-100 text-indigo-700 text-xs font-bold">2</span>
+            Auto-Scaling &amp; Vận Hành FinOps
+          </div>
+          <span class="text-[11px] font-mono font-semibold px-2 py-0.5 bg-indigo-100 text-indigo-800 rounded border border-indigo-200">
+            Target Tracking
+          </span>
+        </div>
+
+        <ul class="space-y-3.5 text-[13px] leading-relaxed text-slate-600">
+          <li class="flex items-start gap-2.5">
+            <span class="text-indigo-600 font-bold mt-0.5">▪</span>
+            <div>
+              <strong class="text-slate-900">Application Auto-Scaling Policy:</strong><br>
+              Chính sách <code class="text-[11.5px] bg-slate-200/90 px-1.5 py-0.5 rounded text-slate-800 font-mono">prod-cpu-scaling-acme</code> gắn với ECS Service.<br>
+              Metric: <code class="text-[11px] font-mono text-indigo-700 font-semibold">ECSServiceAverageCPUUtilization = 70.0%</code>.
+            </div>
+          </li>
+          <li class="flex items-start gap-2.5">
+            <span class="text-indigo-600 font-bold mt-0.5">▪</span>
+            <div>
+              <strong class="text-slate-900">Bằng Chứng Scale-Out (1 → 2 Tasks):</strong><br>
+              Khi tải vượt ngưỡng, ECS spawn ngay Task 2. Cả 2 IP đều HEALTHY:<br>
+              <code class="text-[11px] bg-emerald-50 text-emerald-800 px-1 py-0.5 rounded font-mono">10.0.2.203:80 → HEALTHY</code><br>
+              <code class="text-[11px] bg-emerald-50 text-emerald-800 px-1 py-0.5 rounded font-mono">10.0.1.184:80 → HEALTHY</code>
+            </div>
+          </li>
+          <li class="flex items-start gap-2.5">
+            <span class="text-indigo-600 font-bold mt-0.5">▪</span>
+            <div>
+              <strong class="text-slate-900">Thời Gian Cooldown Kiểm Soát:</strong><br>
+              Scale-Out Cooldown: <strong class="text-slate-800">60s</strong> (bù công suất tức thời).<br>
+              Scale-In Cooldown: <strong class="text-slate-800">300s</strong> (ngăn chặn flapping container).
+            </div>
+          </li>
+          <li class="flex items-start gap-2.5">
+            <span class="text-indigo-600 font-bold mt-0.5">▪</span>
+            <div>
+              <strong class="text-slate-900">Quy Trình Deprovision Thu Hồi Sạch:</strong><br>
+              Kiểm thử với tenant tạm thời <code class="text-[11.5px] bg-slate-200 px-1 rounded text-slate-800 font-mono">tesla</code>: Xóa ECS Service, Target Group, ALB Rule, Secrets Manager, DynamoDB. <strong class="text-emerald-700">0 orphan resources</strong>.
+            </div>
+          </li>
+          <li class="flex items-start gap-2.5">
+            <span class="text-indigo-600 font-bold mt-0.5">▪</span>
+            <div>
+              <strong class="text-slate-900">CloudWatch SaaS Fleet Namespace:</strong><br>
+              Namespace <code class="text-[11px] bg-slate-200/90 px-1 rounded text-slate-800 font-mono">Nextcloud/SaaS</code>: Bắn định kỳ metric <code class="text-[11px] font-mono text-slate-800">TenantActiveStatus (1.00 / 0.00)</code> và <code class="text-[11px] font-mono text-slate-800">TenantStorageUsedMB</code>.
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="pt-3 border-t border-slate-200 text-xs font-semibold text-indigo-700 flex items-center gap-1.5 font-mono">
+        <span>✔</span> 0 Request Bị Rớt (Zero Dropped Requests) trong suốt chu kỳ Scale-In/Out
+      </div>
+    </div>
+
+    <!-- CỘT 3: AN TOÀN, TOÀN VẸN & TESTING MATRIX (4 CỘT) -->
+    <div class="col-span-4 bg-slate-50/70 border border-slate-200 rounded-2xl p-6 flex flex-col justify-between shadow-sm">
+      <div>
+        <div class="flex items-center justify-between pb-3 mb-4 border-b border-slate-200">
+          <div class="flex items-center gap-2 text-emerald-700 font-bold text-sm tracking-wide uppercase">
+            <span class="flex h-5 w-5 items-center justify-center rounded-full bg-emerald-100 text-emerald-800 text-xs font-bold">3</span>
+            Toàn Vẹn Dữ Liệu &amp; Bảo Mật
+          </div>
+          <span class="text-[11px] font-mono font-semibold px-2 py-0.5 bg-emerald-100 text-emerald-800 rounded border border-emerald-200">
+            Zero-Trust Matrix
+          </span>
+        </div>
+
+        <ul class="space-y-3.5 text-[13px] leading-relaxed text-slate-600">
+          <li class="flex items-start gap-2.5">
+            <span class="text-emerald-600 font-bold mt-0.5">▪</span>
+            <div>
+              <strong class="text-slate-900">Tính Toàn Vẹn Cryptographic SHA-256:</strong><br>
+              Toàn bộ tệp tải lên qua S3 direct transfer được kiểm tra hash SHA-256 đối chiếu: <strong class="text-emerald-700">Trùng khớp 100%</strong> không sai lệch 1 byte dữ liệu.
+            </div>
+          </li>
+          <li class="flex items-start gap-2.5">
+            <span class="text-emerald-600 font-bold mt-0.5">▪</span>
+            <div>
+              <strong class="text-slate-900">Chặn Tuyệt Đối Cổng Cơ Sở Dữ Liệu:</strong><br>
+              Security Group chặn hoàn toàn Internet (<code class="text-[11.5px] font-mono text-slate-700">0.0.0.0/0</code>) đối với cổng PostgreSQL <strong class="text-slate-800">5432</strong> và EFS NFS <strong class="text-slate-800">2049</strong>. Chỉ cho phép ECS Tasks giao tiếp nội bộ.
+            </div>
+          </li>
+          <li class="flex items-start gap-2.5">
+            <span class="text-emerald-600 font-bold mt-0.5">▪</span>
+            <div>
+              <strong class="text-slate-900">Phân Quyền RBAC 4 Cấp &amp; Quota Hard:</strong><br>
+              Khóa ghi tức thì với mã <code class="text-[11.5px] bg-red-50 text-red-700 font-bold px-1.5 py-0.5 rounded font-mono">HTTP 507 Insufficient Storage</code> khi vượt dung lượng quota được cấp phát.
+            </div>
+          </li>
+          <li class="flex items-start gap-2.5">
+            <span class="text-emerald-600 font-bold mt-0.5">▪</span>
+            <div>
+              <strong class="text-slate-900">Sovereign Bedrock GenAI PrivateLink:</strong><br>
+              Kết nối in-VPC tới Amazon Bedrock (mô hình Anthropic Claude / Titan); dữ liệu tài liệu không bao giờ truyền ra Internet công cộng.
+            </div>
+          </li>
+          <li class="flex items-start gap-2.5">
+            <span class="text-emerald-600 font-bold mt-0.5">▪</span>
+            <div>
+              <strong class="text-slate-900">Tổng Số Unit &amp; Integration Tests Đã Vượt Qua:</strong><br>
+              <code class="text-[11px] bg-slate-200 px-1 py-0.5 rounded font-mono text-slate-800">runtime/tests</code>: <strong class="text-emerald-700">76 / 76 PASS</strong> (Python 3.13)<br>
+              <code class="text-[11px] bg-slate-200 px-1 py-0.5 rounded font-mono text-slate-800">infra/tests/unit</code>: <strong class="text-emerald-700">49 / 49 PASS</strong> (CloudFormation &amp; Moto)
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="pt-3 border-t border-slate-200 text-xs font-semibold text-emerald-700 flex items-center gap-1.5 font-mono">
+        <span>✔</span> 125 / 125 Automated Unit &amp; Integration Tests đạt tỷ lệ thành công 100%
+      </div>
+    </div>
+
+  </div>
+
+  <!-- BOTTOM FOOTER PILLS -->
+  <div class="flex items-center justify-between border-t border-slate-200 pt-4 text-xs text-slate-500 font-mono">
+    <div class="flex items-center gap-4">
+      <span class="flex items-center gap-1.5 text-slate-700 font-semibold">
+        <span class="w-2 h-2 rounded-full bg-blue-500"></span>
+        AWS Graviton ARM64 Compute
+      </span>
+      <span>·</span>
+      <span class="flex items-center gap-1.5 text-slate-700 font-semibold">
+        <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+        EFS &amp; S3 Vault Dual-Tier Storage
+      </span>
+      <span>·</span>
+      <span class="flex items-center gap-1.5 text-slate-700 font-semibold">
+        <span class="w-2 h-2 rounded-full bg-indigo-500"></span>
+        PostgreSQL 16 DB-per-Tenant
+      </span>
+    </div>
+    <div class="text-slate-400">
+      Báo Cáo Nghiệm Thu Kỹ Thuật Đề Tài T16 · Storix Platform
+    </div>
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Storix - Slide Kết Luận & Phân Tích Chuyên Sâu (Conclusion & DR)</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: #0B0F19;
+      color: #F8FAFC;
+    }
+  </style>
+</head>
+<body class="flex items-center justify-center min-h-screen bg-slate-950 p-4 overflow-auto">
+
+  <div id="slide" class="w-[1280px] h-[720px] bg-[#0d1322] border border-slate-800 rounded-2xl shadow-2xl p-7 flex flex-col justify-between relative overflow-hidden">
+    
+    <!-- Background Glows -->
+    <div class="absolute -top-32 -left-32 w-96 h-96 bg-blue-600/10 rounded-full blur-3xl pointer-events-none"></div>
+    <div class="absolute -bottom-32 -right-32 w-96 h-96 bg-red-600/10 rounded-full blur-3xl pointer-events-none"></div>
+
+    <!-- Header Block -->
+    <div class="flex items-start justify-between border-b border-slate-800/80 pb-3 relative z-10">
+      <div>
+        <div class="flex items-center gap-2 mb-1">
+          <span class="px-2.5 py-0.5 text-[11px] font-bold tracking-wider uppercase bg-blue-500/20 text-blue-400 border border-blue-500/30 rounded-full">
+            DEEP EVALUATION & STRATEGIC ROADMAP
+          </span>
+          <span class="text-xs text-slate-400 font-mono">AWS MULTI-TENANT SAAS</span>
+        </div>
+        <h1 class="text-2xl font-extrabold tracking-tight text-white flex items-center gap-3">
+          Phân Tích Chi Tiết Đề Bài: Đạt Được, Lỗ Hổng Kỹ Thuật & Lộ Trình DR
+        </h1>
+      </div>
+      <div class="text-right">
+        <div class="text-xs text-slate-400 font-mono">CURRENT RESILIENCE LEVEL</div>
+        <div class="text-xs font-semibold text-amber-400 flex items-center justify-end gap-1.5 mt-0.5">
+          <span class="w-2 h-2 rounded-full bg-amber-500 animate-ping"></span> Multi-AZ HA Only (Single Region: ap-southeast-1)
+        </div>
+      </div>
+    </div>
+
+    <!-- Main Content 3-Column Grid -->
+    <div class="grid grid-cols-12 gap-4 my-3 flex-1 relative z-10">
+      
+      <!-- Column 1: ĐÃ ĐẠT ĐƯỢC (4 cols) -->
+      <div class="col-span-4 bg-emerald-950/20 border border-emerald-500/30 rounded-xl p-4 flex flex-col justify-between hover:border-emerald-500/50 transition">
+        <div>
+          <div class="flex items-center justify-between mb-2.5">
+            <span class="flex items-center gap-1.5 text-emerald-400 font-bold text-xs tracking-wide uppercase">
+              <span class="flex h-4 w-4 items-center justify-center rounded-full bg-emerald-500/20 text-emerald-400 text-[10px]">✓</span>
+              1. Đã Đạt Được (100% Core Requirements)
+            </span>
+            <span class="text-[10px] font-mono px-1.5 py-0.5 bg-emerald-900/40 text-emerald-300 rounded border border-emerald-700/40">In-Region Production</span>
+          </div>
+
+          <ul class="space-y-2 text-[12px] text-slate-300">
+            <li class="flex items-start gap-2">
+              <span class="text-emerald-400 font-bold mt-0.5">•</span>
+              <div>
+                <strong class="text-white">Multi-Tenant 4 Tầng:</strong> Dedicated Fargate ARM64 Container, RDS Proxy DB-per-tenant, EFS AP, S3 Vault prefix isolation.
+              </div>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-emerald-400 font-bold mt-0.5">•</span>
+              <div>
+                <strong class="text-white">File Ops & Bảo Mật:</strong> Upload tệp lớn (Chunked WebDAV RFC 4918), Range Download, Thùng rác, Versioning, TLS 1.3, KMS cipher.
+              </div>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-emerald-400 font-bold mt-0.5">•</span>
+              <div>
+                <strong class="text-white">Metadata & Phân Quyền:</strong> Bảng <code class="text-[11px] bg-slate-800 px-1 py-0.5 rounded text-emerald-300">oc_filecache</code>, System Tags, RBAC 4 cấp, Public link có password & hạn dùng.
+              </div>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-emerald-400 font-bold mt-0.5">•</span>
+              <div>
+                <strong class="text-white">Audit & Giao Thức Chuẩn:</strong> DynamoDB Audit Ledger (1 năm), <code class="text-[11px] bg-slate-800 px-1 py-0.5 rounded text-emerald-300">admin_audit</code>, WebAuthn Passkeys FIDO2, OCS REST API.
+              </div>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-emerald-400 font-bold mt-0.5">•</span>
+              <div>
+                <strong class="text-white">FinOps & AI Sidecar:</strong> Scale-to-zero ($0 compute idle), SOCI boot &lt;15s, Claude 3.5 Sonnet Bedrock Assistant.
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <div class="pt-2 border-t border-emerald-900/40 text-[10.5px] text-emerald-400/80 font-mono">
+          ✔ Đạt chuẩn cao về cô lập và vận hành trong Region ap-southeast-1.
+        </div>
+      </div>
+
+      <!-- Column 2: CHƯA ĐẠT ĐƯỢC & LỖ HỔNG REGION DR (4 cols) -->
+      <div class="col-span-4 bg-amber-950/20 border border-amber-500/30 rounded-xl p-4 flex flex-col justify-between hover:border-amber-500/50 transition">
+        <div>
+          <div class="flex items-center justify-between mb-2.5">
+            <span class="flex items-center gap-1.5 text-amber-400 font-bold text-xs tracking-wide uppercase">
+              <span class="flex h-4 w-4 items-center justify-center rounded-full bg-amber-500/20 text-amber-400 text-[10px]">!</span>
+              2. Chưa Đạt & Lỗ Hổng DR Cốt Lõi
+            </span>
+            <span class="text-[10px] font-mono px-1.5 py-0.5 bg-red-900/50 text-red-300 rounded border border-red-700/50">Critical Gaps</span>
+          </div>
+
+          <ul class="space-y-2 text-[12px] text-slate-300">
+            <li class="flex items-start gap-2">
+              <span class="text-red-400 font-bold mt-0.5">⚠️</span>
+              <div>
+                <strong class="text-amber-200">HOÀN TOÀN THIẾU REGION DISASTER RECOVERY:</strong>
+                <p class="text-[11px] text-slate-300 mt-0.5">
+                  Chỉ có Multi-AZ nội bộ <code class="text-[10px] bg-slate-800 px-1 py-0.5 rounded text-amber-300">ap-southeast-1</code>. <strong>S3 chưa có Cross-Region Replication (CRR)</strong>; <strong>RDS chưa có Cross-Region Read Replica</strong>; <strong>Route 53 thiếu DNS Failover</strong>. Nếu sập Region ➔ RPO/RTO mất hàng ngày trời!
+                </p>
+              </div>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-amber-400 font-bold mt-0.5">•</span>
+              <div>
+                <strong class="text-white">Thiếu Deep Content Search:</strong> Chỉ search metadata SQL; chưa có cụm <strong class="text-amber-300">Amazon OpenSearch</strong> trích xuất text/OCR toàn văn cho PDF, Word, ảnh.
+              </div>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-amber-400 font-bold mt-0.5">•</span>
+              <div>
+                <strong class="text-white">Chưa có Direct Presigned S3:</strong> File đi xuyên qua container Fargate ➔ Nghẽn CPU/RAM & mạng khi truyền tệp lớn.
+              </div>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-amber-400 font-bold mt-0.5">•</span>
+              <div>
+                <strong class="text-white">Chưa quét mã độc & Lock phân tán:</strong> Thiếu AWS GuardDuty S3 Malware Scan; chưa có ElastiCache Redis cluster.
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <div class="pt-2 border-t border-amber-900/40 text-[10.5px] text-amber-400/80 font-mono">
+          ✖ Rủi ro lớn nhất: Toàn bộ dịch vụ sụp đổ nếu ap-southeast-1 gặp sự cố.
+        </div>
+      </div>
+
+      <!-- Column 3: HƯỚNG PHÁT TRIỂN & GIẢI PHÁP DR (4 cols) -->
+      <div class="col-span-4 bg-blue-950/20 border border-blue-500/30 rounded-xl p-4 flex flex-col justify-between hover:border-blue-500/50 transition">
+        <div>
+          <div class="flex items-center justify-between mb-2.5">
+            <span class="flex items-center gap-1.5 text-blue-400 font-bold text-xs tracking-wide uppercase">
+              <span class="flex h-4 w-4 items-center justify-center rounded-full bg-blue-500/20 text-blue-400 text-[10px]">🚀</span>
+              3. Lộ Trình Khắc Phục (Bao gồm DR)
+            </span>
+            <span class="text-[10px] font-mono px-1.5 py-0.5 bg-blue-900/40 text-blue-300 rounded border border-blue-700/40">3-Phase Evolution</span>
+          </div>
+
+          <div class="space-y-2 text-[12px]">
+            <div class="p-2 bg-slate-900/70 border border-blue-900/40 rounded-lg">
+              <div class="flex items-center justify-between">
+                <span class="text-[11px] font-bold text-blue-300">PHASE 1: Search, Protect & S3 Backup</span>
+                <span class="text-[9px] text-blue-400/70 font-mono">1-2 Tháng</span>
+              </div>
+              <p class="text-slate-300 text-[11px] mt-0.5">
+                • <strong>Amazon OpenSearch</strong> + Tika/Textract OCR.<br>
+                • <strong>S3 GuardDuty Malware Scan</strong> + ElastiCache Redis.<br>
+                • <strong>Bật S3 Cross-Region Replication (CRR)</strong> sang <code class="text-[10px] bg-slate-800 text-blue-300">us-east-1</code>.
+              </p>
+            </div>
+
+            <div class="p-2 bg-slate-900/70 border border-blue-900/40 rounded-lg">
+              <div class="flex items-center justify-between">
+                <span class="text-[11px] font-bold text-blue-300">PHASE 2: Direct I/O & Database DR</span>
+                <span class="text-[9px] text-blue-400/70 font-mono">2-3 Tháng</span>
+              </div>
+              <p class="text-slate-300 text-[11px] mt-0.5">
+                • <strong>Direct S3 Presigned URLs</strong> + CloudFront Signed CDN.<br>
+                • <strong>RDS Cross-Region Read Replica / Aurora Global DB</strong>.<br>
+                • AI Semantic Search với <strong>Bedrock Titan Embeddings</strong>.
+              </p>
+            </div>
+
+            <div class="p-2 bg-slate-900/70 border border-blue-900/40 rounded-lg">
+              <div class="flex items-center justify-between">
+                <span class="text-[11px] font-bold text-blue-300">PHASE 3: Full Multi-Region Active-Passive</span>
+                <span class="text-[9px] text-blue-400/70 font-mono">3-6 Tháng</span>
+              </div>
+              <p class="text-slate-300 text-[11px] mt-0.5">
+                • <strong>Route 53 DNS Failover + CloudWatch Alarms</strong> (RTO &lt; 5m).<br>
+                • Pilot Light Fargate Cluster ở Region 2 (<code class="text-[10px] bg-slate-800 text-blue-300">$0/tháng</code>).<br>
+                • Swagger Developer Portal + DLP & Watermarking.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="pt-2 border-t border-blue-900/40 text-[10.5px] text-blue-400/80 font-mono">
+          Mục tiêu: Đạt chuẩn RPO &lt; 15s và RTO &lt; 5 phút khi sự cố toàn Vùng.
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Footer Quote / Key Takeaway -->
+    <div class="bg-slate-900/70 border border-slate-800 rounded-xl px-4 py-2.5 flex items-center justify-between relative z-10">
+      <div class="flex items-center gap-3">
+        <span class="text-lg">🎯</span>
+        <div class="text-[11.5px] text-slate-300">
+          <strong class="text-white">Kết Luận Sâu:</strong> Hệ thống hiện đạt <strong>HA (High Availability) cục bộ trong 1 Region</strong> nhưng <strong>chưa có DR (Disaster Recovery) đa Vùng</strong>. Lộ trình chiến lược là nâng cấp song song: <strong>Full-Text Search (OpenSearch)</strong> + <strong>Multi-Region Resilience (S3 CRR, Aurora Global, Route 53 Failover)</strong>.
+        </div>
+      </div>
+      <div class="flex items-center gap-2">
+        <a href="storix_gap_roadmap_minimalist.png" target="_blank" class="px-2.5 py-1 bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-medium rounded-lg border border-slate-700 transition flex items-center gap-1.5">
+          <span>🖼️</span> Sơ Đồ PNG
+        </a>
+        <a href="storix_gap_roadmap_minimalist.svg" target="_blank" class="px-2.5 py-1 bg-blue-600 hover:bg-blue-500 text-white text-xs font-medium rounded-lg transition flex items-center gap-1.5">
+          <span>📐</span> Sơ Đồ SVG
+        </a>
+      </div>
+    </div>
+
+  </div>
+
+</body>
+</html>

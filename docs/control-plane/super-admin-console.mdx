@@ -10,8 +10,19 @@ The Storix Super Admin Console is an enterprise-grade control plane application 
 It allows platform operators to provision, inspect, clone, and manage multi-tenant Nextcloud instances with real-time operational diagnostics and FinOps cost visibility.
 
 <p align="center">
-  <img src="/images/02_console_tenants_light.png" alt="Super Admin Console Fleet View" />
+  <img src="/images/zoom_block_4_control_plane_finops.png" alt="Super Admin Console Control Plane & FinOps Architecture" />
 </p>
+
+---
+
+## 🏗️ Architecture Overview
+
+The console runs as a serverless Single Page Application (SPA) delivered globally via **Amazon CloudFront** and backed by AWS Lambda microservices:
+- **Hosting:** S3 Static Web Bucket with Origin Access Control (OAC) and AWS CloudFront distribution.
+- **Edge Security:** AWS WAFv2 WebACL guarding against SQLi, XSS, and rate flooding.
+- **API Routing:** Amazon API Gateway routing REST endpoints to Python 3.12 Control Plane Lambda functions.
+- **State Store:** Amazon DynamoDB Multi-Tenant Registry enforcing Optimistic Concurrency Control (OCC).
+- **Orchestration:** AWS Step Functions executing asynchronous SAGA micro-workflows with automated rollback.
 
 ---
 
@@ -74,20 +85,24 @@ The console features a real-time web terminal to execute Nextcloud `occ` command
 - `app:list`: Inspect installed and enabled apps.
 
 <Note>
-  Heavy commands execute asynchronously via `EXECUTE_OCC_ASYNC`, returning an immediate `job_id` and streaming execution stdout/stderr back to the UI via `CHECK_OCC_JOB`.
+  Heavy commands execute asynchronously via `EXECUTE_OCC_ASYNC`, returning an immediate `job_id` and streaming execution stdout/stderr back to the UI via `CHECK_OCC_JOB`, bypassing the API Gateway 29-second execution limit.
 </Note>
 
 ---
 
-## 📊 Fleet Views & Theming
-
-The console provides built-in dark and light themes conforming to enterprise accessibility standards (WCAG 2.1 AA):
+## 📊 Fleet Views, Telemetry & Theming
 
 <Tabs>
-  <Tab title="Light Mode">
+  <Tab title="Tenants Fleet Table">
+    ![SuperAdmin Tenants Fleet](/images/15_superadmin_tenants_page.png)
+  </Tab>
+  <Tab title="Dashboard Metrics & FinOps">
+    ![SuperAdmin Dashboard Metrics](/images/16_superadmin_dashboard_metrics.png)
+  </Tab>
+  <Tab title="Light Mode Fleet">
     ![Tenants Light](/images/02_console_tenants_light.png)
   </Tab>
-  <Tab title="Dark Mode">
+  <Tab title="Dark Mode Fleet">
     ![Tenants Dark](/images/03_console_tenants_dark.png)
   </Tab>
 </Tabs>
@@ -116,5 +131,5 @@ npm run build
 
 ```bash
 npm test
-# Runs 64/64 Vitest tests verifying providers, RBAC, Passkeys, and smart polling hooks
+# Runs 68/68 Vitest tests (15 suites, 94.8% line coverage) verifying providers, RBAC, Passkeys, and smart polling hooks
 ```

@@ -1,0 +1,398 @@
+<mxfile host="app.diagrams.net" modified="2026-10-27T22:45:00.000Z" agent="Mozilla/5.0" version="24.7.17">
+  <diagram id="storix-master-min" name="Storix-Master-Minimal">
+    <mxGraphModel dx="1920" dy="860" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1920" pageHeight="860" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- ============================================================== -->
+        <!-- ACTORS / CLIENTS BAR (Top of canvas, labels on TOP)            -->
+        <!-- ============================================================== -->
+        <mxCell id="actor-guest" parent="1" style="sketch=0;outlineConnect=0;fontColor=#232F3E;fillColor=#0284C7;strokeColor=#ffffff;verticalLabelPosition=top;verticalAlign=bottom;spacingBottom=5;align=center;fontSize=10;fontStyle=1;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.user;fontFamily=Helvetica;shadow=1;" value="External Guest" vertex="1">
+          <mxGeometry height="40" width="40" x="160" y="28" as="geometry" />
+        </mxCell>
+        <mxCell id="actor-acme" parent="1" style="sketch=0;outlineConnect=0;fontColor=#232F3E;fillColor=#0284C7;strokeColor=#ffffff;verticalLabelPosition=top;verticalAlign=bottom;spacingBottom=5;align=center;fontSize=10;fontStyle=1;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.users;fontFamily=Helvetica;shadow=1;" value="Acme Member" vertex="1">
+          <mxGeometry height="40" width="40" x="310" y="28" as="geometry" />
+        </mxCell>
+        <mxCell id="actor-marvel" parent="1" style="sketch=0;outlineConnect=0;fontColor=#232F3E;fillColor=#0284C7;strokeColor=#ffffff;verticalLabelPosition=top;verticalAlign=bottom;spacingBottom=5;align=center;fontSize=10;fontStyle=1;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.users;fontFamily=Helvetica;shadow=1;" value="Marvel Member" vertex="1">
+          <mxGeometry height="40" width="40" x="460" y="28" as="geometry" />
+        </mxCell>
+        <mxCell id="actor-admin" parent="1" style="sketch=0;outlineConnect=0;fontColor=#232F3E;fillColor=#4338CA;strokeColor=#ffffff;verticalLabelPosition=top;verticalAlign=bottom;spacingBottom=5;align=center;fontSize=10;fontStyle=1;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.user;fontFamily=Helvetica;shadow=1;" value="SuperAdmin" vertex="1">
+          <mxGeometry height="40" width="40" x="1220" y="28" as="geometry" />
+        </mxCell>
+
+        <!-- Route 53 Global Multi-Region DNS (label on TOP) -->
+        <mxCell id="svc-r53" parent="1" style="sketch=0;outlineConnect=0;fontColor=#232F3E;fillColor=#8C4FFF;strokeColor=#ffffff;verticalLabelPosition=top;verticalAlign=bottom;spacingBottom=5;align=center;fontSize=10;fontStyle=1;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.route_53;fontFamily=Helvetica;shadow=1;" value="Amazon Route 53" vertex="1">
+          <mxGeometry height="42" width="42" x="700" y="26" as="geometry" />
+        </mxCell>
+
+        <!-- ============================================================== -->
+        <!-- PRIMARY AWS REGION BORDER (ap-southeast-1 Singapore)           -->
+        <!-- ============================================================== -->
+        <mxCell id="region-primary" parent="1" style="rounded=0;strokeColor=#00A4A6;strokeWidth=2;fillColor=#00A4A6;fillOpacity=3;dashed=1;verticalAlign=top;align=left;spacingLeft=16;spacingTop=10;fontSize=12;fontStyle=1;fontColor=#00A4A6;fontFamily=Helvetica;pointerEvents=0;" value="AWS Region: ap-southeast-1 (Singapore - Primary Active)" vertex="1">
+          <mxGeometry height="720" width="1400" x="40" y="105" as="geometry" />
+        </mxCell>
+
+        <!-- PRIMARY VPC BORDER (10.0.0.0/16) -->
+        <mxCell id="vpc-primary" parent="1" style="rounded=0;strokeColor=#8C4FFF;strokeWidth=2;fillColor=#8C4FFF;fillOpacity=3;dashed=0;verticalAlign=top;align=left;spacingLeft=16;spacingTop=10;fontSize=11;fontStyle=1;fontColor=#8C4FFF;fontFamily=Helvetica;pointerEvents=0;" value="VPC: 10.0.0.0/16 (Storix Production VPC)" vertex="1">
+          <mxGeometry height="520" width="1340" x="70" y="145" as="geometry" />
+        </mxCell>
+
+        <!-- ============================================================== -->
+        <!-- PUBLIC SUBNET BORDER (Header on TOP-LEFT, completely clear)     -->
+        <!-- ============================================================== -->
+        <mxCell id="subnet-public" parent="1" style="rounded=0;strokeColor=#248814;strokeWidth=2;fillColor=#248814;fillOpacity=4;dashed=0;verticalAlign=top;align=left;spacingLeft=16;spacingTop=8;fontSize=11;fontStyle=1;fontColor=#248814;fontFamily=Helvetica;pointerEvents=0;" value="Public Subnet (Multi-AZ · Zero-NAT)" vertex="1">
+          <mxGeometry height="190" width="1280" x="100" y="185" as="geometry" />
+        </mxCell>
+
+        <!-- Edge Ingress Services in Public Subnet -->
+        <mxCell id="svc-igw" parent="1" style="sketch=0;outlineConnect=0;fontColor=#232F3E;fillColor=#8C4FFF;strokeColor=#ffffff;verticalLabelPosition=bottom;verticalAlign=top;align=center;fontSize=10;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.internet_gateway;fontFamily=Helvetica;shadow=1;" value="Internet Gateway" vertex="1">
+          <mxGeometry height="42" width="42" x="140" y="260" as="geometry" />
+        </mxCell>
+        <mxCell id="svc-waf" parent="1" style="sketch=0;outlineConnect=0;fontColor=#232F3E;fillColor=#8C4FFF;strokeColor=#ffffff;verticalLabelPosition=bottom;verticalAlign=top;align=center;fontSize=10;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.waf;fontFamily=Helvetica;shadow=1;" value="AWS WAF" vertex="1">
+          <mxGeometry height="42" width="42" x="240" y="260" as="geometry" />
+        </mxCell>
+        <mxCell id="svc-alb" parent="1" style="sketch=0;outlineConnect=0;fontColor=#232F3E;fillColor=#8C4FFF;strokeColor=#ffffff;verticalLabelPosition=bottom;verticalAlign=top;align=center;fontSize=10;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.elastic_load_balancing;fontFamily=Helvetica;shadow=1;" value="Application Load Balancer" vertex="1">
+          <mxGeometry height="42" width="42" x="340" y="260" as="geometry" />
+        </mxCell>
+
+        <!-- Availability Zone A Box (Public) -->
+        <mxCell id="az-a-pub" parent="1" style="rounded=0;strokeColor=#147EBA;strokeWidth=1.5;fillColor=none;dashed=1;verticalAlign=top;align=left;spacingLeft=10;spacingTop=6;fontSize=10;fontColor=#147EBA;fontFamily=Helvetica;pointerEvents=0;" value="AZ-1a (ap-southeast-1a)" vertex="1">
+          <mxGeometry height="140" width="220" x="470" y="220" as="geometry" />
+        </mxCell>
+        <mxCell id="svc-fargate-acme" parent="1" style="sketch=0;outlineConnect=0;fontColor=#232F3E;fillColor=#ED7100;strokeColor=#ffffff;verticalLabelPosition=top;verticalAlign=bottom;spacingBottom=6;align=center;fontSize=10;fontStyle=1;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.fargate;fontFamily=Helvetica;shadow=1;" value="Nextcloud App (Replica 1)" vertex="1">
+          <mxGeometry height="44" width="44" x="525" y="265" as="geometry" />
+        </mxCell>
+        <mxCell id="svc-tika-a" parent="1" style="sketch=0;outlineConnect=0;fontColor=#232F3E;fillColor=#ED7100;strokeColor=#ffffff;verticalLabelPosition=top;verticalAlign=bottom;spacingBottom=6;align=center;fontSize=10;fontStyle=1;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.container_1;fontFamily=Helvetica;shadow=1;" value="Tika Sidecar" vertex="1">
+          <mxGeometry height="38" width="38" x="622" y="268" as="geometry" />
+        </mxCell>
+        <mxCell id="e-tika-a" edge="1" parent="1" source="svc-fargate-acme" target="svc-tika-a" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#ED7100;dashed=1;strokeWidth=1.5;fontFamily=Helvetica;exitX=1;exitY=0.5;entryX=0;entryY=0.5;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e-tika-a-lbl" value=":9998" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontSize=8.5;fontStyle=1;fontColor=#232F3E;fontFamily=Helvetica;spacing=2;" connectable="0" vertex="1" parent="e-tika-a">
+          <mxGeometry relative="1" x="0" y="0" as="geometry"><mxPoint x="0" y="-8" as="offset" /></mxGeometry>
+        </mxCell>
+
+        <!-- Availability Zone B Box (Public) -->
+        <mxCell id="az-b-pub" parent="1" style="rounded=0;strokeColor=#147EBA;strokeWidth=1.5;fillColor=none;dashed=1;verticalAlign=top;align=left;spacingLeft=10;spacingTop=6;fontSize=10;fontColor=#147EBA;fontFamily=Helvetica;pointerEvents=0;" value="AZ-1b (ap-southeast-1b)" vertex="1">
+          <mxGeometry height="140" width="220" x="750" y="220" as="geometry" />
+        </mxCell>
+        <mxCell id="svc-fargate-marvel" parent="1" style="sketch=0;outlineConnect=0;fontColor=#232F3E;fillColor=#ED7100;strokeColor=#ffffff;verticalLabelPosition=top;verticalAlign=bottom;spacingBottom=6;align=center;fontSize=10;fontStyle=1;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.fargate;fontFamily=Helvetica;shadow=1;" value="Nextcloud App (Replica 2)" vertex="1">
+          <mxGeometry height="44" width="44" x="805" y="265" as="geometry" />
+        </mxCell>
+        <mxCell id="svc-tika-b" parent="1" style="sketch=0;outlineConnect=0;fontColor=#232F3E;fillColor=#ED7100;strokeColor=#ffffff;verticalLabelPosition=top;verticalAlign=bottom;spacingBottom=6;align=center;fontSize=10;fontStyle=1;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.container_1;fontFamily=Helvetica;shadow=1;" value="Tika Sidecar" vertex="1">
+          <mxGeometry height="38" width="38" x="902" y="268" as="geometry" />
+        </mxCell>
+        <mxCell id="e-tika-b" edge="1" parent="1" source="svc-fargate-marvel" target="svc-tika-b" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#ED7100;dashed=1;strokeWidth=1.5;fontFamily=Helvetica;exitX=1;exitY=0.5;entryX=0;entryY=0.5;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e-tika-b-lbl" value=":9998" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontSize=8.5;fontStyle=1;fontColor=#232F3E;fontFamily=Helvetica;spacing=2;" connectable="0" vertex="1" parent="e-tika-b">
+          <mxGeometry relative="1" x="0" y="0" as="geometry"><mxPoint x="0" y="-8" as="offset" /></mxGeometry>
+        </mxCell>
+
+        <!-- ============================================================== -->
+        <!-- PRIVATE SUBNET BORDER (Header on BOTTOM-LEFT in clean empty zone) -->
+        <!-- ============================================================== -->
+        <mxCell id="subnet-private" parent="1" style="rounded=0;strokeColor=#147EBA;strokeWidth=2;fillColor=#147EBA;fillOpacity=4;dashed=0;verticalAlign=bottom;align=left;spacingLeft=30;spacingBottom=8;fontSize=11;fontStyle=1;fontColor=#147EBA;fontFamily=Helvetica;pointerEvents=0;" value="Private Subnet (Isolated Data Tier)" vertex="1">
+          <mxGeometry height="210" width="1280" x="100" y="425" as="geometry" />
+        </mxCell>
+
+        <!-- Data Tier Services in Private Subnet -->
+        <mxCell id="svc-efs" parent="1" style="sketch=0;outlineConnect=0;fontColor=#232F3E;fillColor=#3F8624;strokeColor=#ffffff;verticalLabelPosition=bottom;verticalAlign=top;align=center;fontSize=10;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.elastic_file_system;fontFamily=Helvetica;shadow=1;" value="Amazon EFS" vertex="1">
+          <mxGeometry height="42" width="42" x="150" y="490" as="geometry" />
+        </mxCell>
+        <mxCell id="svc-redis" parent="1" style="sketch=0;outlineConnect=0;fontColor=#232F3E;fillColor=#C925D1;strokeColor=#ffffff;verticalLabelPosition=bottom;verticalAlign=top;align=center;fontSize=10;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.memorydb_for_redis;fontFamily=Helvetica;shadow=1;" value="ElastiCache Redis" vertex="1">
+          <mxGeometry height="42" width="42" x="270" y="490" as="geometry" />
+        </mxCell>
+        <mxCell id="svc-proxy" parent="1" style="sketch=0;outlineConnect=0;fontColor=#232F3E;fillColor=#C925D1;strokeColor=#ffffff;verticalLabelPosition=bottom;verticalAlign=top;align=center;fontSize=10;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.rds;fontFamily=Helvetica;shadow=1;" value="RDS Proxy" vertex="1">
+          <mxGeometry height="42" width="42" x="390" y="490" as="geometry" />
+        </mxCell>
+        <!-- Aurora PostgreSQL (Primary) - Label on TOP to avoid global replication exit -->
+        <mxCell id="svc-rds" parent="1" style="sketch=0;outlineConnect=0;fontColor=#232F3E;fillColor=#C925D1;strokeColor=#ffffff;verticalLabelPosition=top;verticalAlign=bottom;spacingBottom=5;align=center;fontSize=10;fontStyle=1;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.aurora;fontFamily=Helvetica;shadow=1;" value="Aurora PostgreSQL (Primary)" vertex="1">
+          <mxGeometry height="42" width="42" x="510" y="490" as="geometry" />
+        </mxCell>
+        <!-- Amazon SQS - Label on TOP to avoid S3 ingestion entry -->
+        <mxCell id="svc-sqs" parent="1" style="sketch=0;outlineConnect=0;fontColor=#232F3E;fillColor=#ED7100;strokeColor=#ffffff;verticalLabelPosition=top;verticalAlign=bottom;spacingBottom=5;align=center;fontSize=10;fontStyle=1;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.sqs;fontFamily=Helvetica;shadow=1;" value="Amazon SQS" vertex="1">
+          <mxGeometry height="42" width="42" x="680" y="490" as="geometry" />
+        </mxCell>
+        <mxCell id="svc-worker-lambda" parent="1" style="sketch=0;outlineConnect=0;fontColor=#232F3E;fillColor=#ED7100;strokeColor=#ffffff;verticalLabelPosition=bottom;verticalAlign=top;align=center;fontSize=10;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.lambda;fontFamily=Helvetica;shadow=1;" value="Ingestion Lambda" vertex="1">
+          <mxGeometry height="42" width="42" x="800" y="490" as="geometry" />
+        </mxCell>
+        <mxCell id="svc-opensearch" parent="1" style="sketch=0;outlineConnect=0;fontColor=#232F3E;fillColor=#ED7100;strokeColor=#ffffff;verticalLabelPosition=bottom;verticalAlign=top;align=center;fontSize=10;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.elasticsearch_service;fontFamily=Helvetica;shadow=1;" value="Amazon OpenSearch" vertex="1">
+          <mxGeometry height="42" width="42" x="915" y="490" as="geometry" />
+        </mxCell>
+
+        <!-- Control Plane Services inside Singapore Region -->
+        <mxCell id="svc-cf" parent="1" style="sketch=0;outlineConnect=0;fontColor=#232F3E;fillColor=#8C4FFF;strokeColor=#ffffff;verticalLabelPosition=bottom;verticalAlign=top;align=center;fontSize=10;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.cloudfront;fontFamily=Helvetica;shadow=1;" value="Admin SPA" vertex="1">
+          <mxGeometry height="40" width="40" x="1040" y="491" as="geometry" />
+        </mxCell>
+        <mxCell id="svc-lambda" parent="1" style="sketch=0;outlineConnect=0;fontColor=#232F3E;fillColor=#ED7100;strokeColor=#ffffff;verticalLabelPosition=bottom;verticalAlign=top;align=center;fontSize=10;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.lambda;fontFamily=Helvetica;shadow=1;" value="Tenant Operator" vertex="1">
+          <mxGeometry height="40" width="40" x="1125" y="491" as="geometry" />
+        </mxCell>
+        <!-- FinOps Saga - Label on TOP to avoid DR Saga exit -->
+        <mxCell id="svc-sfn" parent="1" style="sketch=0;outlineConnect=0;fontColor=#232F3E;fillColor=#E7157B;strokeColor=#ffffff;verticalLabelPosition=top;verticalAlign=bottom;spacingBottom=5;align=center;fontSize=10;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.step_functions;fontFamily=Helvetica;shadow=1;" value="FinOps Saga" vertex="1">
+          <mxGeometry height="40" width="40" x="1210" y="491" as="geometry" />
+        </mxCell>
+        <mxCell id="svc-ddb" parent="1" style="sketch=0;outlineConnect=0;fontColor=#232F3E;fillColor=#C925D1;strokeColor=#ffffff;verticalLabelPosition=bottom;verticalAlign=top;align=center;fontSize=10;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.dynamodb;fontFamily=Helvetica;shadow=1;" value="DynamoDB" vertex="1">
+          <mxGeometry height="40" width="40" x="1295" y="491" as="geometry" />
+        </mxCell>
+
+        <!-- S3 Multi-Tenant Object Storage Vault - Label on TOP to avoid CRR exit -->
+        <mxCell id="svc-s3" parent="1" style="sketch=0;outlineConnect=0;fontColor=#232F3E;fillColor=#3F8624;strokeColor=#ffffff;verticalLabelPosition=top;verticalAlign=bottom;spacingBottom=5;align=center;fontSize=10;fontStyle=1;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.s3;fontFamily=Helvetica;shadow=1;" value="Amazon S3 Vault" vertex="1">
+          <mxGeometry height="44" width="44" x="150" y="690" as="geometry" />
+        </mxCell>
+
+        <!-- Amazon Bedrock & AI Services -->
+        <mxCell id="svc-bedrock" parent="1" style="sketch=0;outlineConnect=0;fontColor=#232F3E;fillColor=#01A88D;strokeColor=#ffffff;verticalLabelPosition=bottom;verticalAlign=top;align=center;fontSize=10;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.bedrock;fontFamily=Helvetica;shadow=1;" value="Amazon Bedrock" vertex="1">
+          <mxGeometry height="44" width="44" x="790" y="690" as="geometry" />
+        </mxCell>
+
+        <!-- DR Failover SAGA Orchestrator -->
+        <mxCell id="svc-dr-sfn" parent="1" style="sketch=0;outlineConnect=0;fontColor=#232F3E;fillColor=#E7157B;strokeColor=#ffffff;verticalLabelPosition=bottom;verticalAlign=top;align=center;fontSize=10;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.step_functions;fontFamily=Helvetica;shadow=1;" value="Step Functions (DR Saga)" vertex="1">
+          <mxGeometry height="44" width="44" x="1160" y="690" as="geometry" />
+        </mxCell>
+
+        <!-- ============================================================== -->
+        <!-- SECONDARY DISASTER RECOVERY REGION (Header on TOP-RIGHT)      -->
+        <!-- ============================================================== -->
+        <mxCell id="region-dr" parent="1" style="rounded=0;strokeColor=#C925D1;strokeWidth=2;fillColor=#C925D1;fillOpacity=3;dashed=1;verticalAlign=top;align=right;spacingRight=20;spacingTop=10;fontSize=12;fontStyle=1;fontColor=#C925D1;fontFamily=Helvetica;pointerEvents=0;" value="AWS Region: us-east-1 (N. Virginia - Standby DR)" vertex="1">
+          <mxGeometry height="720" width="380" x="1480" y="105" as="geometry" />
+        </mxCell>
+
+        <!-- DR Components -->
+        <mxCell id="svc-dr-alb" parent="1" style="sketch=0;outlineConnect=0;fontColor=#232F3E;fillColor=#8C4FFF;strokeColor=#ffffff;verticalLabelPosition=bottom;verticalAlign=top;align=center;fontSize=10;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.elastic_load_balancing;fontFamily=Helvetica;shadow=1;" value="Application Load Balancer" vertex="1">
+          <mxGeometry height="42" width="42" x="1550" y="260" as="geometry" />
+        </mxCell>
+        <!-- DR Fargate - Label on TOP to avoid SAGA entry -->
+        <mxCell id="svc-dr-fargate" parent="1" style="sketch=0;outlineConnect=0;fontColor=#232F3E;fillColor=#ED7100;strokeColor=#ffffff;verticalLabelPosition=top;verticalAlign=bottom;spacingBottom=5;align=center;fontSize=10;fontStyle=1;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.fargate;fontFamily=Helvetica;shadow=1;" value="ECS Fargate (DR Standby)" vertex="1">
+          <mxGeometry height="42" width="42" x="1700" y="260" as="geometry" />
+        </mxCell>
+        <mxCell id="svc-dr-rds" parent="1" style="sketch=0;outlineConnect=0;fontColor=#232F3E;fillColor=#C925D1;strokeColor=#ffffff;verticalLabelPosition=bottom;verticalAlign=top;align=center;fontSize=10;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.aurora;fontFamily=Helvetica;shadow=1;" value="Aurora PostgreSQL (Replica)" vertex="1">
+          <mxGeometry height="42" width="42" x="1625" y="490" as="geometry" />
+        </mxCell>
+        <!-- DR S3 - Label on TOP to avoid CRR entry -->
+        <mxCell id="svc-dr-s3" parent="1" style="sketch=0;outlineConnect=0;fontColor=#232F3E;fillColor=#3F8624;strokeColor=#ffffff;verticalLabelPosition=top;verticalAlign=bottom;spacingBottom=5;align=center;fontSize=10;fontStyle=1;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.s3;fontFamily=Helvetica;shadow=1;" value="Amazon S3 (DR Replica)" vertex="1">
+          <mxGeometry height="44" width="44" x="1625" y="690" as="geometry" />
+        </mxCell>
+
+        <!-- ============================================================== -->
+        <!-- CONNECTING EDGES (100% COLLISION FREE WITH TEXT & ICONS)       -->
+        <!-- ============================================================== -->
+        <!-- Ingress from Clients to Route 53 (clean corridor at y=80) -->
+        <mxCell id="e-guest-r53" edge="1" parent="1" source="actor-guest" target="svc-r53" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#8C4FFF;strokeWidth=1.5;fontFamily=Helvetica;exitX=0.5;exitY=1;entryX=0.2;entryY=1;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="180" y="80" />
+              <mxPoint x="708" y="80" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e-acme-r53" edge="1" parent="1" source="actor-acme" target="svc-r53" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#8C4FFF;strokeWidth=1.5;fontFamily=Helvetica;exitX=0.5;exitY=1;entryX=0.5;entryY=1;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="330" y="80" />
+              <mxPoint x="721" y="80" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e-marvel-r53" edge="1" parent="1" source="actor-marvel" target="svc-r53" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#8C4FFF;strokeWidth=1.5;fontFamily=Helvetica;exitX=0.5;exitY=1;entryX=0.8;entryY=1;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="480" y="80" />
+              <mxPoint x="734" y="80" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <!-- SuperAdmin to Admin SPA -->
+        <mxCell id="e-admin-cf" edge="1" parent="1" source="actor-admin" target="svc-cf" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#4338CA;strokeWidth=1.5;fontFamily=Helvetica;exitX=0.5;exitY=1;entryX=0.5;entryY=0;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1240" y="80" />
+              <mxPoint x="1060" y="80" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Route 53 to IGW: Drops to clean corridor y=92 below actors, then along exterior x=20 to avoid all icons and headers -->
+        <mxCell id="e-r53-igw" edge="1" parent="1" source="svc-r53" target="svc-igw" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#8C4FFF;strokeWidth=1.5;fontFamily=Helvetica;exitX=0;exitY=0.5;entryX=0;entryY=0.5;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="670" y="47" />
+              <mxPoint x="670" y="92" />
+              <mxPoint x="20" y="92" />
+              <mxPoint x="20" y="281" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e-igw-waf" edge="1" parent="1" source="svc-igw" target="svc-waf" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#8C4FFF;strokeWidth=1.5;fontFamily=Helvetica;exitX=1;exitY=0.5;entryX=0;entryY=0.5;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e-waf-alb" edge="1" parent="1" source="svc-waf" target="svc-alb" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#8C4FFF;strokeWidth=2;fontFamily=Helvetica;exitX=1;exitY=0.5;entryX=0;entryY=0.5;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- ALB to Fargate Tasks (Dedicated Transit Corridor) -->
+        <mxCell id="e-alb-acme" edge="1" parent="1" source="svc-alb" target="svc-fargate-acme" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#ED7100;strokeWidth=2;fontFamily=Helvetica;exitX=1;exitY=0.5;entryX=0;entryY=0.5;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e-alb-marvel" edge="1" parent="1" source="svc-alb" target="svc-fargate-marvel" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#ED7100;strokeWidth=2;fontFamily=Helvetica;exitX=1;exitY=0.25;entryX=0;entryY=0.5;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="420" y="270" />
+              <mxPoint x="420" y="202" />
+              <mxPoint x="710" y="202" />
+              <mxPoint x="710" y="287" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Fargate Replica 1 to Data Tier (Clean Parallel Tracks in Subnet Gap) -->
+        <mxCell id="e-fargate-efs" edge="1" parent="1" source="svc-fargate-acme" target="svc-efs" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#3F8624;strokeWidth=1.5;fontFamily=Helvetica;exitX=0.25;exitY=1;entryX=0.5;entryY=0;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="536" y="380" />
+              <mxPoint x="171" y="380" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e-fargate-redis" edge="1" parent="1" source="svc-fargate-acme" target="svc-redis" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#C925D1;strokeWidth=1.5;fontFamily=Helvetica;exitX=0.5;exitY=1;entryX=0.5;entryY=0;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="547" y="392" />
+              <mxPoint x="291" y="392" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e-fargate-proxy" edge="1" parent="1" source="svc-fargate-acme" target="svc-proxy" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#C925D1;strokeWidth=1.5;fontFamily=Helvetica;exitX=0.75;exitY=1;entryX=0.5;entryY=0;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="558" y="404" />
+              <mxPoint x="411" y="404" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <!-- Fargate Replica 1 to S3 Multi-Tenant Vault (via dedicated corridor x=85) -->
+        <mxCell id="e-fargate-s3" edge="1" parent="1" source="svc-fargate-acme" target="svc-s3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#3F8624;strokeWidth=1.5;fontFamily=Helvetica;exitX=0.1;exitY=1;entryX=0;entryY=0.5;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="529" y="416" />
+              <mxPoint x="85" y="416" />
+              <mxPoint x="85" y="712" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e-proxy-rds" edge="1" parent="1" source="svc-proxy" target="svc-rds" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#C925D1;strokeWidth=2;fontFamily=Helvetica;exitX=1;exitY=0.5;entryX=0;entryY=0.5;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- S3 ObjectCreated to SQS & Ingestion Worker to OpenSearch -->
+        <mxCell id="e-s3-sqs" edge="1" parent="1" source="svc-s3" target="svc-sqs" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#ED7100;strokeWidth=2;dashed=1;fontFamily=Helvetica;exitX=1;exitY=0.5;entryX=0.5;entryY=1;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="450" y="712" />
+              <mxPoint x="450" y="610" />
+              <mxPoint x="701" y="610" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e-sqs-worker" edge="1" parent="1" source="svc-sqs" target="svc-worker-lambda" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#ED7100;strokeWidth=2;fontFamily=Helvetica;exitX=1;exitY=0.5;entryX=0;entryY=0.5;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e-worker-os" edge="1" parent="1" source="svc-worker-lambda" target="svc-opensearch" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#ED7100;strokeWidth=2;fontFamily=Helvetica;exitX=1;exitY=0.5;entryX=0;entryY=0.5;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Fargate Replica 2 to OpenSearch & Bedrock -->
+        <mxCell id="e-fargate-os" edge="1" parent="1" source="svc-fargate-marvel" target="svc-opensearch" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#ED7100;strokeWidth=1.5;fontFamily=Helvetica;exitX=0.75;exitY=1;entryX=0.5;entryY=0;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="838" y="387" />
+              <mxPoint x="931" y="387" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e-fargate-bedrock" edge="1" parent="1" source="svc-fargate-marvel" target="svc-bedrock" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#01A88D;dashed=1;strokeWidth=1.5;fontFamily=Helvetica;exitX=0.25;exitY=1;entryX=0.5;entryY=0;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="816" y="399" />
+              <mxPoint x="755" y="399" />
+              <mxPoint x="755" y="650" />
+              <mxPoint x="812" y="650" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Aurora Global DB: routed in clean corridor y=645 below private subnet -->
+        <mxCell id="e-rds-global" edge="1" parent="1" source="svc-rds" target="svc-dr-rds" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#C925D1;strokeWidth=2.5;fontFamily=Helvetica;exitX=0.5;exitY=1;entryX=0;entryY=0.5;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="531" y="645" />
+              <mxPoint x="1500" y="645" />
+              <mxPoint x="1500" y="511" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- S3 Cross-Region Replication: routed in clean corridor y=770 below regional services -->
+        <mxCell id="e-s3-crr" edge="1" parent="1" source="svc-s3" target="svc-dr-s3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#3F8624;strokeWidth=2.5;fontFamily=Helvetica;exitX=0.5;exitY=1;entryX=0.5;entryY=1;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="172" y="770" />
+              <mxPoint x="1647" y="770" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- DR SAGA to us-east-1 Failover -->
+        <mxCell id="e-dr-sfn-target" edge="1" parent="1" source="svc-dr-sfn" target="svc-dr-fargate" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#E7157B;strokeWidth=2;fontFamily=Helvetica;exitX=1;exitY=0.5;entryX=0.5;entryY=1;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1450" y="712" />
+              <mxPoint x="1450" y="340" />
+              <mxPoint x="1721" y="340" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Route 53 to DR ALB Failover: Drops to clean corridor y=92 below SuperAdmin, enters DR ALB from the left -->
+        <mxCell id="e-r53-dr-failover" edge="1" parent="1" source="svc-r53" target="svc-dr-alb" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#8C4FFF;dashed=1;strokeWidth=1.5;fontFamily=Helvetica;exitX=1;exitY=0.5;entryX=0;entryY=0.5;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="760" y="47" />
+              <mxPoint x="760" y="92" />
+              <mxPoint x="1465" y="92" />
+              <mxPoint x="1465" y="281" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- DR ALB to DR ECS Fargate: routes failover traffic to standby container cluster -->
+        <mxCell id="e-dr-alb-fargate" edge="1" parent="1" source="svc-dr-alb" target="svc-dr-fargate" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#ED7100;dashed=1;strokeWidth=2;fontFamily=Helvetica;exitX=1;exitY=0.5;entryX=0;entryY=0.5;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Control Plane Pipeline: Admin SPA -> Tenant Operator -> FinOps Saga -> DynamoDB -->
+        <mxCell id="e-cf-lambda" edge="1" parent="1" source="svc-cf" target="svc-lambda" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#4338CA;strokeWidth=1.5;fontFamily=Helvetica;exitX=1;exitY=0.5;entryX=0;entryY=0.5;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e-lambda-sfn" edge="1" parent="1" source="svc-lambda" target="svc-sfn" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#ED7100;strokeWidth=1.5;fontFamily=Helvetica;exitX=1;exitY=0.5;entryX=0;entryY=0.5;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e-sfn-ddb" edge="1" parent="1" source="svc-sfn" target="svc-ddb" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#E7157B;strokeWidth=1.5;fontFamily=Helvetica;exitX=1;exitY=0.5;entryX=0;entryY=0.5;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- FinOps Orchestrator to DR Failover Saga -->
+        <mxCell id="e-sfn-drsfn" edge="1" parent="1" source="svc-sfn" target="svc-dr-sfn" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#E7157B;strokeWidth=1.5;fontFamily=Helvetica;exitX=0.5;exitY=1;entryX=0.5;entryY=0;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1230" y="665" />
+              <mxPoint x="1182" y="665" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+    
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="app.diagrams.net" agent="Storix" version="26.0.0">
+  <diagram id="domain-class-minimal" name="Minimal Domain Class Diagram">
+    <mxGraphModel dx="1200" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="650" background="none" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- Title -->
+        <mxCell id="title" value="Domain Class Diagram (Core Entities)" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontStyle=1;fontSize=18;fontColor=#1E1B4B;" vertex="1" parent="1">
+          <mxGeometry x="350" y="25" width="400" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- ======================================================== -->
+        <!-- ROW 1                                                    -->
+        <!-- ======================================================== -->
+
+        <!-- CLASS 1: Tenant -->
+        <mxCell id="c_tenant" value="&lt;p style=&quot;margin:0px;padding-top:6px;text-align:center;&quot;&gt;&lt;b&gt;Tenant&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:12px;text-align:left;line-height:1.6;&quot;&gt;+ id: UUID&lt;br/&gt;+ name: String&lt;br/&gt;+ status: String&lt;br/&gt;+ quota_bytes: Long&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;whiteSpace=wrap;fillColor=#FAF5FF;strokeColor=#9333EA;strokeWidth=1.5;fontColor=#581C87;rounded=1;arcSize=6;" vertex="1" parent="1">
+          <mxGeometry x="60" y="90" width="220" height="120" as="geometry" />
+        </mxCell>
+
+        <!-- CLASS 2: File -->
+        <mxCell id="c_file" value="&lt;p style=&quot;margin:0px;padding-top:6px;text-align:center;&quot;&gt;&lt;b&gt;File&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:12px;text-align:left;line-height:1.6;&quot;&gt;+ id: UUID&lt;br/&gt;+ name: String&lt;br/&gt;+ size: Long&lt;br/&gt;+ checksum: String&lt;br/&gt;+ s3_key: String&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;whiteSpace=wrap;fillColor=#F0FDF4;strokeColor=#16A34A;strokeWidth=1.5;fontColor=#166534;rounded=1;arcSize=6;" vertex="1" parent="1">
+          <mxGeometry x="440" y="80" width="220" height="140" as="geometry" />
+        </mxCell>
+
+        <!-- CLASS 3: SearchIndex -->
+        <mxCell id="c_search" value="&lt;p style=&quot;margin:0px;padding-top:6px;text-align:center;&quot;&gt;&lt;b&gt;SearchIndex&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:12px;text-align:left;line-height:1.6;&quot;&gt;+ id: UUID&lt;br/&gt;+ content_text: String&lt;br/&gt;+ tags: List&amp;lt;String&amp;gt;&lt;br/&gt;+ indexed_at: DateTime&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;whiteSpace=wrap;fillColor=#FFFBEB;strokeColor=#F59E0B;strokeWidth=1.5;fontColor=#B45309;rounded=1;arcSize=6;" vertex="1" parent="1">
+          <mxGeometry x="820" y="90" width="220" height="120" as="geometry" />
+        </mxCell>
+
+        <!-- ======================================================== -->
+        <!-- ROW 2                                                    -->
+        <!-- ======================================================== -->
+
+        <!-- CLASS 4: User -->
+        <mxCell id="c_user" value="&lt;p style=&quot;margin:0px;padding-top:6px;text-align:center;&quot;&gt;&lt;b&gt;User&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:12px;text-align:left;line-height:1.6;&quot;&gt;+ id: UUID&lt;br/&gt;+ username: String&lt;br/&gt;+ role: String&lt;br/&gt;+ quota_bytes: Long&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;whiteSpace=wrap;fillColor=#F0F9FF;strokeColor=#0284C7;strokeWidth=1.5;fontColor=#0369A1;rounded=1;arcSize=6;" vertex="1" parent="1">
+          <mxGeometry x="60" y="360" width="220" height="120" as="geometry" />
+        </mxCell>
+
+        <!-- CLASS 5: Permission -->
+        <mxCell id="c_perm" value="&lt;p style=&quot;margin:0px;padding-top:6px;text-align:center;&quot;&gt;&lt;b&gt;Permission&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:12px;text-align:left;line-height:1.6;&quot;&gt;+ id: UUID&lt;br/&gt;+ access_type: String&lt;br/&gt;+ password: String&lt;br/&gt;+ expires_at: DateTime&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;whiteSpace=wrap;fillColor=#FEF2F2;strokeColor=#DC2626;strokeWidth=1.5;fontColor=#991B1B;rounded=1;arcSize=6;" vertex="1" parent="1">
+          <mxGeometry x="440" y="360" width="220" height="120" as="geometry" />
+        </mxCell>
+
+        <!-- CLASS 6: AuditLog -->
+        <mxCell id="c_audit" value="&lt;p style=&quot;margin:0px;padding-top:6px;text-align:center;&quot;&gt;&lt;b&gt;AuditLog&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:12px;text-align:left;line-height:1.6;&quot;&gt;+ id: UUID&lt;br/&gt;+ action: String&lt;br/&gt;+ client_ip: String&lt;br/&gt;+ timestamp: DateTime&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;whiteSpace=wrap;fillColor=#FDF4FF;strokeColor=#C026D3;strokeWidth=1.5;fontColor=#701A75;rounded=1;arcSize=6;" vertex="1" parent="1">
+          <mxGeometry x="820" y="360" width="220" height="120" as="geometry" />
+        </mxCell>
+
+        <!-- ======================================================== -->
+        <!-- CLEAN RELATIONSHIPS & MULTIPLICITIES                     -->
+        <!-- ======================================================== -->
+
+        <!-- Tenant to User (1 to 0..*) -->
+        <mxCell id="rel_t_u" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#0284C7;strokeWidth=1.5;endArrow=none;" edge="1" parent="1" source="c_tenant" target="c_user">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="m_tu_1" value="1" style="text;html=1;align=center;verticalAlign=middle;fontSize=11;fontStyle=1;fontColor=#0284C7;" vertex="1" parent="1">
+          <mxGeometry x="180" y="215" width="20" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="m_tu_n" value="0..*" style="text;html=1;align=center;verticalAlign=middle;fontSize=11;fontStyle=1;fontColor=#0284C7;" vertex="1" parent="1">
+          <mxGeometry x="180" y="335" width="25" height="20" as="geometry" />
+        </mxCell>
+
+        <!-- Tenant to File (1 to 0..*) -->
+        <mxCell id="rel_t_f" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#16A34A;strokeWidth=1.5;endArrow=none;" edge="1" parent="1" source="c_tenant" target="c_file">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="m_tf_1" value="1" style="text;html=1;align=center;verticalAlign=middle;fontSize=11;fontStyle=1;fontColor=#16A34A;" vertex="1" parent="1">
+          <mxGeometry x="285" y="125" width="20" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="m_tf_n" value="0..*" style="text;html=1;align=center;verticalAlign=middle;fontSize=11;fontStyle=1;fontColor=#16A34A;" vertex="1" parent="1">
+          <mxGeometry x="410" y="125" width="25" height="20" as="geometry" />
+        </mxCell>
+
+        <!-- User to File (1 to 0..*) -->
+        <mxCell id="rel_u_f" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#16A34A;strokeWidth=1.5;endArrow=none;" edge="1" parent="1" source="c_user" target="c_file">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="360" y="420" />
+              <mxPoint x="360" y="190" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m_uf_1" value="1" style="text;html=1;align=center;verticalAlign=middle;fontSize=11;fontStyle=1;fontColor=#16A34A;" vertex="1" parent="1">
+          <mxGeometry x="285" y="400" width="20" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="m_uf_n" value="0..*" style="text;html=1;align=center;verticalAlign=middle;fontSize=11;fontStyle=1;fontColor=#16A34A;" vertex="1" parent="1">
+          <mxGeometry x="410" y="175" width="25" height="20" as="geometry" />
+        </mxCell>
+
+        <!-- File to SearchIndex (1 to 1) -->
+        <mxCell id="rel_f_s" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#F59E0B;strokeWidth=1.5;endArrow=none;" edge="1" parent="1" source="c_file" target="c_search">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="m_fs_1" value="1" style="text;html=1;align=center;verticalAlign=middle;fontSize=11;fontStyle=1;fontColor=#F59E0B;" vertex="1" parent="1">
+          <mxGeometry x="665" y="125" width="20" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="m_fs_2" value="1" style="text;html=1;align=center;verticalAlign=middle;fontSize=11;fontStyle=1;fontColor=#F59E0B;" vertex="1" parent="1">
+          <mxGeometry x="795" y="125" width="20" height="20" as="geometry" />
+        </mxCell>
+
+        <!-- File to Permission (1 to 0..*) -->
+        <mxCell id="rel_f_p" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#DC2626;strokeWidth=1.5;endArrow=none;" edge="1" parent="1" source="c_file" target="c_perm">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="m_fp_1" value="1" style="text;html=1;align=center;verticalAlign=middle;fontSize=11;fontStyle=1;fontColor=#DC2626;" vertex="1" parent="1">
+          <mxGeometry x="560" y="225" width="20" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="m_fp_n" value="0..*" style="text;html=1;align=center;verticalAlign=middle;fontSize=11;fontStyle=1;fontColor=#DC2626;" vertex="1" parent="1">
+          <mxGeometry x="560" y="335" width="25" height="20" as="geometry" />
+        </mxCell>
+
+        <!-- File to AuditLog (1 to 0..*) -->
+        <mxCell id="rel_f_a" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#C026D3;strokeWidth=1.5;endArrow=none;" edge="1" parent="1" source="c_file" target="c_audit">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="740" y="190" />
+              <mxPoint x="740" y="420" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m_fa_1" value="1" style="text;html=1;align=center;verticalAlign=middle;fontSize=11;fontStyle=1;fontColor=#C026D3;" vertex="1" parent="1">
+          <mxGeometry x="665" y="175" width="20" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="m_fa_n" value="0..*" style="text;html=1;align=center;verticalAlign=middle;fontSize=11;fontStyle=1;fontColor=#C026D3;" vertex="1" parent="1">
+          <mxGeometry x="790" y="400" width="25" height="20" as="geometry" />
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

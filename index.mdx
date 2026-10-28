@@ -8,7 +8,7 @@ description: "Enterprise multi-tenant Nextcloud SaaS platform on AWS — archite
 **Storix** is an enterprise-grade, multi-tenant cloud storage and generative AI platform built on AWS using a Zero-Code-Modification, fully AWS-native modular CloudFormation architecture with container-per-tenant isolation.
 
 <p align="center">
-  <img src="/images/nextcloud_architecture.png" alt="Storix Architecture Diagram" />
+  <img src="/images/storix_system_architecture_master.png" alt="Storix Multi-Tenant Master Architecture Diagram" />
 </p>
 
 ## Key Platform Capabilities
@@ -17,17 +17,17 @@ description: "Enterprise multi-tenant Nextcloud SaaS platform on AWS — archite
   <Card title="Container-per-Tenant Isolation" icon="box-archive" href="/docs/tenants/isolation-model">
     Dedicated AWS Fargate container per tenant with FinOps scale-to-zero compute suspension ($0.00 idle cost).
   </Card>
-  <Card title="RDS Proxy & Connection Pooling" icon="database" href="/docs/architecture-overview">
-    Amazon RDS Proxy connection pooling prevents connection saturation during fleet scale-out events.
+  <Card title="OpenSearch & Bedrock GenAI RAG" icon="brain" href="/docs/ai/rag-pipeline">
+    Amazon OpenSearch 2.11 BM25 lexical search paired with Bedrock Titan Embeddings & Claude 3.5 Sonnet RAG via LiteLLM.
   </Card>
-  <Card title="AI-Powered via Bedrock" icon="brain" href="/docs/ai/bedrock-integration">
-    Pre-baked Nextcloud Assistant integrated with Amazon Bedrock Claude 3.5 Sonnet via LiteLLM sidecar.
+  <Card title="Multi-Region Disaster Recovery" icon="globe" href="/docs/architecture-overview">
+    Aurora Global Database (RPO &lt; 1s), S3 Cross-Region Replication (RPO &lt; 15m), and Route 53 automated failover (RTO &lt; 3m).
+  </Card>
+  <Card title="RDS Proxy Connection Pooling" icon="database" href="/docs/architecture-overview">
+    Amazon RDS Proxy connection pooling prevents connection saturation during multi-tenant fleet scale-out events.
   </Card>
   <Card title="AWS Graviton ARM64 & SOCI" icon="bolt" href="/docs/architecture-overview">
-    Multi-arch Graviton ARM64 execution with AWS SOCI (Seekable OCI) indexing for sub-15s cold starts.
-  </Card>
-  <Card title="3-Tier Storage Lifecycle" icon="hard-drive" href="/docs/tenants/isolation-model">
-    EFS Infrequent Access/Archive lifecycle + S3 Intelligent-Tiering and 180-day Glacier Instant Retrieval.
+    Multi-arch Graviton ARM64 compute saving 20% unit cost, paired with AWS SOCI indexing for sub-15s cold starts.
   </Card>
   <Card title="WebAuthn Passkeys & Async OCC" icon="shield-check" href="/docs/control-plane/super-admin-console">
     Biometric login (Touch ID / Face ID) and asynchronous OCC command execution with live web terminal.
@@ -41,34 +41,43 @@ description: "Enterprise multi-tenant Nextcloud SaaS platform on AWS — archite
 ```
 Internet → AWS WAFv2 → ALB (Dual-AZ Ingress)
            ├── acme.png261.dev  → tg-acme  → service-acme  [AWS Fargate ARM64]
-           │                                    ├── nc_acme  [RDS Proxy -> PostgreSQL 16]
+           │                                    ├── nc_acme  [RDS Proxy -> PostgreSQL 16 / Aurora Global]
            │                                    ├── /tenants/acme/config [EFS 30d IA · 90d Archive]
-           │                                    └── s3://vault/tenants/acme/* [Intelligent-Tiering]
+           │                                    ├── s3://vault/tenants/acme/* [Intelligent-Tiering & CRR]
+           │                                    └── tenant_acme [Amazon OpenSearch 2.11 BM25 Index]
            └── marvel.png261.dev → tg-marvel → service-marvel [AWS Fargate ARM64]
-                                                ├── nc_marvel [RDS Proxy -> PostgreSQL 16]
+                                                ├── nc_marvel [RDS Proxy -> PostgreSQL 16 / Aurora Global]
                                                 ├── /tenants/marvel/config [EFS 30d IA · 90d Archive]
-                                                └── s3://vault/tenants/marvel/* [Intelligent-Tiering]
+                                                ├── s3://vault/tenants/marvel/* [Intelligent-Tiering & CRR]
+                                                └── tenant_marvel [Amazon OpenSearch 2.11 BM25 Index]
 
 Control Plane: Step Functions SAGAs → DynamoDB Registry → Async OCC Engine → CloudWatch EMF
-Telemetry:     CloudWatch Synthetics Canary (24/7 Endpoint Health) + Container Insights
 AI Engine:     Nextcloud Assistant → LiteLLM (127.0.0.1:4000) → Amazon Bedrock (Claude 3.5 Sonnet)
+Search Queue:  S3 EventBridge → Amazon SQS (with DLQ) → Ingestion Lambda → OpenSearch Domain
+Multi-Region:  ap-southeast-1 (Primary) ⇄ us-east-1 (Secondary DR Standby)
 ```
 
 ---
 
-## Live System Experience
+## Live System Experience & Verified Evidence
 
 <Tabs>
-  <Tab title="SuperAdmin Console (Light)">
-    ![SuperAdmin Tenants Light](/images/02_console_tenants_light.png)
+  <Tab title="SuperAdmin Fleet Dashboard">
+    ![SuperAdmin Dashboard Authenticated](/images/15_superadmin_dashboard_authenticated.png)
   </Tab>
-  <Tab title="SuperAdmin Console (Dark)">
-    ![SuperAdmin Tenants Dark](/images/03_console_tenants_dark.png)
+  <Tab title="Fleet Telemetry & FinOps">
+    ![SuperAdmin Metrics](/images/16_superadmin_dashboard_metrics.png)
   </Tab>
-  <Tab title="Biometric Passkey Login">
+  <Tab title="AI Assistant Q&A Chat">
+    ![Nextcloud AI Assistant Chat](/images/12_nextcloud_ai_assistant_chat.png)
+  </Tab>
+  <Tab title="OpenSearch FullText Search">
+    ![Live Unified Search Results](/images/04_live_unified_search_results.png)
+  </Tab>
+  <Tab title="Biometric Passkey Authentication">
     ![SuperAdmin Login](/images/01_console_login_page.png)
   </Tab>
-  <Tab title="Storix Tenant Experience">
+  <Tab title="Storix Custom Theming">
     ![Storix Nextcloud Theme](/images/05_runtime_storix_theme.png)
   </Tab>
 </Tabs>
@@ -79,10 +88,11 @@ AI Engine:     Nextcloud Assistant → LiteLLM (127.0.0.1:4000) → Amazon Bedro
 
 | Repository | Scope & Function | Technology Stack |
 |---|---|---|
-| [**`infra`**](https://github.com/FilestoreCloud/infra) | Modular CloudFormation IaC (Stacks 01–07), Step Functions SAGAs & Control Plane Lambda | AWS CloudFormation, Boto3, Moto, Terratest |
-| [**`runtime`**](https://github.com/FilestoreCloud/runtime) | Hardened Golden Container Image with pre-baked AI & Bedrock Assistant | Nextcloud 30, Apache MPM, LiteLLM, AWS SOCI |
-| [**`console`**](https://github.com/FilestoreCloud/console) | SuperAdmin Fleet Management Web Portal | React 18, Vite, Refine, Ant Design 5, WebAuthn |
-| [**`docs`**](https://github.com/FilestoreCloud/docs) | Platform Architecture, Operations & User Documentation | Mintlify, MDX |
+| [**`FilestoreCloud/infra`**](https://github.com/FilestoreCloud/infra) | Modular CloudFormation IaC (Stacks 01–07), Step Functions SAGAs & Control Plane Lambda | AWS CloudFormation, Boto3, Moto, Terratest |
+| [**`FilestoreCloud/runtime`**](https://github.com/FilestoreCloud/runtime) | Hardened Golden Container Image with pre-baked AI, Apache Tika & Bedrock Assistant | Nextcloud 30, Apache MPM, LiteLLM, AWS SOCI |
+| [**`FilestoreCloud/console`**](https://github.com/FilestoreCloud/console) | SuperAdmin Fleet Management Web Portal | React 18, Vite, Refine, Ant Design 5, WebAuthn |
+| [**`FilestoreCloud/reports`**](https://github.com/FilestoreCloud/reports) | Architectural specifications, Draw.io source diagrams & verification evidence | Draw.io, Playwright, CloudWatch Synthetics |
+| [**`FilestoreCloud/docs`**](https://github.com/FilestoreCloud/docs) | Platform Architecture, Operations & Defense Documentation | Mintlify, MDX |
 
 ---
 
@@ -92,10 +102,19 @@ AI Engine:     Nextcloud Assistant → LiteLLM (127.0.0.1:4000) → Amazon Bedro
   <Card title="Architecture Overview" icon="sitemap" href="/docs/architecture-overview">
     Deep-dive into VPC, subnets, RDS Proxy, and isolation boundaries.
   </Card>
-  <Card title="Quickstart Guide" icon="play" href="/docs/quickstart">
-    Step-by-step instructions to deploy Storix and provision your first tenant.
+  <Card title="Deployment Pipelines" icon="code-merge" href="/docs/deployment/pipeline-architecture">
+    Examine the 6-block CloudFormation deployment pipeline and 8-stage zero-cost teardown.
+  </Card>
+  <Card title="GenAI & RAG Pipeline" icon="sparkles" href="/docs/ai/rag-pipeline">
+    Explore OpenSearch fulltext search, SQS async ingestion, and Bedrock integration.
   </Card>
   <Card title="SuperAdmin Console" icon="browser" href="/docs/control-plane/super-admin-console">
     Explore the WebAuthn-secured portal, Async OCC terminal, and FinOps telemetry.
+  </Card>
+  <Card title="Project Defense Q&A" icon="graduation-cap" href="/docs/project-defense-qa">
+    Comprehensive 12-topic architecture defense questions, technical rationale, and citations.
+  </Card>
+  <Card title="Quickstart Guide" icon="play" href="/docs/quickstart">
+    Step-by-step instructions to deploy Storix and provision your first tenant.
   </Card>
 </CardGroup>

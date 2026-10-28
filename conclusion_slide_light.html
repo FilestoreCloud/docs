@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Storix - Slide Tổng Kết & Đánh Giá Đề Tài T16 (Backend Filestore API)</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background-color: #FFFFFF;
+      color: #0F172A;
+      width: 1920px;
+      height: 1080px;
+      overflow: hidden;
+    }
+  </style>
+</head>
+<body class="flex flex-col justify-between p-12 bg-white select-none">
+
+  <!-- TOP HEADER -->
+  <div class="flex items-center justify-between border-b border-slate-200 pb-5">
+    <div>
+      <div class="flex items-center gap-2.5 mb-1.5">
+        <span class="px-3 py-0.5 text-xs font-bold tracking-wider uppercase bg-blue-50 text-blue-700 border border-blue-200 rounded-full font-mono">
+          BÁO CÁO TỐT NGHIỆP · ĐỀ TÀI T16
+        </span>
+        <span class="text-xs font-semibold text-slate-500 tracking-wide uppercase font-mono">
+          BACKEND FILESTORE API · FILE STORAGE AND MANAGEMENT SYSTEM
+        </span>
+      </div>
+      <h1 class="text-3xl font-extrabold text-slate-900 tracking-tight flex items-center gap-3">
+        Tổng Kết Đề Tài: Kết Quả Triển Khai, Điểm Đánh Đổi &amp; Lộ Trình Phát Triển
+      </h1>
+    </div>
+    <div class="text-right">
+      <div class="text-xs font-mono font-medium text-slate-400 uppercase tracking-wider">Đánh Giá Chuẩn Yêu Cầu Kỹ Thuật</div>
+      <div class="inline-flex items-center gap-2 mt-1 px-3 py-1 bg-emerald-50 border border-emerald-200 rounded-full text-xs font-semibold text-emerald-800">
+        <span class="w-2 h-2 rounded-full bg-emerald-500"></span> 100% Core Requirements Met · Enterprise Grade
+      </div>
+    </div>
+  </div>
+
+  <!-- MAIN 3-COLUMN CONTENT -->
+  <div class="grid grid-cols-12 gap-6 my-auto" style="height: 720px;">
+    
+    <!-- CỘT 1: NHỮNG GÌ ĐÃ ĐẠT ĐƯỢC (YÊU CẦU 1 & 2) (5 CỘT) -->
+    <div class="col-span-5 bg-slate-50/70 border border-slate-200 rounded-2xl p-6 flex flex-col justify-between shadow-sm">
+      <div>
+        <div class="flex items-center justify-between pb-3 mb-4 border-b border-slate-200">
+          <div class="flex items-center gap-2 text-emerald-700 font-bold text-sm tracking-wide uppercase">
+            <span class="flex h-5 w-5 items-center justify-center rounded-full bg-emerald-100 text-emerald-800 text-xs font-bold">✓</span>
+            1. Những Gì Đã Đạt Được (100% Yêu Cầu T16)
+          </div>
+          <span class="text-[11px] font-mono font-semibold px-2 py-0.5 bg-emerald-100 text-emerald-800 rounded border border-emerald-200">
+            Fulfilled 4/4 Core Goals
+          </span>
+        </div>
+
+        <ul class="space-y-3.5 text-[13px] leading-relaxed text-slate-600">
+          <li class="flex items-start gap-2.5">
+            <span class="text-emerald-600 font-bold mt-0.5">●</span>
+            <div>
+              <strong class="text-slate-900">Mục tiêu 1: Đa Người Thuê &amp; Cô Lập Tuyệt Đối (Multi-Tenancy):</strong>
+              <p class="text-[12px] text-slate-600 mt-0.5">
+                Thiết lập kiến trúc <strong>4 tầng cô lập độc lập (4-Layer Isolation)</strong>: Compute (ECS Fargate ARM64 riêng), Database (RDS Proxy + Aurora DB-per-tenant), File Storage (EFS AP UID/GID &amp; S3 Vault Prefix), Session/Locking (ElastiCache Redis).
+              </p>
+            </div>
+          </li>
+          <li class="flex items-start gap-2.5">
+            <span class="text-emerald-600 font-bold mt-0.5">●</span>
+            <div>
+              <strong class="text-slate-900">Mục tiêu 2: Xử Lý Tệp Toàn Diện &amp; Bảo Mật (File Operations):</strong>
+              <p class="text-[12px] text-slate-600 mt-0.5">
+                • <strong>Upload:</strong> Hỗ trợ Chunked WebDAV (RFC 4918) chia nhỏ tệp lớn.<br>
+                • <strong>Download:</strong> Range Download (HTTP 206 Partial Content) stream mượt mà.<br>
+                • <strong>Xóa an toàn:</strong> Thùng rác 2 lớp (Trashbin phục hồi) &amp; S3 Versioning.<br>
+                • <strong>Mã hóa:</strong> AWS KMS CMK at-rest và TLS 1.3 in-transit.
+              </p>
+            </div>
+          </li>
+          <li class="flex items-start gap-2.5">
+            <span class="text-emerald-600 font-bold mt-0.5">●</span>
+            <div>
+              <strong class="text-slate-900">Mục tiêu 3: Quản Lý Metadata &amp; Tìm Kiếm Hiệu Năng Cao:</strong>
+              <p class="text-[12px] text-slate-600 mt-0.5">
+                Quản lý metadata phân cấp toàn diện (<code class="text-[11.5px] bg-slate-200/80 px-1 py-0.5 rounded text-slate-800 font-mono">oc_filecache</code>, System Tags, ETag). Tích hợp <strong>Apache Tika 2.9 Sidecar ($0 API)</strong> bóc tách text PDF/Office tại chỗ và <strong>Amazon OpenSearch Service 2.11</strong> tìm kiếm toàn văn tách biệt index <code class="text-[11.5px] bg-slate-200/80 px-1 py-0.5 rounded text-slate-800 font-mono">tenant_{id}</code>.
+              </p>
+            </div>
+          </li>
+          <li class="flex items-start gap-2.5">
+            <span class="text-emerald-600 font-bold mt-0.5">●</span>
+            <div>
+              <strong class="text-slate-900">Mục tiêu 4: Kiểm Soát Truy Cập, Audit Logging &amp; RESTful APIs:</strong>
+              <p class="text-[12px] text-slate-600 mt-0.5">
+                RBAC 4 cấp độ, Public share link có mật khẩu &amp; hạn dùng. Ghi vết kiểm toán kép (<strong>DynamoDB Audit Ledger bất biến lưu 1 năm</strong> + <code class="text-[11.5px] bg-slate-200/80 px-1 py-0.5 rounded text-slate-800 font-mono">admin_audit</code>). Chuẩn hóa OCS RESTful APIs, WebAuthn FIDO2 Passkeys.
+              </p>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="pt-3 border-t border-slate-200 text-xs font-semibold text-emerald-700 flex items-center gap-1.5">
+        <span>✔</span> Hoàn thành xuất sắc 100% mục tiêu cốt lõi theo đề bài T16.
+      </div>
+    </div>
+
+    <!-- CỘT 2: NHỮNG GÌ CHƯA ĐẠT ĐƯỢC (2 ĐIỂM HẠN CHẾ CỐT LÕI) (3 CỘT) -->
+    <div class="col-span-3 bg-amber-50/40 border border-amber-200 rounded-2xl p-6 flex flex-col justify-between shadow-sm">
+      <div>
+        <div class="flex items-center justify-between pb-3 mb-4 border-b border-amber-200">
+          <div class="flex items-center gap-2 text-amber-800 font-bold text-sm tracking-wide uppercase">
+            <span class="flex h-5 w-5 items-center justify-center rounded-full bg-amber-100 text-amber-800 text-xs font-bold">!</span>
+            2. Điểm Đánh Đổi &amp; Hạn Chế
+          </div>
+          <span class="text-[11px] font-mono font-semibold px-2 py-0.5 bg-amber-100 text-amber-800 rounded border border-amber-300">
+            2 Architectural Gaps
+          </span>
+        </div>
+
+        <div class="space-y-4 text-[13px] leading-relaxed text-slate-700">
+          <!-- Hạn chế 1 -->
+          <div class="p-3.5 bg-white border border-amber-200/80 rounded-xl shadow-xs">
+            <div class="flex items-center gap-1.5 text-xs font-bold text-amber-900 uppercase">
+              <span class="text-amber-600 text-base">⚠️</span> 1. Chưa Có Direct Presigned S3 I/O
+            </div>
+            <div class="text-[11px] font-semibold text-amber-700 font-mono mt-0.5">I/O Bottleneck at Fargate Container</div>
+            <p class="text-slate-600 text-[12px] mt-2 leading-relaxed">
+              • <strong>Thực trạng:</strong> Mọi luồng dữ liệu upload/download tệp hiện tại vẫn phải đi xuyên qua container Nextcloud (Chunked WebDAV proxy).<br>
+              • <strong>Tác động:</strong> Khi tải tệp dung lượng rất lớn (hàng chục GB), container Fargate gánh toàn bộ băng thông streaming, gây tốn CPU/RAM và có nguy cơ nghẽn I/O cục bộ.
+            </p>
+          </div>
+
+          <!-- Hạn chế 2 -->
+          <div class="p-3.5 bg-white border border-amber-200/80 rounded-xl shadow-xs">
+            <div class="flex items-center gap-1.5 text-xs font-bold text-amber-900 uppercase">
+              <span class="text-amber-600 text-base">🛡️</span> 2. Thiếu Quét Mã Độc Thời Gian Thực
+            </div>
+            <div class="text-[11px] font-semibold text-amber-700 font-mono mt-0.5">No Real-time S3 Malware Scanning</div>
+            <p class="text-slate-600 text-[12px] mt-2 leading-relaxed">
+              • <strong>Thực trạng:</strong> File đẩy lên S3 Vault chưa được tự động kích hoạt engine quét virus tự động ngay tại tầng hạ tầng trước khi lưu trữ.<br>
+              • <strong>Tác động:</strong> Chưa có chốt chặn tự động để phát hiện và cách ly (quarantine) kịp thời nếu người dùng vô tình upload tệp chứa ransomware/malware.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="pt-3 border-t border-amber-200 text-xs font-semibold text-amber-800 flex items-center gap-1.5">
+        <span>⚠</span> Điểm đánh đổi thực tế giữa tốc độ phát triển và tối ưu hóa chuyên sâu.
+      </div>
+    </div>
+
+    <!-- CỘT 3: HƯỚNG PHÁT TRIỂN TRONG TƯƠNG LAI (4 CỘT) -->
+    <div class="col-span-4 bg-slate-50/70 border border-slate-200 rounded-2xl p-6 flex flex-col justify-between shadow-sm">
+      <div>
+        <div class="flex items-center justify-between pb-3 mb-4 border-b border-slate-200">
+          <div class="flex items-center gap-2 text-blue-700 font-bold text-sm tracking-wide uppercase">
+            <span class="flex h-5 w-5 items-center justify-center rounded-full bg-blue-100 text-blue-700 text-xs font-bold">🚀</span>
+            3. Hướng Phát Triển Tương Lai
+          </div>
+          <span class="text-[11px] font-mono font-semibold px-2 py-0.5 bg-blue-100 text-blue-800 rounded border border-blue-200">
+            3-Phase Strategic Roadmap
+          </span>
+        </div>
+
+        <div class="space-y-3">
+          <!-- Phase 1 -->
+          <div class="p-3 bg-white border border-slate-200 rounded-xl shadow-xs">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-bold text-blue-700 uppercase tracking-wide">Giai Đoạn 1: Quét Mã Độc S3 Tức Thì</span>
+              <span class="text-[11px] text-blue-600 font-mono font-semibold">1-2 Tháng</span>
+            </div>
+            <p class="text-slate-600 text-[12px] mt-1.5 leading-relaxed">
+              • Triển khai <strong>AWS GuardDuty Malware Protection for S3</strong>.<br>
+              • Tự động quét virus khi có sự kiện S3 EventBridge, tự động gắn tag và đẩy file nhiễm vào <strong>Quarantine S3 Bucket</strong>.
+            </p>
+          </div>
+
+          <!-- Phase 2 -->
+          <div class="p-3 bg-white border border-slate-200 rounded-xl shadow-xs">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-bold text-blue-700 uppercase tracking-wide">Giai Đoạn 2: Direct Presigned S3 I/O</span>
+              <span class="text-[11px] text-blue-600 font-mono font-semibold">2-3 Tháng</span>
+            </div>
+            <p class="text-slate-600 text-[12px] mt-1.5 leading-relaxed">
+              • Xây dựng cơ chế cấp phát <strong>S3 Presigned URLs &amp; CloudFront Signed URLs</strong> cho các tệp lớn (>50MB).<br>
+              • Giải phóng 80% tải I/O trên Fargate, mở rộng băng thông download lên Gbps.
+            </p>
+          </div>
+
+          <!-- Phase 3 -->
+          <div class="p-3 bg-white border border-slate-200 rounded-xl shadow-xs">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-bold text-blue-700 uppercase tracking-wide">Giai Đoạn 3: Semantic Search &amp; Enterprise DLP</span>
+              <span class="text-[11px] text-blue-600 font-mono font-semibold">3-6 Tháng</span>
+            </div>
+            <p class="text-slate-600 text-[12px] mt-1.5 leading-relaxed">
+              • Nâng cấp OpenSearch lên <strong>k-NN Vector Search + Bedrock Embeddings</strong>.<br>
+              • <strong>Dynamic Watermarking</strong>: Tự động chèn watermark chìm bảo vệ tài liệu mật.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="pt-3 border-t border-slate-200 text-xs font-semibold text-blue-700 flex items-center gap-1.5">
+        <span>🎯</span> Lộ trình giải quyết triệt để 2 hạn chế để sẵn sàng thương mại hoá diện rộng.
+      </div>
+    </div>
+
+  </div>
+
+  <!-- BOTTOM TAKEAWAY BANNER -->
+  <div class="bg-slate-50 border border-slate-200 rounded-2xl px-6 py-4 flex items-center justify-between">
+    <div class="flex items-center gap-4">
+      <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-blue-600 text-white font-bold text-lg shadow-sm">
+        💡
+      </div>
+      <div>
+        <h4 class="text-xs font-bold text-slate-400 tracking-wider uppercase font-mono">Thông Điệp Tổng Kết (Key Takeaway)</h4>
+        <p class="text-sm font-medium text-slate-800 mt-0.5">
+          Hệ thống <strong>Storix</strong> đã giải quyết trọn vẹn và đạt chuẩn <strong>100% mục tiêu Đề tài T16</strong>: Cô lập đa người thuê 4 tầng tuyệt đối, thao tác tệp toàn diện và bảo mật, tìm kiếm sâu hiệu năng cao (OpenSearch + Tika) và nhật ký kiểm toán bất biến. Hai điểm đánh đổi về <strong>Direct Presigned S3</strong> và <strong>Malware Scan</strong> đã được định hình giải pháp rõ ràng trong lộ trình phát triển.
+        </p>
+      </div>
+    </div>
+    <div class="flex items-center gap-2 pl-6 border-l border-slate-200">
+      <div class="text-right">
+        <div class="text-[11px] font-mono font-semibold text-slate-500 uppercase tracking-wider">HẠ TẦNG SẴN SÀNG</div>
+        <div class="text-xs font-bold text-blue-600 font-mono">CloudFormation IaC · Zero-NAT</div>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

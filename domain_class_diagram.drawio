@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="app.diagrams.net" agent="Storix" version="26.0.0">
+  <diagram id="storix-real-domain-diagram" name="Storix Production Domain Model">
+    <mxGraphModel dx="1800" dy="1300" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1850" pageHeight="1250" background="none" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- Title -->
+        <mxCell id="title" value="Storix Multi-Tenant SaaS Platform — Production Domain Model" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontStyle=1;fontSize=18;fontColor=#1E1B4B;" vertex="1" parent="1">
+          <mxGeometry x="450" y="20" width="900" height="36" as="geometry" />
+        </mxCell>
+
+        <!-- ======================================================== -->
+        <!-- PACKAGE 1: Control Plane Domain (Serverless State)       -->
+        <!-- ======================================================== -->
+        <mxCell id="pkg_control" value="Control Plane Domain (Platform State &amp; Fleet Registry)" style="swimlane;startSize=26;fillColor=#FAF5FF;strokeColor=#9333EA;strokeWidth=1.5;fontStyle=1;fontSize=12;fontColor=#581C87;rounded=0;align=left;spacingLeft=10;" vertex="1" parent="1">
+          <mxGeometry x="50" y="70" width="1750" height="340" as="geometry" />
+        </mxCell>
+
+        <!-- Class: SuperAdminUser -->
+        <mxCell id="c_admin" value="&lt;p style=&quot;margin:0px;padding-top:4px;text-align:center;&quot;&gt;&lt;b&gt;SuperAdminUser&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:8px;text-align:left;&quot;&gt;+ username: String [PK]&lt;br/&gt;+ role: String = &amp;quot;SuperAdmin&amp;quot;&lt;br/&gt;+ password_hash: String&lt;br/&gt;+ mfa_enabled: Boolean&lt;br/&gt;+ mfa_secret: String&lt;br/&gt;+ passkey_credentials: List&amp;lt;JSON&amp;gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:8px;text-align:left;&quot;&gt;+ verifyPasskeySignature(): Boolean&lt;br/&gt;+ authenticateTOTP(token): Boolean&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=11;fontFamily=Helvetica;html=1;whiteSpace=wrap;fillColor=#FFFFFF;strokeColor=#9333EA;strokeWidth=1.5;fontColor=#581C87;rounded=0;" vertex="1" parent="pkg_control">
+          <mxGeometry x="40" y="46" width="280" height="160" as="geometry" />
+        </mxCell>
+
+        <!-- Class: TenantRegistry -->
+        <mxCell id="c_registry" value="&lt;p style=&quot;margin:0px;padding-top:4px;text-align:center;&quot;&gt;&lt;b&gt;TenantRegistry&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:8px;text-align:left;&quot;&gt;+ tenant_id: String [PK] (e.g., &amp;quot;acme&amp;quot;)&lt;br/&gt;+ domain: String (e.g., &amp;quot;acme.png261.dev&amp;quot;)&lt;br/&gt;+ aliases: List&amp;lt;String&amp;gt;&lt;br/&gt;+ status: TenantStatus&lt;br/&gt;+ service_name: String (&amp;quot;service-acme&amp;quot;)&lt;br/&gt;+ database_name: String (&amp;quot;nc_acme&amp;quot;)&lt;br/&gt;+ efs_access_point_id: String&lt;br/&gt;+ isolation_model: String = &amp;quot;DEDICATED&amp;quot;&lt;br/&gt;+ quota_gb: Integer (e.g., 100)&lt;br/&gt;+ created_at: DateTime&lt;br/&gt;+ updated_at: DateTime&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:8px;text-align:left;&quot;&gt;+ suspendService(to_zero_tasks): Void&lt;br/&gt;+ resumeService(to_desired_tasks): Void&lt;br/&gt;+ updateFleetQuota(new_gb): Void&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=11;fontFamily=Helvetica;html=1;whiteSpace=wrap;fillColor=#FFFFFF;strokeColor=#9333EA;strokeWidth=1.8;fontColor=#581C87;rounded=0;" vertex="1" parent="pkg_control">
+          <mxGeometry x="470" y="40" width="340" height="270" as="geometry" />
+        </mxCell>
+
+        <!-- Class: PlatformAuditLog -->
+        <mxCell id="c_plat_audit" value="&lt;p style=&quot;margin:0px;padding-top:4px;text-align:center;&quot;&gt;&lt;b&gt;PlatformAuditLog&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:8px;text-align:left;&quot;&gt;+ log_id: UUID [PK]&lt;br/&gt;+ tenant_id: String [FK]&lt;br/&gt;+ actor_username: String&lt;br/&gt;+ action: PlatformAction&lt;br/&gt;+ client_ip: String&lt;br/&gt;+ http_status: Integer&lt;br/&gt;+ timestamp: DateTime&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:8px;text-align:left;&quot;&gt;+ recordAsync(): Void&lt;br/&gt;+ queryByTenant(tenant_id): List&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=11;fontFamily=Helvetica;html=1;whiteSpace=wrap;fillColor=#FFFFFF;strokeColor=#9333EA;strokeWidth=1.5;fontColor=#581C87;rounded=0;" vertex="1" parent="pkg_control">
+          <mxGeometry x="970" y="46" width="280" height="170" as="geometry" />
+        </mxCell>
+
+        <!-- Class: FleetMetricSnapshot -->
+        <mxCell id="c_metric" value="&lt;p style=&quot;margin:0px;padding-top:4px;text-align:center;&quot;&gt;&lt;b&gt;FleetMetricSnapshot&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:8px;text-align:left;&quot;&gt;+ snapshot_id: UUID [PK]&lt;br/&gt;+ tenant_id: String [FK]&lt;br/&gt;+ cpu_utilization_pct: Float&lt;br/&gt;+ memory_utilization_pct: Float&lt;br/&gt;+ alb_request_count: Integer&lt;br/&gt;+ target_response_latency_ms: Float&lt;br/&gt;+ rds_connection_count: Integer&lt;br/&gt;+ sampled_at: DateTime&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:8px;text-align:left;&quot;&gt;+ triggerAutoScalingAlarm(): Boolean&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=11;fontFamily=Helvetica;html=1;whiteSpace=wrap;fillColor=#FFFBEB;strokeColor=#F59E0B;strokeWidth=1.5;fontColor=#B45309;rounded=0;" vertex="1" parent="pkg_control">
+          <mxGeometry x="1410" y="46" width="290" height="190" as="geometry" />
+        </mxCell>
+
+        <!-- Relationships Control Plane -->
+        <mxCell id="rel_adm_reg" value="provisions &amp;amp; governs" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#9333EA;strokeWidth=1.5;endArrow=none;fontSize=10;fontColor=#581C87;" edge="1" parent="pkg_control" source="c_admin" target="c_registry">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="m_adm_reg_1" value="1" style="text;html=1;align=center;verticalAlign=middle;fontSize=11;fontStyle=1;fontColor=#9333EA;" vertex="1" parent="pkg_control">
+          <mxGeometry x="325" y="105" width="20" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="m_adm_reg_n" value="0..*" style="text;html=1;align=center;verticalAlign=middle;fontSize=11;fontStyle=1;fontColor=#9333EA;" vertex="1" parent="pkg_control">
+          <mxGeometry x="445" y="105" width="25" height="20" as="geometry" />
+        </mxCell>
+
+        <mxCell id="rel_reg_audit" value="records actions" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#9333EA;strokeWidth=1.5;endArrow=none;fontSize=10;fontColor=#581C87;" edge="1" parent="pkg_control" source="c_registry" target="c_plat_audit">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="m_reg_aud_1" value="1" style="text;html=1;align=center;verticalAlign=middle;fontSize=11;fontStyle=1;fontColor=#9333EA;" vertex="1" parent="pkg_control">
+          <mxGeometry x="815" y="110" width="20" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="m_reg_aud_n" value="0..*" style="text;html=1;align=center;verticalAlign=middle;fontSize=11;fontStyle=1;fontColor=#9333EA;" vertex="1" parent="pkg_control">
+          <mxGeometry x="945" y="110" width="25" height="20" as="geometry" />
+        </mxCell>
+
+        <mxCell id="rel_reg_met" value="monitors telemetry" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#F59E0B;strokeWidth=1.5;endArrow=none;fontSize=10;fontColor=#B45309;" edge="1" parent="pkg_control" source="c_plat_audit" target="c_metric">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- ======================================================== -->
+        <!-- PACKAGE 2: Data Plane & Dedicated Tenant Instance        -->
+        <!-- ======================================================== -->
+        <mxCell id="pkg_data" value="Data Plane &amp; Dedicated Instance Domain (Catalog: nc_&lt;tenant_id&gt; &amp; S3 Vault Scope)" style="swimlane;startSize=26;fillColor=#F0FDF4;strokeColor=#16A34A;strokeWidth=1.5;fontStyle=1;fontSize=12;fontColor=#166534;rounded=0;align=left;spacingLeft=10;" vertex="1" parent="1">
+          <mxGeometry x="50" y="460" width="1750" height="730" as="geometry" />
+        </mxCell>
+
+        <!-- Class: TenantUser -->
+        <mxCell id="c_user" value="&lt;p style=&quot;margin:0px;padding-top:4px;text-align:center;&quot;&gt;&lt;b&gt;TenantUser&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:8px;text-align:left;&quot;&gt;+ uid: String [PK] (e.g., &amp;quot;bob&amp;quot;, &amp;quot;carol&amp;quot;)&lt;br/&gt;+ displayname: String&lt;br/&gt;+ email: String&lt;br/&gt;+ quota_bytes: Long (5 GB Hard Quota)&lt;br/&gt;+ quota_used_bytes: Long&lt;br/&gt;+ is_tenant_admin: Boolean&lt;br/&gt;+ last_login: DateTime&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:8px;text-align:left;&quot;&gt;+ checkPersonalQuota(size): Boolean&lt;br/&gt;+ hasGroupMembership(gid): Boolean&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=11;fontFamily=Helvetica;html=1;whiteSpace=wrap;fillColor=#FFFFFF;strokeColor=#0284C7;strokeWidth=1.5;fontColor=#0369A1;rounded=0;" vertex="1" parent="pkg_data">
+          <mxGeometry x="40" y="60" width="280" height="180" as="geometry" />
+        </mxCell>
+
+        <!-- Class: DepartmentGroup -->
+        <mxCell id="c_group" value="&lt;p style=&quot;margin:0px;padding-top:4px;text-align:center;&quot;&gt;&lt;b&gt;DepartmentGroup&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:8px;text-align:left;&quot;&gt;+ gid: String [PK] (&amp;quot;Engineering&amp;quot;, &amp;quot;Finance&amp;quot;)&lt;br/&gt;+ displayname: String&lt;br/&gt;+ ai_tokens_allocated: Integer&lt;br/&gt;+ ai_tokens_consumed: Integer&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:8px;text-align:left;&quot;&gt;+ canConsumeAITokens(count): Boolean&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=11;fontFamily=Helvetica;html=1;whiteSpace=wrap;fillColor=#FFFFFF;strokeColor=#0284C7;strokeWidth=1.5;fontColor=#0369A1;rounded=0;" vertex="1" parent="pkg_data">
+          <mxGeometry x="40" y="320" width="280" height="130" as="geometry" />
+        </mxCell>
+
+        <!-- Class: GroupFolder -->
+        <mxCell id="c_folder" value="&lt;p style=&quot;margin:0px;padding-top:4px;text-align:center;&quot;&gt;&lt;b&gt;GroupFolder&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:8px;text-align:left;&quot;&gt;+ folder_id: Long [PK]&lt;br/&gt;+ mount_point: String (&amp;quot;/Engineering&amp;quot;)&lt;br/&gt;+ assigned_gid: String [FK]&lt;br/&gt;+ quota_bytes: Long&lt;br/&gt;+ acl_enabled: Boolean&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:8px;text-align:left;&quot;&gt;+ verifyAccess(uid): Boolean&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=11;fontFamily=Helvetica;html=1;whiteSpace=wrap;fillColor=#FFFFFF;strokeColor=#0284C7;strokeWidth=1.5;fontColor=#0369A1;rounded=0;" vertex="1" parent="pkg_data">
+          <mxGeometry x="40" y="520" width="280" height="140" as="geometry" />
+        </mxCell>
+
+        <!-- Class: FileCacheItem -->
+        <mxCell id="c_file" value="&lt;p style=&quot;margin:0px;padding-top:4px;text-align:center;&quot;&gt;&lt;b&gt;FileCacheItem&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:8px;text-align:left;&quot;&gt;+ fileid: Long [PK]&lt;br/&gt;+ storage_type: String (&amp;quot;s3&amp;quot; / &amp;quot;efs&amp;quot;)&lt;br/&gt;+ path: String (e.g., &amp;quot;files/Project/spec.pdf&amp;quot;)&lt;br/&gt;+ name: String&lt;br/&gt;+ mimetype: String&lt;br/&gt;+ size_bytes: Long&lt;br/&gt;+ checksum_sha256: String&lt;br/&gt;+ etag: String&lt;br/&gt;+ s3_vault_key: String&lt;br/&gt;+ is_encrypted: Boolean&lt;br/&gt;+ permissions_bitmask: Integer&lt;br/&gt;+ mtime: Long&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:8px;text-align:left;&quot;&gt;+ generateS3StreamURL(): String&lt;br/&gt;+ verifyIntegrity(sha256): Boolean&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=11;fontFamily=Helvetica;html=1;whiteSpace=wrap;fillColor=#FFFFFF;strokeColor=#16A34A;strokeWidth=2;fontColor=#166534;rounded=0;" vertex="1" parent="pkg_data">
+          <mxGeometry x="470" y="60" width="340" height="270" as="geometry" />
+        </mxCell>
+
+        <!-- Class: SharePolicy -->
+        <mxCell id="c_share" value="&lt;p style=&quot;margin:0px;padding-top:4px;text-align:center;&quot;&gt;&lt;b&gt;SharePolicy (DLP &amp;amp; Access)&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:8px;text-align:left;&quot;&gt;+ share_id: Long [PK]&lt;br/&gt;+ fileid: Long [FK]&lt;br/&gt;+ uid_owner: String [FK]&lt;br/&gt;+ share_type: Integer (User / Group / PublicLink / DropBox)&lt;br/&gt;+ share_token: String&lt;br/&gt;+ password_hash: String&lt;br/&gt;+ expiration: DateTime (DLP max 7 days)&lt;br/&gt;+ permissions: Integer (Read/Write/UploadOnly)&lt;br/&gt;+ hide_download: Boolean&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:8px;text-align:left;&quot;&gt;+ isExpired(): Boolean&lt;br/&gt;+ verifyPassword(input_pass): Boolean&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=11;fontFamily=Helvetica;html=1;whiteSpace=wrap;fillColor=#FFFFFF;strokeColor=#DC2626;strokeWidth=1.5;fontColor=#991B1B;rounded=0;" vertex="1" parent="pkg_data">
+          <mxGeometry x="970" y="60" width="330" height="240" as="geometry" />
+        </mxCell>
+
+        <!-- Class: AIContextIndex -->
+        <mxCell id="c_ai" value="&lt;p style=&quot;margin:0px;padding-top:4px;text-align:center;&quot;&gt;&lt;b&gt;AIContextIndex (RAG &amp;amp; Bedrock)&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:8px;text-align:left;&quot;&gt;+ chunk_id: UUID [PK]&lt;br/&gt;+ fileid: Long [FK]&lt;br/&gt;+ authorized_gid: String [FK]&lt;br/&gt;+ extracted_summary: String&lt;br/&gt;+ embedding_model: String (&amp;quot;Titan-Embed&amp;quot;)&lt;br/&gt;+ tokens_consumed: Integer&lt;br/&gt;+ indexed_at: DateTime&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:8px;text-align:left;&quot;&gt;+ querySemantic(prompt, gid): String&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=11;fontFamily=Helvetica;html=1;whiteSpace=wrap;fillColor=#FFFFFF;strokeColor=#16A34A;strokeWidth=1.5;fontColor=#166534;rounded=0;" vertex="1" parent="pkg_data">
+          <mxGeometry x="970" y="370" width="330" height="190" as="geometry" />
+        </mxCell>
+
+        <!-- Class: TenantActivityLog -->
+        <mxCell id="c_act" value="&lt;p style=&quot;margin:0px;padding-top:4px;text-align:center;&quot;&gt;&lt;b&gt;TenantActivityLog&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:8px;text-align:left;&quot;&gt;+ activity_id: Long [PK]&lt;br/&gt;+ uid: String [FK]&lt;br/&gt;+ fileid: Long [FK]&lt;br/&gt;+ type: String (&amp;quot;upload&amp;quot;, &amp;quot;share&amp;quot;, &amp;quot;delete&amp;quot;, &amp;quot;ai_rag&amp;quot;)&lt;br/&gt;+ subject: String&lt;br/&gt;+ client_ip: String&lt;br/&gt;+ timestamp: DateTime&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:8px;text-align:left;&quot;&gt;+ logEvent(uid, type, fileid): Void&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=11;fontFamily=Helvetica;html=1;whiteSpace=wrap;fillColor=#FFFFFF;strokeColor=#16A34A;strokeWidth=1.5;fontColor=#166534;rounded=0;" vertex="1" parent="pkg_data">
+          <mxGeometry x="1410" y="60" width="290" height="180" as="geometry" />
+        </mxCell>
+
+        <!-- Data Plane Relationships -->
+        <mxCell id="rel_u_g" value="belongs to" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#0284C7;strokeWidth=1.5;endArrow=none;fontSize=10;fontColor=#0369A1;" edge="1" parent="pkg_data" source="c_user" target="c_group">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="m_u_g_1" value="1..*" style="text;html=1;align=center;verticalAlign=middle;fontSize=11;fontStyle=1;fontColor=#0284C7;" vertex="1" parent="pkg_data">
+          <mxGeometry x="190" y="245" width="25" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="m_u_g_2" value="0..*" style="text;html=1;align=center;verticalAlign=middle;fontSize=11;fontStyle=1;fontColor=#0284C7;" vertex="1" parent="pkg_data">
+          <mxGeometry x="190" y="295" width="25" height="20" as="geometry" />
+        </mxCell>
+
+        <mxCell id="rel_g_f" value="governs folder" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#0284C7;strokeWidth=1.5;endArrow=none;fontSize=10;fontColor=#0369A1;" edge="1" parent="pkg_data" source="c_group" target="c_folder">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="rel_u_file" value="owns / uploads" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#16A34A;strokeWidth=1.5;endArrow=none;fontSize=10;fontColor=#166534;" edge="1" parent="pkg_data" source="c_user" target="c_file">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="m_u_f_1" value="1" style="text;html=1;align=center;verticalAlign=middle;fontSize=11;fontStyle=1;fontColor=#16A34A;" vertex="1" parent="pkg_data">
+          <mxGeometry x="325" y="130" width="20" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="m_u_f_n" value="0..*" style="text;html=1;align=center;verticalAlign=middle;fontSize=11;fontStyle=1;fontColor=#16A34A;" vertex="1" parent="pkg_data">
+          <mxGeometry x="445" y="130" width="25" height="20" as="geometry" />
+        </mxCell>
+
+        <mxCell id="rel_file_share" value="secures &amp;amp; shares" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#DC2626;strokeWidth=1.5;endArrow=none;fontSize=10;fontColor=#991B1B;" edge="1" parent="pkg_data" source="c_file" target="c_share">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="m_f_s_1" value="1" style="text;html=1;align=center;verticalAlign=middle;fontSize=11;fontStyle=1;fontColor=#DC2626;" vertex="1" parent="pkg_data">
+          <mxGeometry x="815" y="140" width="20" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="m_f_s_n" value="0..*" style="text;html=1;align=center;verticalAlign=middle;fontSize=11;fontStyle=1;fontColor=#DC2626;" vertex="1" parent="pkg_data">
+          <mxGeometry x="945" y="140" width="25" height="20" as="geometry" />
+        </mxCell>
+
+        <mxCell id="rel_file_ai" value="indexes embeddings" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#16A34A;strokeWidth=1.5;endArrow=none;fontSize=10;fontColor=#166534;" edge="1" parent="pkg_data" source="c_file" target="c_ai">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="640" y="460" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="rel_file_act" value="logs action" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#16A34A;strokeWidth=1.5;endArrow=none;fontSize=10;fontColor=#166534;" edge="1" parent="pkg_data" source="c_share" target="c_act">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- ======================================================== -->
+        <!-- INTER-TIER ISOLATION LINK: Registry -> Tenant Domain     -->
+        <!-- ======================================================== -->
+        <mxCell id="link_inter_tier" value="&lt;b&gt;DEDICATED INSTANCE ISOLATION BINDING&lt;/b&gt;&#xa;(Catalog: nc_&lt;tenant_id&gt; | EFS AP: /tenants/&lt;tenant_id&gt; | S3: /tenants/&lt;tenant_id&gt;/*)" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#059669;strokeWidth=2.5;dashed=1;endArrow=block;endFill=1;endSize=10;fontSize=11;fontColor=#065F46;align=center;" edge="1" parent="1" source="c_registry" target="c_file">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="690" y="420" />
+              <mxPoint x="690" y="420" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

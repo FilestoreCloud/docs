@@ -1,11 +1,15 @@
 ---
 title: "Tenant Isolation Model"
-description: "How multi-tenant isolation is enforced across compute, storage, network, and database layers."
+description: "How multi-tenant isolation is enforced across compute, storage, network, search, and database layers."
 ---
 
 # Multi-Tenant Isolation Model
 
-Storix enforces a **DEDICATED_INSTANCE** architectural paradigm. Rather than multiplexing customer data within a shared application process, every tenant is allocated dedicated, isolated compute containers, database catalogs, and storage mount points.
+Storix enforces a **DEDICATED_INSTANCE** architectural paradigm. Rather than multiplexing customer data within a shared application process, every tenant is allocated dedicated, isolated compute containers, database catalogs, storage mount points, and search indices.
+
+<p align="center">
+  <img src="/images/departmental_isolation_model.png" alt="Multi-Tenant Isolation Model" />
+</p>
 
 ---
 
@@ -15,14 +19,17 @@ Storix enforces a **DEDICATED_INSTANCE** architectural paradigm. Rather than mul
 |---|---|---|---|
 | **Compute** | Amazon ECS Fargate | Dedicated task (`service-<tenant_id>`) per tenant on AWS Graviton ARM64. | Zero CPU/RAM cross-talk; process boundary enforcement. |
 | **Connection Pooling** | Amazon RDS Proxy | Dedicated connection pool per tenant pointing to isolated physical catalogs. | Prevents connection starvation across tenants. |
-| **Relational Data** | Amazon RDS PostgreSQL 16 | Dedicated database catalog (`nc_<tenant_id>`) with isolated schema and user credentials. | Full SQL table and row data separation. |
+| **Relational Data** | Amazon RDS PostgreSQL 16 / Aurora Global | Dedicated database catalog (`nc_<tenant_id>`) with isolated schema and user credentials. | Full SQL table and row data separation. |
 | **Configuration** | Amazon EFS | Dedicated Access Point scoped to `/tenants/<tenant_id>/config` with POSIX UID/GID 33:33. | POSIX kernel-level path isolation. |
 | **Object Storage** | Amazon S3 Vault | Dedicated prefix `s3://<vault>/tenants/<tenant_id>/*` with IAM prefix policies. | Cryptographic and path-based isolation. |
+| **Search Indices** | Amazon OpenSearch 2.11 | Dedicated tenant index (`tenant_<tenant_id>`) with isolated BM25 token space. | Zero cross-tenant search hit leakage. |
 | **Network Ingress** | ALB + AWS WAFv2 | Dedicated Target Group (`tg-<tenant_id>`) bound to tenant Host-Header. | Clean routing without hostname collision. |
 
 ---
 
 ## 🔒 Architectural Boundaries
+
+![Zoom Block 3 Data & Storage Tier](/images/zoom_block_3_data_storage.png)
 
 ```mermaid
 flowchart TD
@@ -32,8 +39,8 @@ flowchart TD
     end
 
     subgraph Compute["AWS Fargate ARM64 Fleet"]
-        TG1 --> ECS1["service-acme<br/>(Nextcloud + LiteLLM)"]
-        TG2 --> ECS2["service-marvel<br/>(Nextcloud + LiteLLM)"]
+        TG1 --> ECS1["service-acme<br/>(Nextcloud + LiteLLM + Tika)"]
+        TG2 --> ECS2["service-marvel<br/>(Nextcloud + LiteLLM + Tika)"]
     end
 
     subgraph DB["Relational Database Tier"]
@@ -43,23 +50,12 @@ flowchart TD
         Proxy --> DB2["Catalog: nc_marvel"]
     end
 
-    subgraph Storage["Storage Tier"]
+    subgraph Storage["Storage & Search Tier"]
         ECS1 --> EFS1["EFS Access Point: /tenants/acme"]
         ECS2 --> EFS2["EFS Access Point: /tenants/marvel"]
         ECS1 --> S3_1["s3://vault/tenants/acme/*"]
         ECS2 --> S3_2["s3://vault/tenants/marvel/*"]
+        ECS1 --> OS1["OpenSearch Index: tenant_acme"]
+        ECS2 --> OS2["OpenSearch Index: tenant_marvel"]
     end
 ```
-
----
-
-## 👥 NIST SP 800-162 Role-Based Access Control (RBAC)
-
-The platform defines strict access boundaries across 4 distinct personas:
-
-| Actor | RBAC Persona | Access Level & Scope | Credentials |
-|---|---|---|---|
-| **SaaS Super Admin** | `SuperAdmin` | Global fleet control, tenant provisioning, suspend/resume, FinOps quotas, and async OCC diagnostics. | Passkeys (WebAuthn) / TOTP MFA |
-| **Tenant Administrator** | `TenantAdmin` | Tenant-level user provisioning, department groupfolders, branding, and sharing policies. | Password + TOTP / WebAuthn |
-| **Tenant Member** | `User / Member` | Personal file workspace, collaborative text editing, AI assistant chat, and WebDAV sync. | User Credentials |
-| **External Guest** | `Guest` | Time-limited password-protected download/upload links and anonymous file-drop boxes. | Shared Token / PIN |

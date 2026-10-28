@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="app.diagrams.net" agent="Storix" version="26.0.0">
+  <diagram id="nextcloud-ai-usecase" name="Nextcloud AI Hub &amp; Intelligence Architecture">
+    <mxGraphModel dx="1400" dy="1100" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1450" pageHeight="1120" background="#ffffff" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- ======================================================== -->
+        <!-- SYSTEM BOUNDARY                                         -->
+        <!-- ======================================================== -->
+        <mxCell id="sys_boundary" value="Nextcloud AI Hub &amp; Intelligence Architecture System Boundary" style="swimlane;startSize=34;fillColor=none;strokeColor=#9333EA;strokeWidth=2;fontStyle=1;fontSize=14;fontColor=#6B21A8;rounded=0;arcSize=0;whiteSpace=wrap;align=center;" vertex="1" parent="1">
+          <mxGeometry x="210" y="30" width="980" height="1040" as="geometry" />
+        </mxCell>
+
+        <!-- ======================================================== -->
+        <!-- PLANE 1: AWS Cloud Scope (Purple)                       -->
+        <!-- ======================================================== -->
+        <mxCell id="plane1" value="Platform AI Provisioning &amp; Security Plane (AWS Cloud Scope)" style="swimlane;startSize=28;fillColor=#FAF5FF;strokeColor=#C084FC;strokeWidth=1.5;fontStyle=1;fontSize=12;fontColor=#7E22CE;rounded=0;arcSize=0;align=left;spacingLeft=10;" vertex="1" parent="sys_boundary">
+          <mxGeometry x="20" y="46" width="940" height="300" as="geometry" />
+        </mxCell>
+
+        <!-- Use Cases Plane 1 -->
+        <mxCell id="sa_uc1" value="Deploy Nextcloud AI Core Engines&#xa;(assistant, text_processing, llm2)" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#9333EA;strokeWidth=1.5;fontSize=11;fontColor=#581C87;align=center;fontStyle=1;" vertex="1" parent="plane1">
+          <mxGeometry x="50" y="46" width="250" height="52" as="geometry" />
+        </mxCell>
+
+        <mxCell id="sa_sub1" value="Bind AWS Bedrock IAM Role&#xa;(bedrock:InvokeModel Action)" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FAF5FF;strokeColor=#D8B4FE;strokeWidth=1.2;fontSize=10;fontColor=#7E22CE;align=center;" vertex="1" parent="plane1">
+          <mxGeometry x="410" y="48" width="210" height="48" as="geometry" />
+        </mxCell>
+
+        <mxCell id="sa_uc2" value="Configure Inference Model Endpoints&#xa;(Claude 3.5 Sonnet / Amazon Titan)" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#9333EA;strokeWidth=1.5;fontSize=11;fontColor=#581C87;align=center;fontStyle=1;" vertex="1" parent="plane1">
+          <mxGeometry x="50" y="130" width="250" height="52" as="geometry" />
+        </mxCell>
+
+        <mxCell id="sa_sub2" value="Enforce Zero-Data-Retention Guardrail&#xa;(Zero Customer Training Ingestion)" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FAF5FF;strokeColor=#D8B4FE;strokeWidth=1.2;fontSize=10;fontColor=#7E22CE;align=center;" vertex="1" parent="plane1">
+          <mxGeometry x="620" y="132" width="240" height="48" as="geometry" />
+        </mxCell>
+
+        <mxCell id="sa_uc3" value="Enforce Platform Token Rate-Limits&#xa;&amp; Global Cost Budgets" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#9333EA;strokeWidth=1.5;fontSize=11;fontColor=#581C87;align=center;fontStyle=1;" vertex="1" parent="plane1">
+          <mxGeometry x="50" y="214" width="250" height="52" as="geometry" />
+        </mxCell>
+
+        <!-- Includes Plane 1 -->
+        <mxCell id="inc_sa1" value="&amp;laquo;include&amp;raquo;" style="edgeStyle=none;html=1;dashed=1;endArrow=open;endSize=8;strokeColor=#9333EA;strokeWidth=1.2;fontSize=10;fontColor=#7E22CE;align=center;" edge="1" parent="plane1" source="sa_uc1" target="sa_sub1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="inc_sa2" value="&amp;laquo;include&amp;raquo;" style="edgeStyle=none;html=1;dashed=1;endArrow=open;endSize=8;strokeColor=#9333EA;strokeWidth=1.2;fontSize=10;fontColor=#7E22CE;align=center;" edge="1" parent="plane1" source="sa_uc2" target="sa_sub2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- ======================================================== -->
+        <!-- PLANE 2: Tenant Admin Scope (Blue)                       -->
+        <!-- ======================================================== -->
+        <mxCell id="plane2" value="Organization AI Governance &amp; Quota Control (Tenant Admin Scope)" style="swimlane;startSize=28;fillColor=#F0F9FF;strokeColor=#38BDF8;strokeWidth=1.5;fontStyle=1;fontSize=12;fontColor=#0369A1;rounded=0;arcSize=0;align=left;spacingLeft=10;" vertex="1" parent="sys_boundary">
+          <mxGeometry x="20" y="370" width="940" height="290" as="geometry" />
+        </mxCell>
+
+        <!-- Use Cases Plane 2 -->
+        <mxCell id="ta_uc1" value="Govern Departmental Feature Toggles&#xa;(Enable/Disable per Group)" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#0284C7;strokeWidth=1.5;fontSize=11;fontColor=#0369A1;align=center;fontStyle=1;" vertex="1" parent="plane2">
+          <mxGeometry x="50" y="46" width="250" height="52" as="geometry" />
+        </mxCell>
+
+        <mxCell id="ta_sub1" value="Isolate Compliance &amp; Legal Units&#xa;(Enforce Strict AI Air-Gap)" style="ellipse;whiteSpace=wrap;html=1;fillColor=#F0F9FF;strokeColor=#7DD3FC;strokeWidth=1.2;fontSize=10;fontColor=#0284C7;align=center;" vertex="1" parent="plane2">
+          <mxGeometry x="380" y="48" width="210" height="48" as="geometry" />
+        </mxCell>
+
+        <mxCell id="ta_uc2" value="Allocate Monthly AI Token Quotas&#xa;(Engineering / Marketing Limits)" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#0284C7;strokeWidth=1.5;fontSize=11;fontColor=#0369A1;align=center;fontStyle=1;" vertex="1" parent="plane2">
+          <mxGeometry x="50" y="126" width="250" height="52" as="geometry" />
+        </mxCell>
+
+        <mxCell id="ta_uc3" value="Configure Corporate System Prompts&#xa;&amp; Approved AI Templates" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#0284C7;strokeWidth=1.5;fontSize=11;fontColor=#0369A1;align=center;fontStyle=1;" vertex="1" parent="plane2">
+          <mxGeometry x="50" y="206" width="250" height="52" as="geometry" />
+        </mxCell>
+
+        <mxCell id="ta_uc4" value="Inspect AI Prompt Audit Trails&#xa;&amp; Token Consumption Metrics" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#0284C7;strokeWidth=1.5;fontSize=11;fontColor=#0369A1;align=center;fontStyle=1;" vertex="1" parent="plane2">
+          <mxGeometry x="620" y="126" width="230" height="52" as="geometry" />
+        </mxCell>
+
+        <!-- Includes Plane 2 -->
+        <mxCell id="inc_ta1" value="&amp;laquo;include&amp;raquo;" style="edgeStyle=none;html=1;dashed=1;endArrow=open;endSize=8;strokeColor=#0284C7;strokeWidth=1.2;fontSize=10;fontColor=#0284C7;align=center;" edge="1" parent="plane2" source="ta_uc1" target="ta_sub1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- ======================================================== -->
+        <!-- PLANE 3: Member & Guest Scope (Green & Red)              -->
+        <!-- ======================================================== -->
+        <mxCell id="plane3" value="Smart Collaboration &amp; RAG Workspace (Member &amp; Guest Scope)" style="swimlane;startSize=28;fillColor=#F0FDF4;strokeColor=#4ADE80;strokeWidth=1.5;fontStyle=1;fontSize=12;fontColor=#15803D;rounded=0;arcSize=0;align=left;spacingLeft=10;" vertex="1" parent="sys_boundary">
+          <mxGeometry x="20" y="680" width="940" height="340" as="geometry" />
+        </mxCell>
+
+        <!-- Use Cases Plane 3 (Tenant Member - Green) -->
+        <mxCell id="tm_uc1" value="Generate &amp; Rewrite Document Text&#xa;(Smart Picker @assistant in Text)" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#16A34A;strokeWidth=1.5;fontSize=11;fontColor=#166534;align=center;fontStyle=1;" vertex="1" parent="plane3">
+          <mxGeometry x="50" y="42" width="250" height="50" as="geometry" />
+        </mxCell>
+
+        <mxCell id="tm_uc2" value="Translate Multilingual Documents&#xa;&amp; Transcribe Audio Recordings" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#16A34A;strokeWidth=1.5;fontSize=11;fontColor=#166534;align=center;fontStyle=1;" vertex="1" parent="plane3">
+          <mxGeometry x="50" y="114" width="250" height="50" as="geometry" />
+        </mxCell>
+
+        <mxCell id="tm_uc3" value="Query Documents via RAG Chat&#xa;(Contextual Semantic Q&amp;A)" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#16A34A;strokeWidth=1.5;fontSize=11;fontColor=#166534;align=center;fontStyle=1;" vertex="1" parent="plane3">
+          <mxGeometry x="50" y="188" width="250" height="50" as="geometry" />
+        </mxCell>
+
+        <mxCell id="tm_sub1" value="Retrieve Authorized Vector Chunks&#xa;(Strict RBAC S3 Scope Enforced)" style="ellipse;whiteSpace=wrap;html=1;fillColor=#F0FDF4;strokeColor=#86EFAC;strokeWidth=1.2;fontSize=10;fontColor=#15803D;align=center;" vertex="1" parent="plane3">
+          <mxGeometry x="390" y="188" width="220" height="48" as="geometry" />
+        </mxCell>
+
+        <mxCell id="tm_uc4" value="Generate Contextual File Summaries&#xa;for Team Review &amp; Outbound Share" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#16A34A;strokeWidth=1.5;fontSize=11;fontColor=#166534;align=center;fontStyle=1;" vertex="1" parent="plane3">
+          <mxGeometry x="50" y="260" width="250" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- Use Cases Plane 3 (External Guest - Red) -->
+        <mxCell id="eg_uc1" value="Preview AI Executive Summary&#xa;on Password-Protected Share" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#DC2626;strokeWidth=1.5;fontSize=11;fontColor=#991B1B;align=center;fontStyle=1;" vertex="1" parent="plane3">
+          <mxGeometry x="620" y="92" width="220" height="54" as="geometry" />
+        </mxCell>
+
+        <mxCell id="eg_sub1" value="Enforce Zero-Data-Ingestion Barrier&#xa;(Block Guest Prompt Injections)" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FEF2F2;strokeColor=#FCA5A5;strokeWidth=1.2;fontSize=10;fontColor=#991B1B;align=center;" vertex="1" parent="plane3">
+          <mxGeometry x="620" y="210" width="220" height="48" as="geometry" />
+        </mxCell>
+
+        <!-- Includes Plane 3 -->
+        <mxCell id="inc_tm1" value="&amp;laquo;include&amp;raquo;" style="edgeStyle=none;html=1;dashed=1;endArrow=open;endSize=8;strokeColor=#16A34A;strokeWidth=1.2;fontSize=10;fontColor=#15803D;align=center;" edge="1" parent="plane3" source="tm_uc3" target="tm_sub1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="inc_eg1" value="&amp;laquo;include&amp;raquo;" style="edgeStyle=none;html=1;dashed=1;endArrow=open;endSize=8;strokeColor=#DC2626;strokeWidth=1.2;fontSize=10;fontColor=#991B1B;align=center;" edge="1" parent="plane3" source="eg_uc1" target="eg_sub1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+
+        <!-- ======================================================== -->
+        <!-- ACTORS (Left & Right)                                    -->
+        <!-- ======================================================== -->
+        <!-- Actor 1: SaaS Super Admin -->
+        <mxCell id="actor_sa" value="&lt;b&gt;SaaS Super Admin&lt;/b&gt;&lt;br&gt;&amp;laquo;Cloud Provider&amp;raquo;" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;fillColor=#0F172A;strokeColor=#0F172A;fontColor=#0F172A;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="60" y="150" width="40" height="75" as="geometry" />
+        </mxCell>
+
+        <!-- Actor 2: Tenant Admin -->
+        <mxCell id="actor_ta" value="&lt;b&gt;Tenant Admin&lt;/b&gt;&lt;br&gt;&amp;laquo;Org Admin&amp;raquo;" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;fillColor=#0284C7;strokeColor=#0284C7;fontColor=#0284C7;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="60" y="470" width="40" height="75" as="geometry" />
+        </mxCell>
+
+        <!-- Actor 3: Tenant Member -->
+        <mxCell id="actor_tm" value="&lt;b&gt;Tenant Member&lt;/b&gt;&lt;br&gt;&amp;laquo;Bob / Carol&amp;raquo;" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;fillColor=#16A34A;strokeColor=#16A34A;fontColor=#16A34A;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="60" y="780" width="40" height="75" as="geometry" />
+        </mxCell>
+
+        <!-- Actor 4: External Guest (Right side) -->
+        <mxCell id="actor_eg" value="&lt;b&gt;External Guest&lt;/b&gt;&lt;br&gt;&amp;laquo;Auditor / Partner&amp;raquo;" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;fillColor=#DC2626;strokeColor=#DC2626;fontColor=#DC2626;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="1270" y="780" width="40" height="75" as="geometry" />
+        </mxCell>
+
+
+        <!-- ======================================================== -->
+        <!-- ACTOR CONNECTIONS (Tree / Bracket Routing)               -->
+        <!-- ======================================================== -->
+        <!-- Super Admin connections -->
+        <mxCell id="link_sa_uc1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#0F172A;strokeWidth=1.5;endArrow=none;" edge="1" parent="1" source="actor_sa" target="sa_uc1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="180" y="188" />
+              <mxPoint x="180" y="102" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="link_sa_uc2" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#0F172A;strokeWidth=1.5;endArrow=none;" edge="1" parent="1" source="actor_sa" target="sa_uc2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="link_sa_uc3" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#0F172A;strokeWidth=1.5;endArrow=none;" edge="1" parent="1" source="actor_sa" target="sa_uc3">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="180" y="188" />
+              <mxPoint x="180" y="270" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Tenant Admin connections -->
+        <mxCell id="link_ta_uc1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#0284C7;strokeWidth=1.5;endArrow=none;" edge="1" parent="1" source="actor_ta" target="ta_uc1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="180" y="508" />
+              <mxPoint x="180" y="442" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="link_ta_uc2" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#0284C7;strokeWidth=1.5;endArrow=none;" edge="1" parent="1" source="actor_ta" target="ta_uc2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="link_ta_uc3" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#0284C7;strokeWidth=1.5;endArrow=none;" edge="1" parent="1" source="actor_ta" target="ta_uc3">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="180" y="508" />
+              <mxPoint x="180" y="602" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Tenant Member connections -->
+        <mxCell id="link_tm_uc1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#16A34A;strokeWidth=1.5;endArrow=none;" edge="1" parent="1" source="actor_tm" target="tm_uc1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="180" y="818" />
+              <mxPoint x="180" y="737" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="link_tm_uc2" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#16A34A;strokeWidth=1.5;endArrow=none;" edge="1" parent="1" source="actor_tm" target="tm_uc2">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="195" y="818" />
+              <mxPoint x="195" y="809" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="link_tm_uc3" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#16A34A;strokeWidth=1.5;endArrow=none;" edge="1" parent="1" source="actor_tm" target="tm_uc3">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="195" y="818" />
+              <mxPoint x="195" y="883" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="link_tm_uc4" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#16A34A;strokeWidth=1.5;endArrow=none;" edge="1" parent="1" source="actor_tm" target="tm_uc4">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="180" y="818" />
+              <mxPoint x="180" y="955" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- External Guest connection -->
+        <mxCell id="link_eg_uc1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#DC2626;strokeWidth=1.5;endArrow=none;" edge="1" parent="1" source="actor_eg" target="eg_uc1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1200" y="818" />
+              <mxPoint x="1200" y="787" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

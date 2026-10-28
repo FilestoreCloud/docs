@@ -7,6 +7,10 @@ description: "FinOps tenant suspension, scale-to-zero compute economics, and ins
 
 One of Storix's core architectural advantages is its **FinOps Scale-to-Zero** capability. When a tenant is suspended—either by operator intervention, customer billing hold, or automated budget cap—its compute tier immediately scales to zero running tasks while preserving 100% of its data and configuration state.
 
+<p align="center">
+  <img src="/images/aws_cost_optimization_model.png" alt="FinOps Scale-to-Zero Compute Cost Optimization Model" />
+</p>
+
 ---
 
 ## 💰 FinOps Resource Cost Breakdown
@@ -26,7 +30,7 @@ One of Storix's core architectural advantages is its **FinOps Scale-to-Zero** ca
 1. Navigate to the **Tenants** list or tenant detail page in the SuperAdmin Console.
 2. Select the tenant (e.g. `marvel`).
 3. Click the **Suspend Tenant** or **Resume Tenant** action button.
-4. The console dispatches an authenticated API request and provides real-time progress indicators.
+4. The console dispatches an authenticated API request using `SET_STATUS` (status: `SUSPENDED` or `ACTIVE`) and provides real-time progress indicators.
 
 ---
 
@@ -38,32 +42,18 @@ curl -X POST https://admin.png261.dev/api \
   -H "Authorization: Bearer <ADMIN_TOKEN>" \
   -H "Content-Type: application/json" \
   -d '{
-    "action": "SUSPEND",
-    "tenant_id": "marvel"
+    "action": "SET_STATUS",
+    "tenant_id": "marvel",
+    "status": "SUSPENDED"
   }'
 
-# Verify task count scaled to zero
-aws ecs describe-services \
-  --cluster dev-nextcloud-cluster \
-  --services service-marvel \
-  --query 'services[0].desiredCount' \
-  --profile storix
-# Output: 0
-
-# Resume the tenant
+# Resume a tenant via Control Plane API
 curl -X POST https://admin.png261.dev/api \
   -H "Authorization: Bearer <ADMIN_TOKEN>" \
   -H "Content-Type: application/json" \
   -d '{
-    "action": "RESUME",
-    "tenant_id": "marvel"
+    "action": "SET_STATUS",
+    "tenant_id": "marvel",
+    "status": "ACTIVE"
   }'
-
-# Verify health status recovers cleanly
-curl -s -I https://marvel.png261.dev/status.php
-# Output: HTTP/2 200
 ```
-
-<Check>
-  Tenant hibernation verified: zero tasks running, DNS & data retained, immediate recovery on resume with fast cold-start acceleration.
-</Check>

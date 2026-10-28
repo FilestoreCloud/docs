@@ -7,6 +7,10 @@ description: "Provision a new dedicated tenant with isolated ECS, RDS, EFS, and 
 
 Storix provisions new tenants using automated **Step Functions SAGA Micro-Workflows** that orchestrate all cloud resource provisioning with complete isolation.
 
+<p align="center">
+  <img src="/images/aws_tenant_provisioning_workflow.png" alt="AWS Tenant Provisioning Workflow" />
+</p>
+
 ---
 
 ## 🖥️ Via SuperAdmin Console UI
@@ -17,9 +21,10 @@ Storix provisions new tenants using automated **Step Functions SAGA Micro-Workfl
    - **Tenant ID:** Lowercase alphanumeric identifier (e.g. `acme`).
    - **Organization Name:** Display name (e.g. `Acme Corporation`).
    - **Domain:** Dedicated subdomain (e.g. `acme.png261.dev`).
-   - **Admin Email:** Initial organization admin email.
+   - **Admin Email:** Initial organization admin email (synced automatically).
    - **Storage Quota:** Initial storage allocation (e.g. `100 GB`).
 4. Click **Submit**. The console tracks live provisioning progress through the Step Functions execution stream.
+5. Default administrator credentials are provisioned securely: username `admin`, initial password `StorixAdmin2026!Secure` (stored authoritatively in AWS Secrets Manager).
 
 ---
 
@@ -50,6 +55,7 @@ sequenceDiagram
     participant RDS as Amazon RDS Proxy & DB
     participant EFS as Amazon EFS
     participant S3 as Amazon S3 Vault
+    participant OS as Amazon OpenSearch
     participant ECS as Amazon ECS Fargate
     participant ALB as Application Load Balancer
     participant DDB as DynamoDB Registry
@@ -57,21 +63,17 @@ sequenceDiagram
     SFN->>RDS: Create Physical Database (nc_acme)
     SFN->>EFS: Create Access Point (/tenants/acme/config)
     SFN->>S3: Seed Tenant Vault Prefix & Initial Folders
+    SFN->>OS: Create Isolated Index (tenant_acme)
     SFN->>ECS: Register Task Definition & Launch Service
-    SFN->>ALB: Create Target Group & Bind Priority Rule
-    SFN->>ECS: Execute Automated Nextcloud Install (OCC)
-    SFN->>DDB: Save Tenant Record (Status: ACTIVE)
+    SFN->>ALB: Create Priority Host-Header Rule (acme.png261.dev)
+    SFN->>DDB: Record Active State in Registry
 ```
 
----
-
-## 📦 Provisioned Resources
-
-| Resource | Identifier / Name Pattern |
-|---|---|
-| **ECS Fargate Service** | `service-<tenant_id>` (AWS Graviton ARM64) |
-| **ALB Target Group** | `tg-<tenant_id>` (Healthcheck: `/status.php`) |
-| **EFS Access Point** | Scoped to `/tenants/<tenant_id>/config` (UID/GID 33:33) |
-| **RDS Database** | `nc_<tenant_id>` (Managed by RDS Proxy) |
-| **S3 Vault Prefix** | `s3://<vault>/tenants/<tenant_id>/*` |
-| **DynamoDB Record** | Stored in `<env>-nextcloud-tenant-registry` |
+### Compensating Rollbacks
+If any step fails (e.g. ECS task fails healthchecks within timeout), the Step Functions state machine executes reverse compensating actions:
+- Deletes created EFS Access Point
+- Drops created PostgreSQL database catalog
+- Purges S3 initial vault prefix
+- Deletes created OpenSearch index
+- Deletes ALB target group and listener rules
+- Marks tenant as `FAILED` in DynamoDB Registry
