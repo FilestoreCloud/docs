@@ -48,26 +48,7 @@ curl -X POST https://admin.png261.dev/api \
 
 ## 🔄 Automated SAGA Steps
 
-```mermaid
-sequenceDiagram
-    autonumber
-    participant SFN as Step Functions SAGA
-    participant RDS as Amazon RDS Proxy & DB
-    participant EFS as Amazon EFS
-    participant S3 as Amazon S3 Vault
-    participant OS as Amazon OpenSearch
-    participant ECS as Amazon ECS Fargate
-    participant ALB as Application Load Balancer
-    participant DDB as DynamoDB Registry
-
-    SFN->>RDS: Create Physical Database (nc_acme)
-    SFN->>EFS: Create Access Point (/tenants/acme/config)
-    SFN->>S3: Seed Tenant Vault Prefix & Initial Folders
-    SFN->>OS: Create Isolated Index (tenant_acme)
-    SFN->>ECS: Register Task Definition & Launch Service
-    SFN->>ALB: Create Priority Host-Header Rule (acme.png261.dev)
-    SFN->>DDB: Record Active State in Registry
-```
+![Step Functions SAGA Tenant Provisioning Workflow](/images/flow_tenant_provisioning_saga.png)
 
 ### Compensating Rollbacks
 If any step fails (e.g. ECS task fails healthchecks within timeout), the Step Functions state machine executes reverse compensating actions:

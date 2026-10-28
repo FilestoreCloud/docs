@@ -15,40 +15,6 @@ The `deploy-all.yml` workflow orchestrates an end-to-end deployment across all 6
 
 ![Storix Automated CI/CD Deployment Pipeline](/images/storix_deployment_pipeline.png)
 
-```mermaid
-flowchart TD
-    subgraph ParallelPhase["Block 1 & 2: Parallel Build Phase"]
-        R["Build & Push Multi-Arch Runtime to ECR<br/>(linux/arm64 + linux/amd64 + AWS SOCI)"]
-        N["Deploy 01-Networking Stack<br/>(VPC, Subnets, S3 Gateway Endpoint)"]
-    end
-
-    subgraph SecurityPhase["Block 3: Security & Foundation"]
-        S["Deploy 02-Security Stack<br/>(Security Groups, KMS Keys, IAM Roles)"]
-    end
-
-    subgraph StorageDataPhase["Block 3: Storage & Data Tier"]
-        ST["Deploy 03-Storage Stack<br/>(EFS Archive Lifecycle, S3 Vault & OpenSearch)"]
-        DB["Deploy 04-Database Stack<br/>(RDS PostgreSQL 16 & RDS Proxy)"]
-    end
-
-    subgraph ComputePhase["Block 4: Compute & Control Plane"]
-        C["Deploy 05-Compute Stack<br/>(ECS Fargate ARM64, ALB, Dedicated Cron)"]
-        SA["Deploy 06-SuperAdmin Stack<br/>(Step Functions SAGAs, Lambda, Async OCC)"]
-        OB["Deploy 07-Observability Stack<br/>(Synthetics Canaries & CloudWatch EMF)"]
-    end
-
-    subgraph FrontEndAndVerify["Block 5 & 6: Frontend & Verification"]
-        CP["Build Console React SPA & Deploy to CloudFront"]
-        AC["Full-Stack Acceptance Tests<br/>(199/199 Automated Tests + Playwright Canaries)"]
-    end
-
-    ParallelPhase --> S
-    S --> StorageDataPhase
-    StorageDataPhase --> C
-    C --> SA & OB
-    SA & OB --> CP
-    CP --> AC
-```
 
 ### Triggering via GitHub CLI
 
@@ -68,15 +34,6 @@ To achieve true **$0.00 idle cost** when testing or decommissioning an environme
 
 ![Storix Zero-Cost Teardown & Destroy Process](/images/storix_process_destroy.png)
 
-```mermaid
-flowchart LR
-    O["07-Observability"] --> SA["06-SuperAdmin"]
-    SA --> C["05-Compute"]
-    C --> DB["04-Database"]
-    DB --> ST["03-Storage"]
-    ST --> S["02-Security"]
-    S --> N["01-Networking"]
-```
 
 ### 8-Stage Teardown Invariants
 1. **Confirmation Check:** Requires exact string parameter `confirm_destruction=DESTROY`.

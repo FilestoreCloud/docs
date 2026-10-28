@@ -28,36 +28,7 @@ Storix implements an enterprise-grade **Retrieval-Augmented Generation (RAG)** a
 
 ## 2. Asynchronous Ingestion & Indexing Flow
 
-```mermaid
-sequenceDiagram
-    autonumber
-    actor User as Tenant User
-    participant NC as Nextcloud (Fargate Task)
-    participant S3 as Amazon S3 Vault
-    participant EB as Amazon EventBridge
-    participant SQS as Amazon SQS Queue (with DLQ)
-    participant Lambda as Ingestion Worker Lambda
-    participant Tika as Apache Tika Sidecar
-    participant OS as Amazon OpenSearch Domain
-    participant Bedrock as Amazon Bedrock
-
-    User->>NC: Upload Document (financial_report.pdf)
-    NC->>S3: PutObject (s3://vault/tenants/acme/files/...)
-    S3->>EB: ObjectCreated Notification
-    EB->>SQS: Push Ingestion Job (tenant_id, object_key)
-    SQS->>Lambda: Trigger Event Batch (Concurrency: 10)
-    Lambda->>S3: Stream Document Content
-    Lambda->>Tika: POST /tika (Raw PDF Stream)
-    Tika-->>Lambda: Extracted Text Content & Metadata
-    par Lexical Indexing
-        Lambda->>OS: PUT /tenant_acme/_doc (BM25 Index)
-    and Semantic Embedding
-        Lambda->>Bedrock: InvokeModel (Titan Embeddings v2)
-        Bedrock-->>Lambda: 1536-dim Embedding Vector
-        Lambda->>OS: Index Vector into k-NN Index
-    end
-    Lambda->>SQS: Acknowledge & Delete Message
-```
+![Asynchronous Document Search & Vector Ingestion Pipeline](/images/flow_async_search_ingestion.png)
 
 ---
 

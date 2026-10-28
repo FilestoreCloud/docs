@@ -13,17 +13,7 @@ Tenant lifecycle workflows in Storix are orchestrated using **AWS Step Functions
 
 Storix provisions dedicated State Machines in module `06-superadmin` for every lifecycle transition:
 
-```mermaid
-stateDiagram-v2
-    [*] --> PROVISIONING: Start Provision
-    PROVISIONING --> ACTIVE: Catalog & Fargate Created
-    PROVISIONING --> FAILED_ROLLBACK: Resource Creation Failure
-    FAILED_ROLLBACK --> [*]: SAGA Compensated
-    ACTIVE --> SUSPENDED: Admin Suspend (Scale to 0)
-    SUSPENDED --> ACTIVE: Admin Resume (Scale to 1)
-    SUSPENDED --> ARCHIVED: 90d Inactivity
-    ARCHIVED --> [*]: Crypto-Shred / Purge
-```
+![Tenant Lifecycle State Machine](/images/flow_tenant_lifecycle_statechart.png)
 
 ### Supported Lifecycle Actions
 
@@ -42,27 +32,7 @@ Heavy administrative operations (e.g. scanning thousands of files or updating da
 
 Storix solves this with an asynchronous job queue architecture:
 
-```mermaid
-sequenceDiagram
-    autonumber
-    actor Admin as SuperAdmin UI
-    participant API as API Gateway / Lambda
-    participant DDB as DynamoDB (TenantJobs)
-    participant ECS as Fargate Task (ECS Exec / SSM)
-
-    Admin->>API: POST /api { action: "EXECUTE_OCC_ASYNC", tenant_id: "acme", command: "files:scan --all" }
-    API->>DDB: PutItem { job_id: "uuid", status: "RUNNING" }
-    API->>ECS: Dispatch Async Command Execution
-    API-->>Admin: Return 202 Accepted { job_id: "uuid" }
-    loop Smart Interval Polling
-        Admin->>API: POST /api { action: "CHECK_OCC_JOB", job_id: "uuid" }
-        API->>DDB: GetItem(job_id)
-        API-->>Admin: { status: "RUNNING", stdout: "..." }
-    end
-    ECS->>DDB: UpdateItem { status: "COMPLETED", exit_code: 0 }
-    Admin->>API: POST /api { action: "CHECK_OCC_JOB", job_id: "uuid" }
-    API-->>Admin: { status: "COMPLETED", exit_code: 0, stdout: "Scan completed." }
-```
+![Async OCC Command Engine & Live Terminal](/images/flow_async_occ_terminal.png)
 
 ### CLI Execution via AWS SDK
 

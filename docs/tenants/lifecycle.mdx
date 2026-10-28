@@ -15,19 +15,7 @@ Storix manages the entire tenant lifecycle deterministically, ensuring that scal
 
 ## 🔄 Lifecycle State Machine
 
-```mermaid
-stateDiagram-v2
-    [*] --> PROVISIONING: SAGA Initiate
-    PROVISIONING --> ACTIVE: Boot & Healthcheck Passed
-    PROVISIONING --> FAILED: Compensation Rollback
-    ACTIVE --> SUSPENDED: Admin Suspend (desiredCount: 0)
-    SUSPENDED --> ACTIVE: Admin Resume (desiredCount: 1)
-    ACTIVE --> ROLLING_UPDATE: Image Upgrade (UPGRADE_TENANT_IMAGE)
-    ROLLING_UPDATE --> ACTIVE: New Task Healthy
-    ACTIVE --> DEPROVISIONING: Deprovision Action
-    SUSPENDED --> DEPROVISIONING: Deprovision Action
-    DEPROVISIONING --> ARCHIVED: Data Retained in Glacier
-```
+![Tenant Lifecycle State Machine](/images/flow_tenant_lifecycle_statechart.png)
 
 ---
 

@@ -174,40 +174,7 @@ Fargate Task: nc-<tenant_id>
 
 ## 11. End-to-End Request Flow
 
-```mermaid
-sequenceDiagram
-    autonumber
-    actor User as Tenant User
-    participant DNS as Route 53
-    participant WAF as AWS WAFv2
-    participant ALB as Application Load Balancer
-    participant ECS as Nextcloud Task (Fargate ARM64)
-    participant Proxy as RDS Proxy
-    participant DB as RDS PostgreSQL
-    participant EFS as Amazon EFS
-    participant S3 as Amazon S3 Vault
-    participant OS as Amazon OpenSearch
-    participant AI as LiteLLM -> Bedrock
-
-    User->>DNS: Request https://acme.png261.dev
-    DNS-->>User: Resolve ALB Ingress IP
-    User->>WAF: HTTPS Request
-    WAF->>ALB: Verified Ingress
-    ALB->>ECS: Forward to Target Group (tg-acme)
-    ECS->>EFS: Read config/config.php (Access Point)
-    ECS->>Proxy: SQL Query (Pooled Session)
-    Proxy->>DB: Dedicated Database (nc_acme)
-    ECS->>S3: Read / Write Files (S3 Gateway Endpoint)
-    opt Unified Full-Text Search
-        ECS->>OS: Query BM25 Search (tenant_acme)
-        OS-->>ECS: Ranked Matching Documents
-    end
-    opt Generative AI Assistant Call
-        ECS->>AI: POST http://127.0.0.1:4000/v1/chat/completions
-        AI-->>ECS: Claude 3.5 Sonnet Stream Response
-    end
-    ECS-->>User: 200 OK Response
-```
+![End-to-End Tenant Request Flow](/images/flow_end_to_end_request.png)
 
 ---
 

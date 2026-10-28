@@ -31,31 +31,4 @@ Storix enforces a **DEDICATED_INSTANCE** architectural paradigm. Rather than mul
 
 ![Zoom Block 3 Data & Storage Tier](/images/zoom_block_3_data_storage.png)
 
-```mermaid
-flowchart TD
-    subgraph Ingress["ALB Host-Header Ingress"]
-        R1["acme.png261.dev"] --> TG1["Target Group: tg-acme"]
-        R2["marvel.png261.dev"] --> TG2["Target Group: tg-marvel"]
-    end
-
-    subgraph Compute["AWS Fargate ARM64 Fleet"]
-        TG1 --> ECS1["service-acme<br/>(Nextcloud + LiteLLM + Tika)"]
-        TG2 --> ECS2["service-marvel<br/>(Nextcloud + LiteLLM + Tika)"]
-    end
-
-    subgraph DB["Relational Database Tier"]
-        ECS1 --> Proxy["Amazon RDS Proxy"]
-        ECS2 --> Proxy
-        Proxy --> DB1["Catalog: nc_acme"]
-        Proxy --> DB2["Catalog: nc_marvel"]
-    end
-
-    subgraph Storage["Storage & Search Tier"]
-        ECS1 --> EFS1["EFS Access Point: /tenants/acme"]
-        ECS2 --> EFS2["EFS Access Point: /tenants/marvel"]
-        ECS1 --> S3_1["s3://vault/tenants/acme/*"]
-        ECS2 --> S3_2["s3://vault/tenants/marvel/*"]
-        ECS1 --> OS1["OpenSearch Index: tenant_acme"]
-        ECS2 --> OS2["OpenSearch Index: tenant_marvel"]
-    end
-```
+![Multi-Tenant Layer Isolation Boundaries](/images/flow_tenant_isolation_boundaries.png)

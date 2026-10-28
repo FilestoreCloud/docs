@@ -1,0 +1,195 @@
+<mxfile host="app.diagrams.net" modified="2026-10-28T09:00:00.000Z" agent="Mozilla/5.0" version="24.7.17">
+  <diagram id="async-ingest-seq" name="Asynchronous Search & Vector Ingestion">
+    <mxGraphModel dx="1280" dy="720" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1280" pageHeight="720" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- Canvas Header -->
+        <mxCell id="hdr" parent="1" style="rounded=0;strokeColor=none;fillColor=#232F3E;align=left;spacingLeft=20;fontColor=#ffffff;fontSize=15;fontFamily=Helvetica;fontStyle=1;" value="STORIX CLOUD — ASYNCHRONOUS DOCUMENT SEARCH &amp; VECTOR EMBEDDING PIPELINE" vertex="1">
+          <mxGeometry height="42" width="1240" x="20" y="15" as="geometry" />
+        </mxCell>
+    
+        <mxCell id="p-User" parent="1" style="rounded=1;strokeColor=#0284C7;strokeWidth=1.5;fillColor=#0284C7;fillOpacity=12;fontFamily=Helvetica;align=center;fontStyle=1;fontSize=10.5;fontColor=#232F3E;" value="Tenant User" vertex="1">
+          <mxGeometry height="44" width="105" x="8" y="75" as="geometry" />
+        </mxCell>
+        <mxCell id="ll-User" parent="1" style="edgeStyle=orthogonalEdgeStyle;dashed=1;dashPattern=4 4;strokeColor=#94A3B8;strokeWidth=1.5;rounded=0;endArrow=none;" edge="1" source="p-User">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="60" y="680" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="p-NC" parent="1" style="rounded=1;strokeColor=#ED7100;strokeWidth=1.5;fillColor=#ED7100;fillOpacity=12;fontFamily=Helvetica;align=center;fontStyle=1;fontSize=10.5;fontColor=#232F3E;" value="Nextcloud Task" vertex="1">
+          <mxGeometry height="44" width="105" x="148" y="75" as="geometry" />
+        </mxCell>
+        <mxCell id="ll-NC" parent="1" style="edgeStyle=orthogonalEdgeStyle;dashed=1;dashPattern=4 4;strokeColor=#94A3B8;strokeWidth=1.5;rounded=0;endArrow=none;" edge="1" source="p-NC">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="200" y="680" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="p-S3" parent="1" style="rounded=1;strokeColor=#107C41;strokeWidth=1.5;fillColor=#107C41;fillOpacity=12;fontFamily=Helvetica;align=center;fontStyle=1;fontSize=10.5;fontColor=#232F3E;" value="S3 Vault Bucket" vertex="1">
+          <mxGeometry height="44" width="105" x="288" y="75" as="geometry" />
+        </mxCell>
+        <mxCell id="ll-S3" parent="1" style="edgeStyle=orthogonalEdgeStyle;dashed=1;dashPattern=4 4;strokeColor=#94A3B8;strokeWidth=1.5;rounded=0;endArrow=none;" edge="1" source="p-S3">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="340" y="680" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="p-EB" parent="1" style="rounded=1;strokeColor=#E7157B;strokeWidth=1.5;fillColor=#E7157B;fillOpacity=12;fontFamily=Helvetica;align=center;fontStyle=1;fontSize=10.5;fontColor=#232F3E;" value="EventBridge" vertex="1">
+          <mxGeometry height="44" width="105" x="428" y="75" as="geometry" />
+        </mxCell>
+        <mxCell id="ll-EB" parent="1" style="edgeStyle=orthogonalEdgeStyle;dashed=1;dashPattern=4 4;strokeColor=#94A3B8;strokeWidth=1.5;rounded=0;endArrow=none;" edge="1" source="p-EB">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="480" y="680" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="p-SQS" parent="1" style="rounded=1;strokeColor=#8C4FFF;strokeWidth=1.5;fillColor=#8C4FFF;fillOpacity=12;fontFamily=Helvetica;align=center;fontStyle=1;fontSize=10.5;fontColor=#232F3E;" value="SQS Queue (+ DLQ)" vertex="1">
+          <mxGeometry height="44" width="105" x="568" y="75" as="geometry" />
+        </mxCell>
+        <mxCell id="ll-SQS" parent="1" style="edgeStyle=orthogonalEdgeStyle;dashed=1;dashPattern=4 4;strokeColor=#94A3B8;strokeWidth=1.5;rounded=0;endArrow=none;" edge="1" source="p-SQS">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="620" y="680" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="p-Lambda" parent="1" style="rounded=1;strokeColor=#ED7100;strokeWidth=1.5;fillColor=#ED7100;fillOpacity=12;fontFamily=Helvetica;align=center;fontStyle=1;fontSize=10.5;fontColor=#232F3E;" value="Ingestion Lambda" vertex="1">
+          <mxGeometry height="44" width="105" x="708" y="75" as="geometry" />
+        </mxCell>
+        <mxCell id="ll-Lambda" parent="1" style="edgeStyle=orthogonalEdgeStyle;dashed=1;dashPattern=4 4;strokeColor=#94A3B8;strokeWidth=1.5;rounded=0;endArrow=none;" edge="1" source="p-Lambda">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="760" y="680" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="p-Tika" parent="1" style="rounded=1;strokeColor=#3B48CC;strokeWidth=1.5;fillColor=#3B48CC;fillOpacity=12;fontFamily=Helvetica;align=center;fontStyle=1;fontSize=10.5;fontColor=#232F3E;" value="Apache Tika Sidecar" vertex="1">
+          <mxGeometry height="44" width="105" x="848" y="75" as="geometry" />
+        </mxCell>
+        <mxCell id="ll-Tika" parent="1" style="edgeStyle=orthogonalEdgeStyle;dashed=1;dashPattern=4 4;strokeColor=#94A3B8;strokeWidth=1.5;rounded=0;endArrow=none;" edge="1" source="p-Tika">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="900" y="680" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="p-OS" parent="1" style="rounded=1;strokeColor=#ED7100;strokeWidth=1.5;fillColor=#ED7100;fillOpacity=12;fontFamily=Helvetica;align=center;fontStyle=1;fontSize=10.5;fontColor=#232F3E;" value="OpenSearch 2.11" vertex="1">
+          <mxGeometry height="44" width="105" x="988" y="75" as="geometry" />
+        </mxCell>
+        <mxCell id="ll-OS" parent="1" style="edgeStyle=orthogonalEdgeStyle;dashed=1;dashPattern=4 4;strokeColor=#94A3B8;strokeWidth=1.5;rounded=0;endArrow=none;" edge="1" source="p-OS">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1040" y="680" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="p-Bedrock" parent="1" style="rounded=1;strokeColor=#01A88D;strokeWidth=1.5;fillColor=#01A88D;fillOpacity=12;fontFamily=Helvetica;align=center;fontStyle=1;fontSize=10.5;fontColor=#232F3E;" value="Amazon Bedrock" vertex="1">
+          <mxGeometry height="44" width="105" x="1128" y="75" as="geometry" />
+        </mxCell>
+        <mxCell id="ll-Bedrock" parent="1" style="edgeStyle=orthogonalEdgeStyle;dashed=1;dashPattern=4 4;strokeColor=#94A3B8;strokeWidth=1.5;rounded=0;endArrow=none;" edge="1" source="p-Bedrock">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1180" y="680" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="msg-1" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#0284C7;strokeWidth=1.8;fontFamily=Helvetica;fontSize=10;fontColor=#1E293B;fontStyle=1;endArrow=classic;endFill=1;labelBackgroundColor=#FFFFFF;spacing=2;" value="1. Upload File (contracts/spec.pdf)">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="60" y="145" as="sourcePoint" />
+            <mxPoint x="200" y="145" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="msg-2" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#107C41;strokeWidth=1.8;fontFamily=Helvetica;fontSize=10;fontColor=#1E293B;fontStyle=1;endArrow=classic;endFill=1;labelBackgroundColor=#FFFFFF;spacing=2;" value="2. PutObject (s3://vault/tenants/acme/files/contracts/spec.pdf)">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="200" y="180" as="sourcePoint" />
+            <mxPoint x="340" y="180" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="msg-3" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#E7157B;strokeWidth=1.8;fontFamily=Helvetica;fontSize=10;fontColor=#1E293B;fontStyle=1;endArrow=classic;endFill=1;labelBackgroundColor=#FFFFFF;spacing=2;" value="3. S3 Event Notification: ObjectCreated">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="340" y="220" as="sourcePoint" />
+            <mxPoint x="480" y="220" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="msg-4" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#8C4FFF;strokeWidth=1.8;fontFamily=Helvetica;fontSize=10;fontColor=#1E293B;fontStyle=1;endArrow=classic;endFill=1;labelBackgroundColor=#FFFFFF;spacing=2;" value="4. Forward Ingestion Job Message to SQS Queue">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="480" y="260" as="sourcePoint" />
+            <mxPoint x="620" y="260" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="msg-5" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#ED7100;strokeWidth=1.8;fontFamily=Helvetica;fontSize=10;fontColor=#1E293B;fontStyle=1;endArrow=classic;endFill=1;labelBackgroundColor=#FFFFFF;spacing=2;" value="5. Batch Trigger Lambda Worker (BatchSize: 10)">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="620" y="305" as="sourcePoint" />
+            <mxPoint x="760" y="305" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="msg-6" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#107C41;strokeWidth=1.8;fontFamily=Helvetica;fontSize=10;fontColor=#1E293B;fontStyle=1;endArrow=classic;endFill=1;labelBackgroundColor=#FFFFFF;spacing=2;" value="6. Stream Raw Document Content">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="760" y="345" as="sourcePoint" />
+            <mxPoint x="340" y="345" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="msg-7" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#107C41;strokeWidth=1.8;fontFamily=Helvetica;fontSize=10;fontColor=#1E293B;fontStyle=1;dashed=1;endArrow=classic;endFill=1;labelBackgroundColor=#FFFFFF;spacing=2;" value="7. Binary Data Stream (< 100MB)">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="340" y="380" as="sourcePoint" />
+            <mxPoint x="760" y="380" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="msg-8" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#3B48CC;strokeWidth=1.8;fontFamily=Helvetica;fontSize=10;fontColor=#1E293B;fontStyle=1;endArrow=classic;endFill=1;labelBackgroundColor=#FFFFFF;spacing=2;" value="8. POST /tika (Text & Metadata Extraction over 127.0.0.1:9998)">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="760" y="420" as="sourcePoint" />
+            <mxPoint x="900" y="420" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="msg-9" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#3B48CC;strokeWidth=1.8;fontFamily=Helvetica;fontSize=10;fontColor=#1E293B;fontStyle=1;dashed=1;endArrow=classic;endFill=1;labelBackgroundColor=#FFFFFF;spacing=2;" value="9. Return Plaintext Token Chunks & Document Metadata">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="900" y="455" as="sourcePoint" />
+            <mxPoint x="760" y="455" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="msg-10" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#ED7100;strokeWidth=1.8;fontFamily=Helvetica;fontSize=10;fontColor=#1E293B;fontStyle=1;endArrow=classic;endFill=1;labelBackgroundColor=#FFFFFF;spacing=2;" value="10. PUT /tenant_acme/_doc (BM25 Inverted Index Tokens)">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="760" y="495" as="sourcePoint" />
+            <mxPoint x="1040" y="495" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="msg-11" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#01A88D;strokeWidth=1.8;fontFamily=Helvetica;fontSize=10;fontColor=#1E293B;fontStyle=1;endArrow=classic;endFill=1;labelBackgroundColor=#FFFFFF;spacing=2;" value="11. InvokeModel (Titan Text Embeddings v2 -> 1,536 dimensions)">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="760" y="535" as="sourcePoint" />
+            <mxPoint x="1180" y="535" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="msg-12" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#01A88D;strokeWidth=1.8;fontFamily=Helvetica;fontSize=10;fontColor=#1E293B;fontStyle=1;dashed=1;endArrow=classic;endFill=1;labelBackgroundColor=#FFFFFF;spacing=2;" value="12. Return Vector Embeddings Float Array">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1180" y="570" as="sourcePoint" />
+            <mxPoint x="760" y="570" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="msg-13" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#ED7100;strokeWidth=1.8;fontFamily=Helvetica;fontSize=10;fontColor=#1E293B;fontStyle=1;endArrow=classic;endFill=1;labelBackgroundColor=#FFFFFF;spacing=2;" value="13. Index Vector Embeddings into k-NN Domain Index">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="760" y="605" as="sourcePoint" />
+            <mxPoint x="1040" y="605" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="msg-14" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#059669;strokeWidth=1.8;fontFamily=Helvetica;fontSize=10;fontColor=#1E293B;fontStyle=1;endArrow=classic;endFill=1;labelBackgroundColor=#FFFFFF;spacing=2;" value="14. Acknowledge & Delete SQS Message (Zero Poison Lag)">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="760" y="645" as="sourcePoint" />
+            <mxPoint x="620" y="645" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
