@@ -14,7 +14,7 @@
         <!-- ======================================================== -->
         <!-- PACKAGE 1: Control Plane Domain (Serverless State)       -->
         <!-- ======================================================== -->
-        <mxCell id="pkg_control" value="Control Plane Domain (Platform State &amp; Fleet Registry)" style="swimlane;startSize=26;fillColor=#FAF5FF;strokeColor=#9333EA;strokeWidth=1.5;fontStyle=1;fontSize=12;fontColor=#581C87;rounded=0;align=left;spacingLeft=10;" vertex="1" parent="1">
+        <mxCell id="pkg_control" value="Control Plane Domain (Platform State &amp; Fleet Registry)" style="swimlane;startSize=26;fillColor=#FAF5FF;strokeColor=#9333EA;strokeWidth=1.5;fontStyle=1;fontSize=12;fontColor=#581C87;rounded=0;align=left;spacingLeft=10;whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="50" y="70" width="1750" height="340" as="geometry" />
         </mxCell>
 
@@ -39,34 +39,34 @@
         </mxCell>
 
         <!-- Relationships Control Plane -->
-        <mxCell id="rel_adm_reg" value="provisions &amp;amp; governs" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#9333EA;strokeWidth=1.5;endArrow=none;fontSize=10;fontColor=#581C87;" edge="1" parent="pkg_control" source="c_admin" target="c_registry">
+        <mxCell id="rel_adm_reg" value="provisions &amp; governs" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#9333EA;strokeWidth=1.5;endArrow=none;fontSize=10;fontColor=#581C87;whiteSpace=wrap;" edge="1" parent="pkg_control" source="c_admin" target="c_registry">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="m_adm_reg_1" value="1" style="text;html=1;align=center;verticalAlign=middle;fontSize=11;fontStyle=1;fontColor=#9333EA;" vertex="1" parent="pkg_control">
+        <mxCell id="m_adm_reg_1" value="1" style="text;html=1;align=center;verticalAlign=middle;fontSize=11;fontStyle=1;fontColor=#9333EA;whiteSpace=wrap;" vertex="1" parent="pkg_control">
           <mxGeometry x="325" y="105" width="20" height="20" as="geometry" />
         </mxCell>
-        <mxCell id="m_adm_reg_n" value="0..*" style="text;html=1;align=center;verticalAlign=middle;fontSize=11;fontStyle=1;fontColor=#9333EA;" vertex="1" parent="pkg_control">
+        <mxCell id="m_adm_reg_n" value="0..*" style="text;html=1;align=center;verticalAlign=middle;fontSize=11;fontStyle=1;fontColor=#9333EA;whiteSpace=wrap;" vertex="1" parent="pkg_control">
           <mxGeometry x="445" y="105" width="25" height="20" as="geometry" />
         </mxCell>
 
-        <mxCell id="rel_reg_audit" value="records actions" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#9333EA;strokeWidth=1.5;endArrow=none;fontSize=10;fontColor=#581C87;" edge="1" parent="pkg_control" source="c_registry" target="c_plat_audit">
+        <mxCell id="rel_reg_audit" value="records actions" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#9333EA;strokeWidth=1.5;endArrow=none;fontSize=10;fontColor=#581C87;whiteSpace=wrap;" edge="1" parent="pkg_control" source="c_registry" target="c_plat_audit">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="m_reg_aud_1" value="1" style="text;html=1;align=center;verticalAlign=middle;fontSize=11;fontStyle=1;fontColor=#9333EA;" vertex="1" parent="pkg_control">
+        <mxCell id="m_reg_aud_1" value="1" style="text;html=1;align=center;verticalAlign=middle;fontSize=11;fontStyle=1;fontColor=#9333EA;whiteSpace=wrap;" vertex="1" parent="pkg_control">
           <mxGeometry x="815" y="110" width="20" height="20" as="geometry" />
         </mxCell>
-        <mxCell id="m_reg_aud_n" value="0..*" style="text;html=1;align=center;verticalAlign=middle;fontSize=11;fontStyle=1;fontColor=#9333EA;" vertex="1" parent="pkg_control">
+        <mxCell id="m_reg_aud_n" value="0..*" style="text;html=1;align=center;verticalAlign=middle;fontSize=11;fontStyle=1;fontColor=#9333EA;whiteSpace=wrap;" vertex="1" parent="pkg_control">
           <mxGeometry x="945" y="110" width="25" height="20" as="geometry" />
         </mxCell>
 
-        <mxCell id="rel_reg_met" value="monitors telemetry" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#F59E0B;strokeWidth=1.5;endArrow=none;fontSize=10;fontColor=#B45309;" edge="1" parent="pkg_control" source="c_plat_audit" target="c_metric">
+        <mxCell id="rel_reg_met" value="monitors telemetry" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#F59E0B;strokeWidth=1.5;endArrow=none;fontSize=10;fontColor=#B45309;whiteSpace=wrap;" edge="1" parent="pkg_control" source="c_plat_audit" target="c_metric">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
 
         <!-- ======================================================== -->
         <!-- PACKAGE 2: Data Plane & Dedicated Tenant Instance        -->
         <!-- ======================================================== -->
-        <mxCell id="pkg_data" value="Data Plane &amp; Dedicated Instance Domain (Catalog: nc_&lt;tenant_id&gt; &amp; S3 Vault Scope)" style="swimlane;startSize=26;fillColor=#F0FDF4;strokeColor=#16A34A;strokeWidth=1.5;fontStyle=1;fontSize=12;fontColor=#166534;rounded=0;align=left;spacingLeft=10;" vertex="1" parent="1">
+        <mxCell id="pkg_data" value="Data Plane &amp; Dedicated Instance Domain (Catalog: nc_&lt;tenant_id&gt; &amp; S3 Vault Scope)" style="swimlane;startSize=26;fillColor=#F0FDF4;strokeColor=#16A34A;strokeWidth=1.5;fontStyle=1;fontSize=12;fontColor=#166534;rounded=0;align=left;spacingLeft=10;whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="50" y="460" width="1750" height="730" as="geometry" />
         </mxCell>
 
@@ -91,12 +91,12 @@
         </mxCell>
 
         <!-- Class: SharePolicy -->
-        <mxCell id="c_share" value="&lt;p style=&quot;margin:0px;padding-top:4px;text-align:center;&quot;&gt;&lt;b&gt;SharePolicy (DLP &amp;amp; Access)&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:8px;text-align:left;&quot;&gt;+ share_id: Long [PK]&lt;br/&gt;+ fileid: Long [FK]&lt;br/&gt;+ uid_owner: String [FK]&lt;br/&gt;+ share_type: Integer (User / Group / PublicLink / DropBox)&lt;br/&gt;+ share_token: String&lt;br/&gt;+ password_hash: String&lt;br/&gt;+ expiration: DateTime (DLP max 7 days)&lt;br/&gt;+ permissions: Integer (Read/Write/UploadOnly)&lt;br/&gt;+ hide_download: Boolean&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:8px;text-align:left;&quot;&gt;+ isExpired(): Boolean&lt;br/&gt;+ verifyPassword(input_pass): Boolean&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=11;fontFamily=Helvetica;html=1;whiteSpace=wrap;fillColor=#FFFFFF;strokeColor=#DC2626;strokeWidth=1.5;fontColor=#991B1B;rounded=0;" vertex="1" parent="pkg_data">
+        <mxCell id="c_share" value="&lt;p style=&quot;margin:0px;padding-top:4px;text-align:center;&quot;&gt;&lt;b&gt;SharePolicy (DLP &amp; Access)&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:8px;text-align:left;&quot;&gt;+ share_id: Long [PK]&lt;br/&gt;+ fileid: Long [FK]&lt;br/&gt;+ uid_owner: String [FK]&lt;br/&gt;+ share_type: Integer (User / Group / PublicLink / DropBox)&lt;br/&gt;+ share_token: String&lt;br/&gt;+ password_hash: String&lt;br/&gt;+ expiration: DateTime (DLP max 7 days)&lt;br/&gt;+ permissions: Integer (Read/Write/UploadOnly)&lt;br/&gt;+ hide_download: Boolean&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:8px;text-align:left;&quot;&gt;+ isExpired(): Boolean&lt;br/&gt;+ verifyPassword(input_pass): Boolean&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=11;fontFamily=Helvetica;html=1;whiteSpace=wrap;fillColor=#FFFFFF;strokeColor=#DC2626;strokeWidth=1.5;fontColor=#991B1B;rounded=0;" vertex="1" parent="pkg_data">
           <mxGeometry x="970" y="60" width="330" height="240" as="geometry" />
         </mxCell>
 
         <!-- Class: AIContextIndex -->
-        <mxCell id="c_ai" value="&lt;p style=&quot;margin:0px;padding-top:4px;text-align:center;&quot;&gt;&lt;b&gt;AIContextIndex (RAG &amp;amp; Bedrock)&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:8px;text-align:left;&quot;&gt;+ chunk_id: UUID [PK]&lt;br/&gt;+ fileid: Long [FK]&lt;br/&gt;+ authorized_gid: String [FK]&lt;br/&gt;+ extracted_summary: String&lt;br/&gt;+ embedding_model: String (&amp;quot;Titan-Embed&amp;quot;)&lt;br/&gt;+ tokens_consumed: Integer&lt;br/&gt;+ indexed_at: DateTime&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:8px;text-align:left;&quot;&gt;+ querySemantic(prompt, gid): String&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=11;fontFamily=Helvetica;html=1;whiteSpace=wrap;fillColor=#FFFFFF;strokeColor=#16A34A;strokeWidth=1.5;fontColor=#166534;rounded=0;" vertex="1" parent="pkg_data">
+        <mxCell id="c_ai" value="&lt;p style=&quot;margin:0px;padding-top:4px;text-align:center;&quot;&gt;&lt;b&gt;AIContextIndex (RAG &amp; Bedrock)&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:8px;text-align:left;&quot;&gt;+ chunk_id: UUID [PK]&lt;br/&gt;+ fileid: Long [FK]&lt;br/&gt;+ authorized_gid: String [FK]&lt;br/&gt;+ extracted_summary: String&lt;br/&gt;+ embedding_model: String (&amp;quot;Titan-Embed&amp;quot;)&lt;br/&gt;+ tokens_consumed: Integer&lt;br/&gt;+ indexed_at: DateTime&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:8px;text-align:left;&quot;&gt;+ querySemantic(prompt, gid): String&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=11;fontFamily=Helvetica;html=1;whiteSpace=wrap;fillColor=#FFFFFF;strokeColor=#16A34A;strokeWidth=1.5;fontColor=#166534;rounded=0;" vertex="1" parent="pkg_data">
           <mxGeometry x="970" y="370" width="330" height="190" as="geometry" />
         </mxCell>
 
@@ -106,41 +106,41 @@
         </mxCell>
 
         <!-- Data Plane Relationships -->
-        <mxCell id="rel_u_g" value="belongs to" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#0284C7;strokeWidth=1.5;endArrow=none;fontSize=10;fontColor=#0369A1;" edge="1" parent="pkg_data" source="c_user" target="c_group">
+        <mxCell id="rel_u_g" value="belongs to" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#0284C7;strokeWidth=1.5;endArrow=none;fontSize=10;fontColor=#0369A1;whiteSpace=wrap;" edge="1" parent="pkg_data" source="c_user" target="c_group">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="m_u_g_1" value="1..*" style="text;html=1;align=center;verticalAlign=middle;fontSize=11;fontStyle=1;fontColor=#0284C7;" vertex="1" parent="pkg_data">
+        <mxCell id="m_u_g_1" value="1..*" style="text;html=1;align=center;verticalAlign=middle;fontSize=11;fontStyle=1;fontColor=#0284C7;whiteSpace=wrap;" vertex="1" parent="pkg_data">
           <mxGeometry x="190" y="245" width="25" height="20" as="geometry" />
         </mxCell>
-        <mxCell id="m_u_g_2" value="0..*" style="text;html=1;align=center;verticalAlign=middle;fontSize=11;fontStyle=1;fontColor=#0284C7;" vertex="1" parent="pkg_data">
+        <mxCell id="m_u_g_2" value="0..*" style="text;html=1;align=center;verticalAlign=middle;fontSize=11;fontStyle=1;fontColor=#0284C7;whiteSpace=wrap;" vertex="1" parent="pkg_data">
           <mxGeometry x="190" y="295" width="25" height="20" as="geometry" />
         </mxCell>
 
-        <mxCell id="rel_g_f" value="governs folder" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#0284C7;strokeWidth=1.5;endArrow=none;fontSize=10;fontColor=#0369A1;" edge="1" parent="pkg_data" source="c_group" target="c_folder">
+        <mxCell id="rel_g_f" value="governs folder" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#0284C7;strokeWidth=1.5;endArrow=none;fontSize=10;fontColor=#0369A1;whiteSpace=wrap;" edge="1" parent="pkg_data" source="c_group" target="c_folder">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
 
-        <mxCell id="rel_u_file" value="owns / uploads" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#16A34A;strokeWidth=1.5;endArrow=none;fontSize=10;fontColor=#166534;" edge="1" parent="pkg_data" source="c_user" target="c_file">
+        <mxCell id="rel_u_file" value="owns / uploads" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#16A34A;strokeWidth=1.5;endArrow=none;fontSize=10;fontColor=#166534;whiteSpace=wrap;" edge="1" parent="pkg_data" source="c_user" target="c_file">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="m_u_f_1" value="1" style="text;html=1;align=center;verticalAlign=middle;fontSize=11;fontStyle=1;fontColor=#16A34A;" vertex="1" parent="pkg_data">
+        <mxCell id="m_u_f_1" value="1" style="text;html=1;align=center;verticalAlign=middle;fontSize=11;fontStyle=1;fontColor=#16A34A;whiteSpace=wrap;" vertex="1" parent="pkg_data">
           <mxGeometry x="325" y="130" width="20" height="20" as="geometry" />
         </mxCell>
-        <mxCell id="m_u_f_n" value="0..*" style="text;html=1;align=center;verticalAlign=middle;fontSize=11;fontStyle=1;fontColor=#16A34A;" vertex="1" parent="pkg_data">
+        <mxCell id="m_u_f_n" value="0..*" style="text;html=1;align=center;verticalAlign=middle;fontSize=11;fontStyle=1;fontColor=#16A34A;whiteSpace=wrap;" vertex="1" parent="pkg_data">
           <mxGeometry x="445" y="130" width="25" height="20" as="geometry" />
         </mxCell>
 
-        <mxCell id="rel_file_share" value="secures &amp;amp; shares" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#DC2626;strokeWidth=1.5;endArrow=none;fontSize=10;fontColor=#991B1B;" edge="1" parent="pkg_data" source="c_file" target="c_share">
+        <mxCell id="rel_file_share" value="secures &amp; shares" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#DC2626;strokeWidth=1.5;endArrow=none;fontSize=10;fontColor=#991B1B;whiteSpace=wrap;" edge="1" parent="pkg_data" source="c_file" target="c_share">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="m_f_s_1" value="1" style="text;html=1;align=center;verticalAlign=middle;fontSize=11;fontStyle=1;fontColor=#DC2626;" vertex="1" parent="pkg_data">
+        <mxCell id="m_f_s_1" value="1" style="text;html=1;align=center;verticalAlign=middle;fontSize=11;fontStyle=1;fontColor=#DC2626;whiteSpace=wrap;" vertex="1" parent="pkg_data">
           <mxGeometry x="815" y="140" width="20" height="20" as="geometry" />
         </mxCell>
-        <mxCell id="m_f_s_n" value="0..*" style="text;html=1;align=center;verticalAlign=middle;fontSize=11;fontStyle=1;fontColor=#DC2626;" vertex="1" parent="pkg_data">
+        <mxCell id="m_f_s_n" value="0..*" style="text;html=1;align=center;verticalAlign=middle;fontSize=11;fontStyle=1;fontColor=#DC2626;whiteSpace=wrap;" vertex="1" parent="pkg_data">
           <mxGeometry x="945" y="140" width="25" height="20" as="geometry" />
         </mxCell>
 
-        <mxCell id="rel_file_ai" value="indexes embeddings" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#16A34A;strokeWidth=1.5;endArrow=none;fontSize=10;fontColor=#166534;" edge="1" parent="pkg_data" source="c_file" target="c_ai">
+        <mxCell id="rel_file_ai" value="indexes embeddings" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#16A34A;strokeWidth=1.5;endArrow=none;fontSize=10;fontColor=#166534;whiteSpace=wrap;" edge="1" parent="pkg_data" source="c_file" target="c_ai">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
               <mxPoint x="640" y="460" />
@@ -148,14 +148,14 @@
           </mxGeometry>
         </mxCell>
 
-        <mxCell id="rel_file_act" value="logs action" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#16A34A;strokeWidth=1.5;endArrow=none;fontSize=10;fontColor=#166534;" edge="1" parent="pkg_data" source="c_share" target="c_act">
+        <mxCell id="rel_file_act" value="logs action" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#16A34A;strokeWidth=1.5;endArrow=none;fontSize=10;fontColor=#166534;whiteSpace=wrap;" edge="1" parent="pkg_data" source="c_share" target="c_act">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
 
         <!-- ======================================================== -->
         <!-- INTER-TIER ISOLATION LINK: Registry -> Tenant Domain     -->
         <!-- ======================================================== -->
-        <mxCell id="link_inter_tier" value="&lt;b&gt;DEDICATED INSTANCE ISOLATION BINDING&lt;/b&gt;&#xa;(Catalog: nc_&lt;tenant_id&gt; | EFS AP: /tenants/&lt;tenant_id&gt; | S3: /tenants/&lt;tenant_id&gt;/*)" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#059669;strokeWidth=2.5;dashed=1;endArrow=block;endFill=1;endSize=10;fontSize=11;fontColor=#065F46;align=center;" edge="1" parent="1" source="c_registry" target="c_file">
+        <mxCell id="link_inter_tier" value="&lt;b&gt;DEDICATED INSTANCE ISOLATION BINDING&lt;/b&gt;&lt;br/&gt;Catalog: nc_&amp;lt;tenant_id&amp;gt; • EFS: /tenants/&amp;lt;id&amp;gt; • S3: /tenants/&amp;lt;id&amp;gt;/*" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#059669;strokeWidth=2.5;dashed=1;endArrow=block;endFill=1;endSize=10;fontSize=10;fontColor=#065F46;align=center;whiteSpace=wrap;labelBackgroundColor=#FFFFFF;spacing=2;" edge="1" parent="1" source="c_registry" target="c_file">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
               <mxPoint x="690" y="420" />

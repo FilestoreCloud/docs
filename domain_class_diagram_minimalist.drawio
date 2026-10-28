@@ -57,10 +57,10 @@
         <mxCell id="rel_t_u" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#0284C7;strokeWidth=1.5;endArrow=none;" edge="1" parent="1" source="c_tenant" target="c_user">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="m_tu_1" value="1" style="text;html=1;align=center;verticalAlign=middle;fontSize=11;fontStyle=1;fontColor=#0284C7;" vertex="1" parent="1">
+        <mxCell id="m_tu_1" value="1" style="text;html=1;align=center;verticalAlign=middle;fontSize=11;fontStyle=1;fontColor=#0284C7;whiteSpace=wrap;" vertex="1" parent="1">
           <mxGeometry x="180" y="215" width="20" height="20" as="geometry" />
         </mxCell>
-        <mxCell id="m_tu_n" value="0..*" style="text;html=1;align=center;verticalAlign=middle;fontSize=11;fontStyle=1;fontColor=#0284C7;" vertex="1" parent="1">
+        <mxCell id="m_tu_n" value="0..*" style="text;html=1;align=center;verticalAlign=middle;fontSize=11;fontStyle=1;fontColor=#0284C7;whiteSpace=wrap;" vertex="1" parent="1">
           <mxGeometry x="180" y="335" width="25" height="20" as="geometry" />
         </mxCell>
 
@@ -68,10 +68,10 @@
         <mxCell id="rel_t_f" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#16A34A;strokeWidth=1.5;endArrow=none;" edge="1" parent="1" source="c_tenant" target="c_file">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="m_tf_1" value="1" style="text;html=1;align=center;verticalAlign=middle;fontSize=11;fontStyle=1;fontColor=#16A34A;" vertex="1" parent="1">
+        <mxCell id="m_tf_1" value="1" style="text;html=1;align=center;verticalAlign=middle;fontSize=11;fontStyle=1;fontColor=#16A34A;whiteSpace=wrap;" vertex="1" parent="1">
           <mxGeometry x="285" y="125" width="20" height="20" as="geometry" />
         </mxCell>
-        <mxCell id="m_tf_n" value="0..*" style="text;html=1;align=center;verticalAlign=middle;fontSize=11;fontStyle=1;fontColor=#16A34A;" vertex="1" parent="1">
+        <mxCell id="m_tf_n" value="0..*" style="text;html=1;align=center;verticalAlign=middle;fontSize=11;fontStyle=1;fontColor=#16A34A;whiteSpace=wrap;" vertex="1" parent="1">
           <mxGeometry x="410" y="125" width="25" height="20" as="geometry" />
         </mxCell>
 
@@ -84,10 +84,10 @@
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="m_uf_1" value="1" style="text;html=1;align=center;verticalAlign=middle;fontSize=11;fontStyle=1;fontColor=#16A34A;" vertex="1" parent="1">
+        <mxCell id="m_uf_1" value="1" style="text;html=1;align=center;verticalAlign=middle;fontSize=11;fontStyle=1;fontColor=#16A34A;whiteSpace=wrap;" vertex="1" parent="1">
           <mxGeometry x="285" y="400" width="20" height="20" as="geometry" />
         </mxCell>
-        <mxCell id="m_uf_n" value="0..*" style="text;html=1;align=center;verticalAlign=middle;fontSize=11;fontStyle=1;fontColor=#16A34A;" vertex="1" parent="1">
+        <mxCell id="m_uf_n" value="0..*" style="text;html=1;align=center;verticalAlign=middle;fontSize=11;fontStyle=1;fontColor=#16A34A;whiteSpace=wrap;" vertex="1" parent="1">
           <mxGeometry x="410" y="175" width="25" height="20" as="geometry" />
         </mxCell>
 
@@ -95,10 +95,10 @@
         <mxCell id="rel_f_s" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#F59E0B;strokeWidth=1.5;endArrow=none;" edge="1" parent="1" source="c_file" target="c_search">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="m_fs_1" value="1" style="text;html=1;align=center;verticalAlign=middle;fontSize=11;fontStyle=1;fontColor=#F59E0B;" vertex="1" parent="1">
+        <mxCell id="m_fs_1" value="1" style="text;html=1;align=center;verticalAlign=middle;fontSize=11;fontStyle=1;fontColor=#F59E0B;whiteSpace=wrap;" vertex="1" parent="1">
           <mxGeometry x="665" y="125" width="20" height="20" as="geometry" />
         </mxCell>
-        <mxCell id="m_fs_2" value="1" style="text;html=1;align=center;verticalAlign=middle;fontSize=11;fontStyle=1;fontColor=#F59E0B;" vertex="1" parent="1">
+        <mxCell id="m_fs_2" value="1" style="text;html=1;align=center;verticalAlign=middle;fontSize=11;fontStyle=1;fontColor=#F59E0B;whiteSpace=wrap;" vertex="1" parent="1">
           <mxGeometry x="795" y="125" width="20" height="20" as="geometry" />
         </mxCell>
 
@@ -106,10 +106,10 @@
         <mxCell id="rel_f_p" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#DC2626;strokeWidth=1.5;endArrow=none;" edge="1" parent="1" source="c_file" target="c_perm">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="m_fp_1" value="1" style="text;html=1;align=center;verticalAlign=middle;fontSize=11;fontStyle=1;fontColor=#DC2626;" vertex="1" parent="1">
+        <mxCell id="m_fp_1" value="1" style="text;html=1;align=center;verticalAlign=middle;fontSize=11;fontStyle=1;fontColor=#DC2626;whiteSpace=wrap;" vertex="1" parent="1">
           <mxGeometry x="560" y="225" width="20" height="20" as="geometry" />
         </mxCell>
-        <mxCell id="m_fp_n" value="0..*" style="text;html=1;align=center;verticalAlign=middle;fontSize=11;fontStyle=1;fontColor=#DC2626;" vertex="1" parent="1">
+        <mxCell id="m_fp_n" value="0..*" style="text;html=1;align=center;verticalAlign=middle;fontSize=11;fontStyle=1;fontColor=#DC2626;whiteSpace=wrap;" vertex="1" parent="1">
           <mxGeometry x="560" y="335" width="25" height="20" as="geometry" />
         </mxCell>
 
@@ -122,10 +122,10 @@
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="m_fa_1" value="1" style="text;html=1;align=center;verticalAlign=middle;fontSize=11;fontStyle=1;fontColor=#C026D3;" vertex="1" parent="1">
+        <mxCell id="m_fa_1" value="1" style="text;html=1;align=center;verticalAlign=middle;fontSize=11;fontStyle=1;fontColor=#C026D3;whiteSpace=wrap;" vertex="1" parent="1">
           <mxGeometry x="665" y="175" width="20" height="20" as="geometry" />
         </mxCell>
-        <mxCell id="m_fa_n" value="0..*" style="text;html=1;align=center;verticalAlign=middle;fontSize=11;fontStyle=1;fontColor=#C026D3;" vertex="1" parent="1">
+        <mxCell id="m_fa_n" value="0..*" style="text;html=1;align=center;verticalAlign=middle;fontSize=11;fontStyle=1;fontColor=#C026D3;whiteSpace=wrap;" vertex="1" parent="1">
           <mxGeometry x="790" y="400" width="25" height="20" as="geometry" />
         </mxCell>
 

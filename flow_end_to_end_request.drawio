@@ -1,230 +1,230 @@
-<mxfile host="app.diagrams.net" modified="2026-10-28T09:00:00.000Z" agent="Mozilla/5.0" version="24.7.17">
+<mxfile host="app.diagrams.net" modified="2026-10-28T09:30:00.000Z" agent="Mozilla/5.0" version="24.7.17">
   <diagram id="e2e-req-seq" name="End-to-End Request Flow">
-    <mxGraphModel dx="1480" dy="840" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1480" pageHeight="840" math="0" shadow="0">
+    <mxGraphModel dx="1760" dy="840" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1760" pageHeight="840" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
 
-        <!-- Canvas Header -->
-        <mxCell id="hdr" parent="1" style="rounded=0;strokeColor=none;fillColor=#232F3E;align=left;spacingLeft=20;fontColor=#ffffff;fontSize=15;fontFamily=Helvetica;fontStyle=1;" value="STORIX CLOUD — END-TO-END TENANT REQUEST FLOW (SEQUENCE DIAGRAM)" vertex="1">
-          <mxGeometry height="42" width="1440" x="20" y="15" as="geometry" />
+        <!-- Canvas Header Banner -->
+        <mxCell id="hdr" parent="1" style="rounded=0;strokeColor=none;fillColor=#232F3E;align=left;spacingLeft=20;fontColor=#ffffff;fontSize=15;fontFamily=Helvetica;fontStyle=1;whiteSpace=wrap;html=1;" value="STORIX CLOUD — END-TO-END TENANT REQUEST FLOW (SEQUENCE DIAGRAM)" vertex="1">
+          <mxGeometry height="42" width="1720" x="20" y="15" as="geometry" />
         </mxCell>
     
-        <mxCell id="p-User" parent="1" style="rounded=1;strokeColor=#0284C7;strokeWidth=1.5;fillColor=#0284C7;fillOpacity=12;fontFamily=Helvetica;align=center;fontStyle=1;fontSize=11;fontColor=#232F3E;" value="Tenant User" vertex="1">
-          <mxGeometry height="44" width="105" x="8" y="75" as="geometry" />
+        <mxCell id="p-User" parent="1" style="rounded=1;strokeColor=#0284C7;strokeWidth=1.5;fillColor=#0284C7;fillOpacity=12;fontFamily=Helvetica;align=center;fontStyle=1;fontSize=11;fontColor=#232F3E;whiteSpace=wrap;html=1;" value="Tenant User" vertex="1">
+          <mxGeometry height="44" width="120" x="20" y="75" as="geometry" />
         </mxCell>
         <mxCell id="ll-User" parent="1" style="edgeStyle=orthogonalEdgeStyle;dashed=1;dashPattern=4 4;strokeColor=#94A3B8;strokeWidth=1.5;rounded=0;endArrow=none;" edge="1" source="p-User">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="60" y="800" as="targetPoint" />
+            <mxPoint x="80" y="800" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         
-        <mxCell id="p-DNS" parent="1" style="rounded=1;strokeColor=#8C4FFF;strokeWidth=1.5;fillColor=#8C4FFF;fillOpacity=12;fontFamily=Helvetica;align=center;fontStyle=1;fontSize=11;fontColor=#232F3E;" value="Route 53" vertex="1">
-          <mxGeometry height="44" width="105" x="138" y="75" as="geometry" />
+        <mxCell id="p-DNS" parent="1" style="rounded=1;strokeColor=#8C4FFF;strokeWidth=1.5;fillColor=#8C4FFF;fillOpacity=12;fontFamily=Helvetica;align=center;fontStyle=1;fontSize=11;fontColor=#232F3E;whiteSpace=wrap;html=1;" value="Route 53" vertex="1">
+          <mxGeometry height="44" width="120" x="170" y="75" as="geometry" />
         </mxCell>
         <mxCell id="ll-DNS" parent="1" style="edgeStyle=orthogonalEdgeStyle;dashed=1;dashPattern=4 4;strokeColor=#94A3B8;strokeWidth=1.5;rounded=0;endArrow=none;" edge="1" source="p-DNS">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="190" y="800" as="targetPoint" />
+            <mxPoint x="230" y="800" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         
-        <mxCell id="p-WAF" parent="1" style="rounded=1;strokeColor=#B00803;strokeWidth=1.5;fillColor=#B00803;fillOpacity=12;fontFamily=Helvetica;align=center;fontStyle=1;fontSize=11;fontColor=#232F3E;" value="AWS WAFv2" vertex="1">
-          <mxGeometry height="44" width="105" x="268" y="75" as="geometry" />
+        <mxCell id="p-WAF" parent="1" style="rounded=1;strokeColor=#B00803;strokeWidth=1.5;fillColor=#B00803;fillOpacity=12;fontFamily=Helvetica;align=center;fontStyle=1;fontSize=11;fontColor=#232F3E;whiteSpace=wrap;html=1;" value="AWS WAFv2" vertex="1">
+          <mxGeometry height="44" width="120" x="330" y="75" as="geometry" />
         </mxCell>
         <mxCell id="ll-WAF" parent="1" style="edgeStyle=orthogonalEdgeStyle;dashed=1;dashPattern=4 4;strokeColor=#94A3B8;strokeWidth=1.5;rounded=0;endArrow=none;" edge="1" source="p-WAF">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="320" y="800" as="targetPoint" />
+            <mxPoint x="390" y="800" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         
-        <mxCell id="p-ALB" parent="1" style="rounded=1;strokeColor=#8C4FFF;strokeWidth=1.5;fillColor=#8C4FFF;fillOpacity=12;fontFamily=Helvetica;align=center;fontStyle=1;fontSize=11;fontColor=#232F3E;" value="ALB Ingress" vertex="1">
-          <mxGeometry height="44" width="105" x="398" y="75" as="geometry" />
+        <mxCell id="p-ALB" parent="1" style="rounded=1;strokeColor=#8C4FFF;strokeWidth=1.5;fillColor=#8C4FFF;fillOpacity=12;fontFamily=Helvetica;align=center;fontStyle=1;fontSize=11;fontColor=#232F3E;whiteSpace=wrap;html=1;" value="ALB Ingress" vertex="1">
+          <mxGeometry height="44" width="120" x="490" y="75" as="geometry" />
         </mxCell>
         <mxCell id="ll-ALB" parent="1" style="edgeStyle=orthogonalEdgeStyle;dashed=1;dashPattern=4 4;strokeColor=#94A3B8;strokeWidth=1.5;rounded=0;endArrow=none;" edge="1" source="p-ALB">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="450" y="800" as="targetPoint" />
+            <mxPoint x="550" y="800" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         
-        <mxCell id="p-ECS" parent="1" style="rounded=1;strokeColor=#ED7100;strokeWidth=1.5;fillColor=#ED7100;fillOpacity=12;fontFamily=Helvetica;align=center;fontStyle=1;fontSize=11;fontColor=#232F3E;" value="Fargate (Nextcloud)" vertex="1">
-          <mxGeometry height="44" width="105" x="548" y="75" as="geometry" />
+        <mxCell id="p-ECS" parent="1" style="rounded=1;strokeColor=#ED7100;strokeWidth=1.5;fillColor=#ED7100;fillOpacity=12;fontFamily=Helvetica;align=center;fontStyle=1;fontSize=11;fontColor=#232F3E;whiteSpace=wrap;html=1;" value="Fargate (Nextcloud)" vertex="1">
+          <mxGeometry height="44" width="120" x="670" y="75" as="geometry" />
         </mxCell>
         <mxCell id="ll-ECS" parent="1" style="edgeStyle=orthogonalEdgeStyle;dashed=1;dashPattern=4 4;strokeColor=#94A3B8;strokeWidth=1.5;rounded=0;endArrow=none;" edge="1" source="p-ECS">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="600" y="800" as="targetPoint" />
+            <mxPoint x="730" y="800" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         
-        <mxCell id="p-Proxy" parent="1" style="rounded=1;strokeColor=#3B48CC;strokeWidth=1.5;fillColor=#3B48CC;fillOpacity=12;fontFamily=Helvetica;align=center;fontStyle=1;fontSize=11;fontColor=#232F3E;" value="RDS Proxy" vertex="1">
-          <mxGeometry height="44" width="105" x="688" y="75" as="geometry" />
+        <mxCell id="p-Proxy" parent="1" style="rounded=1;strokeColor=#3B48CC;strokeWidth=1.5;fillColor=#3B48CC;fillOpacity=12;fontFamily=Helvetica;align=center;fontStyle=1;fontSize=11;fontColor=#232F3E;whiteSpace=wrap;html=1;" value="RDS Proxy" vertex="1">
+          <mxGeometry height="44" width="120" x="850" y="75" as="geometry" />
         </mxCell>
         <mxCell id="ll-Proxy" parent="1" style="edgeStyle=orthogonalEdgeStyle;dashed=1;dashPattern=4 4;strokeColor=#94A3B8;strokeWidth=1.5;rounded=0;endArrow=none;" edge="1" source="p-Proxy">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="740" y="800" as="targetPoint" />
+            <mxPoint x="910" y="800" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         
-        <mxCell id="p-RDS" parent="1" style="rounded=1;strokeColor=#3B48CC;strokeWidth=1.5;fillColor=#3B48CC;fillOpacity=12;fontFamily=Helvetica;align=center;fontStyle=1;fontSize=11;fontColor=#232F3E;" value="PostgreSQL" vertex="1">
-          <mxGeometry height="44" width="105" x="818" y="75" as="geometry" />
+        <mxCell id="p-RDS" parent="1" style="rounded=1;strokeColor=#3B48CC;strokeWidth=1.5;fillColor=#3B48CC;fillOpacity=12;fontFamily=Helvetica;align=center;fontStyle=1;fontSize=11;fontColor=#232F3E;whiteSpace=wrap;html=1;" value="PostgreSQL 16" vertex="1">
+          <mxGeometry height="44" width="120" x="1010" y="75" as="geometry" />
         </mxCell>
         <mxCell id="ll-RDS" parent="1" style="edgeStyle=orthogonalEdgeStyle;dashed=1;dashPattern=4 4;strokeColor=#94A3B8;strokeWidth=1.5;rounded=0;endArrow=none;" edge="1" source="p-RDS">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="870" y="800" as="targetPoint" />
+            <mxPoint x="1070" y="800" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         
-        <mxCell id="p-EFS" parent="1" style="rounded=1;strokeColor=#107C41;strokeWidth=1.5;fillColor=#107C41;fillOpacity=12;fontFamily=Helvetica;align=center;fontStyle=1;fontSize=11;fontColor=#232F3E;" value="Amazon EFS" vertex="1">
-          <mxGeometry height="44" width="105" x="948" y="75" as="geometry" />
+        <mxCell id="p-EFS" parent="1" style="rounded=1;strokeColor=#107C41;strokeWidth=1.5;fillColor=#107C41;fillOpacity=12;fontFamily=Helvetica;align=center;fontStyle=1;fontSize=11;fontColor=#232F3E;whiteSpace=wrap;html=1;" value="Amazon EFS" vertex="1">
+          <mxGeometry height="44" width="120" x="1170" y="75" as="geometry" />
         </mxCell>
         <mxCell id="ll-EFS" parent="1" style="edgeStyle=orthogonalEdgeStyle;dashed=1;dashPattern=4 4;strokeColor=#94A3B8;strokeWidth=1.5;rounded=0;endArrow=none;" edge="1" source="p-EFS">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="1000" y="800" as="targetPoint" />
+            <mxPoint x="1230" y="800" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         
-        <mxCell id="p-S3" parent="1" style="rounded=1;strokeColor=#107C41;strokeWidth=1.5;fillColor=#107C41;fillOpacity=12;fontFamily=Helvetica;align=center;fontStyle=1;fontSize=11;fontColor=#232F3E;" value="S3 Vault" vertex="1">
-          <mxGeometry height="44" width="105" x="1078" y="75" as="geometry" />
+        <mxCell id="p-S3" parent="1" style="rounded=1;strokeColor=#107C41;strokeWidth=1.5;fillColor=#107C41;fillOpacity=12;fontFamily=Helvetica;align=center;fontStyle=1;fontSize=11;fontColor=#232F3E;whiteSpace=wrap;html=1;" value="S3 Vault" vertex="1">
+          <mxGeometry height="44" width="120" x="1330" y="75" as="geometry" />
         </mxCell>
         <mxCell id="ll-S3" parent="1" style="edgeStyle=orthogonalEdgeStyle;dashed=1;dashPattern=4 4;strokeColor=#94A3B8;strokeWidth=1.5;rounded=0;endArrow=none;" edge="1" source="p-S3">
-          <mxGeometry relative="1" as="geometry">
-            <mxPoint x="1130" y="800" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-        
-        <mxCell id="p-OS" parent="1" style="rounded=1;strokeColor=#ED7100;strokeWidth=1.5;fillColor=#ED7100;fillOpacity=12;fontFamily=Helvetica;align=center;fontStyle=1;fontSize=11;fontColor=#232F3E;" value="OpenSearch" vertex="1">
-          <mxGeometry height="44" width="105" x="1208" y="75" as="geometry" />
-        </mxCell>
-        <mxCell id="ll-OS" parent="1" style="edgeStyle=orthogonalEdgeStyle;dashed=1;dashPattern=4 4;strokeColor=#94A3B8;strokeWidth=1.5;rounded=0;endArrow=none;" edge="1" source="p-OS">
-          <mxGeometry relative="1" as="geometry">
-            <mxPoint x="1260" y="800" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-        
-        <mxCell id="p-AI" parent="1" style="rounded=1;strokeColor=#01A88D;strokeWidth=1.5;fillColor=#01A88D;fillOpacity=12;fontFamily=Helvetica;align=center;fontStyle=1;fontSize=11;fontColor=#232F3E;" value="LiteLLM / Bedrock" vertex="1">
-          <mxGeometry height="44" width="105" x="1338" y="75" as="geometry" />
-        </mxCell>
-        <mxCell id="ll-AI" parent="1" style="edgeStyle=orthogonalEdgeStyle;dashed=1;dashPattern=4 4;strokeColor=#94A3B8;strokeWidth=1.5;rounded=0;endArrow=none;" edge="1" source="p-AI">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="1390" y="800" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         
-        <mxCell id="msg-1" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#0284C7;strokeWidth=1.8;fontFamily=Helvetica;fontSize=10.5;fontColor=#1E293B;fontStyle=1;endArrow=classic;endFill=1;labelBackgroundColor=#FFFFFF;spacing=2;" value="1. Resolve https://acme.png261.dev">
+        <mxCell id="p-OS" parent="1" style="rounded=1;strokeColor=#ED7100;strokeWidth=1.5;fillColor=#ED7100;fillOpacity=12;fontFamily=Helvetica;align=center;fontStyle=1;fontSize=11;fontColor=#232F3E;whiteSpace=wrap;html=1;" value="OpenSearch 2.11" vertex="1">
+          <mxGeometry height="44" width="120" x="1490" y="75" as="geometry" />
+        </mxCell>
+        <mxCell id="ll-OS" parent="1" style="edgeStyle=orthogonalEdgeStyle;dashed=1;dashPattern=4 4;strokeColor=#94A3B8;strokeWidth=1.5;rounded=0;endArrow=none;" edge="1" source="p-OS">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="60" y="145" as="sourcePoint" />
-            <mxPoint x="190" y="145" as="targetPoint" />
+            <mxPoint x="1550" y="800" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         
-        <mxCell id="msg-2" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#0284C7;strokeWidth=1.8;fontFamily=Helvetica;fontSize=10.5;fontColor=#1E293B;fontStyle=1;dashed=1;endArrow=classic;endFill=1;labelBackgroundColor=#FFFFFF;spacing=2;" value="2. Return ALB Virtual IP (Dual-AZ Ingress)">
+        <mxCell id="p-AI" parent="1" style="rounded=1;strokeColor=#01A88D;strokeWidth=1.5;fillColor=#01A88D;fillOpacity=12;fontFamily=Helvetica;align=center;fontStyle=1;fontSize=11;fontColor=#232F3E;whiteSpace=wrap;html=1;" value="LiteLLM / Bedrock" vertex="1">
+          <mxGeometry height="44" width="120" x="1640" y="75" as="geometry" />
+        </mxCell>
+        <mxCell id="ll-AI" parent="1" style="edgeStyle=orthogonalEdgeStyle;dashed=1;dashPattern=4 4;strokeColor=#94A3B8;strokeWidth=1.5;rounded=0;endArrow=none;" edge="1" source="p-AI">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="190" y="180" as="sourcePoint" />
-            <mxPoint x="60" y="180" as="targetPoint" />
+            <mxPoint x="1700" y="800" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         
-        <mxCell id="msg-3" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#B00803;strokeWidth=1.8;fontFamily=Helvetica;fontSize=10.5;fontColor=#1E293B;fontStyle=1;endArrow=classic;endFill=1;labelBackgroundColor=#FFFFFF;spacing=2;" value="3. HTTPS Request (TLS 1.3 · Host: acme.png261.dev)">
+        <mxCell id="msg-1" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#0284C7;strokeWidth=1.8;fontFamily=Helvetica;fontSize=10.5;fontColor=#1E293B;fontStyle=1;endArrow=classic;endFill=1;labelBackgroundColor=#FFFFFF;spacing=2;whiteSpace=wrap;html=1;" value="1. Resolve Domain">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="60" y="220" as="sourcePoint" />
-            <mxPoint x="320" y="220" as="targetPoint" />
+            <mxPoint x="80" y="145" as="sourcePoint" />
+            <mxPoint x="230" y="145" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         
-        <mxCell id="msg-4" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#B00803;strokeWidth=1.8;fontFamily=Helvetica;fontSize=10.5;fontColor=#1E293B;fontStyle=1;endArrow=classic;endFill=1;labelBackgroundColor=#FFFFFF;spacing=2;" value="4. Inspect WAF Rules (Rate-limit, SQLi, OWASP Pass)">
+        <mxCell id="msg-2" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#0284C7;strokeWidth=1.8;fontFamily=Helvetica;fontSize=10.5;fontColor=#1E293B;fontStyle=1;dashed=1;endArrow=classic;endFill=1;labelBackgroundColor=#FFFFFF;spacing=2;whiteSpace=wrap;html=1;" value="2. Return ALB Virtual IP">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="320" y="260" as="sourcePoint" />
-            <mxPoint x="450" y="260" as="targetPoint" />
+            <mxPoint x="230" y="180" as="sourcePoint" />
+            <mxPoint x="80" y="180" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         
-        <mxCell id="msg-5" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#ED7100;strokeWidth=1.8;fontFamily=Helvetica;fontSize=10.5;fontColor=#1E293B;fontStyle=1;endArrow=classic;endFill=1;labelBackgroundColor=#FFFFFF;spacing=2;" value="5. Route to Target Group tg-acme (HTTP/80)">
+        <mxCell id="msg-3" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#B00803;strokeWidth=1.8;fontFamily=Helvetica;fontSize=10.5;fontColor=#1E293B;fontStyle=1;endArrow=classic;endFill=1;labelBackgroundColor=#FFFFFF;spacing=2;whiteSpace=wrap;html=1;" value="3. HTTPS (TLS 1.3 · acme.png261.dev)">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="450" y="300" as="sourcePoint" />
-            <mxPoint x="600" y="300" as="targetPoint" />
+            <mxPoint x="80" y="220" as="sourcePoint" />
+            <mxPoint x="390" y="220" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         
-        <mxCell id="msg-6" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#107C41;strokeWidth=1.8;fontFamily=Helvetica;fontSize=10.5;fontColor=#1E293B;fontStyle=1;endArrow=classic;endFill=1;labelBackgroundColor=#FFFFFF;spacing=2;" value="6. Read config.php & session locks (EFS Access Point UID 33)">
+        <mxCell id="msg-4" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#B00803;strokeWidth=1.8;fontFamily=Helvetica;fontSize=10.5;fontColor=#1E293B;fontStyle=1;endArrow=classic;endFill=1;labelBackgroundColor=#FFFFFF;spacing=2;whiteSpace=wrap;html=1;" value="4. WAF Inspection (OWASP &amp; Rate Pass)">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="600" y="340" as="sourcePoint" />
-            <mxPoint x="1000" y="340" as="targetPoint" />
+            <mxPoint x="390" y="260" as="sourcePoint" />
+            <mxPoint x="550" y="260" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         
-        <mxCell id="msg-7" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#107C41;strokeWidth=1.8;fontFamily=Helvetica;fontSize=10.5;fontColor=#1E293B;fontStyle=1;dashed=1;endArrow=classic;endFill=1;labelBackgroundColor=#FFFFFF;spacing=2;" value="7. Configuration loaded & valid">
+        <mxCell id="msg-5" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#ED7100;strokeWidth=1.8;fontFamily=Helvetica;fontSize=10.5;fontColor=#1E293B;fontStyle=1;endArrow=classic;endFill=1;labelBackgroundColor=#FFFFFF;spacing=2;whiteSpace=wrap;html=1;" value="5. Forward to Target Group tg-acme">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="1000" y="375" as="sourcePoint" />
-            <mxPoint x="600" y="375" as="targetPoint" />
+            <mxPoint x="550" y="300" as="sourcePoint" />
+            <mxPoint x="730" y="300" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         
-        <mxCell id="msg-8" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#3B48CC;strokeWidth=1.8;fontFamily=Helvetica;fontSize=10.5;fontColor=#1E293B;fontStyle=1;endArrow=classic;endFill=1;labelBackgroundColor=#FFFFFF;spacing=2;" value="8. Execute SQL Query (Pooled Session)">
+        <mxCell id="msg-6" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#107C41;strokeWidth=1.8;fontFamily=Helvetica;fontSize=10.5;fontColor=#1E293B;fontStyle=1;endArrow=classic;endFill=1;labelBackgroundColor=#FFFFFF;spacing=2;whiteSpace=wrap;html=1;" value="6. Mount config.php (EFS Access Point)">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="600" y="415" as="sourcePoint" />
-            <mxPoint x="740" y="415" as="targetPoint" />
+            <mxPoint x="730" y="340" as="sourcePoint" />
+            <mxPoint x="1230" y="340" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         
-        <mxCell id="msg-9" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#3B48CC;strokeWidth=1.8;fontFamily=Helvetica;fontSize=10.5;fontColor=#1E293B;fontStyle=1;endArrow=classic;endFill=1;labelBackgroundColor=#FFFFFF;spacing=2;" value="9. Direct to isolated database catalog nc_acme">
+        <mxCell id="msg-7" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#107C41;strokeWidth=1.8;fontFamily=Helvetica;fontSize=10.5;fontColor=#1E293B;fontStyle=1;dashed=1;endArrow=classic;endFill=1;labelBackgroundColor=#FFFFFF;spacing=2;whiteSpace=wrap;html=1;" value="7. Configuration Validated">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="740" y="450" as="sourcePoint" />
-            <mxPoint x="870" y="450" as="targetPoint" />
+            <mxPoint x="1230" y="375" as="sourcePoint" />
+            <mxPoint x="730" y="375" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         
-        <mxCell id="msg-10" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#3B48CC;strokeWidth=1.8;fontFamily=Helvetica;fontSize=10.5;fontColor=#1E293B;fontStyle=1;dashed=1;endArrow=classic;endFill=1;labelBackgroundColor=#FFFFFF;spacing=2;" value="10. Query results returned via pooled connection">
+        <mxCell id="msg-8" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#3B48CC;strokeWidth=1.8;fontFamily=Helvetica;fontSize=10.5;fontColor=#1E293B;fontStyle=1;endArrow=classic;endFill=1;labelBackgroundColor=#FFFFFF;spacing=2;whiteSpace=wrap;html=1;" value="8. SQL Query (Pooled Session)">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="870" y="485" as="sourcePoint" />
-            <mxPoint x="600" y="485" as="targetPoint" />
+            <mxPoint x="730" y="415" as="sourcePoint" />
+            <mxPoint x="910" y="415" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         
-        <mxCell id="msg-11" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#107C41;strokeWidth=1.8;fontFamily=Helvetica;fontSize=10.5;fontColor=#1E293B;fontStyle=1;endArrow=classic;endFill=1;labelBackgroundColor=#FFFFFF;spacing=2;" value="11. Read / Write Object (s3://vault/tenants/acme/* via VPC Gateway)">
+        <mxCell id="msg-9" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#3B48CC;strokeWidth=1.8;fontFamily=Helvetica;fontSize=10.5;fontColor=#1E293B;fontStyle=1;endArrow=classic;endFill=1;labelBackgroundColor=#FFFFFF;spacing=2;whiteSpace=wrap;html=1;" value="9. Catalog: nc_acme">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="600" y="525" as="sourcePoint" />
-            <mxPoint x="1130" y="525" as="targetPoint" />
+            <mxPoint x="910" y="450" as="sourcePoint" />
+            <mxPoint x="1070" y="450" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         
-        <mxCell id="msg-12" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#107C41;strokeWidth=1.8;fontFamily=Helvetica;fontSize=10.5;fontColor=#1E293B;fontStyle=1;dashed=1;endArrow=classic;endFill=1;labelBackgroundColor=#FFFFFF;spacing=2;" value="12. S3 Object stream delivered (< 15ms latency)">
+        <mxCell id="msg-10" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#3B48CC;strokeWidth=1.8;fontFamily=Helvetica;fontSize=10.5;fontColor=#1E293B;fontStyle=1;dashed=1;endArrow=classic;endFill=1;labelBackgroundColor=#FFFFFF;spacing=2;whiteSpace=wrap;html=1;" value="10. Query Results Returned">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="1130" y="560" as="sourcePoint" />
-            <mxPoint x="600" y="560" as="targetPoint" />
+            <mxPoint x="1070" y="485" as="sourcePoint" />
+            <mxPoint x="730" y="485" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         
-        <mxCell id="msg-13" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#ED7100;strokeWidth=1.8;fontFamily=Helvetica;fontSize=10.5;fontColor=#1E293B;fontStyle=1;endArrow=classic;endFill=1;labelBackgroundColor=#FFFFFF;spacing=2;" value="13. Optional: Unified Search Query BM25 (tenant_acme index)">
+        <mxCell id="msg-11" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#107C41;strokeWidth=1.8;fontFamily=Helvetica;fontSize=10.5;fontColor=#1E293B;fontStyle=1;endArrow=classic;endFill=1;labelBackgroundColor=#FFFFFF;spacing=2;whiteSpace=wrap;html=1;" value="11. S3 Read/Write (VPC Gateway Endpoint)">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="600" y="600" as="sourcePoint" />
-            <mxPoint x="1260" y="600" as="targetPoint" />
+            <mxPoint x="730" y="525" as="sourcePoint" />
+            <mxPoint x="1390" y="525" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         
-        <mxCell id="msg-14" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#ED7100;strokeWidth=1.8;fontFamily=Helvetica;fontSize=10.5;fontColor=#1E293B;fontStyle=1;dashed=1;endArrow=classic;endFill=1;labelBackgroundColor=#FFFFFF;spacing=2;" value="14. Ranked hits & metadata highlighting returned">
+        <mxCell id="msg-12" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#107C41;strokeWidth=1.8;fontFamily=Helvetica;fontSize=10.5;fontColor=#1E293B;fontStyle=1;dashed=1;endArrow=classic;endFill=1;labelBackgroundColor=#FFFFFF;spacing=2;whiteSpace=wrap;html=1;" value="12. S3 Object Stream Delivered">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="1260" y="635" as="sourcePoint" />
-            <mxPoint x="600" y="635" as="targetPoint" />
+            <mxPoint x="1390" y="560" as="sourcePoint" />
+            <mxPoint x="730" y="560" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         
-        <mxCell id="msg-15" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#01A88D;strokeWidth=1.8;fontFamily=Helvetica;fontSize=10.5;fontColor=#1E293B;fontStyle=1;endArrow=classic;endFill=1;labelBackgroundColor=#FFFFFF;spacing=2;" value="15. Optional: Bedrock AI Assistant Call (127.0.0.1:4000 SigV4)">
+        <mxCell id="msg-13" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#ED7100;strokeWidth=1.8;fontFamily=Helvetica;fontSize=10.5;fontColor=#1E293B;fontStyle=1;endArrow=classic;endFill=1;labelBackgroundColor=#FFFFFF;spacing=2;whiteSpace=wrap;html=1;" value="13. Optional: BM25 Search (tenant_acme)">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="600" y="675" as="sourcePoint" />
-            <mxPoint x="1390" y="675" as="targetPoint" />
+            <mxPoint x="730" y="600" as="sourcePoint" />
+            <mxPoint x="1550" y="600" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         
-        <mxCell id="msg-16" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#01A88D;strokeWidth=1.8;fontFamily=Helvetica;fontSize=10.5;fontColor=#1E293B;fontStyle=1;dashed=1;endArrow=classic;endFill=1;labelBackgroundColor=#FFFFFF;spacing=2;" value="16. Claude 3.5 Sonnet RAG Token Stream Response">
+        <mxCell id="msg-14" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#ED7100;strokeWidth=1.8;fontFamily=Helvetica;fontSize=10.5;fontColor=#1E293B;fontStyle=1;dashed=1;endArrow=classic;endFill=1;labelBackgroundColor=#FFFFFF;spacing=2;whiteSpace=wrap;html=1;" value="14. Ranked Hits &amp; Highlights">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="1390" y="710" as="sourcePoint" />
-            <mxPoint x="600" y="710" as="targetPoint" />
+            <mxPoint x="1550" y="635" as="sourcePoint" />
+            <mxPoint x="730" y="635" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         
-        <mxCell id="msg-17" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#059669;strokeWidth=1.8;fontFamily=Helvetica;fontSize=10.5;fontColor=#1E293B;fontStyle=1;dashed=1;endArrow=classic;endFill=1;labelBackgroundColor=#FFFFFF;spacing=2;" value="17. HTTP 200 OK Response (Encrypted TLS Stream delivered to User)">
+        <mxCell id="msg-15" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#01A88D;strokeWidth=1.8;fontFamily=Helvetica;fontSize=10.5;fontColor=#1E293B;fontStyle=1;endArrow=classic;endFill=1;labelBackgroundColor=#FFFFFF;spacing=2;whiteSpace=wrap;html=1;" value="15. Optional: Bedrock Q&amp;A (127.0.0.1:4000)">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="600" y="755" as="sourcePoint" />
-            <mxPoint x="60" y="755" as="targetPoint" />
+            <mxPoint x="730" y="675" as="sourcePoint" />
+            <mxPoint x="1700" y="675" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="msg-16" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#01A88D;strokeWidth=1.8;fontFamily=Helvetica;fontSize=10.5;fontColor=#1E293B;fontStyle=1;dashed=1;endArrow=classic;endFill=1;labelBackgroundColor=#FFFFFF;spacing=2;whiteSpace=wrap;html=1;" value="16. Claude 3.5 Sonnet Response">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1700" y="710" as="sourcePoint" />
+            <mxPoint x="730" y="710" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="msg-17" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#059669;strokeWidth=1.8;fontFamily=Helvetica;fontSize=10.5;fontColor=#1E293B;fontStyle=1;dashed=1;endArrow=classic;endFill=1;labelBackgroundColor=#FFFFFF;spacing=2;whiteSpace=wrap;html=1;" value="17. HTTP 200 OK (TLS Encrypted Response)">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="730" y="755" as="sourcePoint" />
+            <mxPoint x="80" y="755" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         

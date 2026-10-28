@@ -13,22 +13,22 @@
   <mxGeometry x="52" y="42" width="24" height="24" as="geometry" />
 </mxCell>
 
-<mxCell id="b1-title" style="text;html=1;align=left;verticalAlign=middle;fontSize=12.5;fontStyle=1;fontColor=#8C4FFF;fontFamily=Helvetica;" value="CI/CD &amp; Auth" vertex="1" parent="1">
+<mxCell id="b1-title" style="text;html=1;align=left;verticalAlign=middle;fontSize=12.5;fontStyle=1;fontColor=#8C4FFF;fontFamily=Helvetica;whiteSpace=wrap;" value="CI/CD &amp; Auth" vertex="1" parent="1">
   <mxGeometry x="84" y="44" width="230" height="20" as="geometry" />
 </mxCell>
 
-<mxCell id="b1-svc" style="sketch=0;points=[[0,0,0],[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0,0],[0,1,0],[0.25,1,0],[0.5,1,0],[0.75,1,0],[1,1,0],[0,0.25,0],[0,0.5,0],[0,0.75,0],[1,0.25,0],[1,0.5,0],[1,0.75,0]];outlineConnect=0;fontColor=#232F3E;fillColor=#8C4FFF;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=10;fontStyle=1;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.traditional_server;fontFamily=Helvetica;shadow=1;" value="GitHub Actions" vertex="1" parent="1">
+<mxCell id="b1-svc" style="sketch=0;points=[[0,0,0],[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0,0],[0,1,0],[0.25,1,0],[0.5,1,0],[0.75,1,0],[1,1,0],[0,0.25,0],[0,0.5,0],[0,0.75,0],[1,0.25,0],[1,0.5,0],[1,0.75,0]];outlineConnect=0;fontColor=#232F3E;fillColor=#8C4FFF;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=10;fontStyle=1;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.traditional_server;fontFamily=Helvetica;shadow=1;whiteSpace=wrap;" value="GitHub Actions" vertex="1" parent="1">
   <mxGeometry x="66" y="78" width="46" height="46" as="geometry" />
 </mxCell>
 
-<mxCell id="b1-role" style="sketch=0;points=[[0,0,0],[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0,0],[0,1,0],[0.25,1,0],[0.5,1,0],[0.75,1,0],[1,1,0],[0,0.25,0],[0,0.5,0],[0,0.75,0],[1,0.25,0],[1,0.5,0],[1,0.75,0]];outlineConnect=0;fontColor=#DD344C;fillColor=#DD344C;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=10;fontStyle=1;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.role;fontFamily=Helvetica;shadow=1;" value="InfraDeployerRole" vertex="1" parent="1">
+<mxCell id="b1-role" style="sketch=0;points=[[0,0,0],[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0,0],[0,1,0],[0.25,1,0],[0.5,1,0],[0.75,1,0],[1,1,0],[0,0.25,0],[0,0.5,0],[0,0.75,0],[1,0.25,0],[1,0.5,0],[1,0.75,0]];outlineConnect=0;fontColor=#DD344C;fillColor=#DD344C;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=10;fontStyle=1;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.role;fontFamily=Helvetica;shadow=1;whiteSpace=wrap;" value="InfraDeployerRole" vertex="1" parent="1">
   <mxGeometry x="248" y="78" width="46" height="46" as="geometry" />
 </mxCell>
 
 <mxCell id="b1-assume" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#DD344C;strokeWidth=1.5;dashed=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="1" source="b1-svc" target="b1-role">
   <mxGeometry relative="1" as="geometry" />
 </mxCell>
-<mxCell id="b1-assume-lbl" value="assume role" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontSize=9;fontStyle=1;fontColor=#DD344C;fontFamily=Helvetica;" connectable="0" vertex="1" parent="b1-assume">
+<mxCell id="b1-assume-lbl" value="assume role" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontSize=9;fontStyle=1;fontColor=#DD344C;fontFamily=Helvetica;whiteSpace=wrap;" connectable="0" vertex="1" parent="b1-assume">
   <mxGeometry relative="1" x="0" y="0" as="geometry"><mxPoint x="0" y="-10" as="offset" /></mxGeometry>
 </mxCell>
 
@@ -44,22 +44,22 @@
   <mxGeometry x="372" y="42" width="24" height="24" as="geometry" />
 </mxCell>
 
-<mxCell id="b2-title" style="text;html=1;align=left;verticalAlign=middle;fontSize=12.5;fontStyle=1;fontColor=#ED7100;fontFamily=Helvetica;" value="Build &amp; Artifacts" vertex="1" parent="1">
+<mxCell id="b2-title" style="text;html=1;align=left;verticalAlign=middle;fontSize=12.5;fontStyle=1;fontColor=#ED7100;fontFamily=Helvetica;whiteSpace=wrap;" value="Build &amp; Artifacts" vertex="1" parent="1">
   <mxGeometry x="404" y="44" width="230" height="20" as="geometry" />
 </mxCell>
 
-<mxCell id="b2-svc" style="sketch=0;points=[[0,0,0],[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0,0],[0,1,0],[0.25,1,0],[0.5,1,0],[0.75,1,0],[1,1,0],[0,0.25,0],[0,0.5,0],[0,0.75,0],[1,0.25,0],[1,0.5,0],[1,0.75,0]];outlineConnect=0;fontColor=#232F3E;fillColor=#ED7100;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=10;fontStyle=1;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.ecr;fontFamily=Helvetica;shadow=1;" value="Amazon ECR" vertex="1" parent="1">
+<mxCell id="b2-svc" style="sketch=0;points=[[0,0,0],[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0,0],[0,1,0],[0.25,1,0],[0.5,1,0],[0.75,1,0],[1,1,0],[0,0.25,0],[0,0.5,0],[0,0.75,0],[1,0.25,0],[1,0.5,0],[1,0.75,0]];outlineConnect=0;fontColor=#232F3E;fillColor=#ED7100;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=10;fontStyle=1;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.ecr;fontFamily=Helvetica;shadow=1;whiteSpace=wrap;" value="Amazon ECR" vertex="1" parent="1">
   <mxGeometry x="386" y="78" width="46" height="46" as="geometry" />
 </mxCell>
 
-<mxCell id="b2-role" style="sketch=0;points=[[0,0,0],[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0,0],[0,1,0],[0.25,1,0],[0.5,1,0],[0.75,1,0],[1,1,0],[0,0.25,0],[0,0.5,0],[0,0.75,0],[1,0.25,0],[1,0.5,0],[1,0.75,0]];outlineConnect=0;fontColor=#DD344C;fillColor=#DD344C;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=10;fontStyle=1;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.role;fontFamily=Helvetica;shadow=1;" value="RuntimeDeployerRole" vertex="1" parent="1">
+<mxCell id="b2-role" style="sketch=0;points=[[0,0,0],[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0,0],[0,1,0],[0.25,1,0],[0.5,1,0],[0.75,1,0],[1,1,0],[0,0.25,0],[0,0.5,0],[0,0.75,0],[1,0.25,0],[1,0.5,0],[1,0.75,0]];outlineConnect=0;fontColor=#DD344C;fillColor=#DD344C;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=10;fontStyle=1;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.role;fontFamily=Helvetica;shadow=1;whiteSpace=wrap;" value="RuntimeDeployerRole" vertex="1" parent="1">
   <mxGeometry x="568" y="78" width="46" height="46" as="geometry" />
 </mxCell>
 
 <mxCell id="b2-assume" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#DD344C;strokeWidth=1.5;dashed=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="1" source="b2-svc" target="b2-role">
   <mxGeometry relative="1" as="geometry" />
 </mxCell>
-<mxCell id="b2-assume-lbl" value="assume role" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontSize=9;fontStyle=1;fontColor=#DD344C;fontFamily=Helvetica;" connectable="0" vertex="1" parent="b2-assume">
+<mxCell id="b2-assume-lbl" value="assume role" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontSize=9;fontStyle=1;fontColor=#DD344C;fontFamily=Helvetica;whiteSpace=wrap;" connectable="0" vertex="1" parent="b2-assume">
   <mxGeometry relative="1" x="0" y="0" as="geometry"><mxPoint x="0" y="-10" as="offset" /></mxGeometry>
 </mxCell>
 
@@ -75,22 +75,22 @@
   <mxGeometry x="692" y="42" width="24" height="24" as="geometry" />
 </mxCell>
 
-<mxCell id="b3-title" style="text;html=1;align=left;verticalAlign=middle;fontSize=12.5;fontStyle=1;fontColor=#3F8624;fontFamily=Helvetica;" value="Foundation &amp; DB" vertex="1" parent="1">
+<mxCell id="b3-title" style="text;html=1;align=left;verticalAlign=middle;fontSize=12.5;fontStyle=1;fontColor=#3F8624;fontFamily=Helvetica;whiteSpace=wrap;" value="Foundation &amp; DB" vertex="1" parent="1">
   <mxGeometry x="724" y="44" width="230" height="20" as="geometry" />
 </mxCell>
 
-<mxCell id="b3-svc" style="sketch=0;points=[[0,0,0],[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0,0],[0,1,0],[0.25,1,0],[0.5,1,0],[0.75,1,0],[1,1,0],[0,0.25,0],[0,0.5,0],[0,0.75,0],[1,0.25,0],[1,0.5,0],[1,0.75,0]];outlineConnect=0;fontColor=#232F3E;fillColor=#C925D1;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=10;fontStyle=1;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.database;fontFamily=Helvetica;shadow=1;" value="RDS Proxy" vertex="1" parent="1">
+<mxCell id="b3-svc" style="sketch=0;points=[[0,0,0],[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0,0],[0,1,0],[0.25,1,0],[0.5,1,0],[0.75,1,0],[1,1,0],[0,0.25,0],[0,0.5,0],[0,0.75,0],[1,0.25,0],[1,0.5,0],[1,0.75,0]];outlineConnect=0;fontColor=#232F3E;fillColor=#C925D1;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=10;fontStyle=1;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.database;fontFamily=Helvetica;shadow=1;whiteSpace=wrap;" value="RDS Proxy" vertex="1" parent="1">
   <mxGeometry x="706" y="78" width="46" height="46" as="geometry" />
 </mxCell>
 
-<mxCell id="b3-role" style="sketch=0;points=[[0,0,0],[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0,0],[0,1,0],[0.25,1,0],[0.5,1,0],[0.75,1,0],[1,1,0],[0,0.25,0],[0,0.5,0],[0,0.75,0],[1,0.25,0],[1,0.5,0],[1,0.75,0]];outlineConnect=0;fontColor=#DD344C;fillColor=#DD344C;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=10;fontStyle=1;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.role;fontFamily=Helvetica;shadow=1;" value="RDSProxyIAMRole" vertex="1" parent="1">
+<mxCell id="b3-role" style="sketch=0;points=[[0,0,0],[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0,0],[0,1,0],[0.25,1,0],[0.5,1,0],[0.75,1,0],[1,1,0],[0,0.25,0],[0,0.5,0],[0,0.75,0],[1,0.25,0],[1,0.5,0],[1,0.75,0]];outlineConnect=0;fontColor=#DD344C;fillColor=#DD344C;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=10;fontStyle=1;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.role;fontFamily=Helvetica;shadow=1;whiteSpace=wrap;" value="RDSProxyIAMRole" vertex="1" parent="1">
   <mxGeometry x="888" y="78" width="46" height="46" as="geometry" />
 </mxCell>
 
 <mxCell id="b3-assume" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#DD344C;strokeWidth=1.5;dashed=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="1" source="b3-svc" target="b3-role">
   <mxGeometry relative="1" as="geometry" />
 </mxCell>
-<mxCell id="b3-assume-lbl" value="assume role" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontSize=9;fontStyle=1;fontColor=#DD344C;fontFamily=Helvetica;" connectable="0" vertex="1" parent="b3-assume">
+<mxCell id="b3-assume-lbl" value="assume role" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontSize=9;fontStyle=1;fontColor=#DD344C;fontFamily=Helvetica;whiteSpace=wrap;" connectable="0" vertex="1" parent="b3-assume">
   <mxGeometry relative="1" x="0" y="0" as="geometry"><mxPoint x="0" y="-10" as="offset" /></mxGeometry>
 </mxCell>
 
@@ -106,22 +106,22 @@
   <mxGeometry x="52" y="292" width="24" height="24" as="geometry" />
 </mxCell>
 
-<mxCell id="b4-title" style="text;html=1;align=left;verticalAlign=middle;fontSize=12.5;fontStyle=1;fontColor=#ED7100;fontFamily=Helvetica;" value="Compute Runtime" vertex="1" parent="1">
+<mxCell id="b4-title" style="text;html=1;align=left;verticalAlign=middle;fontSize=12.5;fontStyle=1;fontColor=#ED7100;fontFamily=Helvetica;whiteSpace=wrap;" value="Compute Runtime" vertex="1" parent="1">
   <mxGeometry x="84" y="294" width="230" height="20" as="geometry" />
 </mxCell>
 
-<mxCell id="b4-svc" style="sketch=0;points=[[0,0,0],[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0,0],[0,1,0],[0.25,1,0],[0.5,1,0],[0.75,1,0],[1,1,0],[0,0.25,0],[0,0.5,0],[0,0.75,0],[1,0.25,0],[1,0.5,0],[1,0.75,0]];outlineConnect=0;fontColor=#232F3E;fillColor=#ED7100;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=10;fontStyle=1;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.fargate;fontFamily=Helvetica;shadow=1;" value="ECS Fargate" vertex="1" parent="1">
+<mxCell id="b4-svc" style="sketch=0;points=[[0,0,0],[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0,0],[0,1,0],[0.25,1,0],[0.5,1,0],[0.75,1,0],[1,1,0],[0,0.25,0],[0,0.5,0],[0,0.75,0],[1,0.25,0],[1,0.5,0],[1,0.75,0]];outlineConnect=0;fontColor=#232F3E;fillColor=#ED7100;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=10;fontStyle=1;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.fargate;fontFamily=Helvetica;shadow=1;whiteSpace=wrap;" value="ECS Fargate" vertex="1" parent="1">
   <mxGeometry x="66" y="328" width="46" height="46" as="geometry" />
 </mxCell>
 
-<mxCell id="b4-role" style="sketch=0;points=[[0,0,0],[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0,0],[0,1,0],[0.25,1,0],[0.5,1,0],[0.75,1,0],[1,1,0],[0,0.25,0],[0,0.5,0],[0,0.75,0],[1,0.25,0],[1,0.5,0],[1,0.75,0]];outlineConnect=0;fontColor=#DD344C;fillColor=#DD344C;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=10;fontStyle=1;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.role;fontFamily=Helvetica;shadow=1;" value="ECSTaskRole" vertex="1" parent="1">
+<mxCell id="b4-role" style="sketch=0;points=[[0,0,0],[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0,0],[0,1,0],[0.25,1,0],[0.5,1,0],[0.75,1,0],[1,1,0],[0,0.25,0],[0,0.5,0],[0,0.75,0],[1,0.25,0],[1,0.5,0],[1,0.75,0]];outlineConnect=0;fontColor=#DD344C;fillColor=#DD344C;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=10;fontStyle=1;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.role;fontFamily=Helvetica;shadow=1;whiteSpace=wrap;" value="ECSTaskRole" vertex="1" parent="1">
   <mxGeometry x="248" y="328" width="46" height="46" as="geometry" />
 </mxCell>
 
 <mxCell id="b4-assume" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#DD344C;strokeWidth=1.5;dashed=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="1" source="b4-svc" target="b4-role">
   <mxGeometry relative="1" as="geometry" />
 </mxCell>
-<mxCell id="b4-assume-lbl" value="assume role" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontSize=9;fontStyle=1;fontColor=#DD344C;fontFamily=Helvetica;" connectable="0" vertex="1" parent="b4-assume">
+<mxCell id="b4-assume-lbl" value="assume role" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontSize=9;fontStyle=1;fontColor=#DD344C;fontFamily=Helvetica;whiteSpace=wrap;" connectable="0" vertex="1" parent="b4-assume">
   <mxGeometry relative="1" x="0" y="0" as="geometry"><mxPoint x="0" y="-10" as="offset" /></mxGeometry>
 </mxCell>
 
@@ -137,22 +137,22 @@
   <mxGeometry x="372" y="292" width="24" height="24" as="geometry" />
 </mxCell>
 
-<mxCell id="b5-title" style="text;html=1;align=left;verticalAlign=middle;fontSize=12.5;fontStyle=1;fontColor=#CD2264;fontFamily=Helvetica;" value="Control Plane" vertex="1" parent="1">
+<mxCell id="b5-title" style="text;html=1;align=left;verticalAlign=middle;fontSize=12.5;fontStyle=1;fontColor=#CD2264;fontFamily=Helvetica;whiteSpace=wrap;" value="Control Plane" vertex="1" parent="1">
   <mxGeometry x="404" y="294" width="230" height="20" as="geometry" />
 </mxCell>
 
-<mxCell id="b5-svc" style="sketch=0;points=[[0,0,0],[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0,0],[0,1,0],[0.25,1,0],[0.5,1,0],[0.75,1,0],[1,1,0],[0,0.25,0],[0,0.5,0],[0,0.75,0],[1,0.25,0],[1,0.5,0],[1,0.75,0]];outlineConnect=0;fontColor=#232F3E;fillColor=#E7157B;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=10;fontStyle=1;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.step_functions;fontFamily=Helvetica;shadow=1;" value="Step Functions" vertex="1" parent="1">
+<mxCell id="b5-svc" style="sketch=0;points=[[0,0,0],[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0,0],[0,1,0],[0.25,1,0],[0.5,1,0],[0.75,1,0],[1,1,0],[0,0.25,0],[0,0.5,0],[0,0.75,0],[1,0.25,0],[1,0.5,0],[1,0.75,0]];outlineConnect=0;fontColor=#232F3E;fillColor=#E7157B;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=10;fontStyle=1;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.step_functions;fontFamily=Helvetica;shadow=1;whiteSpace=wrap;" value="Step Functions" vertex="1" parent="1">
   <mxGeometry x="386" y="328" width="46" height="46" as="geometry" />
 </mxCell>
 
-<mxCell id="b5-role" style="sketch=0;points=[[0,0,0],[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0,0],[0,1,0],[0.25,1,0],[0.5,1,0],[0.75,1,0],[1,1,0],[0,0.25,0],[0,0.5,0],[0,0.75,0],[1,0.25,0],[1,0.5,0],[1,0.75,0]];outlineConnect=0;fontColor=#DD344C;fillColor=#DD344C;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=10;fontStyle=1;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.role;fontFamily=Helvetica;shadow=1;" value="StepFunctionsRole" vertex="1" parent="1">
+<mxCell id="b5-role" style="sketch=0;points=[[0,0,0],[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0,0],[0,1,0],[0.25,1,0],[0.5,1,0],[0.75,1,0],[1,1,0],[0,0.25,0],[0,0.5,0],[0,0.75,0],[1,0.25,0],[1,0.5,0],[1,0.75,0]];outlineConnect=0;fontColor=#DD344C;fillColor=#DD344C;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=10;fontStyle=1;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.role;fontFamily=Helvetica;shadow=1;whiteSpace=wrap;" value="StepFunctionsRole" vertex="1" parent="1">
   <mxGeometry x="568" y="328" width="46" height="46" as="geometry" />
 </mxCell>
 
 <mxCell id="b5-assume" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#DD344C;strokeWidth=1.5;dashed=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="1" source="b5-svc" target="b5-role">
   <mxGeometry relative="1" as="geometry" />
 </mxCell>
-<mxCell id="b5-assume-lbl" value="assume role" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontSize=9;fontStyle=1;fontColor=#DD344C;fontFamily=Helvetica;" connectable="0" vertex="1" parent="b5-assume">
+<mxCell id="b5-assume-lbl" value="assume role" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontSize=9;fontStyle=1;fontColor=#DD344C;fontFamily=Helvetica;whiteSpace=wrap;" connectable="0" vertex="1" parent="b5-assume">
   <mxGeometry relative="1" x="0" y="0" as="geometry"><mxPoint x="0" y="-10" as="offset" /></mxGeometry>
 </mxCell>
 
@@ -168,22 +168,22 @@
   <mxGeometry x="692" y="292" width="24" height="24" as="geometry" />
 </mxCell>
 
-<mxCell id="b6-title" style="text;html=1;align=left;verticalAlign=middle;fontSize=12.5;fontStyle=1;fontColor=#00A4A6;fontFamily=Helvetica;" value="Delivery &amp; QA" vertex="1" parent="1">
+<mxCell id="b6-title" style="text;html=1;align=left;verticalAlign=middle;fontSize=12.5;fontStyle=1;fontColor=#00A4A6;fontFamily=Helvetica;whiteSpace=wrap;" value="Delivery &amp; QA" vertex="1" parent="1">
   <mxGeometry x="724" y="294" width="230" height="20" as="geometry" />
 </mxCell>
 
-<mxCell id="b6-svc" style="sketch=0;points=[[0,0,0],[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0,0],[0,1,0],[0.25,1,0],[0.5,1,0],[0.75,1,0],[1,1,0],[0,0.25,0],[0,0.5,0],[0,0.75,0],[1,0.25,0],[1,0.5,0],[1,0.75,0]];outlineConnect=0;fontColor=#232F3E;fillColor=#E7157B;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=10;fontStyle=1;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.cloudwatch_2;fontFamily=Helvetica;shadow=1;" value="Synthetics Canary" vertex="1" parent="1">
+<mxCell id="b6-svc" style="sketch=0;points=[[0,0,0],[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0,0],[0,1,0],[0.25,1,0],[0.5,1,0],[0.75,1,0],[1,1,0],[0,0.25,0],[0,0.5,0],[0,0.75,0],[1,0.25,0],[1,0.5,0],[1,0.75,0]];outlineConnect=0;fontColor=#232F3E;fillColor=#E7157B;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=10;fontStyle=1;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.cloudwatch_2;fontFamily=Helvetica;shadow=1;whiteSpace=wrap;" value="Synthetics Canary" vertex="1" parent="1">
   <mxGeometry x="706" y="328" width="46" height="46" as="geometry" />
 </mxCell>
 
-<mxCell id="b6-role" style="sketch=0;points=[[0,0,0],[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0,0],[0,1,0],[0.25,1,0],[0.5,1,0],[0.75,1,0],[1,1,0],[0,0.25,0],[0,0.5,0],[0,0.75,0],[1,0.25,0],[1,0.5,0],[1,0.75,0]];outlineConnect=0;fontColor=#DD344C;fillColor=#DD344C;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=10;fontStyle=1;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.role;fontFamily=Helvetica;shadow=1;" value="CanaryRole" vertex="1" parent="1">
+<mxCell id="b6-role" style="sketch=0;points=[[0,0,0],[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0,0],[0,1,0],[0.25,1,0],[0.5,1,0],[0.75,1,0],[1,1,0],[0,0.25,0],[0,0.5,0],[0,0.75,0],[1,0.25,0],[1,0.5,0],[1,0.75,0]];outlineConnect=0;fontColor=#DD344C;fillColor=#DD344C;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=10;fontStyle=1;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.role;fontFamily=Helvetica;shadow=1;whiteSpace=wrap;" value="CanaryRole" vertex="1" parent="1">
   <mxGeometry x="888" y="328" width="46" height="46" as="geometry" />
 </mxCell>
 
 <mxCell id="b6-assume" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#DD344C;strokeWidth=1.5;dashed=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="1" source="b6-svc" target="b6-role">
   <mxGeometry relative="1" as="geometry" />
 </mxCell>
-<mxCell id="b6-assume-lbl" value="assume role" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontSize=9;fontStyle=1;fontColor=#DD344C;fontFamily=Helvetica;" connectable="0" vertex="1" parent="b6-assume">
+<mxCell id="b6-assume-lbl" value="assume role" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontSize=9;fontStyle=1;fontColor=#DD344C;fontFamily=Helvetica;whiteSpace=wrap;" connectable="0" vertex="1" parent="b6-assume">
   <mxGeometry relative="1" x="0" y="0" as="geometry"><mxPoint x="0" y="-10" as="offset" /></mxGeometry>
 </mxCell>
 

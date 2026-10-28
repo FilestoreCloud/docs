@@ -8,170 +8,170 @@
         <!-- ============================================================== -->
         <!-- ACTORS / CLIENTS BAR (Top of canvas, labels on TOP)            -->
         <!-- ============================================================== -->
-        <mxCell id="actor-guest" parent="1" style="sketch=0;outlineConnect=0;fontColor=#232F3E;fillColor=#0284C7;strokeColor=#ffffff;verticalLabelPosition=top;verticalAlign=bottom;spacingBottom=5;align=center;fontSize=10;fontStyle=1;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.user;fontFamily=Helvetica;shadow=1;" value="External Guest" vertex="1">
+        <mxCell id="actor-guest" parent="1" style="sketch=0;outlineConnect=0;fontColor=#232F3E;fillColor=#0284C7;strokeColor=#ffffff;verticalLabelPosition=top;verticalAlign=bottom;spacingBottom=5;align=center;fontSize=10;fontStyle=1;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.user;fontFamily=Helvetica;shadow=1;whiteSpace=wrap;html=1;" value="External Guest" vertex="1">
           <mxGeometry height="40" width="40" x="160" y="28" as="geometry" />
         </mxCell>
-        <mxCell id="actor-acme" parent="1" style="sketch=0;outlineConnect=0;fontColor=#232F3E;fillColor=#0284C7;strokeColor=#ffffff;verticalLabelPosition=top;verticalAlign=bottom;spacingBottom=5;align=center;fontSize=10;fontStyle=1;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.users;fontFamily=Helvetica;shadow=1;" value="Acme Member" vertex="1">
+        <mxCell id="actor-acme" parent="1" style="sketch=0;outlineConnect=0;fontColor=#232F3E;fillColor=#0284C7;strokeColor=#ffffff;verticalLabelPosition=top;verticalAlign=bottom;spacingBottom=5;align=center;fontSize=10;fontStyle=1;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.users;fontFamily=Helvetica;shadow=1;whiteSpace=wrap;html=1;" value="Acme Member" vertex="1">
           <mxGeometry height="40" width="40" x="310" y="28" as="geometry" />
         </mxCell>
-        <mxCell id="actor-marvel" parent="1" style="sketch=0;outlineConnect=0;fontColor=#232F3E;fillColor=#0284C7;strokeColor=#ffffff;verticalLabelPosition=top;verticalAlign=bottom;spacingBottom=5;align=center;fontSize=10;fontStyle=1;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.users;fontFamily=Helvetica;shadow=1;" value="Marvel Member" vertex="1">
+        <mxCell id="actor-marvel" parent="1" style="sketch=0;outlineConnect=0;fontColor=#232F3E;fillColor=#0284C7;strokeColor=#ffffff;verticalLabelPosition=top;verticalAlign=bottom;spacingBottom=5;align=center;fontSize=10;fontStyle=1;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.users;fontFamily=Helvetica;shadow=1;whiteSpace=wrap;html=1;" value="Marvel Member" vertex="1">
           <mxGeometry height="40" width="40" x="460" y="28" as="geometry" />
         </mxCell>
-        <mxCell id="actor-admin" parent="1" style="sketch=0;outlineConnect=0;fontColor=#232F3E;fillColor=#4338CA;strokeColor=#ffffff;verticalLabelPosition=top;verticalAlign=bottom;spacingBottom=5;align=center;fontSize=10;fontStyle=1;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.user;fontFamily=Helvetica;shadow=1;" value="SuperAdmin" vertex="1">
+        <mxCell id="actor-admin" parent="1" style="sketch=0;outlineConnect=0;fontColor=#232F3E;fillColor=#4338CA;strokeColor=#ffffff;verticalLabelPosition=top;verticalAlign=bottom;spacingBottom=5;align=center;fontSize=10;fontStyle=1;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.user;fontFamily=Helvetica;shadow=1;whiteSpace=wrap;html=1;" value="SuperAdmin" vertex="1">
           <mxGeometry height="40" width="40" x="1220" y="28" as="geometry" />
         </mxCell>
 
         <!-- Route 53 Global Multi-Region DNS (label on TOP) -->
-        <mxCell id="svc-r53" parent="1" style="sketch=0;outlineConnect=0;fontColor=#232F3E;fillColor=#8C4FFF;strokeColor=#ffffff;verticalLabelPosition=top;verticalAlign=bottom;spacingBottom=5;align=center;fontSize=10;fontStyle=1;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.route_53;fontFamily=Helvetica;shadow=1;" value="Amazon Route 53" vertex="1">
+        <mxCell id="svc-r53" parent="1" style="sketch=0;outlineConnect=0;fontColor=#232F3E;fillColor=#8C4FFF;strokeColor=#ffffff;verticalLabelPosition=top;verticalAlign=bottom;spacingBottom=5;align=center;fontSize=10;fontStyle=1;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.route_53;fontFamily=Helvetica;shadow=1;whiteSpace=wrap;html=1;" value="Amazon Route 53" vertex="1">
           <mxGeometry height="42" width="42" x="700" y="26" as="geometry" />
         </mxCell>
 
         <!-- ============================================================== -->
         <!-- PRIMARY AWS REGION BORDER (ap-southeast-1 Singapore)           -->
         <!-- ============================================================== -->
-        <mxCell id="region-primary" parent="1" style="rounded=0;strokeColor=#00A4A6;strokeWidth=2;fillColor=#00A4A6;fillOpacity=3;dashed=1;verticalAlign=top;align=left;spacingLeft=16;spacingTop=10;fontSize=12;fontStyle=1;fontColor=#00A4A6;fontFamily=Helvetica;pointerEvents=0;" value="AWS Region: ap-southeast-1 (Singapore - Primary Active)" vertex="1">
+        <mxCell id="region-primary" parent="1" style="rounded=0;strokeColor=#00A4A6;strokeWidth=2;fillColor=#00A4A6;fillOpacity=3;dashed=1;verticalAlign=top;align=left;spacingLeft=16;spacingTop=10;fontSize=12;fontStyle=1;fontColor=#00A4A6;fontFamily=Helvetica;pointerEvents=0;whiteSpace=wrap;html=1;" value="AWS Region: ap-southeast-1 (Singapore - Primary Active)" vertex="1">
           <mxGeometry height="720" width="1400" x="40" y="105" as="geometry" />
         </mxCell>
 
         <!-- PRIMARY VPC BORDER (10.0.0.0/16) -->
-        <mxCell id="vpc-primary" parent="1" style="rounded=0;strokeColor=#8C4FFF;strokeWidth=2;fillColor=#8C4FFF;fillOpacity=3;dashed=0;verticalAlign=top;align=left;spacingLeft=16;spacingTop=10;fontSize=11;fontStyle=1;fontColor=#8C4FFF;fontFamily=Helvetica;pointerEvents=0;" value="VPC: 10.0.0.0/16 (Storix Production VPC)" vertex="1">
+        <mxCell id="vpc-primary" parent="1" style="rounded=0;strokeColor=#8C4FFF;strokeWidth=2;fillColor=#8C4FFF;fillOpacity=3;dashed=0;verticalAlign=top;align=left;spacingLeft=16;spacingTop=10;fontSize=11;fontStyle=1;fontColor=#8C4FFF;fontFamily=Helvetica;pointerEvents=0;whiteSpace=wrap;html=1;" value="VPC: 10.0.0.0/16 (Storix Production VPC)" vertex="1">
           <mxGeometry height="520" width="1340" x="70" y="145" as="geometry" />
         </mxCell>
 
         <!-- ============================================================== -->
         <!-- PUBLIC SUBNET BORDER (Header on TOP-LEFT, completely clear)     -->
         <!-- ============================================================== -->
-        <mxCell id="subnet-public" parent="1" style="rounded=0;strokeColor=#248814;strokeWidth=2;fillColor=#248814;fillOpacity=4;dashed=0;verticalAlign=top;align=left;spacingLeft=16;spacingTop=8;fontSize=11;fontStyle=1;fontColor=#248814;fontFamily=Helvetica;pointerEvents=0;" value="Public Subnet (Multi-AZ · Zero-NAT)" vertex="1">
+        <mxCell id="subnet-public" parent="1" style="rounded=0;strokeColor=#248814;strokeWidth=2;fillColor=#248814;fillOpacity=4;dashed=0;verticalAlign=top;align=left;spacingLeft=16;spacingTop=8;fontSize=11;fontStyle=1;fontColor=#248814;fontFamily=Helvetica;pointerEvents=0;whiteSpace=wrap;html=1;" value="Public Subnet (Multi-AZ · Zero-NAT)" vertex="1">
           <mxGeometry height="190" width="1280" x="100" y="185" as="geometry" />
         </mxCell>
 
         <!-- Edge Ingress Services in Public Subnet -->
-        <mxCell id="svc-igw" parent="1" style="sketch=0;outlineConnect=0;fontColor=#232F3E;fillColor=#8C4FFF;strokeColor=#ffffff;verticalLabelPosition=bottom;verticalAlign=top;align=center;fontSize=10;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.internet_gateway;fontFamily=Helvetica;shadow=1;" value="Internet Gateway" vertex="1">
+        <mxCell id="svc-igw" parent="1" style="sketch=0;outlineConnect=0;fontColor=#232F3E;fillColor=#8C4FFF;strokeColor=#ffffff;verticalLabelPosition=bottom;verticalAlign=top;align=center;fontSize=10;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.internet_gateway;fontFamily=Helvetica;shadow=1;whiteSpace=wrap;html=1;" value="Internet Gateway" vertex="1">
           <mxGeometry height="42" width="42" x="140" y="260" as="geometry" />
         </mxCell>
-        <mxCell id="svc-waf" parent="1" style="sketch=0;outlineConnect=0;fontColor=#232F3E;fillColor=#8C4FFF;strokeColor=#ffffff;verticalLabelPosition=bottom;verticalAlign=top;align=center;fontSize=10;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.waf;fontFamily=Helvetica;shadow=1;" value="AWS WAF" vertex="1">
+        <mxCell id="svc-waf" parent="1" style="sketch=0;outlineConnect=0;fontColor=#232F3E;fillColor=#8C4FFF;strokeColor=#ffffff;verticalLabelPosition=bottom;verticalAlign=top;align=center;fontSize=10;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.waf;fontFamily=Helvetica;shadow=1;whiteSpace=wrap;html=1;" value="AWS WAF" vertex="1">
           <mxGeometry height="42" width="42" x="240" y="260" as="geometry" />
         </mxCell>
-        <mxCell id="svc-alb" parent="1" style="sketch=0;outlineConnect=0;fontColor=#232F3E;fillColor=#8C4FFF;strokeColor=#ffffff;verticalLabelPosition=bottom;verticalAlign=top;align=center;fontSize=10;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.elastic_load_balancing;fontFamily=Helvetica;shadow=1;" value="Application Load Balancer" vertex="1">
+        <mxCell id="svc-alb" parent="1" style="sketch=0;outlineConnect=0;fontColor=#232F3E;fillColor=#8C4FFF;strokeColor=#ffffff;verticalLabelPosition=bottom;verticalAlign=top;align=center;fontSize=10;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.elastic_load_balancing;fontFamily=Helvetica;shadow=1;whiteSpace=wrap;html=1;" value="Application Load Balancer" vertex="1">
           <mxGeometry height="42" width="42" x="340" y="260" as="geometry" />
         </mxCell>
 
         <!-- Availability Zone A Box (Public) -->
-        <mxCell id="az-a-pub" parent="1" style="rounded=0;strokeColor=#147EBA;strokeWidth=1.5;fillColor=none;dashed=1;verticalAlign=top;align=left;spacingLeft=10;spacingTop=6;fontSize=10;fontColor=#147EBA;fontFamily=Helvetica;pointerEvents=0;" value="AZ-1a (ap-southeast-1a)" vertex="1">
+        <mxCell id="az-a-pub" parent="1" style="rounded=0;strokeColor=#147EBA;strokeWidth=1.5;fillColor=none;dashed=1;verticalAlign=top;align=left;spacingLeft=10;spacingTop=6;fontSize=10;fontColor=#147EBA;fontFamily=Helvetica;pointerEvents=0;whiteSpace=wrap;html=1;" value="AZ-1a (ap-southeast-1a)" vertex="1">
           <mxGeometry height="140" width="220" x="470" y="220" as="geometry" />
         </mxCell>
-        <mxCell id="svc-fargate-acme" parent="1" style="sketch=0;outlineConnect=0;fontColor=#232F3E;fillColor=#ED7100;strokeColor=#ffffff;verticalLabelPosition=top;verticalAlign=bottom;spacingBottom=6;align=center;fontSize=10;fontStyle=1;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.fargate;fontFamily=Helvetica;shadow=1;" value="Nextcloud App (Replica 1)" vertex="1">
+        <mxCell id="svc-fargate-acme" parent="1" style="sketch=0;outlineConnect=0;fontColor=#232F3E;fillColor=#ED7100;strokeColor=#ffffff;verticalLabelPosition=top;verticalAlign=bottom;spacingBottom=6;align=center;fontSize=10;fontStyle=1;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.fargate;fontFamily=Helvetica;shadow=1;whiteSpace=wrap;html=1;" value="Nextcloud App (Replica 1)" vertex="1">
           <mxGeometry height="44" width="44" x="525" y="265" as="geometry" />
         </mxCell>
-        <mxCell id="svc-tika-a" parent="1" style="sketch=0;outlineConnect=0;fontColor=#232F3E;fillColor=#ED7100;strokeColor=#ffffff;verticalLabelPosition=top;verticalAlign=bottom;spacingBottom=6;align=center;fontSize=10;fontStyle=1;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.container_1;fontFamily=Helvetica;shadow=1;" value="Tika Sidecar" vertex="1">
+        <mxCell id="svc-tika-a" parent="1" style="sketch=0;outlineConnect=0;fontColor=#232F3E;fillColor=#ED7100;strokeColor=#ffffff;verticalLabelPosition=top;verticalAlign=bottom;spacingBottom=6;align=center;fontSize=10;fontStyle=1;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.container_1;fontFamily=Helvetica;shadow=1;whiteSpace=wrap;html=1;" value="Tika Sidecar" vertex="1">
           <mxGeometry height="38" width="38" x="622" y="268" as="geometry" />
         </mxCell>
         <mxCell id="e-tika-a" edge="1" parent="1" source="svc-fargate-acme" target="svc-tika-a" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#ED7100;dashed=1;strokeWidth=1.5;fontFamily=Helvetica;exitX=1;exitY=0.5;entryX=0;entryY=0.5;">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="e-tika-a-lbl" value=":9998" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontSize=8.5;fontStyle=1;fontColor=#232F3E;fontFamily=Helvetica;spacing=2;" connectable="0" vertex="1" parent="e-tika-a">
+        <mxCell id="e-tika-a-lbl" value=":9998" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontSize=8.5;fontStyle=1;fontColor=#232F3E;fontFamily=Helvetica;spacing=2;whiteSpace=wrap;" connectable="0" vertex="1" parent="e-tika-a">
           <mxGeometry relative="1" x="0" y="0" as="geometry"><mxPoint x="0" y="-8" as="offset" /></mxGeometry>
         </mxCell>
 
         <!-- Availability Zone B Box (Public) -->
-        <mxCell id="az-b-pub" parent="1" style="rounded=0;strokeColor=#147EBA;strokeWidth=1.5;fillColor=none;dashed=1;verticalAlign=top;align=left;spacingLeft=10;spacingTop=6;fontSize=10;fontColor=#147EBA;fontFamily=Helvetica;pointerEvents=0;" value="AZ-1b (ap-southeast-1b)" vertex="1">
+        <mxCell id="az-b-pub" parent="1" style="rounded=0;strokeColor=#147EBA;strokeWidth=1.5;fillColor=none;dashed=1;verticalAlign=top;align=left;spacingLeft=10;spacingTop=6;fontSize=10;fontColor=#147EBA;fontFamily=Helvetica;pointerEvents=0;whiteSpace=wrap;html=1;" value="AZ-1b (ap-southeast-1b)" vertex="1">
           <mxGeometry height="140" width="220" x="750" y="220" as="geometry" />
         </mxCell>
-        <mxCell id="svc-fargate-marvel" parent="1" style="sketch=0;outlineConnect=0;fontColor=#232F3E;fillColor=#ED7100;strokeColor=#ffffff;verticalLabelPosition=top;verticalAlign=bottom;spacingBottom=6;align=center;fontSize=10;fontStyle=1;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.fargate;fontFamily=Helvetica;shadow=1;" value="Nextcloud App (Replica 2)" vertex="1">
+        <mxCell id="svc-fargate-marvel" parent="1" style="sketch=0;outlineConnect=0;fontColor=#232F3E;fillColor=#ED7100;strokeColor=#ffffff;verticalLabelPosition=top;verticalAlign=bottom;spacingBottom=6;align=center;fontSize=10;fontStyle=1;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.fargate;fontFamily=Helvetica;shadow=1;whiteSpace=wrap;html=1;" value="Nextcloud App (Replica 2)" vertex="1">
           <mxGeometry height="44" width="44" x="805" y="265" as="geometry" />
         </mxCell>
-        <mxCell id="svc-tika-b" parent="1" style="sketch=0;outlineConnect=0;fontColor=#232F3E;fillColor=#ED7100;strokeColor=#ffffff;verticalLabelPosition=top;verticalAlign=bottom;spacingBottom=6;align=center;fontSize=10;fontStyle=1;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.container_1;fontFamily=Helvetica;shadow=1;" value="Tika Sidecar" vertex="1">
+        <mxCell id="svc-tika-b" parent="1" style="sketch=0;outlineConnect=0;fontColor=#232F3E;fillColor=#ED7100;strokeColor=#ffffff;verticalLabelPosition=top;verticalAlign=bottom;spacingBottom=6;align=center;fontSize=10;fontStyle=1;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.container_1;fontFamily=Helvetica;shadow=1;whiteSpace=wrap;html=1;" value="Tika Sidecar" vertex="1">
           <mxGeometry height="38" width="38" x="902" y="268" as="geometry" />
         </mxCell>
         <mxCell id="e-tika-b" edge="1" parent="1" source="svc-fargate-marvel" target="svc-tika-b" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#ED7100;dashed=1;strokeWidth=1.5;fontFamily=Helvetica;exitX=1;exitY=0.5;entryX=0;entryY=0.5;">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="e-tika-b-lbl" value=":9998" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontSize=8.5;fontStyle=1;fontColor=#232F3E;fontFamily=Helvetica;spacing=2;" connectable="0" vertex="1" parent="e-tika-b">
+        <mxCell id="e-tika-b-lbl" value=":9998" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontSize=8.5;fontStyle=1;fontColor=#232F3E;fontFamily=Helvetica;spacing=2;whiteSpace=wrap;" connectable="0" vertex="1" parent="e-tika-b">
           <mxGeometry relative="1" x="0" y="0" as="geometry"><mxPoint x="0" y="-8" as="offset" /></mxGeometry>
         </mxCell>
 
         <!-- ============================================================== -->
         <!-- PRIVATE SUBNET BORDER (Header on BOTTOM-LEFT in clean empty zone) -->
         <!-- ============================================================== -->
-        <mxCell id="subnet-private" parent="1" style="rounded=0;strokeColor=#147EBA;strokeWidth=2;fillColor=#147EBA;fillOpacity=4;dashed=0;verticalAlign=bottom;align=left;spacingLeft=30;spacingBottom=8;fontSize=11;fontStyle=1;fontColor=#147EBA;fontFamily=Helvetica;pointerEvents=0;" value="Private Subnet (Isolated Data Tier)" vertex="1">
+        <mxCell id="subnet-private" parent="1" style="rounded=0;strokeColor=#147EBA;strokeWidth=2;fillColor=#147EBA;fillOpacity=4;dashed=0;verticalAlign=bottom;align=left;spacingLeft=30;spacingBottom=8;fontSize=11;fontStyle=1;fontColor=#147EBA;fontFamily=Helvetica;pointerEvents=0;whiteSpace=wrap;html=1;" value="Private Subnet (Isolated Data Tier)" vertex="1">
           <mxGeometry height="210" width="1280" x="100" y="425" as="geometry" />
         </mxCell>
 
         <!-- Data Tier Services in Private Subnet -->
-        <mxCell id="svc-efs" parent="1" style="sketch=0;outlineConnect=0;fontColor=#232F3E;fillColor=#3F8624;strokeColor=#ffffff;verticalLabelPosition=bottom;verticalAlign=top;align=center;fontSize=10;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.elastic_file_system;fontFamily=Helvetica;shadow=1;" value="Amazon EFS" vertex="1">
+        <mxCell id="svc-efs" parent="1" style="sketch=0;outlineConnect=0;fontColor=#232F3E;fillColor=#3F8624;strokeColor=#ffffff;verticalLabelPosition=bottom;verticalAlign=top;align=center;fontSize=10;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.elastic_file_system;fontFamily=Helvetica;shadow=1;whiteSpace=wrap;html=1;" value="Amazon EFS" vertex="1">
           <mxGeometry height="42" width="42" x="150" y="490" as="geometry" />
         </mxCell>
-        <mxCell id="svc-redis" parent="1" style="sketch=0;outlineConnect=0;fontColor=#232F3E;fillColor=#C925D1;strokeColor=#ffffff;verticalLabelPosition=bottom;verticalAlign=top;align=center;fontSize=10;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.memorydb_for_redis;fontFamily=Helvetica;shadow=1;" value="ElastiCache Redis" vertex="1">
+        <mxCell id="svc-redis" parent="1" style="sketch=0;outlineConnect=0;fontColor=#232F3E;fillColor=#C925D1;strokeColor=#ffffff;verticalLabelPosition=bottom;verticalAlign=top;align=center;fontSize=10;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.memorydb_for_redis;fontFamily=Helvetica;shadow=1;whiteSpace=wrap;html=1;" value="ElastiCache Redis" vertex="1">
           <mxGeometry height="42" width="42" x="270" y="490" as="geometry" />
         </mxCell>
-        <mxCell id="svc-proxy" parent="1" style="sketch=0;outlineConnect=0;fontColor=#232F3E;fillColor=#C925D1;strokeColor=#ffffff;verticalLabelPosition=bottom;verticalAlign=top;align=center;fontSize=10;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.rds;fontFamily=Helvetica;shadow=1;" value="RDS Proxy" vertex="1">
+        <mxCell id="svc-proxy" parent="1" style="sketch=0;outlineConnect=0;fontColor=#232F3E;fillColor=#C925D1;strokeColor=#ffffff;verticalLabelPosition=bottom;verticalAlign=top;align=center;fontSize=10;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.rds;fontFamily=Helvetica;shadow=1;whiteSpace=wrap;html=1;" value="RDS Proxy" vertex="1">
           <mxGeometry height="42" width="42" x="390" y="490" as="geometry" />
         </mxCell>
         <!-- Aurora PostgreSQL (Primary) - Label on TOP to avoid global replication exit -->
-        <mxCell id="svc-rds" parent="1" style="sketch=0;outlineConnect=0;fontColor=#232F3E;fillColor=#C925D1;strokeColor=#ffffff;verticalLabelPosition=top;verticalAlign=bottom;spacingBottom=5;align=center;fontSize=10;fontStyle=1;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.aurora;fontFamily=Helvetica;shadow=1;" value="Aurora PostgreSQL (Primary)" vertex="1">
+        <mxCell id="svc-rds" parent="1" style="sketch=0;outlineConnect=0;fontColor=#232F3E;fillColor=#C925D1;strokeColor=#ffffff;verticalLabelPosition=top;verticalAlign=bottom;spacingBottom=5;align=center;fontSize=10;fontStyle=1;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.aurora;fontFamily=Helvetica;shadow=1;whiteSpace=wrap;html=1;" value="Aurora PostgreSQL (Primary)" vertex="1">
           <mxGeometry height="42" width="42" x="510" y="490" as="geometry" />
         </mxCell>
         <!-- Amazon SQS - Label on TOP to avoid S3 ingestion entry -->
-        <mxCell id="svc-sqs" parent="1" style="sketch=0;outlineConnect=0;fontColor=#232F3E;fillColor=#ED7100;strokeColor=#ffffff;verticalLabelPosition=top;verticalAlign=bottom;spacingBottom=5;align=center;fontSize=10;fontStyle=1;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.sqs;fontFamily=Helvetica;shadow=1;" value="Amazon SQS" vertex="1">
+        <mxCell id="svc-sqs" parent="1" style="sketch=0;outlineConnect=0;fontColor=#232F3E;fillColor=#ED7100;strokeColor=#ffffff;verticalLabelPosition=top;verticalAlign=bottom;spacingBottom=5;align=center;fontSize=10;fontStyle=1;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.sqs;fontFamily=Helvetica;shadow=1;whiteSpace=wrap;html=1;" value="Amazon SQS" vertex="1">
           <mxGeometry height="42" width="42" x="680" y="490" as="geometry" />
         </mxCell>
-        <mxCell id="svc-worker-lambda" parent="1" style="sketch=0;outlineConnect=0;fontColor=#232F3E;fillColor=#ED7100;strokeColor=#ffffff;verticalLabelPosition=bottom;verticalAlign=top;align=center;fontSize=10;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.lambda;fontFamily=Helvetica;shadow=1;" value="Ingestion Lambda" vertex="1">
+        <mxCell id="svc-worker-lambda" parent="1" style="sketch=0;outlineConnect=0;fontColor=#232F3E;fillColor=#ED7100;strokeColor=#ffffff;verticalLabelPosition=bottom;verticalAlign=top;align=center;fontSize=10;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.lambda;fontFamily=Helvetica;shadow=1;whiteSpace=wrap;html=1;" value="Ingestion Lambda" vertex="1">
           <mxGeometry height="42" width="42" x="800" y="490" as="geometry" />
         </mxCell>
-        <mxCell id="svc-opensearch" parent="1" style="sketch=0;outlineConnect=0;fontColor=#232F3E;fillColor=#ED7100;strokeColor=#ffffff;verticalLabelPosition=bottom;verticalAlign=top;align=center;fontSize=10;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.elasticsearch_service;fontFamily=Helvetica;shadow=1;" value="Amazon OpenSearch" vertex="1">
+        <mxCell id="svc-opensearch" parent="1" style="sketch=0;outlineConnect=0;fontColor=#232F3E;fillColor=#ED7100;strokeColor=#ffffff;verticalLabelPosition=bottom;verticalAlign=top;align=center;fontSize=10;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.elasticsearch_service;fontFamily=Helvetica;shadow=1;whiteSpace=wrap;html=1;" value="Amazon OpenSearch" vertex="1">
           <mxGeometry height="42" width="42" x="915" y="490" as="geometry" />
         </mxCell>
 
         <!-- Control Plane Services inside Singapore Region -->
-        <mxCell id="svc-cf" parent="1" style="sketch=0;outlineConnect=0;fontColor=#232F3E;fillColor=#8C4FFF;strokeColor=#ffffff;verticalLabelPosition=bottom;verticalAlign=top;align=center;fontSize=10;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.cloudfront;fontFamily=Helvetica;shadow=1;" value="Admin SPA" vertex="1">
+        <mxCell id="svc-cf" parent="1" style="sketch=0;outlineConnect=0;fontColor=#232F3E;fillColor=#8C4FFF;strokeColor=#ffffff;verticalLabelPosition=bottom;verticalAlign=top;align=center;fontSize=10;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.cloudfront;fontFamily=Helvetica;shadow=1;whiteSpace=wrap;html=1;" value="Admin SPA" vertex="1">
           <mxGeometry height="40" width="40" x="1040" y="491" as="geometry" />
         </mxCell>
-        <mxCell id="svc-lambda" parent="1" style="sketch=0;outlineConnect=0;fontColor=#232F3E;fillColor=#ED7100;strokeColor=#ffffff;verticalLabelPosition=bottom;verticalAlign=top;align=center;fontSize=10;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.lambda;fontFamily=Helvetica;shadow=1;" value="Tenant Operator" vertex="1">
+        <mxCell id="svc-lambda" parent="1" style="sketch=0;outlineConnect=0;fontColor=#232F3E;fillColor=#ED7100;strokeColor=#ffffff;verticalLabelPosition=bottom;verticalAlign=top;align=center;fontSize=10;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.lambda;fontFamily=Helvetica;shadow=1;whiteSpace=wrap;html=1;" value="Tenant Operator" vertex="1">
           <mxGeometry height="40" width="40" x="1125" y="491" as="geometry" />
         </mxCell>
         <!-- FinOps Saga - Label on TOP to avoid DR Saga exit -->
-        <mxCell id="svc-sfn" parent="1" style="sketch=0;outlineConnect=0;fontColor=#232F3E;fillColor=#E7157B;strokeColor=#ffffff;verticalLabelPosition=top;verticalAlign=bottom;spacingBottom=5;align=center;fontSize=10;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.step_functions;fontFamily=Helvetica;shadow=1;" value="FinOps Saga" vertex="1">
+        <mxCell id="svc-sfn" parent="1" style="sketch=0;outlineConnect=0;fontColor=#232F3E;fillColor=#E7157B;strokeColor=#ffffff;verticalLabelPosition=top;verticalAlign=bottom;spacingBottom=5;align=center;fontSize=10;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.step_functions;fontFamily=Helvetica;shadow=1;whiteSpace=wrap;html=1;" value="FinOps Saga" vertex="1">
           <mxGeometry height="40" width="40" x="1210" y="491" as="geometry" />
         </mxCell>
-        <mxCell id="svc-ddb" parent="1" style="sketch=0;outlineConnect=0;fontColor=#232F3E;fillColor=#C925D1;strokeColor=#ffffff;verticalLabelPosition=bottom;verticalAlign=top;align=center;fontSize=10;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.dynamodb;fontFamily=Helvetica;shadow=1;" value="DynamoDB" vertex="1">
+        <mxCell id="svc-ddb" parent="1" style="sketch=0;outlineConnect=0;fontColor=#232F3E;fillColor=#C925D1;strokeColor=#ffffff;verticalLabelPosition=bottom;verticalAlign=top;align=center;fontSize=10;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.dynamodb;fontFamily=Helvetica;shadow=1;whiteSpace=wrap;html=1;" value="DynamoDB" vertex="1">
           <mxGeometry height="40" width="40" x="1295" y="491" as="geometry" />
         </mxCell>
 
         <!-- S3 Multi-Tenant Object Storage Vault - Label on TOP to avoid CRR exit -->
-        <mxCell id="svc-s3" parent="1" style="sketch=0;outlineConnect=0;fontColor=#232F3E;fillColor=#3F8624;strokeColor=#ffffff;verticalLabelPosition=top;verticalAlign=bottom;spacingBottom=5;align=center;fontSize=10;fontStyle=1;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.s3;fontFamily=Helvetica;shadow=1;" value="Amazon S3 Vault" vertex="1">
+        <mxCell id="svc-s3" parent="1" style="sketch=0;outlineConnect=0;fontColor=#232F3E;fillColor=#3F8624;strokeColor=#ffffff;verticalLabelPosition=top;verticalAlign=bottom;spacingBottom=5;align=center;fontSize=10;fontStyle=1;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.s3;fontFamily=Helvetica;shadow=1;whiteSpace=wrap;html=1;" value="Amazon S3 Vault" vertex="1">
           <mxGeometry height="44" width="44" x="150" y="690" as="geometry" />
         </mxCell>
 
         <!-- Amazon Bedrock & AI Services -->
-        <mxCell id="svc-bedrock" parent="1" style="sketch=0;outlineConnect=0;fontColor=#232F3E;fillColor=#01A88D;strokeColor=#ffffff;verticalLabelPosition=bottom;verticalAlign=top;align=center;fontSize=10;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.bedrock;fontFamily=Helvetica;shadow=1;" value="Amazon Bedrock" vertex="1">
+        <mxCell id="svc-bedrock" parent="1" style="sketch=0;outlineConnect=0;fontColor=#232F3E;fillColor=#01A88D;strokeColor=#ffffff;verticalLabelPosition=bottom;verticalAlign=top;align=center;fontSize=10;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.bedrock;fontFamily=Helvetica;shadow=1;whiteSpace=wrap;html=1;" value="Amazon Bedrock" vertex="1">
           <mxGeometry height="44" width="44" x="790" y="690" as="geometry" />
         </mxCell>
 
         <!-- DR Failover SAGA Orchestrator -->
-        <mxCell id="svc-dr-sfn" parent="1" style="sketch=0;outlineConnect=0;fontColor=#232F3E;fillColor=#E7157B;strokeColor=#ffffff;verticalLabelPosition=bottom;verticalAlign=top;align=center;fontSize=10;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.step_functions;fontFamily=Helvetica;shadow=1;" value="Step Functions (DR Saga)" vertex="1">
+        <mxCell id="svc-dr-sfn" parent="1" style="sketch=0;outlineConnect=0;fontColor=#232F3E;fillColor=#E7157B;strokeColor=#ffffff;verticalLabelPosition=bottom;verticalAlign=top;align=center;fontSize=10;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.step_functions;fontFamily=Helvetica;shadow=1;whiteSpace=wrap;html=1;" value="Step Functions (DR Saga)" vertex="1">
           <mxGeometry height="44" width="44" x="1160" y="690" as="geometry" />
         </mxCell>
 
         <!-- ============================================================== -->
         <!-- SECONDARY DISASTER RECOVERY REGION (Header on TOP-RIGHT)      -->
         <!-- ============================================================== -->
-        <mxCell id="region-dr" parent="1" style="rounded=0;strokeColor=#C925D1;strokeWidth=2;fillColor=#C925D1;fillOpacity=3;dashed=1;verticalAlign=top;align=right;spacingRight=20;spacingTop=10;fontSize=12;fontStyle=1;fontColor=#C925D1;fontFamily=Helvetica;pointerEvents=0;" value="AWS Region: us-east-1 (N. Virginia - Standby DR)" vertex="1">
+        <mxCell id="region-dr" parent="1" style="rounded=0;strokeColor=#C925D1;strokeWidth=2;fillColor=#C925D1;fillOpacity=3;dashed=1;verticalAlign=top;align=right;spacingRight=20;spacingTop=10;fontSize=12;fontStyle=1;fontColor=#C925D1;fontFamily=Helvetica;pointerEvents=0;whiteSpace=wrap;html=1;" value="AWS Region: us-east-1 (N. Virginia - Standby DR)" vertex="1">
           <mxGeometry height="720" width="380" x="1480" y="105" as="geometry" />
         </mxCell>
 
         <!-- DR Components -->
-        <mxCell id="svc-dr-alb" parent="1" style="sketch=0;outlineConnect=0;fontColor=#232F3E;fillColor=#8C4FFF;strokeColor=#ffffff;verticalLabelPosition=bottom;verticalAlign=top;align=center;fontSize=10;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.elastic_load_balancing;fontFamily=Helvetica;shadow=1;" value="Application Load Balancer" vertex="1">
+        <mxCell id="svc-dr-alb" parent="1" style="sketch=0;outlineConnect=0;fontColor=#232F3E;fillColor=#8C4FFF;strokeColor=#ffffff;verticalLabelPosition=bottom;verticalAlign=top;align=center;fontSize=10;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.elastic_load_balancing;fontFamily=Helvetica;shadow=1;whiteSpace=wrap;html=1;" value="Application Load Balancer" vertex="1">
           <mxGeometry height="42" width="42" x="1550" y="260" as="geometry" />
         </mxCell>
         <!-- DR Fargate - Label on TOP to avoid SAGA entry -->
-        <mxCell id="svc-dr-fargate" parent="1" style="sketch=0;outlineConnect=0;fontColor=#232F3E;fillColor=#ED7100;strokeColor=#ffffff;verticalLabelPosition=top;verticalAlign=bottom;spacingBottom=5;align=center;fontSize=10;fontStyle=1;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.fargate;fontFamily=Helvetica;shadow=1;" value="ECS Fargate (DR Standby)" vertex="1">
+        <mxCell id="svc-dr-fargate" parent="1" style="sketch=0;outlineConnect=0;fontColor=#232F3E;fillColor=#ED7100;strokeColor=#ffffff;verticalLabelPosition=top;verticalAlign=bottom;spacingBottom=5;align=center;fontSize=10;fontStyle=1;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.fargate;fontFamily=Helvetica;shadow=1;whiteSpace=wrap;html=1;" value="ECS Fargate (DR Standby)" vertex="1">
           <mxGeometry height="42" width="42" x="1700" y="260" as="geometry" />
         </mxCell>
-        <mxCell id="svc-dr-rds" parent="1" style="sketch=0;outlineConnect=0;fontColor=#232F3E;fillColor=#C925D1;strokeColor=#ffffff;verticalLabelPosition=bottom;verticalAlign=top;align=center;fontSize=10;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.aurora;fontFamily=Helvetica;shadow=1;" value="Aurora PostgreSQL (Replica)" vertex="1">
+        <mxCell id="svc-dr-rds" parent="1" style="sketch=0;outlineConnect=0;fontColor=#232F3E;fillColor=#C925D1;strokeColor=#ffffff;verticalLabelPosition=bottom;verticalAlign=top;align=center;fontSize=10;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.aurora;fontFamily=Helvetica;shadow=1;whiteSpace=wrap;html=1;" value="Aurora PostgreSQL (Replica)" vertex="1">
           <mxGeometry height="42" width="42" x="1625" y="490" as="geometry" />
         </mxCell>
         <!-- DR S3 - Label on TOP to avoid CRR entry -->
-        <mxCell id="svc-dr-s3" parent="1" style="sketch=0;outlineConnect=0;fontColor=#232F3E;fillColor=#3F8624;strokeColor=#ffffff;verticalLabelPosition=top;verticalAlign=bottom;spacingBottom=5;align=center;fontSize=10;fontStyle=1;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.s3;fontFamily=Helvetica;shadow=1;" value="Amazon S3 (DR Replica)" vertex="1">
+        <mxCell id="svc-dr-s3" parent="1" style="sketch=0;outlineConnect=0;fontColor=#232F3E;fillColor=#3F8624;strokeColor=#ffffff;verticalLabelPosition=top;verticalAlign=bottom;spacingBottom=5;align=center;fontSize=10;fontStyle=1;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.s3;fontFamily=Helvetica;shadow=1;whiteSpace=wrap;html=1;" value="Amazon S3 (DR Replica)" vertex="1">
           <mxGeometry height="44" width="44" x="1625" y="690" as="geometry" />
         </mxCell>
 

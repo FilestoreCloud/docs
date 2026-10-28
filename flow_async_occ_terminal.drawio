@@ -1,118 +1,118 @@
-<mxfile host="app.diagrams.net" modified="2026-10-28T09:00:00.000Z" agent="Mozilla/5.0" version="24.7.17">
+<mxfile host="app.diagrams.net" modified="2026-10-28T09:30:00.000Z" agent="Mozilla/5.0" version="24.7.17">
   <diagram id="async-occ-seq" name="Async OCC Command Engine">
-    <mxGraphModel dx="1080" dy="640" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1080" pageHeight="640" math="0" shadow="0">
+    <mxGraphModel dx="1140" dy="640" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1140" pageHeight="640" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
 
-        <!-- Canvas Header -->
-        <mxCell id="hdr" parent="1" style="rounded=0;strokeColor=none;fillColor=#232F3E;align=left;spacingLeft=20;fontColor=#ffffff;fontSize=15;fontFamily=Helvetica;fontStyle=1;" value="STORIX CLOUD — ASYNCHRONOUS OCC COMMAND ENGINE &amp; LIVE TERMINAL" vertex="1">
-          <mxGeometry height="42" width="1040" x="20" y="15" as="geometry" />
+        <!-- Canvas Header Banner -->
+        <mxCell id="hdr" parent="1" style="rounded=0;strokeColor=none;fillColor=#232F3E;align=left;spacingLeft=20;fontColor=#ffffff;fontSize=15;fontFamily=Helvetica;fontStyle=1;whiteSpace=wrap;html=1;" value="STORIX CLOUD — ASYNCHRONOUS OCC COMMAND ENGINE &amp; LIVE TERMINAL" vertex="1">
+          <mxGeometry height="42" width="1100" x="20" y="15" as="geometry" />
         </mxCell>
     
-        <mxCell id="p-Admin" parent="1" style="rounded=1;strokeColor=#4338CA;strokeWidth=1.5;fillColor=#4338CA;fillOpacity=12;fontFamily=Helvetica;align=center;fontStyle=1;fontSize=11;fontColor=#232F3E;" value="SuperAdmin Console" vertex="1">
-          <mxGeometry height="44" width="120" x="20" y="75" as="geometry" />
+        <mxCell id="p-Admin" parent="1" style="rounded=1;strokeColor=#4338CA;strokeWidth=1.5;fillColor=#4338CA;fillOpacity=12;fontFamily=Helvetica;align=center;fontStyle=1;fontSize=11;fontColor=#232F3E;whiteSpace=wrap;html=1;" value="SuperAdmin Console" vertex="1">
+          <mxGeometry height="44" width="130" x="25" y="75" as="geometry" />
         </mxCell>
         <mxCell id="ll-Admin" parent="1" style="edgeStyle=orthogonalEdgeStyle;dashed=1;dashPattern=4 4;strokeColor=#94A3B8;strokeWidth=1.5;rounded=0;endArrow=none;" edge="1" source="p-Admin">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="80" y="600" as="targetPoint" />
+            <mxPoint x="90" y="600" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         
-        <mxCell id="p-API" parent="1" style="rounded=1;strokeColor=#ED7100;strokeWidth=1.5;fillColor=#ED7100;fillOpacity=12;fontFamily=Helvetica;align=center;fontStyle=1;fontSize=11;fontColor=#232F3E;" value="API Gateway & Lambda" vertex="1">
-          <mxGeometry height="44" width="120" x="290" y="75" as="geometry" />
+        <mxCell id="p-API" parent="1" style="rounded=1;strokeColor=#ED7100;strokeWidth=1.5;fillColor=#ED7100;fillOpacity=12;fontFamily=Helvetica;align=center;fontStyle=1;fontSize=11;fontColor=#232F3E;whiteSpace=wrap;html=1;" value="API Gateway &amp; Lambda" vertex="1">
+          <mxGeometry height="44" width="130" x="325" y="75" as="geometry" />
         </mxCell>
         <mxCell id="ll-API" parent="1" style="edgeStyle=orthogonalEdgeStyle;dashed=1;dashPattern=4 4;strokeColor=#94A3B8;strokeWidth=1.5;rounded=0;endArrow=none;" edge="1" source="p-API">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="350" y="600" as="targetPoint" />
+            <mxPoint x="390" y="600" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         
-        <mxCell id="p-DDB" parent="1" style="rounded=1;strokeColor=#3B48CC;strokeWidth=1.5;fillColor=#3B48CC;fillOpacity=12;fontFamily=Helvetica;align=center;fontStyle=1;fontSize=11;fontColor=#232F3E;" value="DynamoDB (TenantJobs)" vertex="1">
-          <mxGeometry height="44" width="120" x="580" y="75" as="geometry" />
+        <mxCell id="p-DDB" parent="1" style="rounded=1;strokeColor=#3B48CC;strokeWidth=1.5;fillColor=#3B48CC;fillOpacity=12;fontFamily=Helvetica;align=center;fontStyle=1;fontSize=11;fontColor=#232F3E;whiteSpace=wrap;html=1;" value="DynamoDB (TenantJobs)" vertex="1">
+          <mxGeometry height="44" width="130" x="635" y="75" as="geometry" />
         </mxCell>
         <mxCell id="ll-DDB" parent="1" style="edgeStyle=orthogonalEdgeStyle;dashed=1;dashPattern=4 4;strokeColor=#94A3B8;strokeWidth=1.5;rounded=0;endArrow=none;" edge="1" source="p-DDB">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="640" y="600" as="targetPoint" />
+            <mxPoint x="700" y="600" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         
-        <mxCell id="p-ECS" parent="1" style="rounded=1;strokeColor=#ED7100;strokeWidth=1.5;fillColor=#ED7100;fillOpacity=12;fontFamily=Helvetica;align=center;fontStyle=1;fontSize=11;fontColor=#232F3E;" value="Fargate Task (Nextcloud)" vertex="1">
-          <mxGeometry height="44" width="120" x="880" y="75" as="geometry" />
+        <mxCell id="p-ECS" parent="1" style="rounded=1;strokeColor=#ED7100;strokeWidth=1.5;fillColor=#ED7100;fillOpacity=12;fontFamily=Helvetica;align=center;fontStyle=1;fontSize=11;fontColor=#232F3E;whiteSpace=wrap;html=1;" value="Fargate Task (Nextcloud)" vertex="1">
+          <mxGeometry height="44" width="130" x="945" y="75" as="geometry" />
         </mxCell>
         <mxCell id="ll-ECS" parent="1" style="edgeStyle=orthogonalEdgeStyle;dashed=1;dashPattern=4 4;strokeColor=#94A3B8;strokeWidth=1.5;rounded=0;endArrow=none;" edge="1" source="p-ECS">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="940" y="600" as="targetPoint" />
+            <mxPoint x="1010" y="600" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         
-        <mxCell id="msg-1" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#4338CA;strokeWidth=1.8;fontFamily=Helvetica;fontSize=10;fontColor=#1E293B;fontStyle=1;endArrow=classic;endFill=1;labelBackgroundColor=#FFFFFF;spacing=2;" value="1. POST /api { action: "EXECUTE_OCC_ASYNC", tenant_id: "acme", command: "files:scan --all" }">
+        <mxCell id="msg-1" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#4338CA;strokeWidth=1.8;fontFamily=Helvetica;fontSize=10;fontColor=#1E293B;fontStyle=1;endArrow=classic;endFill=1;labelBackgroundColor=#FFFFFF;spacing=2;whiteSpace=wrap;html=1;" value="1. POST /api (EXECUTE_OCC_ASYNC: files:scan --all)">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="80" y="145" as="sourcePoint" />
-            <mxPoint x="350" y="145" as="targetPoint" />
+            <mxPoint x="90" y="145" as="sourcePoint" />
+            <mxPoint x="390" y="145" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         
-        <mxCell id="msg-2" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#3B48CC;strokeWidth=1.8;fontFamily=Helvetica;fontSize=10;fontColor=#1E293B;fontStyle=1;endArrow=classic;endFill=1;labelBackgroundColor=#FFFFFF;spacing=2;" value="2. PutItem { job_id: "uuid-123", status: "RUNNING", stdout: "" }">
+        <mxCell id="msg-2" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#3B48CC;strokeWidth=1.8;fontFamily=Helvetica;fontSize=10;fontColor=#1E293B;fontStyle=1;endArrow=classic;endFill=1;labelBackgroundColor=#FFFFFF;spacing=2;whiteSpace=wrap;html=1;" value="2. PutItem (job_id: uuid, status: RUNNING)">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="350" y="185" as="sourcePoint" />
-            <mxPoint x="640" y="185" as="targetPoint" />
+            <mxPoint x="390" y="185" as="sourcePoint" />
+            <mxPoint x="700" y="185" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         
-        <mxCell id="msg-3" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#ED7100;strokeWidth=1.8;fontFamily=Helvetica;fontSize=10;fontColor=#1E293B;fontStyle=1;endArrow=classic;endFill=1;labelBackgroundColor=#FFFFFF;spacing=2;" value="3. Dispatch ECS Exec / SSM Command Execution (non-blocking daemon)">
+        <mxCell id="msg-3" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#ED7100;strokeWidth=1.8;fontFamily=Helvetica;fontSize=10;fontColor=#1E293B;fontStyle=1;endArrow=classic;endFill=1;labelBackgroundColor=#FFFFFF;spacing=2;whiteSpace=wrap;html=1;" value="3. Dispatch ECS Exec / SSM Command Execution">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="350" y="225" as="sourcePoint" />
-            <mxPoint x="940" y="225" as="targetPoint" />
+            <mxPoint x="390" y="225" as="sourcePoint" />
+            <mxPoint x="1010" y="225" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         
-        <mxCell id="msg-4" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#059669;strokeWidth=1.8;fontFamily=Helvetica;fontSize=10;fontColor=#1E293B;fontStyle=1;dashed=1;endArrow=classic;endFill=1;labelBackgroundColor=#FFFFFF;spacing=2;" value="4. Immediate 202 Accepted { job_id: "uuid-123", status: "RUNNING" } (Bypasses 29s timeout)">
+        <mxCell id="msg-4" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#059669;strokeWidth=1.8;fontFamily=Helvetica;fontSize=10;fontColor=#1E293B;fontStyle=1;dashed=1;endArrow=classic;endFill=1;labelBackgroundColor=#FFFFFF;spacing=2;whiteSpace=wrap;html=1;" value="4. 202 Accepted { job_id: &quot;uuid&quot; } (Bypasses 29s Limit)">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="350" y="265" as="sourcePoint" />
-            <mxPoint x="80" y="265" as="targetPoint" />
+            <mxPoint x="390" y="265" as="sourcePoint" />
+            <mxPoint x="90" y="265" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         
-        <mxCell id="msg-5" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#4338CA;strokeWidth=1.8;fontFamily=Helvetica;fontSize=10;fontColor=#1E293B;fontStyle=1;endArrow=classic;endFill=1;labelBackgroundColor=#FFFFFF;spacing=2;" value="5. Smart Polling: POST /api { action: "CHECK_OCC_JOB", job_id: "uuid-123" }">
+        <mxCell id="msg-5" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#4338CA;strokeWidth=1.8;fontFamily=Helvetica;fontSize=10;fontColor=#1E293B;fontStyle=1;endArrow=classic;endFill=1;labelBackgroundColor=#FFFFFF;spacing=2;whiteSpace=wrap;html=1;" value="5. Smart Polling: CHECK_OCC_JOB">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="80" y="310" as="sourcePoint" />
-            <mxPoint x="350" y="310" as="targetPoint" />
+            <mxPoint x="90" y="310" as="sourcePoint" />
+            <mxPoint x="390" y="310" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         
-        <mxCell id="msg-6" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#3B48CC;strokeWidth=1.8;fontFamily=Helvetica;fontSize=10;fontColor=#1E293B;fontStyle=1;endArrow=classic;endFill=1;labelBackgroundColor=#FFFFFF;spacing=2;" value="6. GetItem(uuid-123)">
+        <mxCell id="msg-6" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#3B48CC;strokeWidth=1.8;fontFamily=Helvetica;fontSize=10;fontColor=#1E293B;fontStyle=1;endArrow=classic;endFill=1;labelBackgroundColor=#FFFFFF;spacing=2;whiteSpace=wrap;html=1;" value="6. GetItem (job_id: uuid)">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="350" y="345" as="sourcePoint" />
-            <mxPoint x="640" y="345" as="targetPoint" />
+            <mxPoint x="390" y="345" as="sourcePoint" />
+            <mxPoint x="700" y="345" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         
-        <mxCell id="msg-7" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#0284C7;strokeWidth=1.8;fontFamily=Helvetica;fontSize=10;fontColor=#1E293B;fontStyle=1;dashed=1;endArrow=classic;endFill=1;labelBackgroundColor=#FFFFFF;spacing=2;" value="7. Stream live incremental stdout chunks into in-browser terminal">
+        <mxCell id="msg-7" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#0284C7;strokeWidth=1.8;fontFamily=Helvetica;fontSize=10;fontColor=#1E293B;fontStyle=1;dashed=1;endArrow=classic;endFill=1;labelBackgroundColor=#FFFFFF;spacing=2;whiteSpace=wrap;html=1;" value="7. Stream Incremental stdout to Terminal">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="640" y="380" as="sourcePoint" />
-            <mxPoint x="80" y="380" as="targetPoint" />
+            <mxPoint x="700" y="380" as="sourcePoint" />
+            <mxPoint x="90" y="380" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         
-        <mxCell id="msg-8" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#10B981;strokeWidth=1.8;fontFamily=Helvetica;fontSize=10;fontColor=#1E293B;fontStyle=1;endArrow=classic;endFill=1;labelBackgroundColor=#FFFFFF;spacing=2;" value="8. Command Completed: UpdateItem { status: "COMPLETED", exit_code: 0, execution_ms: 14200 }">
+        <mxCell id="msg-8" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#10B981;strokeWidth=1.8;fontFamily=Helvetica;fontSize=10;fontColor=#1E293B;fontStyle=1;endArrow=classic;endFill=1;labelBackgroundColor=#FFFFFF;spacing=2;whiteSpace=wrap;html=1;" value="8. Command Done: UpdateItem (COMPLETED, exit_code: 0)">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="940" y="430" as="sourcePoint" />
-            <mxPoint x="640" y="430" as="targetPoint" />
+            <mxPoint x="1010" y="430" as="sourcePoint" />
+            <mxPoint x="700" y="430" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         
-        <mxCell id="msg-9" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#4338CA;strokeWidth=1.8;fontFamily=Helvetica;fontSize=10;fontColor=#1E293B;fontStyle=1;endArrow=classic;endFill=1;labelBackgroundColor=#FFFFFF;spacing=2;" value="9. Final Poll: POST /api { action: "CHECK_OCC_JOB", job_id: "uuid-123" }">
+        <mxCell id="msg-9" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#4338CA;strokeWidth=1.8;fontFamily=Helvetica;fontSize=10;fontColor=#1E293B;fontStyle=1;endArrow=classic;endFill=1;labelBackgroundColor=#FFFFFF;spacing=2;whiteSpace=wrap;html=1;" value="9. Final Poll: Status Check">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="80" y="485" as="sourcePoint" />
-            <mxPoint x="350" y="485" as="targetPoint" />
+            <mxPoint x="90" y="485" as="sourcePoint" />
+            <mxPoint x="390" y="485" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         
-        <mxCell id="msg-10" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#059669;strokeWidth=1.8;fontFamily=Helvetica;fontSize=10;fontColor=#1E293B;fontStyle=1;dashed=1;endArrow=classic;endFill=1;labelBackgroundColor=#FFFFFF;spacing=2;" value="10. Terminal displays Success Badge [Exit 0] · Smart Interval stops polling">
+        <mxCell id="msg-10" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#059669;strokeWidth=1.8;fontFamily=Helvetica;fontSize=10;fontColor=#1E293B;fontStyle=1;dashed=1;endArrow=classic;endFill=1;labelBackgroundColor=#FFFFFF;spacing=2;whiteSpace=wrap;html=1;" value="10. Terminal Displays Success Badge [Exit 0]">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="350" y="520" as="sourcePoint" />
-            <mxPoint x="80" y="520" as="targetPoint" />
+            <mxPoint x="390" y="520" as="sourcePoint" />
+            <mxPoint x="90" y="520" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         

@@ -15,7 +15,7 @@
         <mxCell id="box_sa" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FAF5FF;strokeColor=#A855F7;strokeWidth=1.5;" vertex="1" parent="1">
           <mxGeometry x="50" y="80" width="220" height="300" as="geometry" />
         </mxCell>
-        <mxCell id="act_sa" value="&lt;b&gt;Platform Super Admin&lt;/b&gt;" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;fillColor=#4338CA;strokeColor=#312E81;fontColor=#1E1B4B;fontSize=12;" vertex="1" parent="box_sa">
+        <mxCell id="act_sa" value="&lt;b&gt;Platform Super Admin&lt;/b&gt;" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;fillColor=#4338CA;strokeColor=#312E81;fontColor=#1E1B4B;fontSize=12;whiteSpace=wrap;" vertex="1" parent="box_sa">
           <mxGeometry x="85" y="25" width="50" height="90" as="geometry" />
         </mxCell>
         <mxCell id="txt_sa" value="&lt;b&gt;Cloud Provider Scope&lt;/b&gt;&lt;br&gt;&lt;br&gt;• System Infrastructure&lt;br&gt;• Tenant Onboarding&lt;br&gt;• Fleet Monitoring&lt;br&gt;• FinOps &amp; Hibernation&lt;br&gt;• Global Security &amp; DR" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;fontSize=11;fontColor=#6B21A8;" vertex="1" parent="box_sa">
@@ -26,7 +26,7 @@
         <mxCell id="box_ta" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F0F9FF;strokeColor=#0284C7;strokeWidth=1.5;" vertex="1" parent="1">
           <mxGeometry x="320" y="80" width="220" height="300" as="geometry" />
         </mxCell>
-        <mxCell id="act_ta" value="&lt;b&gt;Tenant Admin&lt;/b&gt;" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;fillColor=#0284C7;strokeColor=#0369A1;fontColor=#0C4A6E;fontSize=12;" vertex="1" parent="box_ta">
+        <mxCell id="act_ta" value="&lt;b&gt;Tenant Admin&lt;/b&gt;" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;fillColor=#0284C7;strokeColor=#0369A1;fontColor=#0C4A6E;fontSize=12;whiteSpace=wrap;" vertex="1" parent="box_ta">
           <mxGeometry x="85" y="25" width="50" height="90" as="geometry" />
         </mxCell>
         <mxCell id="txt_ta" value="&lt;b&gt;Organization Scope&lt;/b&gt;&lt;br&gt;&lt;br&gt;• Corporate Branding&lt;br&gt;• User Directory &amp; Quotas&lt;br&gt;• Department Folders&lt;br&gt;• DLP Security Policies&lt;br&gt;• AI Token Governance" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;fontSize=11;fontColor=#0369A1;" vertex="1" parent="box_ta">
@@ -37,7 +37,7 @@
         <mxCell id="box_tm" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F0FDF4;strokeColor=#16A34A;strokeWidth=1.5;" vertex="1" parent="1">
           <mxGeometry x="590" y="80" width="220" height="300" as="geometry" />
         </mxCell>
-        <mxCell id="act_tm" value="&lt;b&gt;Tenant Member&lt;/b&gt;" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;fillColor=#16A34A;strokeColor=#15803D;fontColor=#14532D;fontSize=12;" vertex="1" parent="box_tm">
+        <mxCell id="act_tm" value="&lt;b&gt;Tenant Member&lt;/b&gt;" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;fillColor=#16A34A;strokeColor=#15803D;fontColor=#14532D;fontSize=12;whiteSpace=wrap;" vertex="1" parent="box_tm">
           <mxGeometry x="85" y="25" width="50" height="90" as="geometry" />
         </mxCell>
         <mxCell id="txt_tm" value="&lt;b&gt;Workspace Scope&lt;/b&gt;&lt;br&gt;&lt;br&gt;• Personal Cloud Storage&lt;br&gt;• Department Collaboration&lt;br&gt;• Real-Time Co-Editing&lt;br&gt;• Expiring Share Links&lt;br&gt;• AI Document Assistant" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;fontSize=11;fontColor=#15803D;" vertex="1" parent="box_tm">
@@ -48,7 +48,7 @@
         <mxCell id="box_eg" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FEF2F2;strokeColor=#DC2626;strokeWidth=1.5;" vertex="1" parent="1">
           <mxGeometry x="860" y="80" width="220" height="300" as="geometry" />
         </mxCell>
-        <mxCell id="act_eg" value="&lt;b&gt;External Guest&lt;/b&gt;" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;fillColor=#DC2626;strokeColor=#B91C1C;fontColor=#7F1D1D;fontSize=12;" vertex="1" parent="box_eg">
+        <mxCell id="act_eg" value="&lt;b&gt;External Guest&lt;/b&gt;" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;fillColor=#DC2626;strokeColor=#B91C1C;fontColor=#7F1D1D;fontSize=12;whiteSpace=wrap;" vertex="1" parent="box_eg">
           <mxGeometry x="85" y="25" width="50" height="90" as="geometry" />
         </mxCell>
         <mxCell id="txt_eg" value="&lt;b&gt;External Perimeter&lt;/b&gt;&lt;br&gt;&lt;br&gt;• Password Verification&lt;br&gt;• Preview &amp; Download&lt;br&gt;• Blind File Submission&lt;br&gt;• Ephemeral Session&lt;br&gt;• Read AI Summary" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;fontSize=11;fontColor=#991B1B;" vertex="1" parent="box_eg">
@@ -56,7 +56,7 @@
         </mxCell>
 
         <!-- Inherits Arrow: TA -> TM -->
-        <mxCell id="arrow_ta_tm" value="&amp;laquo;inherits&amp;raquo;" style="edgeStyle=none;html=1;strokeColor=#0284C7;strokeWidth=2;endArrow=block;endFill=0;endSize=10;fontSize=10;fontColor=#0284C7;align=center;" edge="1" parent="1" source="box_ta" target="box_tm">
+        <mxCell id="arrow_ta_tm" value="&amp;laquo;inherits&amp;raquo;" style="edgeStyle=none;html=1;strokeColor=#0284C7;strokeWidth=2;endArrow=block;endFill=0;endSize=10;fontSize=10;fontColor=#0284C7;align=center;whiteSpace=wrap;" edge="1" parent="1" source="box_ta" target="box_tm">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
 

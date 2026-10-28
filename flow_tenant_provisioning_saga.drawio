@@ -1,175 +1,175 @@
-<mxfile host="app.diagrams.net" modified="2026-10-28T09:00:00.000Z" agent="Mozilla/5.0" version="24.7.17">
+<mxfile host="app.diagrams.net" modified="2026-10-28T09:30:00.000Z" agent="Mozilla/5.0" version="24.7.17">
   <diagram id="tenant-saga-seq" name="Tenant Provisioning SAGA">
-    <mxGraphModel dx="1180" dy="680" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1180" pageHeight="680" math="0" shadow="0">
+    <mxGraphModel dx="1380" dy="680" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1380" pageHeight="680" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
 
-        <!-- Canvas Header -->
-        <mxCell id="hdr" parent="1" style="rounded=0;strokeColor=none;fillColor=#232F3E;align=left;spacingLeft=20;fontColor=#ffffff;fontSize=15;fontFamily=Helvetica;fontStyle=1;" value="STORIX CLOUD — STEP FUNCTIONS SAGA TENANT PROVISIONING WORKFLOW" vertex="1">
-          <mxGeometry height="42" width="1140" x="20" y="15" as="geometry" />
+        <!-- Canvas Header Banner -->
+        <mxCell id="hdr" parent="1" style="rounded=0;strokeColor=none;fillColor=#232F3E;align=left;spacingLeft=20;fontColor=#ffffff;fontSize=15;fontFamily=Helvetica;fontStyle=1;whiteSpace=wrap;html=1;" value="STORIX CLOUD — STEP FUNCTIONS SAGA TENANT PROVISIONING WORKFLOW" vertex="1">
+          <mxGeometry height="42" width="1340" x="20" y="15" as="geometry" />
         </mxCell>
     
-        <mxCell id="p-SFN" parent="1" style="rounded=1;strokeColor=#E7157B;strokeWidth=1.5;fillColor=#E7157B;fillOpacity=12;fontFamily=Helvetica;align=center;fontStyle=1;fontSize=10.5;fontColor=#232F3E;" value="Step Functions SAGA" vertex="1">
-          <mxGeometry height="44" width="110" x="15" y="75" as="geometry" />
+        <mxCell id="p-SFN" parent="1" style="rounded=1;strokeColor=#E7157B;strokeWidth=1.5;fillColor=#E7157B;fillOpacity=12;fontFamily=Helvetica;align=center;fontStyle=1;fontSize=11;fontColor=#232F3E;whiteSpace=wrap;html=1;" value="Step Functions SAGA" vertex="1">
+          <mxGeometry height="44" width="130" x="15" y="75" as="geometry" />
         </mxCell>
         <mxCell id="ll-SFN" parent="1" style="edgeStyle=orthogonalEdgeStyle;dashed=1;dashPattern=4 4;strokeColor=#94A3B8;strokeWidth=1.5;rounded=0;endArrow=none;" edge="1" source="p-SFN">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="70" y="640" as="targetPoint" />
+            <mxPoint x="80" y="640" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         
-        <mxCell id="p-RDS" parent="1" style="rounded=1;strokeColor=#3B48CC;strokeWidth=1.5;fillColor=#3B48CC;fillOpacity=12;fontFamily=Helvetica;align=center;fontStyle=1;fontSize=10.5;fontColor=#232F3E;" value="RDS Proxy & DB" vertex="1">
-          <mxGeometry height="44" width="110" x="165" y="75" as="geometry" />
+        <mxCell id="p-RDS" parent="1" style="rounded=1;strokeColor=#3B48CC;strokeWidth=1.5;fillColor=#3B48CC;fillOpacity=12;fontFamily=Helvetica;align=center;fontStyle=1;fontSize=11;fontColor=#232F3E;whiteSpace=wrap;html=1;" value="RDS Proxy &amp; DB" vertex="1">
+          <mxGeometry height="44" width="130" x="195" y="75" as="geometry" />
         </mxCell>
         <mxCell id="ll-RDS" parent="1" style="edgeStyle=orthogonalEdgeStyle;dashed=1;dashPattern=4 4;strokeColor=#94A3B8;strokeWidth=1.5;rounded=0;endArrow=none;" edge="1" source="p-RDS">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="220" y="640" as="targetPoint" />
+            <mxPoint x="260" y="640" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         
-        <mxCell id="p-EFS" parent="1" style="rounded=1;strokeColor=#107C41;strokeWidth=1.5;fillColor=#107C41;fillOpacity=12;fontFamily=Helvetica;align=center;fontStyle=1;fontSize=10.5;fontColor=#232F3E;" value="Amazon EFS" vertex="1">
-          <mxGeometry height="44" width="110" x="315" y="75" as="geometry" />
+        <mxCell id="p-EFS" parent="1" style="rounded=1;strokeColor=#107C41;strokeWidth=1.5;fillColor=#107C41;fillOpacity=12;fontFamily=Helvetica;align=center;fontStyle=1;fontSize=11;fontColor=#232F3E;whiteSpace=wrap;html=1;" value="Amazon EFS" vertex="1">
+          <mxGeometry height="44" width="130" x="375" y="75" as="geometry" />
         </mxCell>
         <mxCell id="ll-EFS" parent="1" style="edgeStyle=orthogonalEdgeStyle;dashed=1;dashPattern=4 4;strokeColor=#94A3B8;strokeWidth=1.5;rounded=0;endArrow=none;" edge="1" source="p-EFS">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="370" y="640" as="targetPoint" />
+            <mxPoint x="440" y="640" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         
-        <mxCell id="p-S3" parent="1" style="rounded=1;strokeColor=#107C41;strokeWidth=1.5;fillColor=#107C41;fillOpacity=12;fontFamily=Helvetica;align=center;fontStyle=1;fontSize=10.5;fontColor=#232F3E;" value="Amazon S3 Vault" vertex="1">
-          <mxGeometry height="44" width="110" x="465" y="75" as="geometry" />
+        <mxCell id="p-S3" parent="1" style="rounded=1;strokeColor=#107C41;strokeWidth=1.5;fillColor=#107C41;fillOpacity=12;fontFamily=Helvetica;align=center;fontStyle=1;fontSize=11;fontColor=#232F3E;whiteSpace=wrap;html=1;" value="Amazon S3 Vault" vertex="1">
+          <mxGeometry height="44" width="130" x="555" y="75" as="geometry" />
         </mxCell>
         <mxCell id="ll-S3" parent="1" style="edgeStyle=orthogonalEdgeStyle;dashed=1;dashPattern=4 4;strokeColor=#94A3B8;strokeWidth=1.5;rounded=0;endArrow=none;" edge="1" source="p-S3">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="520" y="640" as="targetPoint" />
+            <mxPoint x="620" y="640" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         
-        <mxCell id="p-OS" parent="1" style="rounded=1;strokeColor=#ED7100;strokeWidth=1.5;fillColor=#ED7100;fillOpacity=12;fontFamily=Helvetica;align=center;fontStyle=1;fontSize=10.5;fontColor=#232F3E;" value="Amazon OpenSearch" vertex="1">
-          <mxGeometry height="44" width="110" x="615" y="75" as="geometry" />
+        <mxCell id="p-OS" parent="1" style="rounded=1;strokeColor=#ED7100;strokeWidth=1.5;fillColor=#ED7100;fillOpacity=12;fontFamily=Helvetica;align=center;fontStyle=1;fontSize=11;fontColor=#232F3E;whiteSpace=wrap;html=1;" value="OpenSearch 2.11" vertex="1">
+          <mxGeometry height="44" width="130" x="735" y="75" as="geometry" />
         </mxCell>
         <mxCell id="ll-OS" parent="1" style="edgeStyle=orthogonalEdgeStyle;dashed=1;dashPattern=4 4;strokeColor=#94A3B8;strokeWidth=1.5;rounded=0;endArrow=none;" edge="1" source="p-OS">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="670" y="640" as="targetPoint" />
+            <mxPoint x="800" y="640" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         
-        <mxCell id="p-ECS" parent="1" style="rounded=1;strokeColor=#ED7100;strokeWidth=1.5;fillColor=#ED7100;fillOpacity=12;fontFamily=Helvetica;align=center;fontStyle=1;fontSize=10.5;fontColor=#232F3E;" value="Amazon ECS Fargate" vertex="1">
-          <mxGeometry height="44" width="110" x="765" y="75" as="geometry" />
+        <mxCell id="p-ECS" parent="1" style="rounded=1;strokeColor=#ED7100;strokeWidth=1.5;fillColor=#ED7100;fillOpacity=12;fontFamily=Helvetica;align=center;fontStyle=1;fontSize=11;fontColor=#232F3E;whiteSpace=wrap;html=1;" value="Amazon ECS Fargate" vertex="1">
+          <mxGeometry height="44" width="130" x="915" y="75" as="geometry" />
         </mxCell>
         <mxCell id="ll-ECS" parent="1" style="edgeStyle=orthogonalEdgeStyle;dashed=1;dashPattern=4 4;strokeColor=#94A3B8;strokeWidth=1.5;rounded=0;endArrow=none;" edge="1" source="p-ECS">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="820" y="640" as="targetPoint" />
+            <mxPoint x="980" y="640" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         
-        <mxCell id="p-ALB" parent="1" style="rounded=1;strokeColor=#8C4FFF;strokeWidth=1.5;fillColor=#8C4FFF;fillOpacity=12;fontFamily=Helvetica;align=center;fontStyle=1;fontSize=10.5;fontColor=#232F3E;" value="ALB Listener Rules" vertex="1">
-          <mxGeometry height="44" width="110" x="905" y="75" as="geometry" />
+        <mxCell id="p-ALB" parent="1" style="rounded=1;strokeColor=#8C4FFF;strokeWidth=1.5;fillColor=#8C4FFF;fillOpacity=12;fontFamily=Helvetica;align=center;fontStyle=1;fontSize=11;fontColor=#232F3E;whiteSpace=wrap;html=1;" value="ALB Listener Rules" vertex="1">
+          <mxGeometry height="44" width="130" x="1085" y="75" as="geometry" />
         </mxCell>
         <mxCell id="ll-ALB" parent="1" style="edgeStyle=orthogonalEdgeStyle;dashed=1;dashPattern=4 4;strokeColor=#94A3B8;strokeWidth=1.5;rounded=0;endArrow=none;" edge="1" source="p-ALB">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="960" y="640" as="targetPoint" />
+            <mxPoint x="1150" y="640" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         
-        <mxCell id="p-DDB" parent="1" style="rounded=1;strokeColor=#3B48CC;strokeWidth=1.5;fillColor=#3B48CC;fillOpacity=12;fontFamily=Helvetica;align=center;fontStyle=1;fontSize=10.5;fontColor=#232F3E;" value="DynamoDB Registry" vertex="1">
-          <mxGeometry height="44" width="110" x="1035" y="75" as="geometry" />
+        <mxCell id="p-DDB" parent="1" style="rounded=1;strokeColor=#3B48CC;strokeWidth=1.5;fillColor=#3B48CC;fillOpacity=12;fontFamily=Helvetica;align=center;fontStyle=1;fontSize=11;fontColor=#232F3E;whiteSpace=wrap;html=1;" value="DynamoDB Registry" vertex="1">
+          <mxGeometry height="44" width="130" x="1235" y="75" as="geometry" />
         </mxCell>
         <mxCell id="ll-DDB" parent="1" style="edgeStyle=orthogonalEdgeStyle;dashed=1;dashPattern=4 4;strokeColor=#94A3B8;strokeWidth=1.5;rounded=0;endArrow=none;" edge="1" source="p-DDB">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="1090" y="640" as="targetPoint" />
+            <mxPoint x="1300" y="640" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         
-        <mxCell id="msg-1" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#3B48CC;strokeWidth=1.8;fontFamily=Helvetica;fontSize=10;fontColor=#1E293B;fontStyle=1;endArrow=classic;endFill=1;labelBackgroundColor=#FFFFFF;spacing=2;" value="1. Create Physical Catalog (nc_acme) via Admin Secret">
+        <mxCell id="msg-1" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#3B48CC;strokeWidth=1.8;fontFamily=Helvetica;fontSize=10;fontColor=#1E293B;fontStyle=1;endArrow=classic;endFill=1;labelBackgroundColor=#FFFFFF;spacing=2;whiteSpace=wrap;html=1;" value="1. Create Physical Catalog (nc_acme)">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="70" y="145" as="sourcePoint" />
-            <mxPoint x="220" y="145" as="targetPoint" />
+            <mxPoint x="80" y="145" as="sourcePoint" />
+            <mxPoint x="260" y="145" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         
-        <mxCell id="msg-1r" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#3B48CC;strokeWidth=1.8;fontFamily=Helvetica;fontSize=10;fontColor=#1E293B;fontStyle=1;dashed=1;endArrow=classic;endFill=1;labelBackgroundColor=#FFFFFF;spacing=2;" value="Catalog initialized & seeded">
+        <mxCell id="msg-1r" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#3B48CC;strokeWidth=1.8;fontFamily=Helvetica;fontSize=10;fontColor=#1E293B;fontStyle=1;dashed=1;endArrow=classic;endFill=1;labelBackgroundColor=#FFFFFF;spacing=2;whiteSpace=wrap;html=1;" value="Catalog Initialized &amp; Seeded">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="220" y="180" as="sourcePoint" />
-            <mxPoint x="70" y="180" as="targetPoint" />
+            <mxPoint x="260" y="180" as="sourcePoint" />
+            <mxPoint x="80" y="180" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         
-        <mxCell id="msg-2" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#107C41;strokeWidth=1.8;fontFamily=Helvetica;fontSize=10;fontColor=#1E293B;fontStyle=1;endArrow=classic;endFill=1;labelBackgroundColor=#FFFFFF;spacing=2;" value="2. Create EFS Access Point (/tenants/acme/config, POSIX 33:33)">
+        <mxCell id="msg-2" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#107C41;strokeWidth=1.8;fontFamily=Helvetica;fontSize=10;fontColor=#1E293B;fontStyle=1;endArrow=classic;endFill=1;labelBackgroundColor=#FFFFFF;spacing=2;whiteSpace=wrap;html=1;" value="2. Create EFS AP (/tenants/acme/config, POSIX 33:33)">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="70" y="220" as="sourcePoint" />
-            <mxPoint x="370" y="220" as="targetPoint" />
+            <mxPoint x="80" y="220" as="sourcePoint" />
+            <mxPoint x="440" y="220" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         
-        <mxCell id="msg-2r" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#107C41;strokeWidth=1.8;fontFamily=Helvetica;fontSize=10;fontColor=#1E293B;fontStyle=1;dashed=1;endArrow=classic;endFill=1;labelBackgroundColor=#FFFFFF;spacing=2;" value="Access Point ARN created">
+        <mxCell id="msg-2r" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#107C41;strokeWidth=1.8;fontFamily=Helvetica;fontSize=10;fontColor=#1E293B;fontStyle=1;dashed=1;endArrow=classic;endFill=1;labelBackgroundColor=#FFFFFF;spacing=2;whiteSpace=wrap;html=1;" value="Access Point Created &amp; Mounted">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="370" y="255" as="sourcePoint" />
-            <mxPoint x="70" y="255" as="targetPoint" />
+            <mxPoint x="440" y="255" as="sourcePoint" />
+            <mxPoint x="80" y="255" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         
-        <mxCell id="msg-3" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#107C41;strokeWidth=1.8;fontFamily=Helvetica;fontSize=10;fontColor=#1E293B;fontStyle=1;endArrow=classic;endFill=1;labelBackgroundColor=#FFFFFF;spacing=2;" value="3. Seed S3 Vault Prefix (s3://vault/tenants/acme/*)">
+        <mxCell id="msg-3" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#107C41;strokeWidth=1.8;fontFamily=Helvetica;fontSize=10;fontColor=#1E293B;fontStyle=1;endArrow=classic;endFill=1;labelBackgroundColor=#FFFFFF;spacing=2;whiteSpace=wrap;html=1;" value="3. Seed S3 Prefix (s3://vault/tenants/acme/*)">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="70" y="295" as="sourcePoint" />
-            <mxPoint x="520" y="295" as="targetPoint" />
+            <mxPoint x="80" y="295" as="sourcePoint" />
+            <mxPoint x="620" y="295" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         
-        <mxCell id="msg-3r" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#107C41;strokeWidth=1.8;fontFamily=Helvetica;fontSize=10;fontColor=#1E293B;fontStyle=1;dashed=1;endArrow=classic;endFill=1;labelBackgroundColor=#FFFFFF;spacing=2;" value="S3 Prefix policy & initial folders ready">
+        <mxCell id="msg-3r" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#107C41;strokeWidth=1.8;fontFamily=Helvetica;fontSize=10;fontColor=#1E293B;fontStyle=1;dashed=1;endArrow=classic;endFill=1;labelBackgroundColor=#FFFFFF;spacing=2;whiteSpace=wrap;html=1;" value="S3 Prefix Policy Bound">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="520" y="330" as="sourcePoint" />
-            <mxPoint x="70" y="330" as="targetPoint" />
+            <mxPoint x="620" y="330" as="sourcePoint" />
+            <mxPoint x="80" y="330" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         
-        <mxCell id="msg-4" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#ED7100;strokeWidth=1.8;fontFamily=Helvetica;fontSize=10;fontColor=#1E293B;fontStyle=1;endArrow=classic;endFill=1;labelBackgroundColor=#FFFFFF;spacing=2;" value="4. Initialize OpenSearch Index (tenant_acme BM25 schema)">
+        <mxCell id="msg-4" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#ED7100;strokeWidth=1.8;fontFamily=Helvetica;fontSize=10;fontColor=#1E293B;fontStyle=1;endArrow=classic;endFill=1;labelBackgroundColor=#FFFFFF;spacing=2;whiteSpace=wrap;html=1;" value="4. Create Index (tenant_acme BM25)">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="70" y="370" as="sourcePoint" />
-            <mxPoint x="670" y="370" as="targetPoint" />
+            <mxPoint x="80" y="370" as="sourcePoint" />
+            <mxPoint x="800" y="370" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         
-        <mxCell id="msg-4r" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#ED7100;strokeWidth=1.8;fontFamily=Helvetica;fontSize=10;fontColor=#1E293B;fontStyle=1;dashed=1;endArrow=classic;endFill=1;labelBackgroundColor=#FFFFFF;spacing=2;" value="OpenSearch index created & mapped">
+        <mxCell id="msg-4r" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#ED7100;strokeWidth=1.8;fontFamily=Helvetica;fontSize=10;fontColor=#1E293B;fontStyle=1;dashed=1;endArrow=classic;endFill=1;labelBackgroundColor=#FFFFFF;spacing=2;whiteSpace=wrap;html=1;" value="OpenSearch Index Mapped">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="670" y="405" as="sourcePoint" />
-            <mxPoint x="70" y="405" as="targetPoint" />
+            <mxPoint x="800" y="405" as="sourcePoint" />
+            <mxPoint x="80" y="405" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         
-        <mxCell id="msg-5" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#ED7100;strokeWidth=1.8;fontFamily=Helvetica;fontSize=10;fontColor=#1E293B;fontStyle=1;endArrow=classic;endFill=1;labelBackgroundColor=#FFFFFF;spacing=2;" value="5. Register Task Definition & Launch Service (service-acme ARM64)">
+        <mxCell id="msg-5" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#ED7100;strokeWidth=1.8;fontFamily=Helvetica;fontSize=10;fontColor=#1E293B;fontStyle=1;endArrow=classic;endFill=1;labelBackgroundColor=#FFFFFF;spacing=2;whiteSpace=wrap;html=1;" value="5. Register Task &amp; Launch Service (ARM64)">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="70" y="445" as="sourcePoint" />
-            <mxPoint x="820" y="445" as="targetPoint" />
+            <mxPoint x="80" y="445" as="sourcePoint" />
+            <mxPoint x="980" y="445" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         
-        <mxCell id="msg-5r" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#ED7100;strokeWidth=1.8;fontFamily=Helvetica;fontSize=10;fontColor=#1E293B;fontStyle=1;dashed=1;endArrow=classic;endFill=1;labelBackgroundColor=#FFFFFF;spacing=2;" value="Task healthy (< 15s via AWS SOCI index)">
+        <mxCell id="msg-5r" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#ED7100;strokeWidth=1.8;fontFamily=Helvetica;fontSize=10;fontColor=#1E293B;fontStyle=1;dashed=1;endArrow=classic;endFill=1;labelBackgroundColor=#FFFFFF;spacing=2;whiteSpace=wrap;html=1;" value="Task Healthy (&amp;lt; 15s via AWS SOCI)">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="820" y="480" as="sourcePoint" />
-            <mxPoint x="70" y="480" as="targetPoint" />
+            <mxPoint x="980" y="480" as="sourcePoint" />
+            <mxPoint x="80" y="480" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         
-        <mxCell id="msg-6" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#8C4FFF;strokeWidth=1.8;fontFamily=Helvetica;fontSize=10;fontColor=#1E293B;fontStyle=1;endArrow=classic;endFill=1;labelBackgroundColor=#FFFFFF;spacing=2;" value="6. Create Target Group (tg-acme) & Priority Host Rule (acme.png261.dev)">
+        <mxCell id="msg-6" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#8C4FFF;strokeWidth=1.8;fontFamily=Helvetica;fontSize=10;fontColor=#1E293B;fontStyle=1;endArrow=classic;endFill=1;labelBackgroundColor=#FFFFFF;spacing=2;whiteSpace=wrap;html=1;" value="6. Create Priority ALB Rule (acme.png261.dev)">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="70" y="520" as="sourcePoint" />
-            <mxPoint x="960" y="520" as="targetPoint" />
+            <mxPoint x="80" y="520" as="sourcePoint" />
+            <mxPoint x="1150" y="520" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         
-        <mxCell id="msg-6r" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#8C4FFF;strokeWidth=1.8;fontFamily=Helvetica;fontSize=10;fontColor=#1E293B;fontStyle=1;dashed=1;endArrow=classic;endFill=1;labelBackgroundColor=#FFFFFF;spacing=2;" value="Listener rule priority assigned & active">
+        <mxCell id="msg-6r" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#8C4FFF;strokeWidth=1.8;fontFamily=Helvetica;fontSize=10;fontColor=#1E293B;fontStyle=1;dashed=1;endArrow=classic;endFill=1;labelBackgroundColor=#FFFFFF;spacing=2;whiteSpace=wrap;html=1;" value="Listener Rule Active">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="960" y="555" as="sourcePoint" />
-            <mxPoint x="70" y="555" as="targetPoint" />
+            <mxPoint x="1150" y="555" as="sourcePoint" />
+            <mxPoint x="80" y="555" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         
-        <mxCell id="msg-7" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#059669;strokeWidth=1.8;fontFamily=Helvetica;fontSize=10;fontColor=#1E293B;fontStyle=1;endArrow=classic;endFill=1;labelBackgroundColor=#FFFFFF;spacing=2;" value="7. Record Status ACTIVE with OCC Version 1 in DynamoDB">
+        <mxCell id="msg-7" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#059669;strokeWidth=1.8;fontFamily=Helvetica;fontSize=10;fontColor=#1E293B;fontStyle=1;endArrow=classic;endFill=1;labelBackgroundColor=#FFFFFF;spacing=2;whiteSpace=wrap;html=1;" value="7. Set ACTIVE (OCC Version 1)">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="70" y="595" as="sourcePoint" />
-            <mxPoint x="1090" y="595" as="targetPoint" />
+            <mxPoint x="80" y="595" as="sourcePoint" />
+            <mxPoint x="1300" y="595" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         

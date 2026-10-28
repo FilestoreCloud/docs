@@ -11,10 +11,10 @@
         <mxCell id="hdr-group" connectable="0" parent="1" style="group;fontFamily=Helvetica;" value="" vertex="1">
           <mxGeometry height="90" width="2100" x="50" y="30" as="geometry" />
         </mxCell>
-        <mxCell id="hdr-title" parent="hdr-group" style="text;html=1;align=left;verticalAlign=middle;fontSize=26;fontStyle=1;fontFamily=Helvetica;fontColor=#232F3E;" value="Storix Multi-Tenant Platform — Gap Analysis &amp; Evolutionary Roadmap" vertex="1">
+        <mxCell id="hdr-title" parent="hdr-group" style="text;html=1;align=left;verticalAlign=middle;fontSize=26;fontStyle=1;fontFamily=Helvetica;fontColor=#232F3E;whiteSpace=wrap;" value="Storix Multi-Tenant Platform — Gap Analysis &amp; Evolutionary Roadmap" vertex="1">
           <mxGeometry height="36" width="1300" x="0" y="0" as="geometry" />
         </mxCell>
-        <mxCell id="hdr-sub" parent="hdr-group" style="text;html=1;align=left;verticalAlign=middle;fontSize=14;fontFamily=Helvetica;fontColor=#545B64;" value="Comparison of Implemented Capabilities vs. Requirements Gaps and 3-Phase Strategic Evolution Plan" vertex="1">
+        <mxCell id="hdr-sub" parent="hdr-group" style="text;html=1;align=left;verticalAlign=middle;fontSize=14;fontFamily=Helvetica;fontColor=#545B64;whiteSpace=wrap;" value="Comparison of Implemented Capabilities vs. Requirements Gaps and 3-Phase Strategic Evolution Plan" vertex="1">
           <mxGeometry height="24" width="1400" x="0" y="38" as="geometry" />
         </mxCell>
         <mxCell id="hdr-line" parent="hdr-group" style="line;strokeWidth=2;html=1;strokeColor=#FF9900;" value="" vertex="1">
@@ -31,21 +31,21 @@
         <mxCell id="leg-box-1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8F5E9;strokeColor=#2E7D32;strokeWidth=2;" value="" vertex="1">
           <mxGeometry height="22" width="34" x="1250" y="51" as="geometry" />
         </mxCell>
-        <mxCell id="leg-txt-1" parent="1" style="text;html=1;align=left;verticalAlign=middle;fontSize=12;fontStyle=1;fontColor=#2E7D32;fontFamily=Helvetica;" value="Đã đạt được (Implemented)" vertex="1">
+        <mxCell id="leg-txt-1" parent="1" style="text;html=1;align=left;verticalAlign=middle;fontSize=12;fontStyle=1;fontColor=#2E7D32;fontFamily=Helvetica;whiteSpace=wrap;" value="Đã đạt được (Implemented)" vertex="1">
           <mxGeometry height="24" width="170" x="1295" y="50" as="geometry" />
         </mxCell>
         <!-- Item 2: Gaps / Upgrades -->
         <mxCell id="leg-box-2" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF3E0;strokeColor=#E65100;strokeWidth=2;dashed=1;" value="" vertex="1">
           <mxGeometry height="22" width="34" x="1540" y="51" as="geometry" />
         </mxCell>
-        <mxCell id="leg-txt-2" parent="1" style="text;html=1;align=left;verticalAlign=middle;fontSize=12;fontStyle=1;fontColor=#E65100;fontFamily=Helvetica;" value="Chưa đạt / Cần nâng cấp (Gaps)" vertex="1">
+        <mxCell id="leg-txt-2" parent="1" style="text;html=1;align=left;verticalAlign=middle;fontSize=12;fontStyle=1;fontColor=#E65100;fontFamily=Helvetica;whiteSpace=wrap;" value="Chưa đạt / Cần nâng cấp (Gaps)" vertex="1">
           <mxGeometry height="24" width="190" x="1585" y="50" as="geometry" />
         </mxCell>
         <!-- Item 3: Future Roadmap -->
         <mxCell id="leg-box-3" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E0F2FE;strokeColor=#0284C7;strokeWidth=2;dashed=1;dashPattern=2 2;" value="" vertex="1">
           <mxGeometry height="22" width="34" x="1850" y="51" as="geometry" />
         </mxCell>
-        <mxCell id="leg-txt-3" parent="1" style="text;html=1;align=left;verticalAlign=middle;fontSize=12;fontStyle=1;fontColor=#0284C7;fontFamily=Helvetica;" value="Lộ trình tương lai (Roadmap)" vertex="1">
+        <mxCell id="leg-txt-3" parent="1" style="text;html=1;align=left;verticalAlign=middle;fontSize=12;fontStyle=1;fontColor=#0284C7;fontFamily=Helvetica;whiteSpace=wrap;" value="Lộ trình tương lai (Roadmap)" vertex="1">
           <mxGeometry height="24" width="180" x="1895" y="50" as="geometry" />
         </mxCell>
 
@@ -57,13 +57,13 @@
         </mxCell>
 
         <!-- Actors -->
-        <mxCell id="act-tenant-user" parent="1" style="sketch=0;outlineConnect=0;fontColor=#232F3E;fillColor=#232F3D;strokeColor=#ffffff;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=11;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.users;fontFamily=Helvetica;" value="Tenant Members &amp; Users" vertex="1">
+        <mxCell id="act-tenant-user" parent="1" style="sketch=0;outlineConnect=0;fontColor=#232F3E;fillColor=#232F3D;strokeColor=#ffffff;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=11;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.users;fontFamily=Helvetica;whiteSpace=wrap;" value="Tenant Members &amp; Users" vertex="1">
           <mxGeometry height="44" width="44" x="80" y="190" as="geometry" />
         </mxCell>
-        <mxCell id="act-guest-user" parent="1" style="sketch=0;outlineConnect=0;fontColor=#232F3E;fillColor=#232F3D;strokeColor=#ffffff;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=11;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.user;fontFamily=Helvetica;" value="External Guests (Public Link)" vertex="1">
+        <mxCell id="act-guest-user" parent="1" style="sketch=0;outlineConnect=0;fontColor=#232F3E;fillColor=#232F3D;strokeColor=#ffffff;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=11;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.user;fontFamily=Helvetica;whiteSpace=wrap;" value="External Guests (Public Link)" vertex="1">
           <mxGeometry height="44" width="44" x="200" y="190" as="geometry" />
         </mxCell>
-        <mxCell id="act-admin-user" parent="1" style="sketch=0;outlineConnect=0;fontColor=#232F3E;fillColor=#4338CA;strokeColor=#ffffff;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=11;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.authenticated_user;fontFamily=Helvetica;" value="SuperAdmin (WebAuthn/MFA)" vertex="1">
+        <mxCell id="act-admin-user" parent="1" style="sketch=0;outlineConnect=0;fontColor=#232F3E;fillColor=#4338CA;strokeColor=#ffffff;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=11;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.authenticated_user;fontFamily=Helvetica;whiteSpace=wrap;" value="SuperAdmin (WebAuthn/MFA)" vertex="1">
           <mxGeometry height="44" width="44" x="320" y="190" as="geometry" />
         </mxCell>
 

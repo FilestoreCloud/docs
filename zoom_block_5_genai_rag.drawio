@@ -6,68 +6,68 @@
         <mxCell id="1" parent="0" />
 
         <!-- Zoom Block 5 Number Badge -->
-        <mxCell id="zoom-badge-5" parent="1" style="shape=ellipse;fillColor=#01A88D;strokeColor=#ffffff;strokeWidth=2;fontColor=#ffffff;fontStyle=1;fontSize=15;fontFamily=Helvetica;align=center;verticalAlign=middle;shadow=1;" value="5" vertex="1">
+        <mxCell id="zoom-badge-5" parent="1" style="shape=ellipse;fillColor=#01A88D;strokeColor=#ffffff;strokeWidth=2;fontColor=#ffffff;fontStyle=1;fontSize=15;fontFamily=Helvetica;align=center;verticalAlign=middle;shadow=1;whiteSpace=wrap;html=1;" value="5" vertex="1">
           <mxGeometry height="32" width="32" x="25" y="20" as="geometry" />
         </mxCell>
 
         <!-- Section 1: Storage Event Source -->
-        <mxCell id="box-s3" parent="1" style="rounded=0;strokeColor=#3F8624;strokeWidth=2;fillColor=#3F8624;fillOpacity=4;verticalAlign=top;align=left;spacingLeft=12;spacingTop=8;fontStyle=1;fontSize=11;fontColor=#3F8624;fontFamily=Helvetica;" value="1. Storage Event Source (S3 Vault)" vertex="1">
+        <mxCell id="box-s3" parent="1" style="rounded=0;strokeColor=#3F8624;strokeWidth=2;fillColor=#3F8624;fillOpacity=4;verticalAlign=top;align=left;spacingLeft=12;spacingTop=8;fontStyle=1;fontSize=11;fontColor=#3F8624;fontFamily=Helvetica;whiteSpace=wrap;html=1;" value="1. Storage Event Source (S3 Vault)" vertex="1">
           <mxGeometry height="145" width="220" x="30" y="65" as="geometry" />
         </mxCell>
-        <mxCell id="svc-s3" parent="box-s3" style="sketch=0;outlineConnect=0;fontColor=#232F3E;fillColor=#3F8624;strokeColor=#ffffff;verticalLabelPosition=bottom;verticalAlign=top;align=center;fontSize=10;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.s3;fontFamily=Helvetica;shadow=1;" value="S3 Vault Bucket" vertex="1">
+        <mxCell id="svc-s3" parent="box-s3" style="sketch=0;outlineConnect=0;fontColor=#232F3E;fillColor=#3F8624;strokeColor=#ffffff;verticalLabelPosition=bottom;verticalAlign=top;align=center;fontSize=10;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.s3;fontFamily=Helvetica;shadow=1;whiteSpace=wrap;html=1;" value="S3 Vault Bucket" vertex="1">
           <mxGeometry height="40" width="40" x="25" y="45" as="geometry" />
         </mxCell>
-        <mxCell id="card-s3-desc" parent="box-s3" style="rounded=0;strokeColor=#3F8624;fillColor=#FFFFFF;fontSize=10;fontColor=#333333;fontFamily=Helvetica;align=left;spacingLeft=6;" value="• Upload PDF/Office&#xa;• EventBridge Notification&#xa;• 'Object Created' Event" vertex="1">
-          <mxGeometry height="54" width="135" x="75" y="40" as="geometry" />
+        <mxCell id="card-s3-desc" parent="box-s3" style="rounded=0;strokeColor=#3F8624;fillColor=#FFFFFF;fontSize=10;fontColor=#333333;fontFamily=Helvetica;align=left;spacingLeft=6;whiteSpace=wrap;html=1;" value="• Upload PDF/Office&#xa;• EventBridge Notification&#xa;• 'Object Created' Event" vertex="1">
+          <mxGeometry height="54" width="160" x="75" y="40" as="geometry" />
         </mxCell>
 
         <!-- Section 2: SQS Ingestion Queue & DLQ Buffer -->
-        <mxCell id="box-sqs" parent="1" style="rounded=0;strokeColor=#ED7100;strokeWidth=2;fillColor=#ED7100;fillOpacity=4;verticalAlign=top;align=left;spacingLeft=12;spacingTop=8;fontStyle=1;fontSize=11;fontColor=#ED7100;fontFamily=Helvetica;" value="2. SQS Ingestion Buffer &amp; DLQ" vertex="1">
+        <mxCell id="box-sqs" parent="1" style="rounded=0;strokeColor=#ED7100;strokeWidth=2;fillColor=#ED7100;fillOpacity=4;verticalAlign=top;align=left;spacingLeft=12;spacingTop=8;fontStyle=1;fontSize=11;fontColor=#ED7100;fontFamily=Helvetica;whiteSpace=wrap;html=1;" value="2. SQS Ingestion Buffer &amp; DLQ" vertex="1">
           <mxGeometry height="145" width="260" x="290" y="65" as="geometry" />
         </mxCell>
-        <mxCell id="svc-sqs-q" parent="box-sqs" style="sketch=0;outlineConnect=0;fontColor=#232F3E;fillColor=#ED7100;strokeColor=#ffffff;verticalLabelPosition=bottom;verticalAlign=top;align=center;fontSize=10;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.sqs;fontFamily=Helvetica;shadow=1;" value="File Indexing SQS" vertex="1">
+        <mxCell id="svc-sqs-q" parent="box-sqs" style="sketch=0;outlineConnect=0;fontColor=#232F3E;fillColor=#ED7100;strokeColor=#ffffff;verticalLabelPosition=bottom;verticalAlign=top;align=center;fontSize=10;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.sqs;fontFamily=Helvetica;shadow=1;whiteSpace=wrap;html=1;" value="File Indexing SQS" vertex="1">
           <mxGeometry height="40" width="40" x="20" y="45" as="geometry" />
         </mxCell>
-        <mxCell id="svc-sqs-dlq" parent="box-sqs" style="sketch=0;outlineConnect=0;fontColor=#232F3E;fillColor=#ED7100;strokeColor=#ffffff;verticalLabelPosition=bottom;verticalAlign=top;align=center;fontSize=10;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.sqs;fontFamily=Helvetica;shadow=1;" value="Dead-Letter DLQ" vertex="1">
+        <mxCell id="svc-sqs-dlq" parent="box-sqs" style="sketch=0;outlineConnect=0;fontColor=#232F3E;fillColor=#ED7100;strokeColor=#ffffff;verticalLabelPosition=bottom;verticalAlign=top;align=center;fontSize=10;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.sqs;fontFamily=Helvetica;shadow=1;whiteSpace=wrap;html=1;" value="Dead-Letter DLQ" vertex="1">
           <mxGeometry height="40" width="40" x="190" y="45" as="geometry" />
         </mxCell>
         <mxCell id="e-q-dlq" edge="1" parent="box-sqs" source="svc-sqs-q" target="svc-sqs-dlq" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#DD344C;strokeWidth=1.5;dashed=1;fontFamily=Helvetica;exitX=1;exitY=0.5;entryX=0;entryY=0.5;">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="card-sqs" parent="box-sqs" style="rounded=0;strokeColor=#ED7100;fillColor=#FFFFFF;fontSize=9.5;fontColor=#333333;fontFamily=Helvetica;align=center;" value="Decoupled Async Buffer&#xa;maxReceiveCount: 3" vertex="1">
-          <mxGeometry height="30" width="140" x="55" y="105" as="geometry" />
+        <mxCell id="card-sqs" parent="box-sqs" style="rounded=0;strokeColor=#ED7100;fillColor=#FFFFFF;fontSize=9.5;fontColor=#333333;fontFamily=Helvetica;align=center;whiteSpace=wrap;html=1;" value="Decoupled Async Buffer&#xa;maxReceiveCount: 3" vertex="1">
+          <mxGeometry height="30" width="190" x="55" y="105" as="geometry" />
         </mxCell>
 
         <!-- Section 3: Ingestion Worker Lambda -->
-        <mxCell id="box-worker" parent="1" style="rounded=0;strokeColor=#ED7100;strokeWidth=2;fillColor=#ED7100;fillOpacity=4;verticalAlign=top;align=left;spacingLeft=12;spacingTop=8;fontStyle=1;fontSize=11;fontColor=#ED7100;fontFamily=Helvetica;" value="3. Ingestion Worker Lambda" vertex="1">
+        <mxCell id="box-worker" parent="1" style="rounded=0;strokeColor=#ED7100;strokeWidth=2;fillColor=#ED7100;fillOpacity=4;verticalAlign=top;align=left;spacingLeft=12;spacingTop=8;fontStyle=1;fontSize=11;fontColor=#ED7100;fontFamily=Helvetica;whiteSpace=wrap;html=1;" value="3. Ingestion Worker Lambda" vertex="1">
           <mxGeometry height="145" width="220" x="590" y="65" as="geometry" />
         </mxCell>
-        <mxCell id="svc-worker" parent="box-worker" style="sketch=0;outlineConnect=0;fontColor=#232F3E;fillColor=#ED7100;strokeColor=#ffffff;verticalLabelPosition=bottom;verticalAlign=top;align=center;fontSize=10;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.lambda;fontFamily=Helvetica;shadow=1;" value="Worker Lambda" vertex="1">
+        <mxCell id="svc-worker" parent="box-worker" style="sketch=0;outlineConnect=0;fontColor=#232F3E;fillColor=#ED7100;strokeColor=#ffffff;verticalLabelPosition=bottom;verticalAlign=top;align=center;fontSize=10;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.lambda;fontFamily=Helvetica;shadow=1;whiteSpace=wrap;html=1;" value="Worker Lambda" vertex="1">
           <mxGeometry height="40" width="40" x="25" y="45" as="geometry" />
         </mxCell>
-        <mxCell id="card-worker" parent="box-worker" style="rounded=0;strokeColor=#ED7100;fillColor=#FFFFFF;fontSize=10;fontColor=#333333;fontFamily=Helvetica;align=left;spacingLeft=6;" value="• Stream download S3&#xa;• PDF &amp; Office parser&#xa;• Index PUT to OpenSearch" vertex="1">
-          <mxGeometry height="54" width="135" x="75" y="40" as="geometry" />
+        <mxCell id="card-worker" parent="box-worker" style="rounded=0;strokeColor=#ED7100;fillColor=#FFFFFF;fontSize=10;fontColor=#333333;fontFamily=Helvetica;align=left;spacingLeft=6;whiteSpace=wrap;html=1;" value="• Stream download S3&#xa;• PDF &amp; Office parser&#xa;• Index PUT to OpenSearch" vertex="1">
+          <mxGeometry height="54" width="160" x="75" y="40" as="geometry" />
         </mxCell>
 
         <!-- Section 4: Amazon OpenSearch 2.11 (FIXED ICON: elasticsearch_service) -->
-        <mxCell id="box-os" parent="1" style="rounded=0;strokeColor=#ED7100;strokeWidth=2;fillColor=#ED7100;fillOpacity=4;verticalAlign=top;align=left;spacingLeft=12;spacingTop=8;fontStyle=1;fontSize=11;fontColor=#ED7100;fontFamily=Helvetica;" value="4. OpenSearch 2.11 Domain" vertex="1">
+        <mxCell id="box-os" parent="1" style="rounded=0;strokeColor=#ED7100;strokeWidth=2;fillColor=#ED7100;fillOpacity=4;verticalAlign=top;align=left;spacingLeft=12;spacingTop=8;fontStyle=1;fontSize=11;fontColor=#ED7100;fontFamily=Helvetica;whiteSpace=wrap;html=1;" value="4. OpenSearch 2.11 Domain" vertex="1">
           <mxGeometry height="145" width="250" x="850" y="65" as="geometry" />
         </mxCell>
-        <mxCell id="svc-os" parent="box-os" style="sketch=0;outlineConnect=0;fontColor=#232F3E;fillColor=#ED7100;strokeColor=#ffffff;verticalLabelPosition=bottom;verticalAlign=top;align=center;fontSize=10;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.elasticsearch_service;fontFamily=Helvetica;shadow=1;" value="OpenSearch Domain" vertex="1">
+        <mxCell id="svc-os" parent="box-os" style="sketch=0;outlineConnect=0;fontColor=#232F3E;fillColor=#ED7100;strokeColor=#ffffff;verticalLabelPosition=bottom;verticalAlign=top;align=center;fontSize=10;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.elasticsearch_service;fontFamily=Helvetica;shadow=1;whiteSpace=wrap;html=1;" value="OpenSearch Domain" vertex="1">
           <mxGeometry height="42" width="42" x="20" y="45" as="geometry" />
         </mxCell>
-        <mxCell id="card-os" parent="box-os" style="rounded=0;strokeColor=#ED7100;fillColor=#FFFFFF;fontSize=10;fontColor=#333333;fontFamily=Helvetica;align=left;spacingLeft=6;" value="• tenant_{id} isolated index&#xa;• BM25 Lexical Inverted&#xa;• Highlight &amp; Fuzzy Search" vertex="1">
-          <mxGeometry height="54" width="165" x="75" y="40" as="geometry" />
+        <mxCell id="card-os" parent="box-os" style="rounded=0;strokeColor=#ED7100;fillColor=#FFFFFF;fontSize=10;fontColor=#333333;fontFamily=Helvetica;align=left;spacingLeft=6;whiteSpace=wrap;html=1;" value="• tenant_{id} isolated index&#xa;• BM25 Lexical Inverted&#xa;• Highlight &amp; Fuzzy Search" vertex="1">
+          <mxGeometry height="54" width="190" x="75" y="40" as="geometry" />
         </mxCell>
 
         <!-- Section 5: Bedrock GenAI & Vector Store -->
-        <mxCell id="box-bedrock" parent="1" style="rounded=0;strokeColor=#01A88D;strokeWidth=2;fillColor=#01A88D;fillOpacity=4;verticalAlign=top;align=left;spacingLeft=12;spacingTop=8;fontStyle=1;fontSize=11;fontColor=#01A88D;fontFamily=Helvetica;" value="5. Bedrock GenAI &amp; RAG" vertex="1">
+        <mxCell id="box-bedrock" parent="1" style="rounded=0;strokeColor=#01A88D;strokeWidth=2;fillColor=#01A88D;fillOpacity=4;verticalAlign=top;align=left;spacingLeft=12;spacingTop=8;fontStyle=1;fontSize=11;fontColor=#01A88D;fontFamily=Helvetica;whiteSpace=wrap;html=1;" value="5. Bedrock GenAI &amp; RAG" vertex="1">
           <mxGeometry height="145" width="260" x="1140" y="65" as="geometry" />
         </mxCell>
-        <mxCell id="svc-bedrock" parent="box-bedrock" style="sketch=0;outlineConnect=0;fontColor=#232F3E;fillColor=#01A88D;strokeColor=#ffffff;verticalLabelPosition=bottom;verticalAlign=top;align=center;fontSize=10;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.bedrock;fontFamily=Helvetica;shadow=1;" value="Amazon Bedrock" vertex="1">
+        <mxCell id="svc-bedrock" parent="box-bedrock" style="sketch=0;outlineConnect=0;fontColor=#232F3E;fillColor=#01A88D;strokeColor=#ffffff;verticalLabelPosition=bottom;verticalAlign=top;align=center;fontSize=10;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.bedrock;fontFamily=Helvetica;shadow=1;whiteSpace=wrap;html=1;" value="Amazon Bedrock" vertex="1">
           <mxGeometry height="42" width="42" x="20" y="45" as="geometry" />
         </mxCell>
-        <mxCell id="card-bedrock" parent="box-bedrock" style="rounded=0;strokeColor=#01A88D;fillColor=#FFFFFF;fontSize=10;fontColor=#333333;fontFamily=Helvetica;align=left;spacingLeft=6;" value="• Claude 3.5 Sonnet/Haiku&#xa;• Titan Text Embeddings&#xa;• RAG Context Synthesis" vertex="1">
+        <mxCell id="card-bedrock" parent="box-bedrock" style="rounded=0;strokeColor=#01A88D;fillColor=#FFFFFF;fontSize=10;fontColor=#333333;fontFamily=Helvetica;align=left;spacingLeft=6;whiteSpace=wrap;html=1;" value="• Claude 3.5 Sonnet/Haiku&#xa;• Titan Text Embeddings&#xa;• RAG Context Synthesis" vertex="1">
           <mxGeometry height="54" width="175" x="75" y="40" as="geometry" />
         </mxCell>
 
@@ -86,22 +86,22 @@
         </mxCell>
 
         <!-- Bottom Linear 6-Step Ingestion & Query Pipeline -->
-        <mxCell id="pipe-1" parent="1" style="rounded=0;strokeColor=#3F8624;fillColor=#FFFFFF;fontSize=10.5;fontColor=#333333;fontFamily=Helvetica;fontStyle=1;align=center;" value="1. User Uploads to S3 Vault" vertex="1">
+        <mxCell id="pipe-1" parent="1" style="rounded=0;strokeColor=#3F8624;fillColor=#FFFFFF;fontSize=10.5;fontColor=#333333;fontFamily=Helvetica;fontStyle=1;align=center;whiteSpace=wrap;html=1;" value="1. User Uploads to S3 Vault" vertex="1">
           <mxGeometry height="34" width="200" x="30" y="250" as="geometry" />
         </mxCell>
-        <mxCell id="pipe-2" parent="1" style="rounded=0;strokeColor=#ED7100;fillColor=#FFFFFF;fontSize=10.5;fontColor=#333333;fontFamily=Helvetica;fontStyle=1;align=center;" value="2. EventBridge to SQS Queue" vertex="1">
+        <mxCell id="pipe-2" parent="1" style="rounded=0;strokeColor=#ED7100;fillColor=#FFFFFF;fontSize=10.5;fontColor=#333333;fontFamily=Helvetica;fontStyle=1;align=center;whiteSpace=wrap;html=1;" value="2. EventBridge to SQS Queue" vertex="1">
           <mxGeometry height="34" width="210" x="260" y="250" as="geometry" />
         </mxCell>
-        <mxCell id="pipe-3" parent="1" style="rounded=0;strokeColor=#ED7100;fillColor=#FFFFFF;fontSize=10.5;fontColor=#333333;fontFamily=Helvetica;fontStyle=1;align=center;" value="3. Lambda Text Extraction" vertex="1">
+        <mxCell id="pipe-3" parent="1" style="rounded=0;strokeColor=#ED7100;fillColor=#FFFFFF;fontSize=10.5;fontColor=#333333;fontFamily=Helvetica;fontStyle=1;align=center;whiteSpace=wrap;html=1;" value="3. Lambda Text Extraction" vertex="1">
           <mxGeometry height="34" width="200" x="500" y="250" as="geometry" />
         </mxCell>
-        <mxCell id="pipe-4" parent="1" style="rounded=0;strokeColor=#ED7100;fillColor=#FFFFFF;fontSize=10.5;fontColor=#333333;fontFamily=Helvetica;fontStyle=1;align=center;" value="4. Index to OpenSearch BM25" vertex="1">
+        <mxCell id="pipe-4" parent="1" style="rounded=0;strokeColor=#ED7100;fillColor=#FFFFFF;fontSize=10.5;fontColor=#333333;fontFamily=Helvetica;fontStyle=1;align=center;whiteSpace=wrap;html=1;" value="4. Index to OpenSearch BM25" vertex="1">
           <mxGeometry height="34" width="210" x="730" y="250" as="geometry" />
         </mxCell>
-        <mxCell id="pipe-5" parent="1" style="rounded=0;strokeColor=#01A88D;fillColor=#FFFFFF;fontSize=10.5;fontColor=#333333;fontFamily=Helvetica;fontStyle=1;align=center;" value="5. Bedrock Vector Embeddings" vertex="1">
+        <mxCell id="pipe-5" parent="1" style="rounded=0;strokeColor=#01A88D;fillColor=#FFFFFF;fontSize=10.5;fontColor=#333333;fontFamily=Helvetica;fontStyle=1;align=center;whiteSpace=wrap;html=1;" value="5. Bedrock Vector Embeddings" vertex="1">
           <mxGeometry height="34" width="210" x="970" y="250" as="geometry" />
         </mxCell>
-        <mxCell id="pipe-6" parent="1" style="rounded=0;strokeColor=#01A88D;fillColor=#01A88D;fillOpacity=8;fontSize=10.5;fontColor=#01A88D;fontFamily=Helvetica;fontStyle=1;align=center;" value="6. Hybrid Search &amp; RAG Answer" vertex="1">
+        <mxCell id="pipe-6" parent="1" style="rounded=0;strokeColor=#01A88D;fillColor=#01A88D;fillOpacity=8;fontSize=10.5;fontColor=#01A88D;fontFamily=Helvetica;fontStyle=1;align=center;whiteSpace=wrap;html=1;" value="6. Hybrid Search &amp; RAG Answer" vertex="1">
           <mxGeometry height="34" width="190" x="1210" y="250" as="geometry" />
         </mxCell>
 

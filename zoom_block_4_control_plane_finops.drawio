@@ -6,40 +6,40 @@
         <mxCell id="1" parent="0" />
 
         <!-- Zoom Block 4 Number Badge -->
-        <mxCell id="zoom-badge-4" parent="1" style="shape=ellipse;fillColor=#E7157B;strokeColor=#ffffff;strokeWidth=2;fontColor=#ffffff;fontStyle=1;fontSize=15;fontFamily=Helvetica;align=center;verticalAlign=middle;shadow=1;" value="4" vertex="1">
+        <mxCell id="zoom-badge-4" parent="1" style="shape=ellipse;fillColor=#E7157B;strokeColor=#ffffff;strokeWidth=2;fontColor=#ffffff;fontStyle=1;fontSize=15;fontFamily=Helvetica;align=center;verticalAlign=middle;shadow=1;whiteSpace=wrap;html=1;" value="4" vertex="1">
           <mxGeometry height="32" width="32" x="25" y="20" as="geometry" />
         </mxCell>
 
         <!-- SuperAdmin Console Ingress -->
-        <mxCell id="act-admin" parent="1" style="sketch=0;outlineConnect=0;fontColor=#232F3E;fillColor=#4338CA;strokeColor=#ffffff;verticalLabelPosition=bottom;verticalAlign=top;align=center;fontSize=10;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.user;fontFamily=Helvetica;shadow=1;" value="SuperAdmin" vertex="1">
+        <mxCell id="act-admin" parent="1" style="sketch=0;outlineConnect=0;fontColor=#232F3E;fillColor=#4338CA;strokeColor=#ffffff;verticalLabelPosition=bottom;verticalAlign=top;align=center;fontSize=10;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.user;fontFamily=Helvetica;shadow=1;whiteSpace=wrap;html=1;" value="SuperAdmin" vertex="1">
           <mxGeometry height="40" width="40" x="40" y="85" as="geometry" />
         </mxCell>
-        <mxCell id="svc-cf" parent="1" style="sketch=0;outlineConnect=0;fontColor=#232F3E;fillColor=#8C4FFF;strokeColor=#ffffff;verticalLabelPosition=bottom;verticalAlign=top;align=center;fontSize=10;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.cloudfront;fontFamily=Helvetica;shadow=1;" value="CloudFront SPA" vertex="1">
+        <mxCell id="svc-cf" parent="1" style="sketch=0;outlineConnect=0;fontColor=#232F3E;fillColor=#8C4FFF;strokeColor=#ffffff;verticalLabelPosition=bottom;verticalAlign=top;align=center;fontSize=10;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.cloudfront;fontFamily=Helvetica;shadow=1;whiteSpace=wrap;html=1;" value="CloudFront SPA" vertex="1">
           <mxGeometry height="40" width="40" x="140" y="85" as="geometry" />
         </mxCell>
-        <mxCell id="svc-lambda" parent="1" style="sketch=0;outlineConnect=0;fontColor=#232F3E;fillColor=#ED7100;strokeColor=#ffffff;verticalLabelPosition=bottom;verticalAlign=top;align=center;fontSize=10;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.lambda;fontFamily=Helvetica;shadow=1;" value="Operator Lambda" vertex="1">
+        <mxCell id="svc-lambda" parent="1" style="sketch=0;outlineConnect=0;fontColor=#232F3E;fillColor=#ED7100;strokeColor=#ffffff;verticalLabelPosition=bottom;verticalAlign=top;align=center;fontSize=10;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.lambda;fontFamily=Helvetica;shadow=1;whiteSpace=wrap;html=1;" value="Operator Lambda" vertex="1">
           <mxGeometry height="40" width="40" x="240" y="85" as="geometry" />
         </mxCell>
 
         <!-- Workflow 1: FinOps Inactivity Auto-Suspension SAGA -->
-        <mxCell id="box-finops" parent="1" style="rounded=0;strokeColor=#E7157B;strokeWidth=2;fillColor=#E7157B;fillOpacity=4;verticalAlign=top;align=left;spacingLeft=12;spacingTop=8;fontStyle=1;fontSize=11;fontColor=#E7157B;fontFamily=Helvetica;" value="Workflow 1: Tenant FinOps Lifecycle SAGA" vertex="1">
+        <mxCell id="box-finops" parent="1" style="rounded=0;strokeColor=#E7157B;strokeWidth=2;fillColor=#E7157B;fillOpacity=4;verticalAlign=top;align=left;spacingLeft=12;spacingTop=8;fontStyle=1;fontSize=11;fontColor=#E7157B;fontFamily=Helvetica;whiteSpace=wrap;html=1;" value="Workflow 1: Tenant FinOps Lifecycle SAGA" vertex="1">
           <mxGeometry height="145" width="420" x="340" y="65" as="geometry" />
         </mxCell>
-        <mxCell id="svc-sfn-finops" parent="box-finops" style="sketch=0;outlineConnect=0;fontColor=#232F3E;fillColor=#E7157B;strokeColor=#ffffff;verticalLabelPosition=bottom;verticalAlign=top;align=center;fontSize=10;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.step_functions;fontFamily=Helvetica;shadow=1;" value="FinOps SAGA" vertex="1">
+        <mxCell id="svc-sfn-finops" parent="box-finops" style="sketch=0;outlineConnect=0;fontColor=#232F3E;fillColor=#E7157B;strokeColor=#ffffff;verticalLabelPosition=bottom;verticalAlign=top;align=center;fontSize=10;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.step_functions;fontFamily=Helvetica;shadow=1;whiteSpace=wrap;html=1;" value="FinOps SAGA" vertex="1">
           <mxGeometry height="42" width="42" x="30" y="45" as="geometry" />
         </mxCell>
-        <mxCell id="card-finops" parent="box-finops" style="rounded=0;strokeColor=#E7157B;fillColor=#FFFFFF;fontSize=10;fontColor=#333333;fontFamily=Helvetica;align=left;spacingLeft=8;" value="• EventBridge cron checks inactivity&#xa;• Auto-scales Fargate tasks to 0 (Save $60/mo)&#xa;• Preserves EFS configs &amp; DynamoDB registry&#xa;• Sub-second warm auto-resume upon login" vertex="1">
+        <mxCell id="card-finops" parent="box-finops" style="rounded=0;strokeColor=#E7157B;fillColor=#FFFFFF;fontSize=10;fontColor=#333333;fontFamily=Helvetica;align=left;spacingLeft=8;whiteSpace=wrap;html=1;" value="• EventBridge cron checks inactivity&#xa;• Auto-scales Fargate tasks to 0 (Save $60/mo)&#xa;• Preserves EFS configs &amp; DynamoDB registry&#xa;• Sub-second warm auto-resume upon login" vertex="1">
           <mxGeometry height="68" width="310" x="90" y="40" as="geometry" />
         </mxCell>
 
         <!-- Workflow 2: Automated Multi-Region DR Failover SAGA -->
-        <mxCell id="box-dr" parent="1" style="rounded=0;strokeColor=#8C4FFF;strokeWidth=2;fillColor=#8C4FFF;fillOpacity=4;verticalAlign=top;align=left;spacingLeft=12;spacingTop=8;fontStyle=1;fontSize=11;fontColor=#8C4FFF;fontFamily=Helvetica;" value="Workflow 2: Multi-Region DR Failover SAGA (Singapore -> US)" vertex="1">
+        <mxCell id="box-dr" parent="1" style="rounded=0;strokeColor=#8C4FFF;strokeWidth=2;fillColor=#8C4FFF;fillOpacity=4;verticalAlign=top;align=left;spacingLeft=12;spacingTop=8;fontStyle=1;fontSize=11;fontColor=#8C4FFF;fontFamily=Helvetica;whiteSpace=wrap;html=1;" value="Workflow 2: Multi-Region DR Failover SAGA (Singapore -&gt; US)" vertex="1">
           <mxGeometry height="145" width="440" x="800" y="65" as="geometry" />
         </mxCell>
-        <mxCell id="svc-sfn-dr" parent="box-dr" style="sketch=0;outlineConnect=0;fontColor=#232F3E;fillColor=#E7157B;strokeColor=#ffffff;verticalLabelPosition=bottom;verticalAlign=top;align=center;fontSize=10;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.step_functions;fontFamily=Helvetica;shadow=1;" value="DR SAGA" vertex="1">
+        <mxCell id="svc-sfn-dr" parent="box-dr" style="sketch=0;outlineConnect=0;fontColor=#232F3E;fillColor=#E7157B;strokeColor=#ffffff;verticalLabelPosition=bottom;verticalAlign=top;align=center;fontSize=10;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.step_functions;fontFamily=Helvetica;shadow=1;whiteSpace=wrap;html=1;" value="DR SAGA" vertex="1">
           <mxGeometry height="42" width="42" x="30" y="45" as="geometry" />
         </mxCell>
-        <mxCell id="card-dr" parent="box-dr" style="rounded=0;strokeColor=#8C4FFF;fillColor=#FFFFFF;fontSize=10;fontColor=#333333;fontFamily=Helvetica;align=left;spacingLeft=8;" value="• Step 1: Promote Aurora Global Cluster in us-east-1&#xa;• Step 2: Scale up DR Fargate fleet to desired count&#xa;• Step 3: Switch Route 53 DNS records to DR ALB&#xa;• Step 4: Record audit trail ledger &amp; alert operator" vertex="1">
+        <mxCell id="card-dr" parent="box-dr" style="rounded=0;strokeColor=#8C4FFF;fillColor=#FFFFFF;fontSize=10;fontColor=#333333;fontFamily=Helvetica;align=left;spacingLeft=8;whiteSpace=wrap;html=1;" value="• Step 1: Promote Aurora Global Cluster in us-east-1&#xa;• Step 2: Scale up DR Fargate fleet to desired count&#xa;• Step 3: Switch Route 53 DNS records to DR ALB&#xa;• Step 4: Record audit trail ledger &amp; alert operator" vertex="1">
           <mxGeometry height="68" width="330" x="90" y="40" as="geometry" />
         </mxCell>
 
@@ -65,19 +65,19 @@
         </mxCell>
 
         <!-- Linear Strip at Bottom: SAGA Execution Steps -->
-        <mxCell id="step-s1" parent="1" style="rounded=0;strokeColor=#E7157B;fillColor=#FFFFFF;fontSize=10;fontColor=#333333;fontFamily=Helvetica;fontStyle=1;align=center;" value="1. Incident / Inactivity Trigger" vertex="1">
+        <mxCell id="step-s1" parent="1" style="rounded=0;strokeColor=#E7157B;fillColor=#FFFFFF;fontSize=10;fontColor=#333333;fontFamily=Helvetica;fontStyle=1;align=center;whiteSpace=wrap;html=1;" value="1. Incident / Inactivity Trigger" vertex="1">
           <mxGeometry height="34" width="220" x="40" y="260" as="geometry" />
         </mxCell>
-        <mxCell id="step-s2" parent="1" style="rounded=0;strokeColor=#C925D1;fillColor=#FFFFFF;fontSize=10;fontColor=#333333;fontFamily=Helvetica;fontStyle=1;align=center;" value="2. Promote Aurora Global DB" vertex="1">
+        <mxCell id="step-s2" parent="1" style="rounded=0;strokeColor=#C925D1;fillColor=#FFFFFF;fontSize=10;fontColor=#333333;fontFamily=Helvetica;fontStyle=1;align=center;whiteSpace=wrap;html=1;" value="2. Promote Aurora Global DB" vertex="1">
           <mxGeometry height="34" width="220" x="300" y="260" as="geometry" />
         </mxCell>
-        <mxCell id="step-s3" parent="1" style="rounded=0;strokeColor=#ED7100;fillColor=#FFFFFF;fontSize=10;fontColor=#333333;fontFamily=Helvetica;fontStyle=1;align=center;" value="3. Scale Fargate Tasks" vertex="1">
+        <mxCell id="step-s3" parent="1" style="rounded=0;strokeColor=#ED7100;fillColor=#FFFFFF;fontSize=10;fontColor=#333333;fontFamily=Helvetica;fontStyle=1;align=center;whiteSpace=wrap;html=1;" value="3. Scale Fargate Tasks" vertex="1">
           <mxGeometry height="34" width="220" x="560" y="260" as="geometry" />
         </mxCell>
-        <mxCell id="step-s4" parent="1" style="rounded=0;strokeColor=#8C4FFF;fillColor=#FFFFFF;fontSize=10;fontColor=#333333;fontFamily=Helvetica;fontStyle=1;align=center;" value="4. Switch Route 53 DNS" vertex="1">
+        <mxCell id="step-s4" parent="1" style="rounded=0;strokeColor=#8C4FFF;fillColor=#FFFFFF;fontSize=10;fontColor=#333333;fontFamily=Helvetica;fontStyle=1;align=center;whiteSpace=wrap;html=1;" value="4. Switch Route 53 DNS" vertex="1">
           <mxGeometry height="34" width="220" x="820" y="260" as="geometry" />
         </mxCell>
-        <mxCell id="step-s5" parent="1" style="rounded=0;strokeColor=#3F8624;fillColor=#3F8624;fillOpacity=8;fontSize=10;fontColor=#3F8624;fontFamily=Helvetica;fontStyle=1;align=center;" value="5. RTO Achieved (&lt; 180s)" vertex="1">
+        <mxCell id="step-s5" parent="1" style="rounded=0;strokeColor=#3F8624;fillColor=#3F8624;fillOpacity=8;fontSize=10;fontColor=#3F8624;fontFamily=Helvetica;fontStyle=1;align=center;whiteSpace=wrap;html=1;" value="5. RTO Achieved (&lt; 180s)" vertex="1">
           <mxGeometry height="34" width="180" x="1080" y="260" as="geometry" />
         </mxCell>
 

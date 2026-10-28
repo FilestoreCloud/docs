@@ -6,58 +6,58 @@
         <mxCell id="1" parent="0" />
 
         <!-- Zoom Block 1 Number Badge -->
-        <mxCell id="zoom-badge-1" parent="1" style="shape=ellipse;fillColor=#8C4FFF;strokeColor=#ffffff;strokeWidth=2;fontColor=#ffffff;fontStyle=1;fontSize=15;fontFamily=Helvetica;align=center;verticalAlign=middle;shadow=1;" value="1" vertex="1">
+        <mxCell id="zoom-badge-1" parent="1" style="shape=ellipse;fillColor=#8C4FFF;strokeColor=#ffffff;strokeWidth=2;fontColor=#ffffff;fontStyle=1;fontSize=15;fontFamily=Helvetica;align=center;verticalAlign=middle;shadow=1;whiteSpace=wrap;html=1;" value="1" vertex="1">
           <mxGeometry height="32" width="32" x="25" y="15" as="geometry" />
         </mxCell>
 
         <!-- Actors (Clean AWS Vector Illustration icons in AWS Blue, no black background block) -->
-        <mxCell id="act-users" parent="1" style="sketch=0;outlineConnect=0;fontColor=#232F3E;fillColor=#0284C7;strokeColor=none;verticalLabelPosition=middle;verticalAlign=middle;align=right;spacingRight=46;fontSize=11;aspect=fixed;shape=mxgraph.aws4.illustration_users;fontFamily=Helvetica;" value="Tenant Users" vertex="1">
+        <mxCell id="act-users" parent="1" style="sketch=0;outlineConnect=0;fontColor=#232F3E;fillColor=#0284C7;strokeColor=none;verticalLabelPosition=middle;verticalAlign=middle;align=right;spacingRight=46;fontSize=11;aspect=fixed;shape=mxgraph.aws4.illustration_users;fontFamily=Helvetica;whiteSpace=wrap;html=1;" value="Tenant Users" vertex="1">
           <mxGeometry height="44" width="44" x="90" y="50" as="geometry" />
         </mxCell>
-        <mxCell id="act-desktop" parent="1" style="sketch=0;outlineConnect=0;fontColor=#232F3E;fillColor=#0284C7;strokeColor=none;verticalLabelPosition=middle;verticalAlign=middle;align=right;spacingRight=46;fontSize=11;aspect=fixed;shape=mxgraph.aws4.illustration_desktop;fontFamily=Helvetica;" value="WebDAV / Desktop" vertex="1">
+        <mxCell id="act-desktop" parent="1" style="sketch=0;outlineConnect=0;fontColor=#232F3E;fillColor=#0284C7;strokeColor=none;verticalLabelPosition=middle;verticalAlign=middle;align=right;spacingRight=46;fontSize=11;aspect=fixed;shape=mxgraph.aws4.illustration_desktop;fontFamily=Helvetica;whiteSpace=wrap;html=1;" value="WebDAV / Desktop" vertex="1">
           <mxGeometry height="44" width="44" x="90" y="150" as="geometry" />
         </mxCell>
-        <mxCell id="act-guest" parent="1" style="sketch=0;outlineConnect=0;fontColor=#232F3E;fillColor=#0284C7;strokeColor=none;verticalLabelPosition=middle;verticalAlign=middle;align=right;spacingRight=46;fontSize=11;aspect=fixed;shape=mxgraph.aws4.illustration_users;fontFamily=Helvetica;" value="Public Guests" vertex="1">
+        <mxCell id="act-guest" parent="1" style="sketch=0;outlineConnect=0;fontColor=#232F3E;fillColor=#0284C7;strokeColor=none;verticalLabelPosition=middle;verticalAlign=middle;align=right;spacingRight=46;fontSize=11;aspect=fixed;shape=mxgraph.aws4.illustration_users;fontFamily=Helvetica;whiteSpace=wrap;html=1;" value="Public Guests" vertex="1">
           <mxGeometry height="44" width="44" x="90" y="250" as="geometry" />
         </mxCell>
 
         <!-- Edge Pipeline -->
-        <mxCell id="svc-r53" parent="1" style="sketch=0;outlineConnect=0;fontColor=#232F3E;fillColor=#8C4FFF;strokeColor=#ffffff;verticalLabelPosition=bottom;verticalAlign=top;align=center;fontSize=11;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.route_53;fontFamily=Helvetica;shadow=1;" value="Route 53" vertex="1">
+        <mxCell id="svc-r53" parent="1" style="sketch=0;outlineConnect=0;fontColor=#232F3E;fillColor=#8C4FFF;strokeColor=#ffffff;verticalLabelPosition=bottom;verticalAlign=top;align=center;fontSize=11;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.route_53;fontFamily=Helvetica;shadow=1;whiteSpace=wrap;html=1;" value="Route 53" vertex="1">
           <mxGeometry height="44" width="44" x="200" y="150" as="geometry" />
         </mxCell>
-        <mxCell id="svc-waf" parent="1" style="sketch=0;outlineConnect=0;fontColor=#232F3E;fillColor=#DD344C;strokeColor=#ffffff;verticalLabelPosition=bottom;verticalAlign=top;align=center;fontSize=11;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.waf;fontFamily=Helvetica;shadow=1;" value="AWS WAF" vertex="1">
+        <mxCell id="svc-waf" parent="1" style="sketch=0;outlineConnect=0;fontColor=#232F3E;fillColor=#DD344C;strokeColor=#ffffff;verticalLabelPosition=bottom;verticalAlign=top;align=center;fontSize=11;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.waf;fontFamily=Helvetica;shadow=1;whiteSpace=wrap;html=1;" value="AWS WAF" vertex="1">
           <mxGeometry height="44" width="44" x="320" y="150" as="geometry" />
         </mxCell>
-        <mxCell id="svc-igw" parent="1" style="sketch=0;outlineConnect=0;fontColor=#232F3E;fillColor=#8C4FFF;strokeColor=#ffffff;verticalLabelPosition=bottom;verticalAlign=top;align=center;fontSize=11;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.internet_gateway;fontFamily=Helvetica;shadow=1;" value="Internet Gateway" vertex="1">
+        <mxCell id="svc-igw" parent="1" style="sketch=0;outlineConnect=0;fontColor=#232F3E;fillColor=#8C4FFF;strokeColor=#ffffff;verticalLabelPosition=bottom;verticalAlign=top;align=center;fontSize=11;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.internet_gateway;fontFamily=Helvetica;shadow=1;whiteSpace=wrap;html=1;" value="Internet Gateway" vertex="1">
           <mxGeometry height="40" width="40" x="430" y="152" as="geometry" />
         </mxCell>
-        <mxCell id="svc-alb" parent="1" style="sketch=0;outlineConnect=0;fontColor=#232F3E;fillColor=#8C4FFF;strokeColor=#ffffff;verticalLabelPosition=bottom;verticalAlign=top;align=center;fontSize=11;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.elastic_load_balancing;fontFamily=Helvetica;shadow=1;" value="Dual-AZ ALB" vertex="1">
+        <mxCell id="svc-alb" parent="1" style="sketch=0;outlineConnect=0;fontColor=#232F3E;fillColor=#8C4FFF;strokeColor=#ffffff;verticalLabelPosition=bottom;verticalAlign=top;align=center;fontSize=11;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.elastic_load_balancing;fontFamily=Helvetica;shadow=1;whiteSpace=wrap;html=1;" value="Dual-AZ ALB" vertex="1">
           <mxGeometry height="44" width="44" x="540" y="150" as="geometry" />
         </mxCell>
         <!-- AWS ACM: Label on right to avoid downward dashed arrow overlap -->
-        <mxCell id="svc-acm" parent="1" style="sketch=0;outlineConnect=0;fontColor=#232F3E;fillColor=#DD344C;strokeColor=#ffffff;verticalLabelPosition=middle;verticalAlign=middle;align=left;spacingLeft=42;fontSize=10;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.certificate_manager;fontFamily=Helvetica;shadow=1;" value="AWS ACM" vertex="1">
+        <mxCell id="svc-acm" parent="1" style="sketch=0;outlineConnect=0;fontColor=#232F3E;fillColor=#DD344C;strokeColor=#ffffff;verticalLabelPosition=middle;verticalAlign=middle;align=left;spacingLeft=42;fontSize=10;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.certificate_manager;fontFamily=Helvetica;shadow=1;whiteSpace=wrap;html=1;" value="AWS ACM" vertex="1">
           <mxGeometry height="36" width="36" x="544" y="55" as="geometry" />
         </mxCell>
 
         <!-- Target Groups (Square) -->
-        <mxCell id="tg-acme" parent="1" style="rounded=0;strokeColor=#ED7100;strokeWidth=1.5;fillColor=#ED7100;fillOpacity=8;fontStyle=1;fontSize=11;fontColor=#ED7100;fontFamily=Helvetica;align=center;" value="Target Group: tg-tenant-acme" vertex="1">
+        <mxCell id="tg-acme" parent="1" style="rounded=0;strokeColor=#ED7100;strokeWidth=1.5;fillColor=#ED7100;fillOpacity=8;fontStyle=1;fontSize=11;fontColor=#ED7100;fontFamily=Helvetica;align=center;whiteSpace=wrap;html=1;" value="Target Group: tg-tenant-acme" vertex="1">
           <mxGeometry height="40" width="220" x="680" y="70" as="geometry" />
         </mxCell>
-        <mxCell id="tg-marvel" parent="1" style="rounded=0;strokeColor=#ED7100;strokeWidth=1.5;fillColor=#ED7100;fillOpacity=8;fontStyle=1;fontSize=11;fontColor=#ED7100;fontFamily=Helvetica;align=center;" value="Target Group: tg-tenant-marvel" vertex="1">
+        <mxCell id="tg-marvel" parent="1" style="rounded=0;strokeColor=#ED7100;strokeWidth=1.5;fillColor=#ED7100;fillOpacity=8;fontStyle=1;fontSize=11;fontColor=#ED7100;fontFamily=Helvetica;align=center;whiteSpace=wrap;html=1;" value="Target Group: tg-tenant-marvel" vertex="1">
           <mxGeometry height="40" width="220" x="680" y="152" as="geometry" />
         </mxCell>
-        <mxCell id="tg-admin" parent="1" style="rounded=0;strokeColor=#0073BB;strokeWidth=1.5;fillColor=#0073BB;fillOpacity=8;fontStyle=1;fontSize=11;fontColor=#0073BB;fontFamily=Helvetica;align=center;" value="Target Group: tg-saas-admin" vertex="1">
+        <mxCell id="tg-admin" parent="1" style="rounded=0;strokeColor=#0073BB;strokeWidth=1.5;fillColor=#0073BB;fillOpacity=8;fontStyle=1;fontSize=11;fontColor=#0073BB;fontFamily=Helvetica;align=center;whiteSpace=wrap;html=1;" value="Target Group: tg-saas-admin" vertex="1">
           <mxGeometry height="40" width="220" x="680" y="235" as="geometry" />
         </mxCell>
 
         <!-- Downstream Targets -->
-        <mxCell id="svc-f-acme" parent="1" style="sketch=0;outlineConnect=0;fontColor=#232F3E;fillColor=#ED7100;strokeColor=#ffffff;verticalLabelPosition=bottom;verticalAlign=top;align=center;fontSize=10;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.fargate;fontFamily=Helvetica;shadow=1;" value="service-acme" vertex="1">
+        <mxCell id="svc-f-acme" parent="1" style="sketch=0;outlineConnect=0;fontColor=#232F3E;fillColor=#ED7100;strokeColor=#ffffff;verticalLabelPosition=bottom;verticalAlign=top;align=center;fontSize=10;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.fargate;fontFamily=Helvetica;shadow=1;whiteSpace=wrap;html=1;" value="service-acme" vertex="1">
           <mxGeometry height="40" width="40" x="970" y="70" as="geometry" />
         </mxCell>
-        <mxCell id="svc-f-marvel" parent="1" style="sketch=0;outlineConnect=0;fontColor=#232F3E;fillColor=#ED7100;strokeColor=#ffffff;verticalLabelPosition=bottom;verticalAlign=top;align=center;fontSize=10;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.fargate;fontFamily=Helvetica;shadow=1;" value="service-marvel" vertex="1">
+        <mxCell id="svc-f-marvel" parent="1" style="sketch=0;outlineConnect=0;fontColor=#232F3E;fillColor=#ED7100;strokeColor=#ffffff;verticalLabelPosition=bottom;verticalAlign=top;align=center;fontSize=10;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.fargate;fontFamily=Helvetica;shadow=1;whiteSpace=wrap;html=1;" value="service-marvel" vertex="1">
           <mxGeometry height="40" width="40" x="970" y="152" as="geometry" />
         </mxCell>
-        <mxCell id="svc-l-admin" parent="1" style="sketch=0;outlineConnect=0;fontColor=#232F3E;fillColor=#ED7100;strokeColor=#ffffff;verticalLabelPosition=bottom;verticalAlign=top;align=center;fontSize=10;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.lambda;fontFamily=Helvetica;shadow=1;" value="service-operator" vertex="1">
+        <mxCell id="svc-l-admin" parent="1" style="sketch=0;outlineConnect=0;fontColor=#232F3E;fillColor=#ED7100;strokeColor=#ffffff;verticalLabelPosition=bottom;verticalAlign=top;align=center;fontSize=10;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.lambda;fontFamily=Helvetica;shadow=1;whiteSpace=wrap;html=1;" value="service-operator" vertex="1">
           <mxGeometry height="40" width="40" x="970" y="235" as="geometry" />
         </mxCell>
 

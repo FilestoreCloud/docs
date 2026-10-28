@@ -7,22 +7,22 @@
         <mxCell id="1" parent="0" />
 
         <!-- Actor 1: Platform Super Admin -->
-        <mxCell id="actor_1" value="Platform Super Admin" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=0;outlineConnect=0;fillColor=#4338CA;strokeColor=#312E81;fontColor=#1E1B4B;fontSize=13;fontFamily=Helvetica;;fontStyle=1" vertex="1" parent="1">
+        <mxCell id="actor_1" value="Platform Super Admin" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=0;outlineConnect=0;fillColor=#4338CA;strokeColor=#312E81;fontColor=#1E1B4B;fontSize=13;fontFamily=Helvetica;fontStyle=1;whiteSpace=wrap;" vertex="1" parent="1">
           <mxGeometry x="60" y="40" width="65" height="115" as="geometry" />
         </mxCell>
 
         <!-- Actor 2: Tenant Admin -->
-        <mxCell id="actor_2" value="Tenant Admin" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=0;outlineConnect=0;fillColor=#0284C7;strokeColor=#0369A1;fontColor=#0C4A6E;fontSize=13;fontFamily=Helvetica;;fontStyle=1" vertex="1" parent="1">
+        <mxCell id="actor_2" value="Tenant Admin" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=0;outlineConnect=0;fillColor=#0284C7;strokeColor=#0369A1;fontColor=#0C4A6E;fontSize=13;fontFamily=Helvetica;fontStyle=1;whiteSpace=wrap;" vertex="1" parent="1">
           <mxGeometry x="280" y="40" width="65" height="115" as="geometry" />
         </mxCell>
 
         <!-- Actor 3: Tenant Member -->
-        <mxCell id="actor_3" value="Tenant Member" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=0;outlineConnect=0;fillColor=#16A34A;strokeColor=#15803D;fontColor=#14532D;fontSize=13;fontFamily=Helvetica;;fontStyle=1" vertex="1" parent="1">
+        <mxCell id="actor_3" value="Tenant Member" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=0;outlineConnect=0;fillColor=#16A34A;strokeColor=#15803D;fontColor=#14532D;fontSize=13;fontFamily=Helvetica;fontStyle=1;whiteSpace=wrap;" vertex="1" parent="1">
           <mxGeometry x="500" y="40" width="65" height="115" as="geometry" />
         </mxCell>
 
         <!-- Actor 4: External Guest -->
-        <mxCell id="actor_4" value="External Guest" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=0;outlineConnect=0;fillColor=#DC2626;strokeColor=#B91C1C;fontColor=#7F1D1D;fontSize=13;fontFamily=Helvetica;;fontStyle=1" vertex="1" parent="1">
+        <mxCell id="actor_4" value="External Guest" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=0;outlineConnect=0;fillColor=#DC2626;strokeColor=#B91C1C;fontColor=#7F1D1D;fontSize=13;fontFamily=Helvetica;fontStyle=1;whiteSpace=wrap;" vertex="1" parent="1">
           <mxGeometry x="720" y="40" width="65" height="115" as="geometry" />
         </mxCell>
 

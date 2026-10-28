@@ -9,148 +9,148 @@
         
         
         
-        <mxCell id="sys_boundary" value="Multi-Tenant SaaS Platform" style="html=0;swimlane;startSize=34;fillColor=none;strokeColor=#4F46E5;strokeWidth=2;fontStyle=1;fontSize=14;fontColor=#3730A3;rounded=0;arcSize=0;align=center;" vertex="1" parent="1">
+        <mxCell id="sys_boundary" value="Multi-Tenant SaaS Platform" style="html=0;swimlane;startSize=34;fillColor=none;strokeColor=#4F46E5;strokeWidth=2;fontStyle=1;fontSize=14;fontColor=#3730A3;rounded=0;arcSize=0;align=center;whiteSpace=wrap;" vertex="1" parent="1">
           <mxGeometry x="210" y="30" width="960" height="1070" as="geometry" />
         </mxCell>
 
         
         
         
-        <mxCell id="plane1" value="Platform Management Plane" style="html=0;swimlane;startSize=26;fillColor=#FAF5FF;strokeColor=#A855F7;strokeWidth=1.2;fontStyle=1;fontSize=11;fontColor=#6B21A8;rounded=0;arcSize=0;align=left;spacingLeft=10;" vertex="1" parent="sys_boundary">
+        <mxCell id="plane1" value="Platform Management Plane" style="html=0;swimlane;startSize=26;fillColor=#FAF5FF;strokeColor=#A855F7;strokeWidth=1.2;fontStyle=1;fontSize=11;fontColor=#6B21A8;rounded=0;arcSize=0;align=left;spacingLeft=10;whiteSpace=wrap;" vertex="1" parent="sys_boundary">
           <mxGeometry x="20" y="46" width="920" height="290" as="geometry" />
         </mxCell>
 
-        <mxCell id="sa_uc10" value="UC-SA10&#10;Admin Authentication" style="ellipse;html=0;fillColor=#FFFFFF;strokeColor=#9333EA;strokeWidth=1.5;fontSize=11;fontColor=#581C87;align=center;fontStyle=1;" vertex="1" parent="plane1">
+        <mxCell id="sa_uc10" value="UC-SA10&#10;Admin Authentication" style="ellipse;html=0;fillColor=#FFFFFF;strokeColor=#9333EA;strokeWidth=1.5;fontSize=11;fontColor=#581C87;align=center;fontStyle=1;whiteSpace=wrap;" vertex="1" parent="plane1">
           <mxGeometry x="40" y="42" width="190" height="46" as="geometry" />
         </mxCell>
 
-        <mxCell id="sa_uc01" value="UC-SA01&#10;Provision Tenant" style="ellipse;html=0;fillColor=#FFFFFF;strokeColor=#9333EA;strokeWidth=1.5;fontSize=11;fontColor=#581C87;align=center;fontStyle=1;" vertex="1" parent="plane1">
+        <mxCell id="sa_uc01" value="UC-SA01&#10;Provision Tenant" style="ellipse;html=0;fillColor=#FFFFFF;strokeColor=#9333EA;strokeWidth=1.5;fontSize=11;fontColor=#581C87;align=center;fontStyle=1;whiteSpace=wrap;" vertex="1" parent="plane1">
           <mxGeometry x="40" y="122" width="190" height="46" as="geometry" />
         </mxCell>
 
-        <mxCell id="sa_uc03" value="UC-SA03&#10;Lifecycle Control&#10;(Suspend / Resume)" style="ellipse;html=0;fillColor=#FFFFFF;strokeColor=#9333EA;strokeWidth=1.5;fontSize=11;fontColor=#581C87;align=center;fontStyle=1;" vertex="1" parent="plane1">
+        <mxCell id="sa_uc03" value="UC-SA03&#10;Lifecycle Control&#10;(Suspend / Resume)" style="ellipse;html=0;fillColor=#FFFFFF;strokeColor=#9333EA;strokeWidth=1.5;fontSize=11;fontColor=#581C87;align=center;fontStyle=1;whiteSpace=wrap;" vertex="1" parent="plane1">
           <mxGeometry x="40" y="202" width="190" height="48" as="geometry" />
         </mxCell>
 
-        <mxCell id="sa_uc08" value="UC-SA08&#10;FinOps &amp; Hibernation" style="ellipse;html=0;fillColor=#FFFBEB;strokeColor=#F59E0B;strokeWidth=1.5;fontSize=10.5;fontColor=#B45309;align=center;fontStyle=1;" vertex="1" parent="plane1">
+        <mxCell id="sa_uc08" value="UC-SA08&#10;FinOps &amp; Hibernation" style="ellipse;html=0;fillColor=#FFFBEB;strokeColor=#F59E0B;strokeWidth=1.5;fontSize=10.5;fontColor=#B45309;align=center;fontStyle=1;whiteSpace=wrap;" vertex="1" parent="plane1">
           <mxGeometry x="350" y="203" width="180" height="46" as="geometry" />
         </mxCell>
 
-        <mxCell id="sa_uc02" value="UC-SA02&#10;Tenant Directory" style="ellipse;html=0;fillColor=#FFFFFF;strokeColor=#9333EA;strokeWidth=1.5;fontSize=11;fontColor=#581C87;align=center;fontStyle=1;" vertex="1" parent="plane1">
+        <mxCell id="sa_uc02" value="UC-SA02&#10;Tenant Directory" style="ellipse;html=0;fillColor=#FFFFFF;strokeColor=#9333EA;strokeWidth=1.5;fontSize=11;fontColor=#581C87;align=center;fontStyle=1;whiteSpace=wrap;" vertex="1" parent="plane1">
           <mxGeometry x="660" y="50" width="190" height="46" as="geometry" />
         </mxCell>
 
-        <mxCell id="sa_uc04" value="UC-SA04&#10;System Monitoring" style="ellipse;html=0;fillColor=#FFFFFF;strokeColor=#9333EA;strokeWidth=1.5;fontSize=11;fontColor=#581C87;align=center;fontStyle=1;" vertex="1" parent="plane1">
+        <mxCell id="sa_uc04" value="UC-SA04&#10;System Monitoring" style="ellipse;html=0;fillColor=#FFFFFF;strokeColor=#9333EA;strokeWidth=1.5;fontSize=11;fontColor=#581C87;align=center;fontStyle=1;whiteSpace=wrap;" vertex="1" parent="plane1">
           <mxGeometry x="660" y="126" width="190" height="46" as="geometry" />
         </mxCell>
 
-        <mxCell id="sa_uc06" value="UC-SA06&#10;Deprovision &amp; Archive" style="ellipse;html=0;fillColor=#FFFFFF;strokeColor=#9333EA;strokeWidth=1.5;fontSize=11;fontColor=#581C87;align=center;fontStyle=1;" vertex="1" parent="plane1">
+        <mxCell id="sa_uc06" value="UC-SA06&#10;Deprovision &amp; Archive" style="ellipse;html=0;fillColor=#FFFFFF;strokeColor=#9333EA;strokeWidth=1.5;fontSize=11;fontColor=#581C87;align=center;fontStyle=1;whiteSpace=wrap;" vertex="1" parent="plane1">
           <mxGeometry x="660" y="202" width="190" height="46" as="geometry" />
         </mxCell>
 
-        <mxCell id="ext_sa08" value="«extend»" style="edgeStyle=none;html=0;dashed=1;endArrow=open;endSize=8;strokeColor=#D97706;strokeWidth=1.2;fontSize=10;fontColor=#B45309;align=center;" edge="1" parent="plane1" source="sa_uc08" target="sa_uc03">
+        <mxCell id="ext_sa08" value="«extend»" style="edgeStyle=none;html=0;dashed=1;endArrow=open;endSize=8;strokeColor=#D97706;strokeWidth=1.2;fontSize=10;fontColor=#B45309;align=center;whiteSpace=wrap;" edge="1" parent="plane1" source="sa_uc08" target="sa_uc03">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
 
         
         
         
-        <mxCell id="plane2" value="Tenant Governance Plane" style="html=0;swimlane;startSize=26;fillColor=#F0F9FF;strokeColor=#0284C7;strokeWidth=1.2;fontStyle=1;fontSize=11;fontColor=#0369A1;rounded=0;arcSize=0;align=left;spacingLeft=10;" vertex="1" parent="sys_boundary">
+        <mxCell id="plane2" value="Tenant Governance Plane" style="html=0;swimlane;startSize=26;fillColor=#F0F9FF;strokeColor=#0284C7;strokeWidth=1.2;fontStyle=1;fontSize=11;fontColor=#0369A1;rounded=0;arcSize=0;align=left;spacingLeft=10;whiteSpace=wrap;" vertex="1" parent="sys_boundary">
           <mxGeometry x="20" y="356" width="920" height="310" as="geometry" />
         </mxCell>
 
-        <mxCell id="ta_uc01" value="UC-TA01&#10;Custom Branding" style="ellipse;html=0;fillColor=#FFFFFF;strokeColor=#0284C7;strokeWidth=1.5;fontSize=11;fontColor=#0369A1;align=center;fontStyle=1;" vertex="1" parent="plane2">
+        <mxCell id="ta_uc01" value="UC-TA01&#10;Custom Branding" style="ellipse;html=0;fillColor=#FFFFFF;strokeColor=#0284C7;strokeWidth=1.5;fontSize=11;fontColor=#0369A1;align=center;fontStyle=1;whiteSpace=wrap;" vertex="1" parent="plane2">
           <mxGeometry x="40" y="38" width="190" height="46" as="geometry" />
         </mxCell>
 
-        <mxCell id="ta_uc02" value="UC-TA02&#10;Users &amp; Quotas" style="ellipse;html=0;fillColor=#FFFFFF;strokeColor=#0284C7;strokeWidth=1.5;fontSize=11;fontColor=#0369A1;align=center;fontStyle=1;" vertex="1" parent="plane2">
+        <mxCell id="ta_uc02" value="UC-TA02&#10;Users &amp; Quotas" style="ellipse;html=0;fillColor=#FFFFFF;strokeColor=#0284C7;strokeWidth=1.5;fontSize=11;fontColor=#0369A1;align=center;fontStyle=1;whiteSpace=wrap;" vertex="1" parent="plane2">
           <mxGeometry x="40" y="104" width="190" height="46" as="geometry" />
         </mxCell>
 
-        <mxCell id="ta_uc03" value="UC-TA03&#10;Department Folders &amp; ACL" style="ellipse;html=0;fillColor=#FFFFFF;strokeColor=#0284C7;strokeWidth=1.5;fontSize=11;fontColor=#0369A1;align=center;fontStyle=1;" vertex="1" parent="plane2">
+        <mxCell id="ta_uc03" value="UC-TA03&#10;Department Folders &amp; ACL" style="ellipse;html=0;fillColor=#FFFFFF;strokeColor=#0284C7;strokeWidth=1.5;fontSize=11;fontColor=#0369A1;align=center;fontStyle=1;whiteSpace=wrap;" vertex="1" parent="plane2">
           <mxGeometry x="40" y="170" width="190" height="46" as="geometry" />
         </mxCell>
 
-        <mxCell id="ta_uc04" value="UC-TA04&#10;Security Policies" style="ellipse;html=0;fillColor=#FFFFFF;strokeColor=#0284C7;strokeWidth=1.5;fontSize=11;fontColor=#0369A1;align=center;fontStyle=1;" vertex="1" parent="plane2">
+        <mxCell id="ta_uc04" value="UC-TA04&#10;Security Policies" style="ellipse;html=0;fillColor=#FFFFFF;strokeColor=#0284C7;strokeWidth=1.5;fontSize=11;fontColor=#0369A1;align=center;fontStyle=1;whiteSpace=wrap;" vertex="1" parent="plane2">
           <mxGeometry x="40" y="236" width="190" height="46" as="geometry" />
         </mxCell>
 
-        <mxCell id="ta_uc05" value="UC-TA05&#10;DLP Sharing Rules" style="ellipse;html=0;fillColor=#FFFFFF;strokeColor=#0284C7;strokeWidth=1.5;fontSize=11;fontColor=#0369A1;align=center;fontStyle=1;" vertex="1" parent="plane2">
+        <mxCell id="ta_uc05" value="UC-TA05&#10;DLP Sharing Rules" style="ellipse;html=0;fillColor=#FFFFFF;strokeColor=#0284C7;strokeWidth=1.5;fontSize=11;fontColor=#0369A1;align=center;fontStyle=1;whiteSpace=wrap;" vertex="1" parent="plane2">
           <mxGeometry x="350" y="104" width="180" height="46" as="geometry" />
         </mxCell>
 
-        <mxCell id="ta_uc06" value="UC-TA06&#10;Audit Logs" style="ellipse;html=0;fillColor=#FFFFFF;strokeColor=#0284C7;strokeWidth=1.5;fontSize=11;fontColor=#0369A1;align=center;fontStyle=1;" vertex="1" parent="plane2">
+        <mxCell id="ta_uc06" value="UC-TA06&#10;Audit Logs" style="ellipse;html=0;fillColor=#FFFFFF;strokeColor=#0284C7;strokeWidth=1.5;fontSize=11;fontColor=#0369A1;align=center;fontStyle=1;whiteSpace=wrap;" vertex="1" parent="plane2">
           <mxGeometry x="660" y="104" width="190" height="46" as="geometry" />
         </mxCell>
 
-        <mxCell id="ta_uc07" value="UC-TA07&#10;AI Quota &amp; Governance" style="ellipse;html=0;fillColor=#FFFFFF;strokeColor=#0284C7;strokeWidth=1.5;fontSize=11;fontColor=#0369A1;align=center;fontStyle=1;" vertex="1" parent="plane2">
+        <mxCell id="ta_uc07" value="UC-TA07&#10;AI Quota &amp; Governance" style="ellipse;html=0;fillColor=#FFFFFF;strokeColor=#0284C7;strokeWidth=1.5;fontSize=11;fontColor=#0369A1;align=center;fontStyle=1;whiteSpace=wrap;" vertex="1" parent="plane2">
           <mxGeometry x="660" y="190" width="190" height="46" as="geometry" />
         </mxCell>
 
         
         
         
-        <mxCell id="plane3" value="Workspace &amp; Collaboration Plane" style="html=0;swimlane;startSize=26;fillColor=#F0FDF4;strokeColor=#16A34A;strokeWidth=1.2;fontStyle=1;fontSize=11;fontColor=#15803D;rounded=0;arcSize=0;align=left;spacingLeft=10;" vertex="1" parent="sys_boundary">
+        <mxCell id="plane3" value="Workspace &amp; Collaboration Plane" style="html=0;swimlane;startSize=26;fillColor=#F0FDF4;strokeColor=#16A34A;strokeWidth=1.2;fontStyle=1;fontSize=11;fontColor=#15803D;rounded=0;arcSize=0;align=left;spacingLeft=10;whiteSpace=wrap;" vertex="1" parent="sys_boundary">
           <mxGeometry x="20" y="686" width="920" height="360" as="geometry" />
         </mxCell>
 
         
-        <mxCell id="tm_uc01" value="UC-TM01&#10;Personal Storage" style="ellipse;html=0;fillColor=#FFFFFF;strokeColor=#16A34A;strokeWidth=1.5;fontSize=11;fontColor=#166534;align=center;fontStyle=1;" vertex="1" parent="plane3">
+        <mxCell id="tm_uc01" value="UC-TM01&#10;Personal Storage" style="ellipse;html=0;fillColor=#FFFFFF;strokeColor=#16A34A;strokeWidth=1.5;fontSize=11;fontColor=#166534;align=center;fontStyle=1;whiteSpace=wrap;" vertex="1" parent="plane3">
           <mxGeometry x="40" y="36" width="190" height="44" as="geometry" />
         </mxCell>
 
-        <mxCell id="tm_uc02" value="UC-TM02&#10;Team Collaboration" style="ellipse;html=0;fillColor=#FFFFFF;strokeColor=#16A34A;strokeWidth=1.5;fontSize=11;fontColor=#166534;align=center;fontStyle=1;" vertex="1" parent="plane3">
+        <mxCell id="tm_uc02" value="UC-TM02&#10;Team Collaboration" style="ellipse;html=0;fillColor=#FFFFFF;strokeColor=#16A34A;strokeWidth=1.5;fontSize=11;fontColor=#166534;align=center;fontStyle=1;whiteSpace=wrap;" vertex="1" parent="plane3">
           <mxGeometry x="40" y="100" width="190" height="44" as="geometry" />
         </mxCell>
 
-        <mxCell id="tm_uc03" value="UC-TM03&#10;Document Co-Editing" style="ellipse;html=0;fillColor=#FFFFFF;strokeColor=#16A34A;strokeWidth=1.5;fontSize=11;fontColor=#166534;align=center;fontStyle=1;" vertex="1" parent="plane3">
+        <mxCell id="tm_uc03" value="UC-TM03&#10;Document Co-Editing" style="ellipse;html=0;fillColor=#FFFFFF;strokeColor=#16A34A;strokeWidth=1.5;fontSize=11;fontColor=#166534;align=center;fontStyle=1;whiteSpace=wrap;" vertex="1" parent="plane3">
           <mxGeometry x="40" y="164" width="190" height="44" as="geometry" />
         </mxCell>
 
-        <mxCell id="tm_uc04" value="UC-TM04&#10;Share Link Creation" style="ellipse;html=0;fillColor=#FFFFFF;strokeColor=#16A34A;strokeWidth=1.5;fontSize=11;fontColor=#166534;align=center;fontStyle=1;" vertex="1" parent="plane3">
+        <mxCell id="tm_uc04" value="UC-TM04&#10;Share Link Creation" style="ellipse;html=0;fillColor=#FFFFFF;strokeColor=#16A34A;strokeWidth=1.5;fontSize=11;fontColor=#166534;align=center;fontStyle=1;whiteSpace=wrap;" vertex="1" parent="plane3">
           <mxGeometry x="40" y="228" width="190" height="44" as="geometry" />
         </mxCell>
 
-        <mxCell id="tm_uc05" value="UC-TM05&#10;Inbound Drop Box" style="ellipse;html=0;fillColor=#FFFFFF;strokeColor=#16A34A;strokeWidth=1.5;fontSize=11;fontColor=#166534;align=center;fontStyle=1;" vertex="1" parent="plane3">
+        <mxCell id="tm_uc05" value="UC-TM05&#10;Inbound Drop Box" style="ellipse;html=0;fillColor=#FFFFFF;strokeColor=#16A34A;strokeWidth=1.5;fontSize=11;fontColor=#166534;align=center;fontStyle=1;whiteSpace=wrap;" vertex="1" parent="plane3">
           <mxGeometry x="40" y="292" width="190" height="44" as="geometry" />
         </mxCell>
 
-        <mxCell id="tm_uc07" value="UC-TM07&#10;AI Document Assistant" style="ellipse;html=0;fillColor=#FFFFFF;strokeColor=#16A34A;strokeWidth=1.5;fontSize=11;fontColor=#166534;align=center;fontStyle=1;" vertex="1" parent="plane3">
+        <mxCell id="tm_uc07" value="UC-TM07&#10;AI Document Assistant" style="ellipse;html=0;fillColor=#FFFFFF;strokeColor=#16A34A;strokeWidth=1.5;fontSize=11;fontColor=#166534;align=center;fontStyle=1;whiteSpace=wrap;" vertex="1" parent="plane3">
           <mxGeometry x="350" y="36" width="180" height="44" as="geometry" />
         </mxCell>
 
         
-        <mxCell id="eg_uc01" value="UC-EG01&#10;Password Verification" style="ellipse;html=0;fillColor=#FEF2F2;strokeColor=#FCA5A5;strokeWidth=1.2;fontSize=10.5;fontColor=#991B1B;align=center;" vertex="1" parent="plane3">
+        <mxCell id="eg_uc01" value="UC-EG01&#10;Password Verification" style="ellipse;html=0;fillColor=#FEF2F2;strokeColor=#FCA5A5;strokeWidth=1.2;fontSize=10.5;fontColor=#991B1B;align=center;whiteSpace=wrap;" vertex="1" parent="plane3">
           <mxGeometry x="400" y="228" width="170" height="44" as="geometry" />
         </mxCell>
 
-        <mxCell id="eg_uc02" value="UC-EG02&#10;Preview &amp; Download" style="ellipse;html=0;fillColor=#FFFFFF;strokeColor=#DC2626;strokeWidth=1.5;fontSize=11;fontColor=#991B1B;align=center;fontStyle=1;" vertex="1" parent="plane3">
+        <mxCell id="eg_uc02" value="UC-EG02&#10;Preview &amp; Download" style="ellipse;html=0;fillColor=#FFFFFF;strokeColor=#DC2626;strokeWidth=1.5;fontSize=11;fontColor=#991B1B;align=center;fontStyle=1;whiteSpace=wrap;" vertex="1" parent="plane3">
           <mxGeometry x="660" y="164" width="190" height="46" as="geometry" />
         </mxCell>
 
-        <mxCell id="eg_uc03" value="UC-EG03&#10;Upload to Drop Box" style="ellipse;html=0;fillColor=#FFFFFF;strokeColor=#DC2626;strokeWidth=1.5;fontSize=11;fontColor=#991B1B;align=center;fontStyle=1;" vertex="1" parent="plane3">
+        <mxCell id="eg_uc03" value="UC-EG03&#10;Upload to Drop Box" style="ellipse;html=0;fillColor=#FFFFFF;strokeColor=#DC2626;strokeWidth=1.5;fontSize=11;fontColor=#991B1B;align=center;fontStyle=1;whiteSpace=wrap;" vertex="1" parent="plane3">
           <mxGeometry x="660" y="248" width="190" height="46" as="geometry" />
         </mxCell>
 
-        <mxCell id="eg_uc04" value="UC-EG04&#10;View AI Summary" style="ellipse;html=0;fillColor=#FFFBEB;strokeColor=#F59E0B;strokeWidth=1.2;fontSize=10.5;fontColor=#B45309;align=center;" vertex="1" parent="plane3">
+        <mxCell id="eg_uc04" value="UC-EG04&#10;View AI Summary" style="ellipse;html=0;fillColor=#FFFBEB;strokeColor=#F59E0B;strokeWidth=1.2;fontSize=10.5;fontColor=#B45309;align=center;whiteSpace=wrap;" vertex="1" parent="plane3">
           <mxGeometry x="660" y="70" width="190" height="44" as="geometry" />
         </mxCell>
 
         
-        <mxCell id="inc_tm_dlp" value="«include»" style="edgeStyle=none;html=0;dashed=1;endArrow=open;endSize=8;strokeColor=#0284C7;strokeWidth=1.2;fontSize=10;fontColor=#0369A1;align=center;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="sys_boundary" source="tm_uc04" target="ta_uc05">
+        <mxCell id="inc_tm_dlp" value="«include»" style="edgeStyle=none;html=0;dashed=1;endArrow=open;endSize=8;strokeColor=#0284C7;strokeWidth=1.2;fontSize=10;fontColor=#0369A1;align=center;exitX=1;exitY=0.5;entryX=0;entryY=0.5;whiteSpace=wrap;" edge="1" parent="sys_boundary" source="tm_uc04" target="ta_uc05">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
 
         
-        <mxCell id="inc_eg02_pwd" value="«include»" style="edgeStyle=none;html=0;dashed=1;endArrow=open;endSize=8;strokeColor=#DC2626;strokeWidth=1.2;fontSize=10;fontColor=#991B1B;align=center;" edge="1" parent="plane3" source="eg_uc02" target="eg_uc01">
+        <mxCell id="inc_eg02_pwd" value="«include»" style="edgeStyle=none;html=0;dashed=1;endArrow=open;endSize=8;strokeColor=#DC2626;strokeWidth=1.2;fontSize=10;fontColor=#991B1B;align=center;whiteSpace=wrap;" edge="1" parent="plane3" source="eg_uc02" target="eg_uc01">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
 
-        <mxCell id="inc_eg03_pwd" value="«include»" style="edgeStyle=none;html=0;dashed=1;endArrow=open;endSize=8;strokeColor=#DC2626;strokeWidth=1.2;fontSize=10;fontColor=#991B1B;align=center;" edge="1" parent="plane3" source="eg_uc03" target="eg_uc01">
+        <mxCell id="inc_eg03_pwd" value="«include»" style="edgeStyle=none;html=0;dashed=1;endArrow=open;endSize=8;strokeColor=#DC2626;strokeWidth=1.2;fontSize=10;fontColor=#991B1B;align=center;whiteSpace=wrap;" edge="1" parent="plane3" source="eg_uc03" target="eg_uc01">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
 
-        <mxCell id="ext_eg04" value="«extend»" style="edgeStyle=none;html=0;dashed=1;endArrow=open;endSize=8;strokeColor=#D97706;strokeWidth=1.2;fontSize=10;fontColor=#B45309;align=center;" edge="1" parent="plane3" source="eg_uc04" target="eg_uc02">
+        <mxCell id="ext_eg04" value="«extend»" style="edgeStyle=none;html=0;dashed=1;endArrow=open;endSize=8;strokeColor=#D97706;strokeWidth=1.2;fontSize=10;fontColor=#B45309;align=center;whiteSpace=wrap;" edge="1" parent="plane3" source="eg_uc04" target="eg_uc02">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
 
@@ -158,27 +158,27 @@
         
         
         
-        <mxCell id="actor_sa" value="Platform Super Admin" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=0;outlineConnect=0;fillColor=#4338CA;strokeColor=#312E81;fontColor=#1E1B4B;fontSize=11;;fontStyle=1" vertex="1" parent="1">
+        <mxCell id="actor_sa" value="Platform Super Admin" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=0;outlineConnect=0;fillColor=#4338CA;strokeColor=#312E81;fontColor=#1E1B4B;fontSize=11;fontStyle=1;whiteSpace=wrap;" vertex="1" parent="1">
           <mxGeometry x="60" y="160" width="36" height="70" as="geometry" />
         </mxCell>
 
         
-        <mxCell id="actor_ta" value="Tenant Admin" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=0;outlineConnect=0;fillColor=#0284C7;strokeColor=#0369A1;fontColor=#0C4A6E;fontSize=11;;fontStyle=1" vertex="1" parent="1">
+        <mxCell id="actor_ta" value="Tenant Admin" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=0;outlineConnect=0;fillColor=#0284C7;strokeColor=#0369A1;fontColor=#0C4A6E;fontSize=11;fontStyle=1;whiteSpace=wrap;" vertex="1" parent="1">
           <mxGeometry x="60" y="500" width="36" height="70" as="geometry" />
         </mxCell>
 
         
-        <mxCell id="actor_tm" value="Tenant Member" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=0;outlineConnect=0;fillColor=#16A34A;strokeColor=#15803D;fontColor=#14532D;fontSize=11;;fontStyle=1" vertex="1" parent="1">
+        <mxCell id="actor_tm" value="Tenant Member" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=0;outlineConnect=0;fillColor=#16A34A;strokeColor=#15803D;fontColor=#14532D;fontSize=11;fontStyle=1;whiteSpace=wrap;" vertex="1" parent="1">
           <mxGeometry x="60" y="860" width="36" height="70" as="geometry" />
         </mxCell>
 
         
-        <mxCell id="actor_eg" value="External Guest" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=0;outlineConnect=0;fillColor=#DC2626;strokeColor=#B91C1C;fontColor=#7F1D1D;fontSize=11;;fontStyle=1" vertex="1" parent="1">
+        <mxCell id="actor_eg" value="External Guest" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=0;outlineConnect=0;fillColor=#DC2626;strokeColor=#B91C1C;fontColor=#7F1D1D;fontSize=11;fontStyle=1;whiteSpace=wrap;" vertex="1" parent="1">
           <mxGeometry x="1240" y="860" width="36" height="70" as="geometry" />
         </mxCell>
 
         
-        <mxCell id="gen_ta_tm" value="«inherits»" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=0;strokeColor=#0284C7;strokeWidth=2;endArrow=block;endFill=0;endSize=12;fontSize=9.5;fontColor=#0284C7;align=center;verticalAlign=middle;labelBackgroundColor=none;" edge="1" parent="1" source="actor_ta" target="actor_tm">
+        <mxCell id="gen_ta_tm" value="«inherits»" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=0;strokeColor=#0284C7;strokeWidth=2;endArrow=block;endFill=0;endSize=12;fontSize=9.5;fontColor=#0284C7;align=center;verticalAlign=middle;labelBackgroundColor=none;whiteSpace=wrap;" edge="1" parent="1" source="actor_ta" target="actor_tm">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
               <mxPoint x="78" y="720" />
